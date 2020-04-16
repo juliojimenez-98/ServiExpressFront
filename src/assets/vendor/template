@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <link rel="stylesheet" media="all" href="/assets/application-mailer-dbc5154d3c4160e8fa7ef52fa740fa402760c39b5d22c8f6d64ad5999499d263.css" />
+   <style><!-- Add custom styles that you want inlined here --></style>
+ </head>
+ <!-- Edit the code below this line -->
+ <body class="bg-light">
+<preview>Thank you for riding with Lyft!</preview>
+<div class="container">
+  <img class="mx-auto mt-4 mb-3" width="42" height="30" src="img/Logos/logo blanco.png" />
+
+  <div class="card mb-4" style="border-top: 5px solid #00bf;">
+    <div class="card-body">
+      <img class="mx-auto" width="100" height="100" src="img/Logos/user.png" />
+      <h4 class="text-center">Bienvenido!</h4>
+      <h5 class="text-muted text-center">Empleado</h5>
+    </div>
+  </div>
+
+  <div class="card w-100 mb-4">
+    <div class="card-body">
+      <img width="50" height="50" class="mx-auto" src="https://s3.amazonaws.com/lyft.zimride.com/images/emails/enterprise/briefcase_dark_large.png">
+      <h4 class="text-center">Te damos la bienvenida a nuestra familia ServiExpess</h4>
+
+      <div class="mx-auto mt-2">
+        <p >Usuario     : empleado@serviexpress.cl</p>
+        <p >Contraseña  : fhbcj1sds22</p>
+      </div>  
+      <a class="btn btn-primary btn-lg mx-auto mt-2" href="https://lyft.com">Ingresar</a>
+    </div>
+  </div>
+
+  <div class="text-center text-muted">Centro de Ayuda</div>
+  <div class="text-center text-muted">Telefono : 768797663</div>
+  <div class="text-center text-muted mb-4">admin@serviexpress.cl</div>
+
+  <table class="table-unstyled text-muted mb-4">
+    <tbody>
+      <tr>
+        <td>© ServiExpress 2020</td>
+        <td>
+          <img class="float-right pl-2" width="20" height="20" src="https://s3.amazonaws.com/lyft.zimride.com/images/emails/social/v2/facebook@2x.png"/>
+          <img class="float-right pl-2" width="20" height="20" src="https://s3.amazonaws.com/lyft.zimride.com/images/emails/social/v2/twitter@2x.png"/>
+          <img class="float-right" width="20" height="20" src="https://s3.amazonaws.com/lyft.zimride.com/images/emails/social/v2/instagram@2x.png"/>
+        </td>
+      </tr>
+      <tr>
+        <td>Calle linda #68514</td>
+        <td class="text-right"></td>
+      </tr>
+      <tr>
+        <td>Santiago Chile</td>
+        <td class="text-right"></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+ </body>
+</html>
+
+
+
+

@@ -1,4 +1,10 @@
-
+body {
+  background: url(../../assets/img/34932hd.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 .pages-link{
   color: #212529;
