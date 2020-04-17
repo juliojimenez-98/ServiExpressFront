@@ -123,6 +123,6 @@
   },
   "defaultProject": "ServiExpressFront",
   "cli": {
-    "analytics": false
+    "analytics": "d6334e30-bed3-47b3-b1f0-8843adc27321"
   }
 }
