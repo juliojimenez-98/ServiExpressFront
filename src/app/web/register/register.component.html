@@ -7,18 +7,10 @@
             </div>
             <form class="col-12" (ngSubmit)="signUp()">
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" [(ngModel)]="user.name" name="name" placeholder="Nombre" />
-                    </div>
-                </div>
-                <div class="form-row">
                     
                     <div class="form-group col-md-10 mx-auto ">
                         <input type="email" class="form-control" placeholder="Correo" [(ngModel)]="user.email" name="email" required />
                     </div>
-                </div>
-                <div class="form-group col-md-10 mx-auto">
-                    <input type="text" class="form-control" [(ngModel)]="user.username" placeholder="Nombre de usuario" name="username" required />
                 </div>
                 <div class="form-group col-md-10 mx-auto">
                     <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="user.password" name="password" required />
