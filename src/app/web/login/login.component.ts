@@ -22,12 +22,12 @@ export class LoginComponent implements OnInit {
     this.loginService.signIn(username,password ).subscribe(
       res  =>{
       localStorage.setItem("token_sesion",res ["accessToken"]);
-
-      console.log(res);
+      window.alert(res ["idrole"]);
+      //console.log(res);
 
     },
     error => {
-      console.log(error);
+      //console.log(error);
       this.handleError(error);
     },
 
