@@ -23,15 +23,9 @@ export class LoginService {
    * 
    * @param user Recive a user to create
    */
-  signUp(user: UserModel): Observable<any> {
-    this.body = new FormData();
-    this.body.append("name", user.name);
-    this.body.append("username", user.username);
-    this.body.append("email", user.email);
-    this.body.append("password", user.password);
-    this.body.append("role", user.role);
-
-    return this.http.put(`${this.urlSignUp}`, this.body);
+  signUp(user: UserModel): Observable<UserModel> {
+    this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.put<UserModel>(`${this.urlSignUp}`,user,{headers: this.header});
   }
 
   /**
