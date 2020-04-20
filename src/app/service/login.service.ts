@@ -20,22 +20,19 @@ export class LoginService {
 
 
    /**
-   * 
+   *
    * @param user Recive a user to create
    */
-  signUp(user: UserModel): Observable<any> {
-    this.body = new FormData();
-    this.body.append("name", user.name);
-    this.body.append("username", user.username);
-    this.body.append("email", user.email);
-    this.body.append("password", user.password);
-    this.body.append("role", user.role);
-
-    return this.http.put(`${this.urlSignUp}`, this.body);
+  signUp(user: UserModel){
+    var raw = JSON.stringify({"name":user.name,"username":user.username,"email":user.email,"password":user.password,"role":user.role});
+    this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    console.log(this.header);
+    console.log(this.body);
+    return this.http.put(`${this.urlSignUp}`,raw,{headers: this.header});
   }
 
   /**
-   * 
+   *
    * @param auth username or email
    * @param passw password user
    */
@@ -48,7 +45,7 @@ export class LoginService {
   }
 
   /**
-   * 
+   *
    * @param selection true for put, false for post
    */
   updateOrCreate(selection: boolean,userInfo:UserInfoModel) {
@@ -60,7 +57,7 @@ export class LoginService {
     this.body.append("fechaNacimiento",userInfo.fechaN);
 
     if (selection == true) {
-      
+
       return this.http.put(`${this.udpCreate}`, this.body);
     } else {
       this.body.append("idcliente",userInfo.idUsuario);
@@ -70,7 +67,7 @@ export class LoginService {
   }
 
   requestPassword(username: string) {
-  
+
     console.log(this.reqPassw + `${username}`);
     return this.http.put(`${this.reqPassw + `/${username}`}`, this.body);
   }
