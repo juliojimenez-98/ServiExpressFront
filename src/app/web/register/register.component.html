@@ -5,31 +5,15 @@
                 <h5 class="text-white">Registrate</h5>
                 <hr class="white">
             </div>
-            <form class="col-12">
+            <form class="col-12" (ngSubmit)="signUp()">
                 <div class="form-row">
-                    <div class="form-group col-md-6" id="names-group">
-                        <input type="text" class="form-control" placeholder="Nombres" name="name" required />
-                    </div>
-                    <div class="form-group col-md-6" id="names-group">
-                        <input type="text" class="form-control" placeholder="Apellidos" name="lastname" required />
+                    
+                    <div class="form-group col-md-10 mx-auto ">
+                        <input type="email" class="form-control" placeholder="Correo" [(ngModel)]="user.email" name="email" required />
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4" id="names-group">
-                        <input type="text" class="form-control" placeholder="Rut" />
-                    </div>
-                    <div class="form-group col-md-4 " id="celular-group">
-                        <input type="text " class="form-control " placeholder="Telefono " />
-                    </div>
-                    <div class="form-group col-md-4 " id="email-group">
-                        <input type="email" class="form-control" placeholder="Correo" name="lastname" required />
-                    </div>
-                </div>
-                <div class="form-group col-md-10 mx-auto" id="user-group">
-                    <input type="text" class="form-control" placeholder="Nombre de usuario" name="username" required />
-                </div>
-                <div class="form-group col-md-10 mx-auto" id="contrasena-group">
-                    <input type="password" class="form-control" placeholder="Contraseña" name="password" required />
+                <div class="form-group col-md-10 mx-auto">
+                    <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="user.password" name="password" required />
                 </div>
                 <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Registrar </button>
             </form>
