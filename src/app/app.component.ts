@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginComponent } from './web/login/login.component';
-
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,7 @@ import { LoginComponent } from './web/login/login.component';
 })
 export class AppComponent {
   title = 'ServiExpressFront';
+  faCoffee = faCoffee;
 
   constructor(private router:Router){}
   Login(){
@@ -19,3 +20,4 @@ export class AppComponent {
     this.router.navigate(["register"]);
   }
 }
+
