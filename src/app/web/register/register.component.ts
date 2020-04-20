@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
 
   public user: UserModel = new UserModel()
 
+
   constructor(private loginService:LoginService) { }
 
   ngOnInit(): void {
@@ -20,7 +21,11 @@ export class RegisterComponent implements OnInit {
 
   public signUp(): void{
     this.user.role= "2";
-    this.loginService.signUp(this.user).subscribe()
+    var email = this.user.email;
+    this.user.username   = email.substring(0, email.lastIndexOf("@"));
+    this.user.name="prueba";
 
+    console.log(this.user);
+    this.loginService.signUp(this.user).subscribe()
   }
 }
