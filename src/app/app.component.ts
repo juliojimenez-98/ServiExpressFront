@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginComponent } from './web/login/login.component';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ServiExpressFront';
+
+  constructor(private router:Router){}
+  Login(){
+    this.router.navigate(["login"]);
+  }
+  Register(){
+    this.router.navigate(["register"]);
+  }
 }
