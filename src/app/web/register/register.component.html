@@ -5,17 +5,27 @@
                 <h5 class="text-white">Registrate</h5>
                 <hr class="white">
             </div>
-            <form class="col-12" (ngSubmit)="signUp()">
+            <form class="col-12" (ngSubmit)="signUp()" name="formRegister">
                 <div class="form-row">
-                    
-                    <div class="form-group col-md-10 mx-auto ">
+                    <div class="form-group col-md-8 mx-auto ">
                         <input type="email" class="form-control" placeholder="Correo" [(ngModel)]="user.email" name="email" required />
                     </div>
                 </div>
-                <div class="form-group col-md-10 mx-auto">
-                    <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="user.password" name="password" required />
+                <div class="form-row">
+                  <div class="form-group col-md-8 mx-auto">
+                      <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="user.password" id="password1" name="password1" required />
+                  </div>
                 </div>
-                <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Registrar </button>
+                <div class="form-row">
+                  <div class="form-group col-md-8 mx-auto">
+                      <input type="password" class="form-control" placeholder="Confirma tu contraseña" [(ngModel)]="user.password2" id="password2" name="password2" required />
+                  </div>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input primary" name="empresaCheck" id="chkEmpresa">
+                  <label class="text-white" for="chkEmpresa">Registras una empresa?</label>
+                </div>
+                <button type="submit" class="btn btn-primary my-2 "><i class="fas fa-sign-in-alt"></i>  Registrar </button>
             </form>
             <div>
                 <a href="login" class="txt1">

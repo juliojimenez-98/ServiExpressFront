@@ -24,10 +24,25 @@ export class LoginService {
    * @param user Recive a user to create
    */
   signUp(user: UserModel){
-    var raw = JSON.stringify({"name":user.name,"username":user.username,"email":user.email,"password":user.password,"role":user.role});
+    var email = user.email;
+    user.username   = email.substring(0, email.lastIndexOf("@"));
+
+    //Chekbox Si es que es empresa
+    let chkEmpresa = <HTMLInputElement> document.getElementById("chkEmpresa");
+    if (chkEmpresa.checked) {
+        user.role= "4";
+    }
+    else{
+      user.role= "2";
+    }
+    user.name="clientes";
+    var raw = JSON.stringify({"name":user.name,"username":user.username,"email":user.email,"password":user.password,"password2":user.password2,"role":user.role});
     this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+
+
     console.log(this.header);
     console.log(this.body);
+    console.log(user);
     return this.http.put(`${this.urlSignUp}`,raw,{headers: this.header});
   }
 
