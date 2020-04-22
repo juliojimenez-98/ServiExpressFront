@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/service/login.service';
-import { throwError } from 'rxjs/internal/observable/throwError';
+import { Util } from "../../util/util";
 import { ThrowStmt } from '@angular/compiler';
 import { UserModel } from 'src/app/models/UserModel';
 
@@ -12,7 +12,7 @@ import { UserModel } from 'src/app/models/UserModel';
 export class RegisterComponent implements OnInit {
 
   public user: UserModel = new UserModel()
-
+  private util:Util = new Util();
 
   constructor(private loginService:LoginService) { }
 
@@ -20,12 +20,29 @@ export class RegisterComponent implements OnInit {
   }
 
   public signUp(): void{
-    this.user.role= "2";
-    var email = this.user.email;
-    this.user.username   = email.substring(0, email.lastIndexOf("@"));
-    this.user.name="prueba";
+   var buildFormClient=this.util.buildFormClient(this.user);
 
-    console.log(this.user);
-    this.loginService.signUp(this.user).subscribe()
+    if (buildFormClient) {
+      this.loginService.signUp(this.user).subscribe(
+        res  =>{
+          window.alert(res ["message"]);
+          //console.log(res);
+    
+        },
+        error => {
+          //console.log(error);
+          this.util.handleError(error);
+        },
+    
+      );
+    } else {
+      console.log("error");
+      
+    }
+    
+
   }
+
+
+
 }

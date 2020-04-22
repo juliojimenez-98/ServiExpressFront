@@ -24,11 +24,12 @@ export class LoginService {
    * @param user Recive a user to create
    */
   signUp(user: UserModel){
+
     var raw = JSON.stringify({"name":user.name,"username":user.username,"email":user.email,"password":user.password,"role":user.role});
     this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    console.log(this.header);
-    console.log(this.body);
-    return this.http.put(`${this.urlSignUp}`,raw,{headers: this.header});
+    return this.http.put(`${this.urlSignUp}`,raw,{headers: this.header});  
+
+
   }
 
   /**
