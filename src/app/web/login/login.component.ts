@@ -10,30 +10,28 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 export class LoginComponent implements OnInit {
   // private user: string = "admin";
   // private passw: string = "123456";
-  constructor(private loginService:LoginService) {
+  constructor(private loginService: LoginService) {
       //  this.signInWeb(this.user,this.passw);
    }
 
-  ngOnInit() {
+  ngOnInit() { 
   }
 
-  signInWeb(username :string, password :string, event: Event){
-    event.preventDefault(); 
-    this.loginService.signIn(username,password ).subscribe(
-      res  =>{
-      localStorage.setItem("token_sesion",res ["accessToken"]);
-      window.alert(res ["idrole"]);
-      //console.log(res);
+  signInWeb(username: string, password: string, event: Event){
+    event.preventDefault();
+    this.loginService.signIn(username, password).subscribe(
+      res  => {
+      localStorage.setItem('token_sesion', res ['accessToken']);
+      window.alert(res ['idrole']);
+      // console.log(res);
 
     },
     error => {
-      //console.log(error);
+      // console.log(error);
       this.handleError(error);
     },
 
   );
-
-  
 }
 
 handleError(error) {
