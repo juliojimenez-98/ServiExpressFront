@@ -9,6 +9,10 @@ import { RegisterComponent } from './web/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './widget/navbar/navbar.component';
 import { FooterComponent } from './widget/footer/footer.component';
+import { ConocenosComponent } from './web/home/conocenos/conocenos.component';
+import { ContactoComponent } from './web/home/contacto/contacto.component';
+import { ServiciosComponent } from './web/home/servicios/servicios.component';
+import { HomeComponent } from './web/home/home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { FooterComponent } from './widget/footer/footer.component';
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    ConocenosComponent,
+    ContactoComponent,
+    ServiciosComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
