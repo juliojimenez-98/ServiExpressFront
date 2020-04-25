@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
+
 /* body {
     background-image: url(/assets/img/background-img.jpg);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    padding-top: 50px;
+    background-repeat: false;
 } */
 
 p {
@@ -88,99 +89,6 @@ img::selection {
 img::-moz-selection {
     color: #fff;
     background: 0 0
-}
-
-#mainNav {
-    position: absolute;
-    border-bottom: 1px solid #e9ecef;
-    background-color: #fff;
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
-}
-
-#mainNav .navbar-brand {
-    font-weight: 800;
-    color: #343a40
-}
-
-#mainNav .navbar-toggler {
-    font-size: 12px;
-    font-weight: 800;
-    padding: 13px;
-    text-transform: uppercase;
-    color: #343a40
-}
-
-#mainNav .navbar-nav>li.nav-item>a {
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase
-}
-
-@media only screen and (min-width:992px) {
-    #mainNav {
-        border-bottom: 1px solid transparent;
-        background: 0 0
-    }
-    #mainNav .navbar-brand {
-        padding: 10px 20px;
-        color: #fff
-    }
-    #mainNav .navbar-brand:focus,
-    #mainNav .navbar-brand:hover {
-        color: rgba(255, 255, 255, .8)
-    }
-    #mainNav .navbar-nav>li.nav-item>a {
-        padding: 10px 20px;
-        color: #fff
-    }
-    #mainNav .navbar-nav>li.nav-item>a:focus,
-    #mainNav .navbar-nav>li.nav-item>a:hover {
-        color: rgba(255, 255, 255, .8)
-    }
-}
-
-@media only screen and (min-width:992px) {
-    #mainNav {
-        -webkit-transition: background-color .2s;
-        -moz-transition: background-color .2s;
-        transition: background-color .2s;
-        -webkit-transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
-        -ms-transform: translate3d(0, 0, 0);
-        -o-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-    #mainNav.is-fixed {
-        position: fixed;
-        top: -67px;
-        -webkit-transition: -webkit-transform .2s;
-        -moz-transition: -moz-transform .2s;
-        transition: transform .2s;
-        border-bottom: 1px solid #fff;
-        background-color: rgba(255, 255, 255, .9)
-    }
-    #mainNav.is-fixed .navbar-brand {
-        color: #212529
-    }
-    #mainNav.is-fixed .navbar-brand:focus,
-    #mainNav.is-fixed .navbar-brand:hover {
-        color: #0085a1
-    }
-    #mainNav.is-fixed .navbar-nav>li.nav-item>a {
-        color: #212529
-    }
-    #mainNav.is-fixed .navbar-nav>li.nav-item>a:focus,
-    #mainNav.is-fixed .navbar-nav>li.nav-item>a:hover {
-        color: #0085a1
-    }
-    #mainNav.is-visible {
-        -webkit-transform: translate3d(0, 100%, 0);
-        -moz-transform: translate3d(0, 100%, 0);
-        -ms-transform: translate3d(0, 100%, 0);
-        -o-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0)
-    }
 }
 
 header.masthead {
@@ -396,7 +304,7 @@ hr {
 }
 
 footer {
-    padding: 10px 0 65px
+    padding: 10px 0 25px
 }
 
 footer .list-inline {
@@ -416,8 +324,7 @@ footer .copyright {
     padding: 15px 25px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    border-radius: 0;
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
+    border-radius: 10;
 }
 
 .btn-primary {
@@ -452,7 +359,7 @@ footer .copyright {
 }
 
 footer {
-    padding: 10px 0 65px;
+    padding: 5px 0 10px;
     background-color: #e9ecef;
 }
 
@@ -462,7 +369,7 @@ footer .list-inline {
 }
 
 footer .copyright {
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 0;
     text-align: center
 }
@@ -474,5 +381,105 @@ h4,
 h5,
 h6 {
     font-weight: 800;
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 50%;
+}
+
+.espacio {
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
+
+/* #mainNav .navbar-brand {
+    font-weight: 800;
+    color: #343a40
+} */
+
+#mainNav .navbar-toggler {
+    font-size: 12px;
+    font-weight: 800;
+    padding: 13px;
+    text-transform: uppercase;
+    color: #343a40
+}
+
+#mainNav .navbar-nav>li.nav-item>a {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase
+}
+
+@media only screen and (min-width:992px) {
+    #mainNav {
+        border-bottom: 1px solid transparent;
+        background: 0 0
+    }
+    #mainNav .navbar-brand {
+        padding: 10px 20px;
+        color: #fff
+    }
+    #mainNav .navbar-brand:focus,
+    #mainNav .navbar-brand:hover {
+        color: rgba(255, 255, 255, .8)
+    }
+    #mainNav .navbar-nav>li.nav-item>a {
+        padding: 10px 20px;
+        color: #fff
+    }
+    #mainNav .navbar-nav>li.nav-item>a:focus,
+    #mainNav .navbar-nav>li.nav-item>a:hover {
+        color: rgba(255, 255, 255, .8)
+    }
+}
+
+@media only screen and (min-width:992px) {
+    #mainNav {
+        -webkit-transition: background-color .2s;
+        -moz-transition: background-color .2s;
+        transition: background-color .2s;
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    #mainNav.is-fixed {
+        position: fixed;
+        top: -67px;
+        -webkit-transition: -webkit-transform .2s;
+        -moz-transition: -moz-transform .2s;
+        transition: transform .2s;
+        border-bottom: 1px solid #fff;
+        background-color: rgba(255, 255, 255, .9)
+    }
+    #mainNav.is-fixed .navbar-brand {
+        color: #212529
+    }
+    #mainNav.is-fixed .navbar-brand:focus,
+    #mainNav.is-fixed .navbar-brand:hover {
+        color: #0085a1
+    }
+    #mainNav.is-fixed .navbar-nav>li.nav-item>a {
+        color: #212529
+    }
+    #mainNav.is-fixed .navbar-nav>li.nav-item>a:focus,
+    #mainNav.is-fixed .navbar-nav>li.nav-item>a:hover {
+        color: #0085a1
+    }
+    #mainNav.is-visible {
+        -webkit-transform: translate3d(0, 100%, 0);
+        -moz-transform: translate3d(0, 100%, 0);
+        -ms-transform: translate3d(0, 100%, 0);
+        -o-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0)
+    }
 }
