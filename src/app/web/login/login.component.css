@@ -77,19 +77,3 @@ button {
 .forgot a {
     color: white;
 }
-
-footer {
-    padding: 10px 0 65px;
-    background-color: #e9ecef;
-}
-
-footer .list-inline {
-    margin: 0;
-    padding: 0
-}
-
-footer .copyright {
-    font-size: 14px;
-    margin-bottom: 0;
-    text-align: center
-}
