@@ -1,37 +1,50 @@
 <app-navbar></app-navbar>
-<div class="modal-dialog text-center">
-    <div class="col-sm-10 main-section mx-auto">
-        <div class="modal-content ">
-            <div class="col-12">
-                <h5 class="text-white">Inicia Sesión</h5>
-                <hr class="white">
-            </div>
 
-            <form class="col-12 form">
-
-                <div class="input-group mb-3 ">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-at"></i></span>
-                    </div>
-                    <input type="text" #username name="username" class="form-control" placeholder="Email" name="username" />
+<!-- <div class="espacio"></div> -->
+<header>
+    <div class="modal-dialog text-center container mx-auto">
+        <div class="col-sm-10 main-section mx-auto ">
+            <div class="modal-content ">
+                <div class="col-12 ">
+                    <br>
+                    <h5 class="text-black-50 ">Inicia Sesión</h5>
+                    <hr class="black ">
                 </div>
 
-                <div class="input-group mb-3 ">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                <form class="col-12 form ">
+
+                    <div class="input-group mb-3 ">
+                        <div class="input-group-prepend ">
+                            <span class="input-group-text "><i class="fas fa-at "></i></span>
+                        </div>
+                        <input type="text " #username name="username " class="form-control " placeholder="Email " name="username " />
                     </div>
-                    <input type="password" #password name="password" class="form-control" placeholder="Contrasena" name="password" />
+
+                    <div class="input-group mb-3 ">
+                        <div class="input-group-prepend ">
+                            <span class="input-group-text "><i class="fas fa-lock "></i></span>
+                        </div>
+                        <input type="password " #password name="password " class="form-control " placeholder="Contrasena " name="password " />
+                    </div>
+                </form>
+
+                <div class="col-12 ">
+                    <button type="submit " (click)="signInWeb(username.value, password.value, $event) " id="login-button " class="btn btn-primary "><i class=" fas fa-sign-in-alt "></i>  Ingresar </button>
                 </div>
-            </form>
 
-            <div class="col-12">
-                <button type="submit" (click)="signInWeb(username.value, password.value, $event)" id="login-button" class="btn btn-primary"><i class=" fas fa-sign-in-alt"></i>  Ingresar </button>
-            </div>
 
-            <div>
-                <a href="register">¿No tienes cuenta?</a>
+                <div>
+                    <a href="register ">¿No tienes cuenta?</a>
+                </div>
+                <br>
             </div>
         </div>
     </div>
-</div>
+</header>
+
+
+
+
+
+
 <app-footer></app-footer>
