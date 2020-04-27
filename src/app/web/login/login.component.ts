@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/service/login.service';
 import { throwError } from 'rxjs/internal/observable/throwError';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,10 @@ import { throwError } from 'rxjs/internal/observable/throwError';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  // private user: string = "admin";
-  // private passw: string = "123456";
-  constructor(private loginService:LoginService) {
+  private estado: boolean = false;
+
+
+  constructor(private loginService:LoginService, private router:Router) {
       //  this.signInWeb(this.user,this.passw);
    }
 
@@ -18,12 +20,24 @@ export class LoginComponent implements OnInit {
   }
 
   signInWeb(username :string, password :string, event: Event){
-    event.preventDefault(); 
+    event.preventDefault();
     this.loginService.signIn(username,password ).subscribe(
       res  =>{
       localStorage.setItem("token_sesion",res ["accessToken"]);
-      window.alert(res ["idrole"]);
-      //console.log(res);
+      this.estado = res ["Avtivo"];
+      if (this.estado) {
+        this.router.navigate( ['/sidebar',res] );
+        console.log("true");
+      } else {
+        this.router.navigate( ['/activar',res] );
+        console.log("falso");
+        //console.log(res);
+      }
+
+
+
+
+
 
     },
     error => {
@@ -33,7 +47,7 @@ export class LoginComponent implements OnInit {
 
   );
 
-  
+
 }
 
 handleError(error) {
