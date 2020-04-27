@@ -13,6 +13,7 @@ import { ConocenosComponent } from './web/home/conocenos/conocenos.component';
 import { ContactoComponent } from './web/home/contacto/contacto.component';
 import { ServiciosComponent } from './web/home/servicios/servicios.component';
 import { HomeComponent } from './web/home/home/home.component';
+import { SidebarComponent } from './widget/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomeComponent } from './web/home/home/home.component';
     ConocenosComponent,
     ContactoComponent,
     ServiciosComponent,
-    HomeComponent
+    HomeComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
