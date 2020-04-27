@@ -1,14 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 
-/* body {
-    background-image: url(/assets/img/background-img.jpg);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-repeat: false;
-} */
+
 
 p {
     line-height: 1.5;
@@ -304,19 +297,35 @@ hr {
 }
 
 footer {
-    padding: 10px 0 25px
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
 }
 
-footer .list-inline {
+
+
+
+
+
+.bodyEstilo {
+  background-image: url(/assets/img/background-img.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: false;
+}
+
+/* footer .list-inline {
     margin: 0;
     padding: 0
-}
+} */
 
-footer .copyright {
+/* footer .copyright {
     font-size: 14px;
     margin-bottom: 0;
     text-align: center
-}
+} */
 
 .btn {
     font-size: 14px;
@@ -393,8 +402,8 @@ h6 {
 }
 
 .espacio {
-    margin-top: 150px;
-    margin-bottom: 150px;
+    margin-top: 0px;
+    margin-bottom: 40px;
 }
 
 
