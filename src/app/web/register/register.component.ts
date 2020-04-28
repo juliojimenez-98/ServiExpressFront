@@ -23,17 +23,17 @@ export class RegisterComponent implements OnInit {
   public signUp(): void{
    var buildFormClient=this.util.buildFormClient(this.user);
 
-    if (buildFormClient) {
+   if (buildFormClient) {
       swal.fire({
-        allowOutsideClick:false,
+        allowOutsideClick: false,
         icon: 'info',
         text:'Creando tu cuenta...'
       })
       swal.showLoading();
       this.loginService.signUp(this.user).subscribe(
         res  =>{swal.close();
-          swal.fire(  'Creado correctamente',  'Te enviamos un correo con tus datos' ,  'success');
-          //console.log(res);
+                swal.fire(  'Creado correctamente',  'Te enviamos un correo con tus datos' ,  'success');
+          // console.log(res);
 
         },
         error => {

@@ -30,7 +30,7 @@ export class Util {
         else{
           user.role= "2";
         }
-        user.name="clientes";
+        // user.name="clientes";
 
 
         if (user.password!=user.password2) {

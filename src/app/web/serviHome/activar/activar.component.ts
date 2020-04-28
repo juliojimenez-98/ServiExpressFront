@@ -12,7 +12,7 @@ export class ActivarComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) {
 
     this.activatedRoute.params.subscribe( params =>{
-      this.name=params['username'] ;
+      this.name=params['name'] ;
 
       // console.log(this.heroe);
   });
