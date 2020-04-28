@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("token_sesion",res ["accessToken"]);
       this.estado = res ["Avtivo"];
       if (this.estado) {
-        this.router.navigate( ['/sidebar',res] );
+        this.router.navigate( ['/inicio',res] );
         console.log("true");
       } else {
         this.router.navigate( ['/activar',res] );
