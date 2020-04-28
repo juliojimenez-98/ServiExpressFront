@@ -3,6 +3,7 @@ import { LoginService } from 'src/app/service/login.service';
 import { Util } from "../../util/util";
 import { ThrowStmt } from '@angular/compiler';
 import { UserModel } from 'src/app/models/UserModel';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -23,23 +24,28 @@ export class RegisterComponent implements OnInit {
    var buildFormClient=this.util.buildFormClient(this.user);
 
     if (buildFormClient) {
+      swal.fire({
+        allowOutsideClick:false,
+        icon: 'info',
+        text:'Creando tu cuenta...'
+      })
+      swal.showLoading();
       this.loginService.signUp(this.user).subscribe(
-        res  =>{
-          window.alert(res ["message"]);
+        res  =>{swal.close();
+          swal.fire(  'Creado correctamente',  'Te enviamos un correo con tus datos' ,  'success');
           //console.log(res);
-    
+
         },
         error => {
-          //console.log(error);
           this.util.handleError(error);
         },
-    
+
       );
     } else {
       console.log("error");
-      
+
     }
-    
+
 
   }
 
