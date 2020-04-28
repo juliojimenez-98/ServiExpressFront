@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/service/login.service';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { Router } from '@angular/router';
+import swal from 'sweetalert2';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +23,16 @@ export class LoginComponent implements OnInit {
 
   signInWeb(username :string, password :string, event: Event){
     event.preventDefault();
+    swal.fire({
+      allowOutsideClick:false,
+      icon: 'info',
+      text:'Iniciando sesión...'
+    })
+    swal.showLoading();
+
     this.loginService.signIn(username,password ).subscribe(
-      res  =>{
+      res  =>{swal.close();
+
       localStorage.setItem("token_sesion",res ["accessToken"]);
       this.estado = res ["Avtivo"];
       if (this.estado) {
@@ -42,6 +52,9 @@ export class LoginComponent implements OnInit {
     },
     error => {
       //console.log(error);
+      if(error.status==401){
+        swal.fire('Error login','Usuario o contraseña Incorrecta','error')
+      }
       this.handleError(error);
     },
 
@@ -51,6 +64,7 @@ export class LoginComponent implements OnInit {
 }
 
 handleError(error) {
+
   let errorMessage = '';
   if (error.error instanceof ErrorEvent) {
     // client-side error
@@ -59,7 +73,7 @@ handleError(error) {
     // server-side error
     errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.message}`;
   }
-  window.alert(errorMessage);
+
   return throwError(errorMessage);
 }
 

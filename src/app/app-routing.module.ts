@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'contacto', component:ContactoComponent},
   {path:'servicios', component:ServiciosComponent},
   {path:'', component:HomeComponent},
-  { path: '', pathMatch: 'full', redirectTo: '' },
+  {path: '', pathMatch: 'full', redirectTo: '' },
   {path:'sidebar', component:SidebarComponent},
   {path:'activar', component:ActivarComponent},
   {path:'inicio', component:InicioComponent},
