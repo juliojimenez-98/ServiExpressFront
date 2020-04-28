@@ -7,6 +7,7 @@ import { ContactoComponent } from "./web/home/contacto/contacto.component";
 import { ServiciosComponent } from "./web/home/servicios/servicios.component";
 import { HomeComponent } from "./web/home/home/home.component";
 import { SidebarComponent } from "./widget/sidebar/sidebar.component";
+import { ActivarComponent } from "./web/serviHome/activar/activar.component";
 
 //d
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'', component:HomeComponent},
   { path: '', pathMatch: 'full', redirectTo: '' },
   {path:'sidebar', component:SidebarComponent},
+  {path:'activar', component:ActivarComponent},
 ];
 
 @NgModule({

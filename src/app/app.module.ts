@@ -14,6 +14,8 @@ import { ContactoComponent } from './web/home/contacto/contacto.component';
 import { ServiciosComponent } from './web/home/servicios/servicios.component';
 import { HomeComponent } from './web/home/home/home.component';
 import { SidebarComponent } from './widget/sidebar/sidebar.component';
+import { InicioComponent } from './web/serviHome/inicio/inicio.component';
+import { ActivarComponent } from './web/serviHome/activar/activar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { SidebarComponent } from './widget/sidebar/sidebar.component';
     ContactoComponent,
     ServiciosComponent,
     HomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    InicioComponent,
+    ActivarComponent
   ],
   imports: [
     BrowserModule,
