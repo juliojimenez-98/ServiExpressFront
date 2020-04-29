@@ -1,5 +1,7 @@
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { UserModel } from '../models/UserModel';
+import Swal from 'sweetalert2';
+import { UserInfoModel } from '../models/UserInfoModel';
 
 export class Util {
 
@@ -12,9 +14,10 @@ export class Util {
           // server-side error
           errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.message}`;
         }
-        window.alert(errorMessage);
-        return throwError(errorMessage);
+        Swal.fire('Error', `${error.error.message}`,'error')
+        // return throwError(errorMessage);
       }
+
 
 
     buildFormClient(user: UserModel):boolean{
@@ -28,16 +31,32 @@ export class Util {
         else{
           user.role= "2";
         }
-        user.name="clientes";
+        // user.name="clientes";
+
 
         if (user.password!=user.password2) {
-            window.alert("La contraseña deben ser iguales");
+            Swal.fire('Error', 'Las contraseñas deben ser iguales','error')
             return false;
         } else {
-            return true;  
+            return true;
 
         }
-        
+
+
+
+      }
+
+
+      //logica termino de registro
+      buildFormPerson(user: UserInfoModel):boolean{
+
+            return true;
+
+
+
+
+
+
       }
 }
 
