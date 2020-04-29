@@ -1,6 +1,7 @@
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { UserModel } from '../models/UserModel';
 import Swal from 'sweetalert2';
+import { UserInfoModel } from '../models/UserInfoModel';
 
 export class Util {
 
@@ -40,6 +41,19 @@ export class Util {
             return true;
 
         }
+
+
+
+      }
+
+
+      //logica termino de registro
+      buildFormPerson(user: UserInfoModel):boolean{
+
+            return true;
+
+
+
 
 
 

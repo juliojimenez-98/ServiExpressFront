@@ -27,7 +27,7 @@ export class LoginService {
 
     var raw = JSON.stringify({"name":user.name,"username":user.username,"email":user.email,"password":user.password,"role":user.role});
     this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.put(`${this.urlSignUp}`,raw,{headers: this.header});  
+    return this.http.put(`${this.urlSignUp}`,raw,{headers: this.header});
 
 
   }
@@ -50,19 +50,13 @@ export class LoginService {
    * @param selection true for put, false for post
    */
   updateOrCreate(selection: boolean,userInfo:UserInfoModel) {
-    this.body = new FormData();
-    this.body.append("id_usuario",userInfo.idUsuario);
-    this.body.append("rut",userInfo.rut);
-    this.body.append("nombre",userInfo.nombre);
-    this.body.append("apellido",userInfo.apellido);
-    this.body.append("fechaNacimiento",userInfo.fechaN);
-
+    var raw = JSON.stringify({"id_usuario":userInfo.idUsuario,"rut":userInfo.rut,"nombre":userInfo.nombre,"apellido":userInfo.apellido,"telefono":userInfo.telefono,"fechaNacimiento":userInfo.fechaN});
+    this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     if (selection == true) {
-
-      return this.http.put(`${this.udpCreate}`, this.body);
+      return this.http.put(`${this.udpCreate}`, raw,{headers: this.header});
     } else {
       this.body.append("idcliente",userInfo.idUsuario);
-      return this.http.post(`${this.udpCreate}`, this.body);
+      return this.http.post(`${this.udpCreate}`, raw,{headers: this.header});
     }
 
   }

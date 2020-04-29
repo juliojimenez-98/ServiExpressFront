@@ -21,32 +21,47 @@
                 </div>
                 <br>
               </div>
-              <form class="user">
+              <form class="col-12" (ngSubmit)="registerPerson()" name="formRegister">
                 <div class="form-group row">
-                  <div class="col-sm-4 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="exampleFirstName" value={{name}} placeholder="Nombre">
+                <div class="input-group col-sm-4 mb-3 mb-sm-0">
+                  <div class="input-group-prepend ">
+                    <span class="input-group-text "><i class="fas fa-at "></i></span>
                   </div>
-                  <div class="col-sm-4 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Apellido">
+                  <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="user.nombre" name="nombre" value={{name}}  required />
+                </div>
+
+
+                <div class="input-group col-sm-4 mb-3 mb-sm-0">
+                  <div class="input-group-prepend ">
+                    <span class="input-group-text "><i class="fas fa-at "></i></span>
                   </div>
-                  <div class="col-sm-4">
-                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Rut">
+                  <input type="text" class="form-control" placeholder="Apellido" [(ngModel)]="user.apellido" name="apellido" required />
+                </div>
+                <div class="input-group col-sm-4 mb-3 mb-sm-0">
+                  <div class="input-group-prepend ">
+                    <span class="input-group-text "><i class="fas fa-at "></i></span>
                   </div>
+                  <input type="text" class="form-control" placeholder="Rut" [(ngModel)]="user.rut" name="rut" required />
+                </div>
 
 
                 </div>
 
                 <div class="form-group row">
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Teléfono">
+                  <div class="input-group col-sm-6 mb-3 mb-sm-0">
+                    <div class="input-group-prepend ">
+                      <span class="input-group-text "><i class="fas fa-at "></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Telefono" [(ngModel)]="user.telefono" name="telefono" required />
                   </div>
-                  <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Fecha Nacimiento">
+                  <div class="input-group col-sm-6 mb-3 mb-sm-0">
+                    <div class="input-group-prepend ">
+                      <span class="input-group-text "><i class="fas fa-at "></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Fecha Nacimiento" [(ngModel)]="user.fechaN" name="fechaN" required />
                   </div>
                 </div>
-                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                  Guardar
-                </a>
+                <button type="submit" class="btn btn-primary my-2 "><i class="fas fa-sign-in-alt"></i>Guardar</button>
               </form>
               <hr>
               <!-- <div class="text-center">
