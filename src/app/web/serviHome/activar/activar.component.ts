@@ -1,9 +1,10 @@
 import swal from 'sweetalert2';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserInfoModel } from 'src/app/models/UserInfoModel';
 import { Util } from 'src/app/util/util';
 import { LoginService } from 'src/app/service/login.service';
+import { NavbarService } from 'src/app/service/navbar.service';
 
 @Component({
   selector: 'app-activar',
@@ -12,16 +13,25 @@ import { LoginService } from 'src/app/service/login.service';
 })
 export class ActivarComponent implements OnInit {
   public name = '';
+  public parametros: any;
 
   public user: UserInfoModel = new UserInfoModel();
   private util: Util = new Util();
-  constructor(private activatedRoute: ActivatedRoute, private loginService: LoginService) {
-
+  constructor(private activatedRoute: ActivatedRoute,
+              private loginService: LoginService,
+              public nav: NavbarService,
+              private router: Router) {
+    this.nav.hide();
+    this.nav.doSomethingElseUseful();
     this.activatedRoute.params.subscribe( params => {
       this.name = params.name ;
-      this.user.idUsuario=params.iduser;
+      this.user.idUsuario = params.iduser;
       // console.log(this.heroe);
+      this.parametros = params;
+
   });
+
+
   }
 
   ngOnInit(): void {
@@ -29,13 +39,13 @@ export class ActivarComponent implements OnInit {
 
 
   public registerPerson(): void{
-    let buildFormPerson = this.util.buildFormPerson(this.user);
+    const buildFormPerson = this.util.buildFormPerson(this.user);
 
     console.log(this.user);
     this.loginService.updateOrCreate(true, this.user).subscribe(
          res  => {
-            console.log(res);
-
+            console.log(this.parametros);
+            this.router.navigate(['/inicio', this.parametros]);
          },
          error => {
            this.util.handleError(error);
