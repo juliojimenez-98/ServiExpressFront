@@ -1,7 +1,7 @@
 <body class="col-12" style="background-image: url(/assets/img/background-img.jpg); background-size: auto; padding: 0; background-size: 100%; background-repeat: no-repeat; ">
 
 
-<app-navbar> </app-navbar>
+
 
 <div class="overflow-auto">
   <div class="modal-dialog modal-lg text-center ">
@@ -38,7 +38,8 @@
 
 
         <div>
-          <a href="register ">¿No tienes cuenta?</a>
+          <a [routerLink]="['/register']">¿No tienes cuenta?</a>
+
         </div>
         <br class="mb-3">
       </div>
