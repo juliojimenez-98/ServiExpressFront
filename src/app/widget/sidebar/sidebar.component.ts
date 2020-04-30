@@ -11,12 +11,12 @@ export class SidebarComponent implements OnInit {
   public role = '';
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => {
-      this.role = params['idrole'];
+      this.role = params.idrole;
 
     });
-console.log(this.role);
+
     if (this.role === '2') {
-      this.mostrar=true;
+      this.mostrar = true;
     } else {
 
     }
