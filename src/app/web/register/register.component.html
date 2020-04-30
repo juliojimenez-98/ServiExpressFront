@@ -1,24 +1,60 @@
-<div class="modal-dialog modal-lg text-center">
-    <div class="col-sm-10 main-section mx-auto">
+<body class="col-12" style="background-image: url(/assets/img/background-img.jpg); background-size: auto; padding: 0; background-size: 100%; background-repeat: no-repeat; ">
+
+  <div class="overflow-auto">
+  <div class="modal-dialog modal-lg text-center">
+    <div class="col-sm-8 main-section mx-auto">
         <div class="modal-content">
             <div class="col-12">
-                <h5 class="text-white">Registrate</h5>
-                <hr class="white">
+              <br>
+                <h5 class="text-black-50">Regístrate</h5>
+                <hr class="black">
             </div>
-            <form class="col-12">
-                <div class="form-group col-md-10 mx-auto" id="user-group">
-                    <input type="email" class="form-control" placeholder="Email" name="username" required />
+            <form class="col-12" (ngSubmit)="signUp()" name="formRegister">
+
+
+                <div class="input-group mb-3 col-md-10 mx-auto">
+                  <div class="input-group-prepend ">
+                    <span class="input-group-text "><i class="fas fa-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="user.name" name="nombre" required />
                 </div>
-                <div class="form-group col-md-10 mx-auto" id="contrasena-group">
-                    <input type="password" class="form-control" placeholder="Contraseña" name="password" required />
+                <div class="input-group mb-3 col-md-10 mx-auto">
+                  <div class="input-group-prepend ">
+                    <span class="input-group-text "><i class="fas fa-at "></i></span>
+                  </div>
+                  <input type="email" class="form-control" placeholder="Correo" [(ngModel)]="user.email" name="email" required />
                 </div>
-                <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Registrar </button>
+
+                <div class="input-group mb-3 col-md-10 mx-auto">
+                  <div class="input-group-prepend ">
+                    <span class="input-group-text "><i class="fas fa-lock "></i></span>
+                  </div>
+                  <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="user.password" id="password1" name="password1" required />
+                </div>
+
+                <div class="input-group mb-3 col-md-10 mx-auto ">
+                  <div class="input-group-prepend ">
+                    <span class="input-group-text "><i class="fas fa-lock "></i></span>
+                  </div>
+                  <input type="password" class="form-control" placeholder="Confirma tu contraseña" [(ngModel)]="user.password2" id="password2" name="password2" required />
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input primary" name="empresaCheck" id="chkEmpresa">
+                  <label class="text-black-50" for="chkEmpresa">¿Registras una empresa?</label>
+                </div>
+                <button type="submit" class="btn btn-primary my-2 "><i class="fas fa-sign-in-alt"></i>  Registrar </button>
             </form>
             <div>
-                <a href="login" class="txt1">
+                <a [routerLink]="['/login']" class="txt1">
                   ¿Ya tienes cuenta?
               </a>
             </div>
+            <br>
         </div>
     </div>
 </div>
+</div>
+
+<app-footer></app-footer>
+
+

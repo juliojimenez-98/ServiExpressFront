@@ -16,61 +16,53 @@ export class LoginService {
   private chnPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.chgPasw;
   private body: any;
   private header: any;
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 
-   /**
-   * 
-   * @param user Recive a user to create
-   */
-  signUp(user: UserModel): Observable<any> {
-    this.body = new FormData();
-    this.body.append("name", user.name);
-    this.body.append("username", user.username);
-    this.body.append("email", user.email);
-    this.body.append("password", user.password);
-    this.body.append("role", user.role);
+  /**
+  *
+  * @param user Recive a user to create
+  */
+  signUp(user: UserModel) {
 
-    return this.http.put(`${this.urlSignUp}`, this.body);
+    var raw = JSON.stringify({ "name": user.name, "username": user.username, "email": user.email, "password": user.password, "role": user.role });
+    this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.put(`${this.urlSignUp}`, raw, { headers: this.header });
+
+
   }
 
   /**
-   * 
+   *
    * @param auth username or email
    * @param passw password user
    */
   signIn(auth: string, passw: string) {
-    var raw = JSON.stringify({"usernameOrEmail":auth,"password":passw});
+    var raw = JSON.stringify({ "usernameOrEmail": auth, "password": passw });
     this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     console.log(this.header);
     console.log(this.body);
-    return this.http.post(`${this.urlSignIn}`, raw,{headers: this.header});
+    return this.http.post(`${this.urlSignIn}`, raw, { headers: this.header });
   }
 
   /**
-   * 
+   *
    * @param selection true for put, false for post
    */
-  updateOrCreate(selection: boolean,userInfo:UserInfoModel) {
-    this.body = new FormData();
-    this.body.append("id_usuario",userInfo.idUsuario);
-    this.body.append("rut",userInfo.rut);
-    this.body.append("nombre",userInfo.nombre);
-    this.body.append("apellido",userInfo.apellido);
-    this.body.append("fechaNacimiento",userInfo.fechaN);
-
+  updateOrCreate(selection: boolean, userInfo: UserInfoModel) {
+    var raw = JSON.stringify({ "id_usuario": userInfo.idUsuario, "rut": userInfo.rut, "nombre": userInfo.nombre, "apellido": userInfo.apellido, "telefono": userInfo.telefono, "fechaNacimiento": userInfo.fechaN });
+    this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     if (selection == true) {
-      
-      return this.http.put(`${this.udpCreate}`, this.body);
+      return this.http.put(`${this.udpCreate}`, raw, { headers: this.header });
     } else {
-      this.body.append("idcliente",userInfo.idUsuario);
-      return this.http.post(`${this.udpCreate}`, this.body);
+      this.body.append("idcliente", userInfo.idUsuario);
+      return this.http.post(`${this.udpCreate}`, raw, { headers: this.header });
     }
 
   }
 
   requestPassword(username: string) {
-  
+
     console.log(this.reqPassw + `${username}`);
     return this.http.put(`${this.reqPassw + `/${username}`}`, this.body);
   }
