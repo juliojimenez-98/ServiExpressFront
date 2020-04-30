@@ -6,7 +6,7 @@ import { Util } from 'src/app/util/util';
 import { LoginService } from 'src/app/service/login.service';
 import { NavbarService } from 'src/app/service/navbar.service';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-
+//update
 @Component({
   selector: 'app-activar',
   templateUrl: './activar.component.html',
