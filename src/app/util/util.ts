@@ -20,21 +20,21 @@ export class Util {
 
 
 
-    buildFormClient(user: UserModel):boolean{
+    buildFormClient(user: UserModel): boolean{
         var email = user.email;
         user.username   = email.substring(0, email.lastIndexOf("@"));
         //Chekbox Si es que es empresa
-        let chkEmpresa = <HTMLInputElement> document.getElementById("chkEmpresa");
+        let chkEmpresa = <HTMLInputElement> document.getElementById('chkEmpresa');
         if (chkEmpresa.checked) {
-            user.role= "4";
+            user.role = '4';
         }
         else{
-          user.role= "2";
+          user.role = '2';
         }
         // user.name="clientes";
 
 
-        if (user.password!=user.password2) {
+        if (user.password !== user.password2) {
             Swal.fire('Error', 'Las contraseñas deben ser iguales','error')
             return false;
         } else {
