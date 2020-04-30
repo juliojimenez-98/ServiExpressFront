@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  mostrar = false;
+  cliente = false;
+  admin = false;
   public role = '';
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => {
@@ -16,7 +17,9 @@ export class SidebarComponent implements OnInit {
     });
 
     if (this.role === '2') {
-      this.mostrar = true;
+      this.cliente = true;
+    } else if (this.role === '1') {
+      this.admin=true;
     } else {
 
     }
