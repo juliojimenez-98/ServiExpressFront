@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { LoginComponent } from './web/login/login.component';
 
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,11 +13,11 @@ import { LoginComponent } from './web/login/login.component';
 export class AppComponent {
   title = 'ServiExpressFront';
 
-  constructor(private router:Router){}
-  Login(){
-    this.router.navigate(["login"]);
-  }
-  Register(){
-    this.router.navigate(["register"]);
-  }
+
+
+  constructor(private router: Router) { }
+
+
+
+
 }
