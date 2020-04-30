@@ -5,6 +5,7 @@ import { UserInfoModel } from 'src/app/models/UserInfoModel';
 import { Util } from 'src/app/util/util';
 import { LoginService } from 'src/app/service/login.service';
 import { NavbarService } from 'src/app/service/navbar.service';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-activar',
@@ -12,6 +13,7 @@ import { NavbarService } from 'src/app/service/navbar.service';
   styleUrls: ['./activar.component.css']
 })
 export class ActivarComponent implements OnInit {
+  model: NgbDateStruct;
   public name = '';
   public parametros: any;
 
@@ -40,8 +42,8 @@ export class ActivarComponent implements OnInit {
 
   public registerPerson(): void{
     const buildFormPerson = this.util.buildFormPerson(this.user);
-
-    console.log(this.user);
+    this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
+    console.log(this.user.fechaN);
     this.loginService.updateOrCreate(true, this.user).subscribe(
          res  => {
             console.log(this.parametros);

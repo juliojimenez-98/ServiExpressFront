@@ -52,9 +52,12 @@
                   </div>
                   <div class="input-group col-sm-6 mb-3 mb-sm-0">
 
-                    <div class="input-group-prepend ">
+                        <input class="form-control " placeholder="yyyy-mm-dd"
+                               name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                        <div class="input-group-append ">
+                          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"></button>
+                          <!-- <i class="fas fa-calendar-alt fa-2x"></i> -->
                     </div>
-                    <input type="text" class="form-control" placeholder="Fecha Nacimiento" [(ngModel)]="user.fechaN" name="fechaN" required />
                   </div>
                 </div>
                 <br>

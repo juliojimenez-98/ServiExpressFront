@@ -17,6 +17,7 @@ import { SidebarComponent } from './widget/sidebar/sidebar.component';
 import { InicioComponent } from './web/serviHome/inicio/inicio.component';
 import { ActivarComponent } from './web/serviHome/activar/activar.component';
 import { TopbarComponent } from './widget/topbar/topbar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TopbarComponent } from './widget/topbar/topbar.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

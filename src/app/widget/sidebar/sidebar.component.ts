@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit {
     if (this.role === '2') {
       this.cliente = true;
     } else if (this.role === '1') {
-      this.admin=true;
+      this.admin = true;
     } else {
 
     }

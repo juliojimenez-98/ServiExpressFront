@@ -16,18 +16,18 @@ export class LoginService {
   private chnPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.chgPasw;
   private body: any;
   private header: any;
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 
-   /**
-   *
-   * @param user Recive a user to create
-   */
-  signUp(user: UserModel){
+  /**
+  *
+  * @param user Recive a user to create
+  */
+  signUp(user: UserModel) {
 
-    var raw = JSON.stringify({"name":user.name,"username":user.username,"email":user.email,"password":user.password,"role":user.role});
+    var raw = JSON.stringify({ "name": user.name, "username": user.username, "email": user.email, "password": user.password, "role": user.role });
     this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http.put(`${this.urlSignUp}`,raw,{headers: this.header});
+    return this.http.put(`${this.urlSignUp}`, raw, { headers: this.header });
 
 
   }
@@ -38,25 +38,25 @@ export class LoginService {
    * @param passw password user
    */
   signIn(auth: string, passw: string) {
-    var raw = JSON.stringify({"usernameOrEmail":auth,"password":passw});
+    var raw = JSON.stringify({ "usernameOrEmail": auth, "password": passw });
     this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     console.log(this.header);
     console.log(this.body);
-    return this.http.post(`${this.urlSignIn}`, raw,{headers: this.header});
+    return this.http.post(`${this.urlSignIn}`, raw, { headers: this.header });
   }
 
   /**
    *
    * @param selection true for put, false for post
    */
-  updateOrCreate(selection: boolean,userInfo:UserInfoModel) {
-    var raw = JSON.stringify({"id_usuario":userInfo.idUsuario,"rut":userInfo.rut,"nombre":userInfo.nombre,"apellido":userInfo.apellido,"telefono":userInfo.telefono,"fechaNacimiento":userInfo.fechaN});
+  updateOrCreate(selection: boolean, userInfo: UserInfoModel) {
+    var raw = JSON.stringify({ "id_usuario": userInfo.idUsuario, "rut": userInfo.rut, "nombre": userInfo.nombre, "apellido": userInfo.apellido, "telefono": userInfo.telefono, "fechaNacimiento": userInfo.fechaN });
     this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     if (selection == true) {
-      return this.http.put(`${this.udpCreate}`, raw,{headers: this.header});
+      return this.http.put(`${this.udpCreate}`, raw, { headers: this.header });
     } else {
-      this.body.append("idcliente",userInfo.idUsuario);
-      return this.http.post(`${this.udpCreate}`, raw,{headers: this.header});
+      this.body.append("idcliente", userInfo.idUsuario);
+      return this.http.post(`${this.udpCreate}`, raw, { headers: this.header });
     }
 
   }
