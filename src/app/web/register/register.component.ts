@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  public user: UserModel = new UserModel()
+  public user: UserModel = new UserModel();
   private util: Util = new Util();
 
   constructor(private loginService: LoginService, private router: Router) { }

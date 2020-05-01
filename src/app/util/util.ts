@@ -35,6 +35,35 @@ export class Util {
     // user.name="clientes";
 
 
+
+    if (user.password !== user.password2) {
+      Swal.fire('Error', 'Las contraseñas deben ser iguales', 'error')
+      return false;
+    } else {
+      return true;
+
+    }
+
+
+
+  }
+
+
+  buildFormEmploye(user: UserModel): boolean {
+    var email = user.email;
+    user.username = email.substring(0, email.lastIndexOf("@"));
+    //Chekbox Si es que es empresa
+    let chkEmpresa = <HTMLInputElement>document.getElementById('chkEmpresa');
+    if (chkEmpresa.checked) {
+      user.role = '1';
+    }
+    else {
+      user.role = '3';
+    }
+    // user.name="clientes";
+
+
+
     if (user.password !== user.password2) {
       Swal.fire('Error', 'Las contraseñas deben ser iguales', 'error')
       return false;
