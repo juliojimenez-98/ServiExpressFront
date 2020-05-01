@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 
+ <link href="/assets/css/sb-admin-2.css" rel="stylesheet">
 
-
-<body class="bg-gradient-primary">
+<body >
   <app-topbar> </app-topbar>
   <div class="container col-lg-8">
 
@@ -55,7 +55,7 @@
                         <input class="form-control " placeholder="yyyy-mm-dd"
                                name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
                         <div class="input-group-append ">
-                          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"></button>
+                          <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
                           <!-- <i class="fas fa-calendar-alt fa-2x"></i> -->
                     </div>
                   </div>
