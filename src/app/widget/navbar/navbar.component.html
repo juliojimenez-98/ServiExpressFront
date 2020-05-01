@@ -1,33 +1,33 @@
 <div *ngIf="nav.visible">
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#"><img class="animated bounceInRight" style="width: auto; height: 50px;" src="../../../assets/img/logo-blanco.png" alt=""></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img class="animated bounceInRight" style="width: auto; height: 50px;" src="../../../assets/img/logo-blanco.png" alt=""></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
   Menú
   <i class="fa fa-bars"></i>
 </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item" >
-                    <a class="nav-link" [routerLink]="['']">Inicio</a>
-                </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" [routerLink]="['conocenos']">Conócenos</a>
-                </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" [routerLink]="['servicios']" >Servicios</a>
-                </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" [routerLink]="['contacto']" >Contáctos</a>
-                </li>
-                <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" [routerLink]="['login']">Inicia Sesión</a>
-                </li>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['']">Inicio</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link" [routerLink]="['conocenos']">Conócenos</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link" [routerLink]="['servicios']">Servicios</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link" [routerLink]="['contacto']">Contactos</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link" [routerLink]="['login']">Inicia Sesión</a>
+                    </li>
 
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
 </div>

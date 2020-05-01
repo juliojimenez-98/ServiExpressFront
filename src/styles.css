@@ -1,8 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-
-
-
 p {
     line-height: 1.5;
     margin: 10px 0 10px
@@ -297,29 +294,25 @@ hr {
 }
 
 footer {
-    position: fixed;
     bottom: 0px;
     width: 100%;
 }
 
-
-
-
-
-
 .bodyEstilo {
-  background-image: url(/assets/img/background-img.jpg);
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: false;
+    background-image: url(/assets/img/background-img.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: false;
 }
+
 
 /* footer .list-inline {
     margin: 0;
     padding: 0
 } */
+
 
 /* footer .copyright {
     font-size: 14px;
