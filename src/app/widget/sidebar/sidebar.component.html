@@ -15,9 +15,15 @@
           <span> Dashboard</span></a>
       </li>
 
+      <li *ngIf="cliente" class="nav-item">
+        <a class="nav-link" href="inicio">
+          <i class="fas fa-home"></i>
+          <span> Inicio</span></a>
+      </li>
+
       <hr class="sidebar-divider my-0">
 
-      <div class="sidebar-heading">
+      <div class="sidebar-heading" *ngIf="admin">
         Personas
       </div>
 
@@ -41,7 +47,7 @@
 
       <li *ngIf="empleado"class="nav-item">
         <a class="nav-link" href="inicio">
-          <i class="fas fa-user-tie"></i>
+          <i class="fas fa-home"></i>
           <span> Inicio</span></a>
       </li>
 
