@@ -20,6 +20,7 @@ import { TopbarComponent } from './widget/topbar/topbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InicioempComponent } from './web/empleado/inicioemp/inicioemp.component';
 import { InicioClienteComponent } from './web/cliente/inicio-cliente/inicio-cliente.component';
+import { RegisteremployeComponent } from './web/serviHome/registeremploye/registeremploye.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { InicioClienteComponent } from './web/cliente/inicio-cliente/inicio-clie
     ActivarComponent,
     TopbarComponent,
     InicioempComponent,
-    InicioClienteComponent
+    InicioClienteComponent,
+    RegisteremployeComponent
   ],
   imports: [
     BrowserModule,

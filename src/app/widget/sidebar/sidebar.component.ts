@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,24 +10,30 @@ export class SidebarComponent implements OnInit {
   cliente = false;
   admin = false;
   empleado = false;
-  public role = '';
+
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => {
-      this.role = params.idrole;
 
     });
 
-    if (this.role === '2') {
+    if (sessionStorage.getItem('idrole') === '2') {
       this.cliente = true;
-    } else if (this.role === '1') {
+    } else if (sessionStorage.getItem('idrole') === '1') {
       this.admin = true;
-    } else if (this.role === '3') {
+    } else if (sessionStorage.getItem('idrole') === '3') {
       this.empleado = true;
     }
+
+
+
   }
+
+
 
   ngOnInit(): void {
   }
+
+
 
 }
 
