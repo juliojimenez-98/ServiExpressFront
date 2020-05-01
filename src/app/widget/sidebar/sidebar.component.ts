@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   cliente = false;
   admin = false;
+  empleado = false;
   public role = '';
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => {
@@ -20,8 +21,8 @@ export class SidebarComponent implements OnInit {
       this.cliente = true;
     } else if (this.role === '1') {
       this.admin = true;
-    } else {
-
+    } else if (this.role === '3') {
+      this.empleado = true;
     }
   }
 

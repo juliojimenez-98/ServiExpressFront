@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarService } from 'src/app/service/navbar.service';
+import { ActivatedRoute } from '@angular/router';
 // declare var drawGauge: any;
 // import '../../../../assets/js/sb-admin-2.min.js';
 @Component({
@@ -9,11 +10,26 @@ import { NavbarService } from 'src/app/service/navbar.service';
 })
 export class InicioComponent implements OnInit {
 
+  cliente = false;
+  admin = false;
+  empleado = false;
+  public role = '';
 
 
 
+  constructor(public nav: NavbarService,private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe(params => {
+      this.role = params.idrole;
 
-  constructor(public nav: NavbarService) {
+    });
+
+    if (this.role === '2') {
+      this.cliente = true;
+    } else if (this.role === '1') {
+      this.admin = true;
+    } else if (this.role === '3') {
+      this.empleado = true;
+    }
     this.nav.hide();
     this.nav.doSomethingElseUseful();
 
