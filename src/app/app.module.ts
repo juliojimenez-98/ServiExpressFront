@@ -16,6 +16,10 @@ import { HomeComponent } from './web/home/home/home.component';
 import { SidebarComponent } from './widget/sidebar/sidebar.component';
 import { InicioComponent } from './web/serviHome/inicio/inicio.component';
 import { ActivarComponent } from './web/serviHome/activar/activar.component';
+import { TopbarComponent } from './widget/topbar/topbar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InicioempComponent } from './web/empleado/inicioemp/inicioemp.component';
+import { InicioClienteComponent } from './web/cliente/inicio-cliente/inicio-cliente.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +34,17 @@ import { ActivarComponent } from './web/serviHome/activar/activar.component';
     HomeComponent,
     SidebarComponent,
     InicioComponent,
-    ActivarComponent
+    ActivarComponent,
+    TopbarComponent,
+    InicioempComponent,
+    InicioClienteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

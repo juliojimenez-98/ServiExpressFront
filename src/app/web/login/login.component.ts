@@ -14,70 +14,67 @@ export class LoginComponent implements OnInit {
   private estado: boolean = false;
 
 
-  constructor(private loginService:LoginService, private router:Router) {
-      //  this.signInWeb(this.user,this.passw);
-   }
+  constructor(private loginService: LoginService, private router: Router) {
+    //  this.signInWeb(this.user,this.passw);
+  }
 
   ngOnInit() {
   }
 
-  signInWeb(username :string, password :string, event: Event){
+  signInWeb(username: string, password: string, event: Event) {
     event.preventDefault();
     swal.fire({
-      allowOutsideClick:false,
+      allowOutsideClick: false,
       icon: 'info',
-      text:'Iniciando sesión...'
+      text: 'Iniciando sesión...'
     })
     swal.showLoading();
 
-    this.loginService.signIn(username,password ).subscribe(
-      res  =>{swal.close();
+    this.loginService.signIn(username, password).subscribe(
+      res => {
+        swal.close();
 
-      localStorage.setItem("token_sesion",res ["accessToken"]);
-      this.estado = res ["Avtivo"];
-      if (this.estado) {
-        this.router.navigate( ['/inicio',res] );
-        console.log("true");
-      } else {
-        this.router.navigate( ['/activar',res] );
-        console.log("falso");
-        //console.log(res);
-      }
+        localStorage.setItem("token_sesion", res["accessToken"]);
+        this.estado = res["Avtivo"];
+        if (this.estado) {
+          this.router.navigate(['/inicio', res]);
+        } else {
+          this.router.navigate(['/activar', res]);
+        }
 
 
 
 
 
 
-    },
-    error => {
-      //console.log(error);
-      if(error.status==401){
-        swal.fire('Error login','Usuario o contraseña Incorrecta','error')
-      }
-      this.handleError(error);
-    },
+      },
+      error => {
+        if (error.status == 401) {
+          swal.fire('Error login', 'Usuario o contraseña Incorrecta', 'error')
+        }
+        this.handleError(error);
+      },
 
-  );
+    );
 
 
-}
-
-handleError(error) {
-
-  let errorMessage = '';
-  if (error.error instanceof ErrorEvent) {
-    // client-side error
-    errorMessage = `Error: ${error.error.message}`;
-  } else {
-    // server-side error
-    errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.message}`;
   }
 
-  return throwError(errorMessage);
-}
+  handleError(error) {
 
-// navigate() {
-//   this.router.navigateByUrl('/home');
-// }
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.message}`;
+    }
+
+    return throwError(errorMessage);
+  }
+
+  // navigate() {
+  //   this.router.navigateByUrl('/home');
+  // }
 }
