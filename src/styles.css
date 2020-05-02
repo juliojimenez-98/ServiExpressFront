@@ -357,7 +357,7 @@ footer {
 }
 
 .img-fluid {
-    width: auto;
+    width: 100%;
     height: auto;
 }
 
