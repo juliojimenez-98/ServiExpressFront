@@ -109,7 +109,10 @@ header.masthead .site-heading {
     padding: 200px 0 150px;
     color: #fff
 }
-
+header.masthead .head-heading {
+  padding: 50px 0 150px;
+  color: #fff
+}
 @media only screen and (min-width:768px) {
     header.masthead .page-heading,
     header.masthead .post-heading,
@@ -357,7 +360,7 @@ footer {
 }
 
 .img-fluid {
-    width: auto;
+    width: 100%;
     height: auto;
 }
 
