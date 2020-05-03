@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/service/login.service';
 import { throwError } from 'rxjs/internal/observable/throwError';
+import { Router } from '@angular/router';
+import swal from 'sweetalert2';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -8,48 +11,79 @@ import { throwError } from 'rxjs/internal/observable/throwError';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  // private user: string = "admin";
-  // private passw: string = "123456";
-  constructor(private loginService:LoginService) {
-      //  this.signInWeb(this.user,this.passw);
-   }
+  private estado: boolean = false;
+
+
+  constructor(private loginService: LoginService, private router: Router) {
+    //  this.signInWeb(this.user,this.passw);
+  }
 
   ngOnInit() {
   }
 
-  signInWeb(username :string, password :string, event: Event){
-    event.preventDefault(); 
-    this.loginService.signIn(username,password ).subscribe(
-      res  =>{
-      localStorage.setItem("token_sesion",res ["accessToken"]);
-      window.alert(res ["idrole"]);
-      //console.log(res);
+  signInWeb(username: string, password: string, event: Event) {
+    event.preventDefault();
+    swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Iniciando sesión...'
+    })
+    swal.showLoading();
 
-    },
-    error => {
-      //console.log(error);
-      this.handleError(error);
-    },
+    this.loginService.signIn(username, password).subscribe(
+      res => {
+        swal.close();
 
-  );
+        localStorage.setItem("token_sesion", res["accessToken"]);
+        //modo temporal despues hacerlo de una forma mas dinamica
+        sessionStorage.setItem("iduser", res["iduser"]);
+        sessionStorage.setItem("idrole", res["idrole"]);
+        sessionStorage.setItem("Avtivo", res["Avtivo"]);
+        sessionStorage.setItem("rolename", res["rolename"]);
+        sessionStorage.setItem("tokenType", res["tokenType"]);
+        sessionStorage.setItem("username", res["username"]);
+        sessionStorage.setItem("name", res["name"]);
 
-  
-}
+        this.estado = res["Avtivo"];
+        if (this.estado) {
+          this.router.navigate(['/inicio', res]);
+        } else {
+          this.router.navigate(['/activar', res]);
+        }
 
-handleError(error) {
-  let errorMessage = '';
-  if (error.error instanceof ErrorEvent) {
-    // client-side error
-    errorMessage = `Error: ${error.error.message}`;
-  } else {
-    // server-side error
-    errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.message}`;
+
+
+
+
+
+      },
+      error => {
+        if (error.status == 401) {
+          swal.fire('Error login', 'Usuario o contraseña Incorrecta', 'error')
+        }
+        this.handleError(error);
+      },
+
+    );
+
+
   }
-  window.alert(errorMessage);
-  return throwError(errorMessage);
-}
 
-// navigate() {
-//   this.router.navigateByUrl('/home');
-// }
+  handleError(error) {
+
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.message}`;
+    }
+
+    return throwError(errorMessage);
+  }
+
+  // navigate() {
+  //   this.router.navigateByUrl('/home');
+  // }
 }
