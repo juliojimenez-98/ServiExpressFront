@@ -14,7 +14,7 @@ import { LoginService } from 'src/app/service/login.service';
 export class RegisteremployeComponent implements OnInit {
   public user: UserModel = new UserModel();
   private util: Util = new Util();
-
+  public nombre : string = null;
   cliente = false;
   admin = false;
   empleado = false;
@@ -56,8 +56,8 @@ export class RegisteremployeComponent implements OnInit {
        swal.showLoading();
        this.loginService.signupwork(this.user).subscribe(
          res  =>{swal.close();
-                 swal.fire(  'Creado correctamente',  'Te enviamos un correo con tus datos' ,  'success');
-                 this.router.navigate(['/login', res]);
+                 swal.fire(  'Creado correctamente',  'Se ha enviado correo electronico' ,  'success');
+                 this.nombre = '';
 
          },
          error => {
