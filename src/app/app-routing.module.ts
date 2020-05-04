@@ -1,3 +1,4 @@
+import { RegisteremployeComponent } from './web/serviHome/registeremploye/registeremploye.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './web/login/login.component';
@@ -24,6 +25,7 @@ const APP_ROUTES: Routes = [
   { path: 'activar', component: ActivarComponent },
   { path: 'inicio', component: InicioComponent },
   { path: 'topbar', component: TopbarComponent },
+  { path: 'registeremploye', component: RegisteremployeComponent },
 ];
 
 @NgModule({

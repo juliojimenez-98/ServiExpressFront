@@ -11,6 +11,7 @@ import { UserInfoModel } from '../models/UserInfoModel';
 export class LoginService {
   private urlSignIn = URL_TO_LOGIN.url + URL_TO_LOGIN.signin;
   private urlSignUp = URL_TO_LOGIN.url + URL_TO_LOGIN.signup;
+  private urlSignUpWork = URL_TO_LOGIN.url + URL_TO_LOGIN.signupwork;
   private udpCreate = URL_TO_LOGIN.url + URL_TO_LOGIN.updCre;
   private reqPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.reqPass;
   private chnPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.chgPasw;
@@ -28,6 +29,15 @@ export class LoginService {
     var raw = JSON.stringify({ "name": user.name, "username": user.username, "email": user.email, "password": user.password, "role": user.role });
     this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     return this.http.put(`${this.urlSignUp}`, raw, { headers: this.header });
+
+
+  }
+
+  signupwork(user: UserModel) {
+
+    var raw = JSON.stringify({ "name": user.name, "username": user.username, "email": user.email, "password": user.password, "role": user.role });
+    this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
+    return this.http.put(`${this.urlSignUpWork}`, raw, { headers: this.header });
 
 
   }

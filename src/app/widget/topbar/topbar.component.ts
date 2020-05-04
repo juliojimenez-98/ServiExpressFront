@@ -11,7 +11,7 @@ export class TopbarComponent implements OnInit {
   public name = '';
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => {
-      this.name = params.name;
+      this.name = sessionStorage.getItem('name');
 
     });
   }

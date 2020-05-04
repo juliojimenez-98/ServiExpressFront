@@ -35,6 +35,15 @@ export class LoginComponent implements OnInit {
         swal.close();
 
         localStorage.setItem("token_sesion", res["accessToken"]);
+        //modo temporal despues hacerlo de una forma mas dinamica
+        sessionStorage.setItem("iduser", res["iduser"]);
+        sessionStorage.setItem("idrole", res["idrole"]);
+        sessionStorage.setItem("Avtivo", res["Avtivo"]);
+        sessionStorage.setItem("rolename", res["rolename"]);
+        sessionStorage.setItem("tokenType", res["tokenType"]);
+        sessionStorage.setItem("username", res["username"]);
+        sessionStorage.setItem("name", res["name"]);
+
         this.estado = res["Avtivo"];
         if (this.estado) {
           this.router.navigate(['/inicio', res]);
