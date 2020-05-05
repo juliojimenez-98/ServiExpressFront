@@ -1,0 +1,79 @@
+.pages-link {
+    color: #212529;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s
+}
+
+label {
+    color: aliceblue;
+}
+
+small {
+    color: aliceblue;
+}
+
+.main-section {
+    margin: 0 auto;
+    margin-top: 20%;
+    padding: 0;
+}
+
+.form-group#user-group::before {
+    content: "\f007";
+}
+
+.form-group#contrasena-group::before {
+    content: "\f023";
+}
+
+.form-group#user-group::before {
+    content: "\f007";
+}
+
+.form-group#contrasena-group::before {
+    content: "\f023";
+}
+
+.form-group#email-group::before {
+    content: "\f0e0";
+}
+
+.form-group#names-group::before {
+    content: "\f2c2";
+}
+
+.modal-content {
+    background-color: whitesmoke;
+    opacity: .95;
+    box-shadow: 0px 0px 3px gray;
+}
+
+.form-group input {
+    height: 42px;
+    font-size: 18px;
+    border: 0;
+    padding-left: 54px;
+    border-radius: 5px;
+}
+
+.form-group::before {
+    font-family: "Font Awesome\ 5 Free";
+    position: absolute;
+    left: 28px;
+    font-size: 22px;
+    padding-top: 4px;
+}
+
+button {
+    width: 60%;
+    margin: 5px 0 25px;
+}
+
+.forgot {
+    padding: 5px 0;
+}
+
+.forgot a {
+    color: white;
+}
