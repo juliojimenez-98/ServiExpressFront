@@ -6,6 +6,7 @@ import { UserModel } from 'src/app/models/UserModel';
 import { Util } from 'src/app/util/util';
 import { LoginService } from 'src/app/service/login.service';
 
+
 @Component({
   selector: 'app-registeremploye',
   templateUrl: './registeremploye.component.html',
@@ -35,8 +36,13 @@ export class RegisteremployeComponent implements OnInit {
     } else if (sessionStorage.getItem('idrole') === '3') {
       this.empleado = true;
     }
+
+    if ((sessionStorage.getItem('idrole') !== '1')) {
+      this.router.navigate(['/login']);
+    }
     this.nav.hide();
     this.nav.doSomethingElseUseful();
+
   }
 
 

@@ -22,6 +22,7 @@ export class TopbarComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token_sesion');
+    sessionStorage.clear();
   }
 
 

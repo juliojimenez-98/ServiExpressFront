@@ -16,6 +16,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router) {
     //  this.signInWeb(this.user,this.passw);
+    if (sessionStorage.getItem('current') === 'true' && sessionStorage.getItem('Avtivo') === 'false') {
+      this.router.navigate(['/activar']);
+    }else if (sessionStorage.getItem('current') === 'true'){
+      this.router.navigate(['/inicio']);
+    }
   }
 
   ngOnInit() {
@@ -43,6 +48,8 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("tokenType", res["tokenType"]);
         sessionStorage.setItem("username", res["username"]);
         sessionStorage.setItem("name", res["name"]);
+        sessionStorage.setItem("current", 'true');
+
 
         this.estado = res["Avtivo"];
         if (this.estado) {
