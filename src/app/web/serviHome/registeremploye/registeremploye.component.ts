@@ -57,12 +57,12 @@ export class RegisteremployeComponent implements OnInit {
        swal.fire({
          allowOutsideClick: false,
          icon: 'info',
-         text:'Creando tu cuenta...'
+         text:'Creando usuario empleado'
        })
        swal.showLoading();
        this.loginService.signupwork(this.user).subscribe(
          res  =>{swal.close();
-                 swal.fire(  'Creado correctamente',  'Se ha enviado correo electronico' ,  'success');
+                 swal.fire(  'Creado correctamente',  `Se ha enviado un mensaje al correo ${this.user.email}` ,  'success');
                  this.nombre = '';
 
          },
