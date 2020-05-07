@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarService } from 'src/app/service/navbar.service';
 import { ActivatedRoute } from '@angular/router';
+
 // declare var drawGauge: any;
 // import '../../../../assets/js/sb-admin-2.min.js';
 @Component({
