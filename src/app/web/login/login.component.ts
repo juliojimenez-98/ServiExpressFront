@@ -4,6 +4,7 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
 import { error } from 'protractor';
+import { Util } from 'src/app/util/util';
 
 @Component({
   selector: 'app-login',
@@ -11,16 +12,11 @@ import { error } from 'protractor';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private estado: boolean = false;
-
+  private estado = false;
+  private util: Util = new Util();
 
   constructor(private loginService: LoginService, private router: Router) {
-    //  this.signInWeb(this.user,this.passw);
-    if (sessionStorage.getItem('current') === 'true' && sessionStorage.getItem('Avtivo') === 'false') {
-      this.router.navigate(['/activar']);
-    }else if (sessionStorage.getItem('current') === 'true'){
-      this.router.navigate(['/inicio']);
-    }
+    this.util.current(router);
   }
 
   ngOnInit() {
@@ -40,7 +36,7 @@ export class LoginComponent implements OnInit {
         swal.close();
 
         localStorage.setItem("token_sesion", res["accessToken"]);
-        //modo temporal despues hacerlo de una forma mas dinamica
+        // modo temporal despues hacerlo de una forma mas dinamica
         sessionStorage.setItem("iduser", res["iduser"]);
         sessionStorage.setItem("idrole", res["idrole"]);
         sessionStorage.setItem("Avtivo", res["Avtivo"]);
@@ -50,18 +46,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("name", res["name"]);
         sessionStorage.setItem("current", 'true');
 
-
-        this.estado = res["Avtivo"];
-        if (this.estado) {
-          this.router.navigate(['/inicio', res]);
-        } else {
-          this.router.navigate(['/activar', res]);
-        }
-
-
-
-
-
+        this.util.load(this.router);
 
       },
       error => {
