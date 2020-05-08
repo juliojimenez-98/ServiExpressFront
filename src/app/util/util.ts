@@ -3,6 +3,7 @@ import { UserModel } from '../models/UserModel';
 import Swal from 'sweetalert2';
 import { UserInfoModel } from '../models/UserInfoModel';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 export class Util {
 
@@ -84,11 +85,6 @@ export class Util {
     user.fechaN = this.formatDate(date);
     return true;
 
-
-
-
-
-
   }
 
 
@@ -103,5 +99,32 @@ export class Util {
 
     return [year, month, day].join('-');
   }
+
+
+
+  // Comprobar usuario iniciado
+  current(router: Router) {
+    if (sessionStorage.getItem('current') === 'true' && sessionStorage.getItem('Avtivo') === 'false') {
+      router.navigate(['/activar']);
+    }else if (sessionStorage.getItem('current') === 'true'){
+      router.navigate(['/inicio']);
+    }
+  }
+
+  // load
+  load(router: Router) {
+    if (sessionStorage.getItem('Avtivo') === 'false') {
+      router.navigate(['/activar']);
+    } else {
+      router.navigate(['/inicio']);
+    }
+  }
+
+
+
+
+
+
+
 }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarService } from 'src/app/service/navbar.service';
 import { ActivatedRoute } from '@angular/router';
+
 // declare var drawGauge: any;
 // import '../../../../assets/js/sb-admin-2.min.js';
 @Component({
@@ -23,11 +24,11 @@ export class InicioComponent implements OnInit {
 
     });
 
-    if (this.role === '2') {
+    if (sessionStorage.getItem('idrole')=='2') {
       this.cliente = true;
-    } else if (this.role === '1') {
+    } else if (sessionStorage.getItem('idrole')=='1') {
       this.admin = true;
-    } else if (this.role === '3') {
+    } else if (sessionStorage.getItem('idrole')=='3') {
       this.empleado = true;
     }
     this.nav.hide();
@@ -37,13 +38,13 @@ export class InicioComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.loadScript('../assets/js/sb-admin-2.min.js');
-    this.loadScript('../assets/vendor/jquery/jquery.min.js');
-    // this.loadScript('../assets/vendor/bootstrap/js/bootstrap.bundle.min.js');
-    this.loadScript('../assets/vendor/jquery-easing/jquery.easing.min.js');
-    this.loadScript('../assets/vendor/chart.js/Chart.min.js');
-    this.loadScript('../aassets/js/demo/chart-area-demo.js');
-    this.loadScript('../assets/js/demo/chart-pie-demo.js');
+     this.loadScript('../assets/js/sb-admin-2.min.js');
+    //  this.loadScript('../assets/vendor/jquery/jquery.slim.min.js');
+    //  this.loadScript('../assets/vendor/bootstrap/js/bootstrap.bundle.min.js');
+    // this.loadScript('../../../assets/vendor/jquery-easing/jquery.easing.min.js');
+    // this.loadScript('../../../assets/vendor/chart.js/Chart.min.js');
+    // this.loadScript('../../../aassets/js/demo/chart-area-demo.js');
+    // this.loadScript('../../../../assets/js/demo/chart-pie-demo.js');
 
   }
 
