@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserModel } from 'src/app/models/UserModel';
 import { Util } from 'src/app/util/util';
 import { LoginService } from 'src/app/service/login.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -38,6 +39,7 @@ export class RegisteremployeComponent implements OnInit {
     }
 
     if ((sessionStorage.getItem('idrole') !== '1')) {
+      Swal.fire('Restringido', `${sessionStorage.getItem('name')} no tienes acceso a esta página`, 'warning')
       this.router.navigate(['/login']);
     }
     this.nav.hide();

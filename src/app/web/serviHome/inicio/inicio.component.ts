@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarService } from 'src/app/service/navbar.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 // declare var drawGauge: any;
 // import '../../../../assets/js/sb-admin-2.min.js';
@@ -18,7 +19,7 @@ export class InicioComponent implements OnInit {
 
 
 
-  constructor(public nav: NavbarService,private activatedRoute: ActivatedRoute) {
+  constructor(public nav: NavbarService,private activatedRoute: ActivatedRoute,private router:Router) {
     this.activatedRoute.params.subscribe(params => {
       this.role = params.idrole;
 
@@ -33,6 +34,11 @@ export class InicioComponent implements OnInit {
     }
     this.nav.hide();
     this.nav.doSomethingElseUseful();
+
+    if ((sessionStorage.getItem('idrole') == null)) {
+      Swal.fire('No estás autenticado', 'Inicia sesión para acceder a las rutas', 'warning')
+      this.router.navigate(['/login']);
+    }
 
   }
 
@@ -57,5 +63,6 @@ export class InicioComponent implements OnInit {
     script.defer = true;
     body.appendChild(script);
   }
+
 
 }
