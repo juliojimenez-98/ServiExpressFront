@@ -31,8 +31,17 @@ export class SidebarComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.cargarScript('./assets/js/sb-admin-2.min.js');
   }
-
+  public cargarScript(url: string) {
+    const body = <HTMLDivElement> document.body;
+    const script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = url;
+    script.async = false;
+    script.defer = true;
+    body.appendChild(script);
+  }
 
 
 }

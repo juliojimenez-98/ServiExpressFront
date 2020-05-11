@@ -18,9 +18,10 @@ import { InicioComponent } from './web/serviHome/inicio/inicio.component';
 import { ActivarComponent } from './web/serviHome/activar/activar.component';
 import { TopbarComponent } from './widget/topbar/topbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { InicioempComponent } from './web/empleado/inicioemp/inicioemp.component';
-import { InicioClienteComponent } from './web/cliente/inicio-cliente/inicio-cliente.component';
+import { InicioempComponent } from './web/serviHome/empleado/inicioemp/inicioemp.component';
+import { InicioClienteComponent } from './web/serviHome/cliente/inicio-cliente/inicio-cliente.component';
 import { RegisteremployeComponent } from './web/serviHome/registeremploye/registeremploye.component';
+import { ReservarComponent } from './web/serviHome/cliente/reservar/reservar.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { RegisteremployeComponent } from './web/serviHome/registeremploye/regist
     TopbarComponent,
     InicioempComponent,
     InicioClienteComponent,
-    RegisteremployeComponent
+    RegisteremployeComponent,
+    ReservarComponent
   ],
   imports: [
     BrowserModule,
