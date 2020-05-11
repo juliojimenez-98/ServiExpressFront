@@ -16,11 +16,10 @@ import Swal from 'sweetalert2';
 export class RegisteremployeComponent implements OnInit {
   public user: UserModel = new UserModel();
   private util: Util = new Util();
-  public nombre : string = null;
+  public nombre: string = null;
   cliente = false;
   admin = false;
   empleado = false;
-
 
   constructor(public nav: NavbarService,
               private activatedRoute: ActivatedRoute,
@@ -59,13 +58,13 @@ export class RegisteremployeComponent implements OnInit {
        swal.fire({
          allowOutsideClick: false,
          icon: 'info',
-         text:'Creando usuario empleado'
+         text: 'Creando usuario empleado'
        })
        swal.showLoading();
        this.loginService.signupwork(this.user).subscribe(
-         res  =>{swal.close();
-                 swal.fire(  'Creado correctamente',  `Se ha enviado un mensaje al correo ${this.user.email}` ,  'success');
-                 this.nombre = '';
+         res  => {swal.close();
+                  swal.fire(  'Creado correctamente',  `Se ha enviado un mensaje al correo ${this.user.email}` ,  'success');
+                  this.nombre = '';
 
          },
          error => {

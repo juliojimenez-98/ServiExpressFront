@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { HttpClientModule,HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './web/login/login.component';
@@ -21,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InicioempComponent } from './web/serviHome/empleado/inicioemp/inicioemp.component';
 import { InicioClienteComponent } from './web/serviHome/cliente/inicio-cliente/inicio-cliente.component';
 import { RegisteremployeComponent } from './web/serviHome/registeremploye/registeremploye.component';
+import { AutosClienteComponent } from './web/cliente/autos-cliente/autos-cliente.component';
 import { ReservarComponent } from './web/serviHome/cliente/reservar/reservar.component';
 import { EditarClienteComponent } from './web/serviHome/cliente/editar-cliente/editar-cliente.component';
 
@@ -41,6 +42,8 @@ import { EditarClienteComponent } from './web/serviHome/cliente/editar-cliente/e
     TopbarComponent,
     InicioempComponent,
     InicioClienteComponent,
+    RegisteremployeComponent,
+    AutosClienteComponent
     RegisteremployeComponent,
     ReservarComponent,
     EditarClienteComponent

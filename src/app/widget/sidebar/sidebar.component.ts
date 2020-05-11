@@ -24,11 +24,7 @@ export class SidebarComponent implements OnInit {
       this.empleado = true;
     }
 
-
-
   }
-
-
 
   ngOnInit(): void {
      this.loadScript('../assets/js/sb-admin-2.min.js');
