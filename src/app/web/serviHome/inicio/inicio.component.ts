@@ -18,7 +18,8 @@ export class InicioComponent implements OnInit {
 
 
 
-  constructor(public nav: NavbarService,private activatedRoute: ActivatedRoute) {
+  constructor(public nav: NavbarService,
+              private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => {
       this.role = params.idrole;
 

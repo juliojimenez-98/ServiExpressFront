@@ -27,8 +27,8 @@
         Personas
     </div>
 
-    <li *ngIf="admin" class="nav-item" >
-        <a class="nav-link"  href="registeremploye">
+    <li *ngIf="admin" class="nav-item">
+        <a class="nav-link" href="registeremploye">
             <i class="fas fa-people-carry"></i>
             <span> Registro Empleado</span></a>
     </li>
@@ -85,7 +85,7 @@
             <span> Historial de reservas</span></a>
     </li>
     <li *ngIf="cliente" class="nav-item">
-        <a class="nav-link" href="inicio">
+        <a class="nav-link" [routerLink]="['/autoscliente']">
             <i class="fas fa-car-side"></i>
             <span> Autos registrados</span></a>
     </li>
