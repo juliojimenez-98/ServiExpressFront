@@ -22,6 +22,7 @@ import { InicioempComponent } from './web/serviHome/empleado/inicioemp/inicioemp
 import { InicioClienteComponent } from './web/serviHome/cliente/inicio-cliente/inicio-cliente.component';
 import { RegisteremployeComponent } from './web/serviHome/registeremploye/registeremploye.component';
 import { ReservarComponent } from './web/serviHome/cliente/reservar/reservar.component';
+import { EditarClienteComponent } from './web/serviHome/cliente/editar-cliente/editar-cliente.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ReservarComponent } from './web/serviHome/cliente/reservar/reservar.com
     InicioempComponent,
     InicioClienteComponent,
     RegisteremployeComponent,
-    ReservarComponent
+    ReservarComponent,
+    EditarClienteComponent
   ],
   imports: [
     BrowserModule,
