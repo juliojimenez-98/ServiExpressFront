@@ -27,13 +27,9 @@ export class AutosClienteComponent implements OnInit {
     if (sessionStorage.getItem('idrole') === '2'){
       this.cliente = true;
     } else if (sessionStorage.getItem('idrole') === '1') {
-      this.admin = true;
+      this.admin = false;
     } else if (sessionStorage.getItem('idrole') === '3') {
-      this.empleado = true;
-    }
-
-    if ((sessionStorage.getItem('idrole') !== '1')){
-      this.router.navigate(['/login']);
+      this.empleado = false;
     }
     this.nav.hide();
     this.nav.doSomethingElseUseful();
