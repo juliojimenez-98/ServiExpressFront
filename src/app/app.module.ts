@@ -43,8 +43,7 @@ import { EditarClienteComponent } from './web/serviHome/cliente/editar-cliente/e
     InicioempComponent,
     InicioClienteComponent,
     RegisteremployeComponent,
-    AutosClienteComponent
-    RegisteremployeComponent,
+    AutosClienteComponent,
     ReservarComponent,
     EditarClienteComponent
   ],
