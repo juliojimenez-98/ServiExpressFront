@@ -21,7 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InicioempComponent } from './web/serviHome/empleado/inicioemp/inicioemp.component';
 import { InicioClienteComponent } from './web/serviHome/cliente/inicio-cliente/inicio-cliente.component';
 import { RegisteremployeComponent } from './web/serviHome/registeremploye/registeremploye.component';
-import { AutosClienteComponent } from './web/cliente/autos-cliente/autos-cliente.component';
+import { AutosClienteComponent } from './web/serviHome/cliente/autos-cliente/autos-cliente.component';
 import { ReservarComponent } from './web/serviHome/cliente/reservar/reservar.component';
 import { EditarClienteComponent } from './web/serviHome/cliente/editar-cliente/editar-cliente.component';
 
