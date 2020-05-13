@@ -25,6 +25,8 @@ import { AutosClienteComponent } from './web/serviHome/cliente/autos-cliente/aut
 import { ReservarComponent } from './web/serviHome/cliente/reservar/reservar.component';
 import { EditarClienteComponent } from './web/serviHome/cliente/editar-cliente/editar-cliente.component';
 import { ClientesempComponent } from './web/serviHome/empleado/clientesemp/clientesemp.component';
+import { ProgresoReservaComponent } from './web/serviHome/cliente/progreso-reserva/progreso-reserva.component';
+import { HistorialReservasComponent } from './web/serviHome/cliente/historial-reservas/historial-reservas.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { ClientesempComponent } from './web/serviHome/empleado/clientesemp/clien
     AutosClienteComponent,
     ReservarComponent,
     EditarClienteComponent,
-    ClientesempComponent
+    ClientesempComponent,
+    ProgresoReservaComponent,
+    HistorialReservasComponent
   ],
   imports: [
     BrowserModule,
