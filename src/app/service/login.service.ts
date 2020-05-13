@@ -13,6 +13,7 @@ export class LoginService {
   private urlSignUp = URL_TO_LOGIN.url + URL_TO_LOGIN.signup;
   private urlSignUpWork = URL_TO_LOGIN.url + URL_TO_LOGIN.signupwork;
   private udpCreate = URL_TO_LOGIN.url + URL_TO_LOGIN.updCre;
+  private updCreateEmp = URL_TO_LOGIN.url + URL_TO_LOGIN.updCreEmp;
   private reqPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.reqPass;
   private chnPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.chgPasw;
   private body: any;
