@@ -6,6 +6,7 @@ import { Util } from 'src/app/util/util';
 import { LoginService } from 'src/app/service/login.service';
 import { NavbarService } from 'src/app/service/navbar.service';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Empleado } from 'src/app/models/empleado';
 
 @Component({
   selector: 'app-activar',
@@ -21,7 +22,10 @@ export class ActivarComponent implements OnInit {
 
 
   public user: UserInfoModel = new UserInfoModel();
+  public empleado: Empleado = new Empleado();
   private util: Util = new Util();
+
+
   constructor(private activatedRoute: ActivatedRoute,
               private loginService: LoginService,
               public nav: NavbarService,
@@ -51,6 +55,25 @@ export class ActivarComponent implements OnInit {
     // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
     console.log(this.user.fechaN);
     this.loginService.updateOrCreate(true, this.user).subscribe(
+      res => {
+        sessionStorage.setItem('Avtivo', 'true');
+        this.router.navigate(['/inicio']);
+      },
+      error => {
+        this.util.handleError(error);
+      },
+
+    );
+
+
+
+  }
+  public registerEmp(): void {
+
+    const buildFormPerson = this.util.buildFormEmpleado(this.empleado, this.model);
+    // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
+    console.log(this.user.fechaN);
+    this.loginService.updateOrCreateEmp(true, this.empleado).subscribe(
       res => {
         sessionStorage.setItem('Avtivo', 'true');
         this.router.navigate(['/inicio']);

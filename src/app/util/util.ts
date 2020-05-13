@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { UserInfoModel } from '../models/UserInfoModel';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { Empleado } from '../models/empleado';
 
 export class Util {
 
@@ -83,6 +84,13 @@ export class Util {
 
     const date = new Date(model.year, model.month, model.day);
     user.fechaN = this.formatDate(date);
+    return true;
+
+  }
+  buildFormEmpleado(empleado: Empleado, model: NgbDateStruct ): boolean {
+
+    const date = new Date(model.year, model.month, model.day);
+    empleado.fechaN = this.formatDate(date);
     return true;
 
   }

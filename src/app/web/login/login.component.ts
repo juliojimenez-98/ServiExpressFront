@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("current", 'true');
 
         this.util.load(this.router);
-
       },
       error => {
         if (error.status == 401) {
