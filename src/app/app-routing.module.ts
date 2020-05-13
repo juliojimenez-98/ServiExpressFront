@@ -14,6 +14,7 @@ import { TopbarComponent } from './widget/topbar/topbar.component';
 import { AutosClienteComponent } from './web/cliente/autos-cliente/autos-cliente.component';
 import { ReservarComponent } from "./web/serviHome/cliente/reservar/reservar.component";
 import { EditarClienteComponent } from "./web/serviHome/cliente/editar-cliente/editar-cliente.component";
+import { ClientesempComponent } from "./web/serviHome/empleado/clientesemp/clientesemp.component";
 
 const APP_ROUTES: Routes = [
 
@@ -32,6 +33,7 @@ const APP_ROUTES: Routes = [
   { path: 'autoscliente', component: AutosClienteComponent },
   { path: 'reservar', component: ReservarComponent },
   { path: 'editardatoscliente', component: EditarClienteComponent },
+  { path: 'verclientes', component: ClientesempComponent },
 ];
 
 @NgModule({

@@ -24,6 +24,7 @@ import { RegisteremployeComponent } from './web/serviHome/registeremploye/regist
 import { AutosClienteComponent } from './web/cliente/autos-cliente/autos-cliente.component';
 import { ReservarComponent } from './web/serviHome/cliente/reservar/reservar.component';
 import { EditarClienteComponent } from './web/serviHome/cliente/editar-cliente/editar-cliente.component';
+import { ClientesempComponent } from './web/serviHome/empleado/clientesemp/clientesemp.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { EditarClienteComponent } from './web/serviHome/cliente/editar-cliente/e
     RegisteremployeComponent,
     AutosClienteComponent,
     ReservarComponent,
-    EditarClienteComponent
+    EditarClienteComponent,
+    ClientesempComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ export var URL_TO_LOGIN={
     signup:'/api/auth/signup',
     signupwork:'/api/auth/signupwork',
     updCre:'/api/entidad/cliente',
+    updCreEmp:'/api/entidad/empleado',
     reqPass:'/api/auth/requestpass',//luego debe ir el nombre de usuario
     chgPasw:'/api/auth/changepassword/'
 }
