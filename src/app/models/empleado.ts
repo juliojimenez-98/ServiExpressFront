@@ -5,5 +5,5 @@ export class Empleado {
   nombre: string;
   apellido: string;
   telefono: string;
-  fechaN: string;
+  fechaNacimiento: string;
 }

@@ -87,13 +87,6 @@ export class Util {
     return true;
 
   }
-  buildFormEmpleado(empleado: Empleado, model: NgbDateStruct ): boolean {
-
-    const date = new Date(model.year, model.month, model.day);
-    empleado.fechaN = this.formatDate(date);
-    return true;
-
-  }
 
 
   formatDate(date) {
