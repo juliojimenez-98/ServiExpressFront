@@ -15,6 +15,7 @@ import { AutosClienteComponent } from './web/cliente/autos-cliente/autos-cliente
 import { ReservarComponent } from "./web/serviHome/cliente/reservar/reservar.component";
 import { EditarClienteComponent } from "./web/serviHome/cliente/editar-cliente/editar-cliente.component";
 import { ClientesempComponent } from "./web/serviHome/empleado/clientesemp/clientesemp.component";
+import { EmpleadosAdminComponent } from "./web/serviHome/empleado/empleados-admin/empleados-admin.component";
 
 const APP_ROUTES: Routes = [
 
@@ -34,6 +35,7 @@ const APP_ROUTES: Routes = [
   { path: 'reservar', component: ReservarComponent },
   { path: 'editardatoscliente', component: EditarClienteComponent },
   { path: 'verclientes', component: ClientesempComponent },
+  { path: 'verempleados', component: EmpleadosAdminComponent },
 ];
 
 @NgModule({

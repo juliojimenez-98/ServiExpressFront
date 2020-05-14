@@ -44,14 +44,14 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Clientes registrados</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Empleados registrados</h1>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row col-md-12 main-section">
                       <div class="col-md-12">
                           <div class="main-card mb-3 bg-light card">
-                              <div class="card-header text-black">Lista de clientes
+                              <div class="card-header text-black">Lista de Empleados
                               </div>
                               <div class="card-header text-white text-xl-center text-capitalize">
                                   <div class="row">
@@ -73,13 +73,13 @@
                                         <th>Fecha Nacimiento</th>
                                       </tr>
                                     </thead>
-                                    <tr *ngFor="let cliente of clientes" >
-                                      <td>{{cliente.idcliente}}</td>
-                                      <td>{{cliente.rut}}</td>
-                                      <td>{{cliente.nombre}}</td>
-                                      <td>{{cliente.apellido}}</td>
-                                      <td>{{cliente.telefono}}</td>
-                                      <td>{{cliente.fechaNacimiento}}</td>
+                                    <tr *ngFor="let empleado of empleados" >
+                                      <td>{{empleado.idempleado}}</td>
+                                      <td>{{empleado.rut}}</td>
+                                      <td>{{empleado.nombre}}</td>
+                                      <td>{{empleado.apellido}}</td>
+                                      <td>{{empleado.telefono}}</td>
+                                      <td>{{empleado.fechaNacimiento}}</td>
                                     </tr>
                                   </table>
                               </div>

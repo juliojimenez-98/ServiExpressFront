@@ -3,6 +3,6 @@ export class Cliente {
     rut:string;
     nombre: string;
     apellido: string;
-    fecha_nacimiento: Date;
+    fechaNacimiento: string;
     telefono:string;
 }

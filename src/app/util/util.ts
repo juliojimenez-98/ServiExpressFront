@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { UserInfoModel } from '../models/UserInfoModel';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { Empleado } from '../models/empleado';
 
 export class Util {
 
