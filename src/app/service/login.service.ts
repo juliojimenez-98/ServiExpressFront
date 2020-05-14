@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserModel } from '../models/UserModel';
 import { Observable } from 'rxjs';
 import { UserInfoModel } from '../models/UserInfoModel';
+import { Empleado } from '../models/empleado';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class LoginService {
   private urlSignUp = URL_TO_LOGIN.url + URL_TO_LOGIN.signup;
   private urlSignUpWork = URL_TO_LOGIN.url + URL_TO_LOGIN.signupwork;
   private udpCreate = URL_TO_LOGIN.url + URL_TO_LOGIN.updCre;
+  private updCreateEmp = URL_TO_LOGIN.url + URL_TO_LOGIN.updCreEmp;
   private reqPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.reqPass;
   private chnPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.chgPasw;
   private body: any;
@@ -73,6 +75,21 @@ export class LoginService {
     } else {
       this.body.append('idcliente', userInfo.idUsuario);
       return this.http.post(`${this.udpCreate}`, raw, { headers: this.header });
+    }
+
+  }
+  updateOrCreateEmp(selection: boolean, userInfo: UserInfoModel) {
+    const raw = JSON.stringify(
+      { id_usuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
+        telefono: userInfo.telefono, fechaNacimiento: userInfo.fechaN });
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
+    if (selection === true) {
+      return this.http.put(`${this.updCreateEmp}`, raw, { headers: this.header });
+    } else {
+      this.body.append('idempleado', userInfo.idUsuario);
+      return this.http.post(`${this.updCreateEmp}`, raw, { headers: this.header });
     }
 
   }

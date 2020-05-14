@@ -7,13 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./topbar.component.css']
 })
 export class TopbarComponent implements OnInit {
+  cliente = false;
+  admin = false;
+  empleado = false;
 
   public name = '';
+
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => {
       this.name = sessionStorage.getItem('name');
 
     });
+    if (sessionStorage.getItem('idrole') === '2') {
+      this.cliente = true;
+    } else if (sessionStorage.getItem('idrole') === '1') {
+      this.admin = true;
+    } else if (sessionStorage.getItem('idrole') === '3') {
+      this.empleado = true;
+    }
   }
 
   ngOnInit(): void {

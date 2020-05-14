@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Dashboard</title>
+
+
+    <!-- Custom styles for this template-->
+
+
+    <link href="/assets/css/sb-admin-2.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <app-sidebar> </app-sidebar>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <app-topbar> </app-topbar>
+
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Reservar servicio</h1>
+                    </div>
+
+                    <!-- Content Row -->
+                    <div class="modal-dialog modal-lg text-center ">
+                      <div class="col-lg-12">
+                          <div class="modal-content">
+                              <div class="col-12">
+                                  <h5 class="text-white">Agenda tu reserva</h5>
+                                  <hr class="white">
+                              </div>
+                              <form>
+                                  <div class="form-row">
+                                      <div class="col-md-6 " id="dni-group">
+                                          <label>Servicio</label>
+                                          <select class="form-control form-group" id="">
+                                              <option>Cambio de aceite</option>
+                                              <option>Lorem, ipsum dolor.</option>
+                                              <option>Lorem ipsum dolor sit.</option>
+                                              <option>Lorem, ipsum.</option>
+                                              <option>Lorem.</option>
+                                            </select>
+                                      </div>
+                                      <div class=" col-md-6">
+                                          <label>Día y Hora de tu reserva</label>
+                                          <input type="datetime-local" class="form-control text-center" id="datetime">
+                                      </div>
+
+                                  </div>
+                                  <div id="mostrarOcultar">
+
+                                    <div class="form-row ">
+                                        <div class=" col-md-4">
+                                            <label>Marca de tu auto</label>
+                                            <input class="form-control" type="text" placeholder="Marca">
+                                        </div>
+                                        <div class=" col-md-4">
+                                            <label>Modelo de tu auto</label>
+                                            <input class="form-control" type="text" placeholder="Modelo">
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <label>Tipo De auto</label>
+                                            <select class="form-control form-group " id=" ">
+                                                <option>Sedán</option>
+                                                <option>Hatchback</option>
+                                                <option>SUV</option>
+                                                <option>PickUp</option>
+                                                <option>MiniVan</option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4 ">
+                                            <label>Año del vehículo</label>
+                                            <input class="form-control " type="number" placeholder="Año">
+                                        </div>
+                                        <div class=" col-md-4">
+                                            <label>Patente</label>
+                                            <input class="form-control " type="text" placeholder="Patente">
+                                        </div>
+                                        <div class=" col-md-4">
+                                            <label>Numéro de chasís (Opcional)</label>
+                                            <input class="form-control " type="text" placeholder="Numero Chasis">
+                                        </div>
+
+                                      </div>
+                                      <br>
+                                      <div class=" form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Guardar datos del auto</label>
+                                      </div>
+                                      <button type="button" style="margin-top: 10px;" class="mx-auto btn btn-outline-info btn-sm" value="Ocultar" onclick="ocultar()">Ya tienes tu auto registrado?</button>
+                                    </div>
+
+
+                                    <div id="mostrarAuto" style="display: none;">
+                                      <div class="form-row">
+                                        <div class="col-md-6 mx-auto">
+                                            <label>Escoje tu Auto</label>
+                                            <select class="form-control form-group" id="">
+                                                <option>Seleccionar</option>
+                                                <option>Audi TT HPRF89</option>
+                                                <option>Nissan 350Z CRDY96</option>
+                                              </select>
+                                        </div>
+                                      </div>
+                                      <button type="button" style="margin-top: 10px;" class="mx-auto btn btn-outline-info btn-sm" value="Ocultar" onclick="mostrar()">No está tu auto?</button>
+                                    </div>
+
+                                    <br>
+                                    <div class="col-sm-6 mx-auto">
+
+                                      <button type="button" style="margin-top: 10px;" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal">
+                                        Agendar reserva
+                                      </button>
+                                    </div>
+
+
+
+
+                              </form>
+                              <!-- Button trigger modal -->
+
+
+                          </div>
+                      </div>
+                  </div>
+
+                    <!-- Content Row -->
+
+                </div>
+
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+
+
+</body>
+
+</html>
