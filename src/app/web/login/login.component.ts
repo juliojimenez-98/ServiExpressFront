@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("username", res["username"]);
         sessionStorage.setItem("name", res["name"]);
         sessionStorage.setItem("current", 'true');
-
+        console.log(localStorage.getItem('token_sesion'))
         this.util.load(this.router);
       },
       error => {

@@ -78,17 +78,17 @@ export class LoginService {
     }
 
   }
-  updateOrCreateEmp(selection: boolean, empleado: Empleado) {
+  updateOrCreateEmp(selection: boolean, userInfo: UserInfoModel) {
     const raw = JSON.stringify(
-      { id_usuario: empleado.idUsuario, rut: empleado.rut, nombre: empleado.nombre, apellido: empleado.apellido,
-        telefono: empleado.telefono, fechaNacimiento: empleado.fechaN });
+      { id_usuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
+        telefono: userInfo.telefono, fechaNacimiento: userInfo.fechaN });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
     if (selection === true) {
       return this.http.put(`${this.updCreateEmp}`, raw, { headers: this.header });
     } else {
-      this.body.append('idempleado', empleado.idUsuario);
+      this.body.append('idempleado', userInfo.idUsuario);
       return this.http.post(`${this.updCreateEmp}`, raw, { headers: this.header });
     }
 

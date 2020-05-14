@@ -50,8 +50,8 @@ export class ActivarComponent implements OnInit {
 
 
   public registerPerson(): void {
-
-    const buildFormPerson = this.util.buildFormPerson(this.user, this.model);
+    if (sessionStorage.getItem('idrole')=='2') {
+      const buildFormPerson = this.util.buildFormPerson(this.user, this.model);
     // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
     console.log(this.user.fechaN);
     this.loginService.updateOrCreate(true, this.user).subscribe(
@@ -64,16 +64,11 @@ export class ActivarComponent implements OnInit {
       },
 
     );
-
-
-
-  }
-  public registerEmp(): void {
-
-    const buildFormPerson = this.util.buildFormEmpleado(this.empleado, this.model);
+    }else if (sessionStorage.getItem('idrole')=='3') {
+      const buildFormPerson = this.util.buildFormPerson(this.user, this.model);
     // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
     console.log(this.user.fechaN);
-    this.loginService.updateOrCreateEmp(true, this.empleado).subscribe(
+    this.loginService.updateOrCreateEmp(true, this.user).subscribe(
       res => {
         sessionStorage.setItem('Avtivo', 'true');
         this.router.navigate(['/inicio']);
@@ -84,7 +79,6 @@ export class ActivarComponent implements OnInit {
 
     );
 
-
-
+    }
   }
 }

@@ -21,13 +21,13 @@
                 </div>
                 <br>
               </div>
-              <form class="col-12" (ngSubmit)="registerEmp()" name="formRegister">
+              <form class="col-12" (ngSubmit)="registerPerson()" name="formRegister">
                 <div class="form-group row">
 
                 <div class="input-group col-sm-4 mb-3 mb-sm-0">
                   <div class="input-group-prepend ">
                   </div>
-                  <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="empleado.nombre" value={{name}}  name="nombre"  required minlength="2" #nombre="ngModel">
+                  <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="user.nombre" value={{name}}  name="nombre"  required minlength="2" #nombre="ngModel">
                   <div class="container alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                     <div *ngIf="nombre.errors.required">
                       Tienes que ingresar el nombre
@@ -42,7 +42,7 @@
                 <div class="input-group col-sm-4 mb-3 mb-sm-0">
                   <div class="input-group-prepend ">
                   </div>
-                  <input type="text" class="form-control" placeholder="Apellido" [(ngModel)]="empleado.apellido" name="apellido" required minlength="2" #apellido="ngModel" >
+                  <input type="text" class="form-control" placeholder="Apellido" [(ngModel)]="user.apellido" name="apellido" required minlength="2" #apellido="ngModel" >
                   <div class="container alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
                     <div *ngIf="apellido.errors.required">
                       El apellido es requerido
@@ -56,7 +56,7 @@
                 <div class="input-group col-sm-4 mb-3 mb-sm-0">
                   <div class="input-group-prepend ">
                   </div>
-                  <input type="text" class="form-control" placeholder="Rut" [(ngModel)]="empleado.rut" name="rut" required minlength="10" maxlength="10" pattern="\d{3,8}-[\d|kK]{1}" #rut="ngModel" >
+                  <input type="text" class="form-control" placeholder="Rut" [(ngModel)]="user.rut" name="rut" required minlength="10" maxlength="10" pattern="\d{3,8}-[\d|kK]{1}" #rut="ngModel" >
                   <div class="container alert alert-danger" *ngIf="rut.invalid && (rut.dirty || rut.touched|| rut.valid)">
                     <div *ngIf="rut.errors.required">
                       El rut es requerido y debe tener el siguiente formato Ej: 11111111-1
@@ -75,7 +75,7 @@
                     <div class="input-group-prepend ">
                       <span class="input-group-text" id="basic-addon1">+56</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Teléfono" [(ngModel)]="empleado.telefono" name="telefono"  required minlength="8" maxlength="9" pattern="[2||9]+[0-9]+"  #telefono="ngModel">
+                    <input type="text" class="form-control" placeholder="Teléfono" [(ngModel)]="user.telefono" name="telefono"  required minlength="8" maxlength="9" pattern="[2||9]+[0-9]+"  #telefono="ngModel">
                     <div class="container alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
                       <div *ngIf="telefono.errors.required">
                         El telefono es requerido
@@ -99,7 +99,7 @@
                   </div>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary my-2 col-sm-12 "><i class="fas fa-sign-in-alt my-2"></i>Guardar</button>
+                <button type="submit" class="btn btn-primary my-2 col-sm-12 "><i class="fas fa-sign-in-alt"></i>Guardar</button>
               </form>
               <hr>
               <!-- <div class="text-center">
