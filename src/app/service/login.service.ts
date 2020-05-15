@@ -18,9 +18,9 @@ export class LoginService {
   private reqPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.reqPass;
   private chnPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.chgPasw;
   private body: any;
+  private userToken;
   private header: any;
   constructor(private http: HttpClient) { }
-
 
 
   signUp(user: UserModel) {
@@ -44,6 +44,34 @@ export class LoginService {
 
 
   }
+
+  getToken(){
+    if (localStorage.getItem('token_sesion')) {
+      this.userToken = localStorage.getItem('token_sesion');
+
+    }else{
+      this.userToken = '';
+    }
+    return this.userToken;
+  }
+
+  estaAutenticado(): boolean{
+    console.log(this.userToken)
+    if (this.userToken != null) {
+      console.log('esta auth')
+      return true;
+    }
+    console.log('no esta logueado')
+    return false;
+  }
+
+  hasRole(role: string): boolean {
+    if (sessionStorage.getItem('rolename').includes(role)) {
+      return true;
+    }
+    return false;
+  }
+
 
   /**
    *

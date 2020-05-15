@@ -16,6 +16,8 @@ import { ReservarComponent } from "./web/serviHome/cliente/reservar/reservar.com
 import { EditarClienteComponent } from "./web/serviHome/cliente/editar-cliente/editar-cliente.component";
 import { ClientesempComponent } from "./web/serviHome/empleado/clientesemp/clientesemp.component";
 import { EmpleadosAdminComponent } from "./web/serviHome/empleado/empleados-admin/empleados-admin.component";
+import {AuthGuard} from "./guards/auth.guard"
+import { RoleGuard } from './guards/role.guard';
 
 const APP_ROUTES: Routes = [
 
@@ -27,15 +29,15 @@ const APP_ROUTES: Routes = [
   { path: '', component: HomeComponent },
   { path: '', pathMatch: 'full', redirectTo: '' },
   { path: 'sidebar', component: SidebarComponent },
-  { path: 'activar', component: ActivarComponent },
+  { path: 'activar', component: ActivarComponent, canActivate: [ AuthGuard ] },
   { path: 'inicio', component: InicioComponent },
   { path: 'topbar', component: TopbarComponent },
-  { path: 'registeremploye', component: RegisteremployeComponent },
-  { path: 'autoscliente', component: AutosClienteComponent },
-  { path: 'reservar', component: ReservarComponent },
-  { path: 'editardatoscliente', component: EditarClienteComponent },
-  { path: 'verclientes', component: ClientesempComponent },
-  { path: 'verempleados', component: EmpleadosAdminComponent },
+  { path: 'registeremploye', component: RegisteremployeComponent, canActivate: [ AuthGuard ] },
+  { path: 'autoscliente', component: AutosClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+  { path: 'reservar', component: ReservarComponent, canActivate: [ AuthGuard ] },
+  { path: 'editardatoscliente', component: EditarClienteComponent, canActivate: [ AuthGuard ] },
+  { path: 'verclientes', component: ClientesempComponent, canActivate: [ AuthGuard,RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+  { path: 'verempleados', component: EmpleadosAdminComponent, canActivate: [ AuthGuard,RoleGuard ], data: {role: 'ROLE_ADMIN'} },
 ];
 
 @NgModule({
