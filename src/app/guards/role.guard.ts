@@ -14,11 +14,11 @@ export class RoleGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.loginService.estaAutenticado()) {
-        this.router.navigateByUrl('login')
-        return false;
-      }
-      let rolename1 = sessionStorage.getItem('rolename');
+      // if (this.loginService.estaAutenticado()) {
+      //   this.router.navigateByUrl('login')
+      //   return false;
+      // }
+      // let rolename1 = sessionStorage.getItem('rolename');
       let role = next.data['role'] as string;
       console.log(role)
       if (this.loginService.hasRole(role)) {

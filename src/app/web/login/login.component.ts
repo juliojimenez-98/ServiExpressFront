@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(localStorage.getItem('token_sesion'));
   }
 
   signInWeb(username: string, password: string, event: Event) {

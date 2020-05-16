@@ -46,6 +46,9 @@ export class ActivarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('Avtivo')==='true') {
+      this.router.navigate(['/inicio'])
+    }
   }
 
 

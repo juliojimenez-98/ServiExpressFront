@@ -18,7 +18,7 @@ export class LoginService {
   private reqPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.reqPass;
   private chnPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.chgPasw;
   private body: any;
-  private userToken;
+  userToken: string;
   private header: any;
   constructor(private http: HttpClient) { }
 
@@ -45,32 +45,7 @@ export class LoginService {
 
   }
 
-  getToken(){
-    if (localStorage.getItem('token_sesion')) {
-      this.userToken = localStorage.getItem('token_sesion');
 
-    }else{
-      this.userToken = '';
-    }
-    return this.userToken;
-  }
-
-  estaAutenticado(): boolean{
-    console.log(this.userToken)
-    if (this.userToken != null) {
-      console.log('esta auth')
-      return true;
-    }
-    console.log('no esta logueado')
-    return false;
-  }
-
-  hasRole(role: string): boolean {
-    if (sessionStorage.getItem('rolename').includes(role)) {
-      return true;
-    }
-    return false;
-  }
 
 
   /**
@@ -84,7 +59,24 @@ export class LoginService {
     .set('Content-Type', 'application/json; charset=utf-8')
     console.log(this.header);
     console.log(this.body);
+    console.log(localStorage.getItem('token_sesion'))
     return this.http.post(`${this.urlSignIn}`, raw, { headers: this.header });
+  }
+
+
+  estaAutenticado():boolean{
+    if (localStorage.getItem('token_sesion')=== null) {
+      console.log('No Esta autenticado')
+      return false;
+    }
+    return true;
+  }
+
+  hasRole(role: string): boolean {
+    if (sessionStorage.getItem('rolename').includes(role)) {
+      return true;
+    }
+    return false;
   }
 
   /**
