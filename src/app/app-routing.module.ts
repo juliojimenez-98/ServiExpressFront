@@ -18,6 +18,8 @@ import { ClientesempComponent } from "./web/serviHome/empleado/clientesemp/clien
 import { EmpleadosAdminComponent } from "./web/serviHome/empleado/empleados-admin/empleados-admin.component";
 import {AuthGuard} from "./guards/auth.guard"
 import { RoleGuard } from './guards/role.guard';
+import { BaseComponent } from './widget/base/base.component';
+import { InicioClienteComponent } from './web/serviHome/cliente/inicio-cliente/inicio-cliente.component';
 
 const APP_ROUTES: Routes = [
 
@@ -27,17 +29,28 @@ const APP_ROUTES: Routes = [
   { path: 'contacto', component: ContactoComponent },
   { path: 'servicios', component: ServiciosComponent },
   { path: '', component: HomeComponent },
-  // { path: '', pathMatch: 'full', redirectTo: '' },
-  { path: 'sidebar', component: SidebarComponent, canActivate: [ AuthGuard ] },
-  { path: 'activar', component: ActivarComponent, canActivate: [ AuthGuard ]},
-  { path: 'inicio', component: InicioComponent, canActivate: [ AuthGuard ]},
-  { path: 'topbar', component: TopbarComponent },
+  { path: '', pathMatch: 'full', redirectTo: '' },
+
+  //USUARIO LOGUEADO
+  { path: 'home', component: BaseComponent, canActivate: [ AuthGuard ] ,
+
+  children:[
+  { path: 'inicio', component: InicioComponent, canActivate: [ AuthGuard ] },
+  { path: 'verclientes', component: ClientesempComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'registeremploye', component: RegisteremployeComponent, canActivate: [ RoleGuard, AuthGuard ], data: {role: 'ROLE_ADMIN'} },
+  { path: 'verempleados', component: EmpleadosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+  { path: 'iniciocliente', component: InicioClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'autoscliente', component: AutosClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'reservar', component: ReservarComponent , canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'}},
   { path: 'editardatoscliente', component: EditarClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
-  { path: 'verclientes', component: ClientesempComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
-  { path: 'verempleados', component: EmpleadosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+  ]},
+
+  { path: 'sidebar', component: SidebarComponent, canActivate: [ AuthGuard ] },
+  { path: 'activar', component: ActivarComponent, canActivate: [ AuthGuard ]},
+
+  { path: 'topbar', component: TopbarComponent },
+
+
 ];
 
 @NgModule({

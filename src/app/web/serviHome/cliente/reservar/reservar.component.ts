@@ -8,11 +8,9 @@ import { NavbarService } from 'src/app/service/navbar.service';
 })
 export class ReservarComponent implements OnInit {
 
-  constructor(public nav: NavbarService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.nav.hide();
-
     this.cargarAppJs('../assets/js/app.js');
   }
   public cargarAppJs(url: string) {

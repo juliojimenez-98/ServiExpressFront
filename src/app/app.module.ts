@@ -29,6 +29,7 @@ import { EditarClienteComponent } from './web/serviHome/cliente/editar-cliente/e
 import { ClientesempComponent } from './web/serviHome/empleado/clientesemp/clientesemp.component';
 import { EmpleadosAdminComponent } from './web/serviHome/empleado/empleados-admin/empleados-admin.component';
 import { registerLocaleData } from '@angular/common';
+import { BaseComponent } from './widget/base/base.component';
 
 registerLocaleData(localeEsCl, 'es-CL');
 
@@ -54,7 +55,8 @@ registerLocaleData(localeEsCl, 'es-CL');
     ReservarComponent,
     EditarClienteComponent,
     ClientesempComponent,
-    EmpleadosAdminComponent
+    EmpleadosAdminComponent,
+    BaseComponent,
   ],
   imports: [
     BrowserModule,

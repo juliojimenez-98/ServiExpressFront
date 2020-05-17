@@ -108,7 +108,7 @@ export class Util {
     if (sessionStorage.getItem('current') === 'true' && sessionStorage.getItem('Avtivo') === 'false') {
       router.navigate(['/activar']);
     }else if (sessionStorage.getItem('current') === 'true'){
-      router.navigate(['/inicio']);
+      router.navigate(['/home/inicio']);
     }
   }
 
@@ -117,7 +117,7 @@ export class Util {
     if (sessionStorage.getItem('Avtivo') === 'false') {
       router.navigate(['/activar']);
     } else {
-      router.navigate(['/inicio']);
+      router.navigate(['/home/inicio']);
     }
   }
 
