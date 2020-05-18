@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicio">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink='inicio'>
         <img class="img-fluid" src="../../../assets/img/logo-blanco.png" alt="">
     </a>
 
@@ -10,13 +10,13 @@
 
     <!-- Nav Item - Dashboard -->
     <li *ngIf="admin" class="nav-item">
-        <a class="nav-link" href="inicio">
+        <a class="nav-link" routerLink='inicio'>
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span> Dashboard</span></a>
     </li>
 
     <li *ngIf="cliente" class="nav-item">
-        <a class="nav-link" href="inicio">
+        <a class="nav-link" routerLink='inicio'>
             <i class="fas fa-home"></i>
             <span> Inicio</span></a>
     </li>
@@ -28,37 +28,37 @@
     </div>
 
     <li *ngIf="admin" class="nav-item" >
-        <a class="nav-link"  href="registeremploye">
+        <a class="nav-link"  routerLink='registeremploye'>
             <i class="fas fa-people-carry"></i>
             <span> Registro Empleado</span></a>
     </li>
 
     <li *ngIf="admin" class="nav-item">
-        <a class="nav-link" href="sidebar">
+        <a class="nav-link" routerLink='verclientes'>
             <i class="fas fa-users"></i>
             <span> Clientes</span></a>
     </li>
 
     <li *ngIf="admin" class="nav-item">
-        <a class="nav-link" href="inicio">
+        <a class="nav-link" routerLink='verempleados'>
             <i class="fas fa-people-carry"></i>
             <span> Empleados</span></a>
     </li>
 
     <li *ngIf="empleado" class="nav-item">
-        <a class="nav-link" href="inicio">
+        <a class="nav-link" routerLink='inicio'>
             <i class="fas fa-home"></i>
             <span> Inicio</span></a>
     </li>
 
     <li *ngIf="empleado" class="nav-item">
-        <a class="nav-link" href="sidebar">
+        <a class="nav-link" routerLink='inicio'>
             <i class="fas fa-box-open"></i>
             <span> Productos</span></a>
     </li>
 
     <li *ngIf="empleado" class="nav-item">
-        <a class="nav-link" href="inicio">
+        <a class="nav-link" routerLink='inicio'>
             <i class="fas fa-user-tie"></i>
             <span> Servicios</span></a>
     </li>
@@ -70,12 +70,12 @@
     </li>
 
     <li *ngIf="cliente" class="nav-item">
-        <a class="nav-link" href="inicio">
+        <a class="nav-link" routerLink='reservar'>
             <i class="fas fa-calendar-check"></i>
             <span> Reservar</span></a>
     </li>
     <li *ngIf="cliente" class="nav-item">
-        <a class="nav-link" href="inicio">
+        <a class="nav-link" routerLink='inicio'>
             <i class="fas fa-hourglass-half"></i>
             <span> Progreso de reserva</span></a>
     </li>
@@ -85,7 +85,7 @@
             <span> Historial de reservas</span></a>
     </li>
     <li *ngIf="cliente" class="nav-item">
-        <a class="nav-link" href="inicio">
+      <a class="nav-link" routerLink='autoscliente'>
             <i class="fas fa-car-side"></i>
             <span> Autos registrados</span></a>
     </li>
@@ -96,7 +96,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li *ngIf="admin" class="nav-item">
-        <a class="nav-link collapsed" href="inicio" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-store-alt"></i>
             <span> Productos y servicios</span>
         </a>
@@ -118,21 +118,21 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header"> Pedidos </h6>
-                <a class="collapse-item" href="inicio"><i class="fas fa-truck-loading"></i> Pedidos</a>
-                <a class="collapse-item" href="inicio"><i class="fas fa-truck"></i> Pedir productos</a>
+                <a class="collapse-item" routerLink='inicio'><i class="fas fa-truck-loading"></i> Pedidos</a>
+                <a class="collapse-item" routerLink='inicio'><i class="fas fa-truck"></i> Pedir productos</a>
             </div>
         </div>
     </li>
 
 
     <li *ngIf="admin" class="nav-item">
-        <a class="nav-link" href="sidebar">
+        <a class="nav-link" routerLink='inicio'>
             <i class="fas fa-calendar-day"></i>
             <span> Reservas</span></a>
     </li>
 
     <li *ngIf="admin" class="nav-item">
-        <a class="nav-link" href="sidebar">
+        <a class="nav-link" routerLink='inicio'>
             <i class="fas fa-file-invoice-dollar"></i>
             <span> Generar reportes</span></a>
     </li>
