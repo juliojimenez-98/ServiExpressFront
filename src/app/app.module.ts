@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
+
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import localeEsCl from '@angular/common/locales/es-CL';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './web/login/login.component';
 import { RegisterComponent } from './web/register/register.component';
@@ -27,6 +29,11 @@ import { EditarClienteComponent } from './web/serviHome/cliente/editar-cliente/e
 import { ClientesempComponent } from './web/serviHome/empleado/clientesemp/clientesemp.component';
 import { ProgresoReservaComponent } from './web/serviHome/cliente/progreso-reserva/progreso-reserva.component';
 import { HistorialReservasComponent } from './web/serviHome/cliente/historial-reservas/historial-reservas.component';
+import { EmpleadosAdminComponent } from './web/serviHome/empleado/empleados-admin/empleados-admin.component';
+import { registerLocaleData } from '@angular/common';
+import { BaseComponent } from './widget/base/base.component';
+
+registerLocaleData(localeEsCl, 'es-CL');
 
 @NgModule({
   declarations: [
@@ -52,6 +59,9 @@ import { HistorialReservasComponent } from './web/serviHome/cliente/historial-re
     ClientesempComponent,
     ProgresoReservaComponent,
     HistorialReservasComponent
+    ClientesempComponent,
+    EmpleadosAdminComponent,
+    BaseComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,7 +70,7 @@ import { HistorialReservasComponent } from './web/serviHome/cliente/historial-re
     FormsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-Cl' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

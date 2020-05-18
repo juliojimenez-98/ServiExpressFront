@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(localStorage.getItem('token_sesion'));
   }
 
   signInWeb(username: string, password: string, event: Event) {
@@ -45,9 +46,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("username", res["username"]);
         sessionStorage.setItem("name", res["name"]);
         sessionStorage.setItem("current", 'true');
-
         this.util.load(this.router);
-
       },
       error => {
         if (error.status == 401) {
