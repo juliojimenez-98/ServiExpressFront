@@ -58,7 +58,7 @@ registerLocaleData(localeEsCl, 'es-CL');
     EditarClienteComponent,
     ClientesempComponent,
     ProgresoReservaComponent,
-    HistorialReservasComponent
+    HistorialReservasComponent,
     ClientesempComponent,
     EmpleadosAdminComponent,
     BaseComponent,
