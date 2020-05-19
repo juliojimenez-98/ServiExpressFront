@@ -47,7 +47,7 @@ export class ActivarComponent implements OnInit {
 
   ngOnInit(): void {
     if (sessionStorage.getItem('Avtivo')==='true') {
-      this.router.navigate(['/inicio'])
+      this.router.navigate(['home/inicio'])
     }
   }
 
@@ -60,7 +60,7 @@ export class ActivarComponent implements OnInit {
     this.loginService.updateOrCreate(true, this.user).subscribe(
       res => {
         sessionStorage.setItem('Avtivo', 'true');
-        this.router.navigate(['/inicio']);
+        this.router.navigate(['home/inicio']);
       },
       error => {
         this.util.handleError(error);
