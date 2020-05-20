@@ -23,10 +23,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InicioempComponent } from './web/serviHome/empleado/inicioemp/inicioemp.component';
 import { InicioClienteComponent } from './web/serviHome/cliente/inicio-cliente/inicio-cliente.component';
 import { RegisteremployeComponent } from './web/serviHome/registeremploye/registeremploye.component';
-import { AutosClienteComponent } from './web/cliente/autos-cliente/autos-cliente.component';
+import { AutosClienteComponent } from './web/serviHome/cliente/autos-cliente/autos-cliente.component';
 import { ReservarComponent } from './web/serviHome/cliente/reservar/reservar.component';
 import { EditarClienteComponent } from './web/serviHome/cliente/editar-cliente/editar-cliente.component';
 import { ClientesempComponent } from './web/serviHome/empleado/clientesemp/clientesemp.component';
+import { ProgresoReservaComponent } from './web/serviHome/cliente/progreso-reserva/progreso-reserva.component';
+import { HistorialReservasComponent } from './web/serviHome/cliente/historial-reservas/historial-reservas.component';
 import { EmpleadosAdminComponent } from './web/serviHome/empleado/empleados-admin/empleados-admin.component';
 import { registerLocaleData } from '@angular/common';
 import { BaseComponent } from './widget/base/base.component';
@@ -54,6 +56,9 @@ registerLocaleData(localeEsCl, 'es-CL');
     AutosClienteComponent,
     ReservarComponent,
     EditarClienteComponent,
+    ClientesempComponent,
+    ProgresoReservaComponent,
+    HistorialReservasComponent,
     ClientesempComponent,
     EmpleadosAdminComponent,
     BaseComponent,

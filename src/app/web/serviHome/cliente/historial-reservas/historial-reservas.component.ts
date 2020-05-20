@@ -5,11 +5,11 @@ import { UserModel } from '../../../../models/UserModel';
 import { Util } from '../../../../util/util';
 
 @Component({
-  selector: 'app-autos-cliente',
-  templateUrl: './autos-cliente.component.html',
-  styleUrls: ['./autos-cliente.component.css']
+  selector: 'app-historial-reservas',
+  templateUrl: './historial-reservas.component.html',
+  styleUrls: ['./historial-reservas.component.css']
 })
-export class AutosClienteComponent implements OnInit {
+export class HistorialReservasComponent implements OnInit {
   public user: UserModel = new UserModel();
   private util: Util = new Util();
   public nombre: string = null;
