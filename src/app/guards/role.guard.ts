@@ -16,13 +16,12 @@ export class RoleGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
       let role = next.data['role'] as string;
-      console.log(role)
       if (this.loginService.hasRole(role)) {
         return true
       }
 
       Swal.fire('Acceso denegado', `hola ${sessionStorage.getItem('name')} No tienes acceso a esta ruta`, 'warning');
-      this.router.navigate(['/inicio'])
+      this.router.navigate(['/home/inicio'])
       return false;
   }
 
