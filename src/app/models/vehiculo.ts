@@ -1,7 +1,5 @@
-import { Cliente } from "./cliente";
-
 export class Vehiculo {
-  idvehiculo :Cliente;
+  idvehiculo :string;
 	idcliente :string;
 	patente: string;
 	marca : string;

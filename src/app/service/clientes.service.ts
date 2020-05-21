@@ -8,16 +8,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ClientesService {
+
   private urlRegVehiculo = URL_TO_LOGIN.url + URL_TO_LOGIN.regVehiculo;
   private header: any;
 
   constructor(private http: HttpClient) { }
 
   registrarVehiculo(vehiculo: Vehiculo) {
-    // sessionStorage.setItem("idcliente", vehiculo.idcliente);
 
-    // var idcliente = sessionStorage.getItem('idcliente');
-    // console.log(idcliente)
+
+
+
     const raw = JSON.stringify(
     { idcliente: vehiculo.idcliente, idvehiculo: vehiculo.idvehiculo, patente: vehiculo.patente,
       marca: vehiculo.marca, modelo: vehiculo.modelo, tipovehiculo: vehiculo.tipovehiculo,
