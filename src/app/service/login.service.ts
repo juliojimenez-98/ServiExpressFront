@@ -85,7 +85,7 @@ export class LoginService {
    */
   updateOrCreate(selection: boolean, userInfo: UserInfoModel) {
     const raw = JSON.stringify(
-      { id_usuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
+      { idusuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
         telefono: userInfo.telefono, fechaNacimiento: userInfo.fechaN });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
@@ -100,7 +100,7 @@ export class LoginService {
   }
   updateOrCreateEmp(selection: boolean, userInfo: UserInfoModel) {
     const raw = JSON.stringify(
-      { id_usuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
+      { idusuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
         telefono: userInfo.telefono, fechaNacimiento: userInfo.fechaN });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
