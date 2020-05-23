@@ -6,5 +6,6 @@ export var URL_TO_LOGIN={
     updCre:'/api/entidad/cliente',
     updCreEmp:'/api/entidad/empleado',
     reqPass:'/api/auth/requestpass',//luego debe ir el nombre de usuario
-    chgPasw:'/api/auth/changepassword/'
+    chgPasw:'/api/auth/changepassword/',
+    regVehiculo:'/api/vehiculo/vehiculo'
 }

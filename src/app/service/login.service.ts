@@ -18,9 +18,9 @@ export class LoginService {
   private reqPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.reqPass;
   private chnPassw = URL_TO_LOGIN.url + URL_TO_LOGIN.chgPasw;
   private body: any;
+  userToken: string;
   private header: any;
   constructor(private http: HttpClient) { }
-
 
 
   signUp(user: UserModel) {
@@ -45,6 +45,9 @@ export class LoginService {
 
   }
 
+
+
+
   /**
    *
    * @param auth username or email
@@ -56,7 +59,24 @@ export class LoginService {
     .set('Content-Type', 'application/json; charset=utf-8')
     console.log(this.header);
     console.log(this.body);
+    console.log(localStorage.getItem('token_sesion'))
     return this.http.post(`${this.urlSignIn}`, raw, { headers: this.header });
+  }
+
+
+  estaAutenticado():boolean{
+    if (localStorage.getItem('token_sesion')=== null) {
+      console.log('No Esta autenticado')
+      return false;
+    }
+    return true;
+  }
+
+  hasRole(role: string): boolean {
+    if (sessionStorage.getItem('rolename').includes(role)) {
+      return true;
+    }
+    return false;
   }
 
   /**
@@ -65,7 +85,7 @@ export class LoginService {
    */
   updateOrCreate(selection: boolean, userInfo: UserInfoModel) {
     const raw = JSON.stringify(
-      { id_usuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
+      { idusuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
         telefono: userInfo.telefono, fechaNacimiento: userInfo.fechaN });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
@@ -80,7 +100,7 @@ export class LoginService {
   }
   updateOrCreateEmp(selection: boolean, userInfo: UserInfoModel) {
     const raw = JSON.stringify(
-      { id_usuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
+      { idusuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
         telefono: userInfo.telefono, fechaNacimiento: userInfo.fechaN });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')

@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(localStorage.getItem('token_sesion'));
   }
 
   signInWeb(username: string, password: string, event: Event) {
@@ -39,13 +40,8 @@ export class LoginComponent implements OnInit {
         // modo temporal despues hacerlo de una forma mas dinamica
         sessionStorage.setItem("iduser", res["iduser"]);
         sessionStorage.setItem("idrole", res["idrole"]);
-        sessionStorage.setItem("Avtivo", res["Avtivo"]);
-        sessionStorage.setItem("rolename", res["rolename"]);
-        sessionStorage.setItem("tokenType", res["tokenType"]);
-        sessionStorage.setItem("username", res["username"]);
-        sessionStorage.setItem("name", res["name"]);
-        sessionStorage.setItem("current", 'true');
-        console.log(localStorage.getItem('token_sesion'))
+        this.util.obtenerPerfil(res);
+
         this.util.load(this.router);
       },
       error => {

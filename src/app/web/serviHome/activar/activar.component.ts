@@ -46,6 +46,9 @@ export class ActivarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('Avtivo')==='true') {
+      this.router.navigate(['home/inicio'])
+    }
   }
 
 
@@ -57,21 +60,21 @@ export class ActivarComponent implements OnInit {
     this.loginService.updateOrCreate(true, this.user).subscribe(
       res => {
         sessionStorage.setItem('Avtivo', 'true');
-        this.router.navigate(['/inicio']);
+        this.router.navigate(['home/inicio']);
       },
       error => {
         this.util.handleError(error);
       },
 
     );
-    }else if (sessionStorage.getItem('idrole')=='3') {
+    }else if (sessionStorage.getItem('idrole')=='3'|| sessionStorage.getItem('idrole')=='1') {
       const buildFormPerson = this.util.buildFormPerson(this.user, this.model);
     // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
     console.log(this.user.fechaN);
     this.loginService.updateOrCreateEmp(true, this.user).subscribe(
       res => {
         sessionStorage.setItem('Avtivo', 'true');
-        this.router.navigate(['/inicio']);
+        this.router.navigate(['home/inicio']);
       },
       error => {
         this.util.handleError(error);
