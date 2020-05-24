@@ -5,6 +5,10 @@ import { NavbarService } from 'src/app/service/navbar.service';
 import Swal from 'sweetalert2';
 import { UserModel } from 'src/app/models/UserModel';
 import { Util } from 'src/app/util/util';
+import { Observable } from 'rxjs';
+import { UserInfoModel } from 'src/app/models/UserInfoModel';
+import { ClientesService } from 'src/app/service/clientes.service';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -12,11 +16,15 @@ import { Util } from 'src/app/util/util';
   styleUrls: ['./editar-cliente.component.css']
 })
 export class EditarClienteComponent implements OnInit {
+  userModelInfo: UserInfoModel = new UserInfoModel();
+  private util: Util = new Util();
   cliente = false;
   admin = false;
   empleado = false;
+  model: NgbDateStruct;
 
   constructor(public nav: NavbarService,
+    private clienteService:ClientesService,
     private activatedRoute: ActivatedRoute,
     private loginService: LoginService,
     private router: Router) {
@@ -40,10 +48,47 @@ export class EditarClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.nav.hide();
+    this.cargarCliente();
   }
-  clienteEdit(){
+  cargarCliente():void{
+    this.userModelInfo.nombre = sessionStorage.getItem('name');
+    this.userModelInfo.apellido = sessionStorage.getItem('apellido');
+    this.userModelInfo.fechaN = sessionStorage.getItem('fechaNacimiento');
+    this.userModelInfo.telefono = sessionStorage.getItem('telefono');
+    this.userModelInfo.rut = sessionStorage.getItem('rut');
+  }
+
+  public registerPerson(): void {
     if (sessionStorage.getItem('idrole')=='2') {
-      return true;
+      const buildFormPerson = this.util.buildFormPerson(this.userModelInfo, this.model);
+    // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
+    console.log(this.userModelInfo.fechaN);
+    this.loginService.updateOrCreate(false, this.userModelInfo).subscribe(
+      res => {
+        console.log('Actualizando')
+        sessionStorage.setItem('Avtivo', 'true');
+        this.router.navigate(['home/inicio']);
+      },
+      error => {
+        this.util.handleError(error);
+      },
+
+    );
+    }else if (sessionStorage.getItem('idrole')=='3'|| sessionStorage.getItem('idrole')=='1') {
+      const buildFormPerson = this.util.buildFormPerson(this.userModelInfo, this.model);
+    // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
+    console.log(this.userModelInfo.fechaN);
+    this.loginService.updateOrCreateEmp(false, this.userModelInfo).subscribe(
+      res => {
+        sessionStorage.setItem('Avtivo', 'true');
+        this.router.navigate(['home/inicio']);
+      },
+      error => {
+        this.util.handleError(error);
+      },
+
+    );
+
     }
   }
 }
