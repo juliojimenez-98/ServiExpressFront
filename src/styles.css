@@ -110,6 +110,11 @@ header.masthead .site-heading {
     color: #fff
 }
 
+header.masthead .head-heading {
+    padding: 50px 0 150px;
+    color: #fff
+}
+
 @media only screen and (min-width:768px) {
     header.masthead .page-heading,
     header.masthead .post-heading,
@@ -288,13 +293,8 @@ form .form-group:first-child .floating-label-form-group {
     border-top: 1px solid #dee2e6
 }
 
-hr {
-    margin-top: 4.5rem !important;
-    margin-bottom: 3.5rem !important;
-}
-
 footer {
-  position: fixed;
+    position: fixed;
     bottom: 0px;
     width: 100%;
 }
@@ -357,7 +357,7 @@ footer {
 }
 
 .img-fluid {
-    width: auto;
+    width: 100%;
     height: auto;
 }
 
@@ -486,3 +486,4 @@ h6 {
         transform: translate3d(0, 100%, 0)
     }
 }
+.bgnice{background-image: linear-gradient( 171.8deg,  rgba(5,111,146,1) 13.5%, rgba(6,57,84,1) 78.6% );}

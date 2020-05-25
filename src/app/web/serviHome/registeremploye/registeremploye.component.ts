@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserModel } from 'src/app/models/UserModel';
 import { Util } from 'src/app/util/util';
 import { LoginService } from 'src/app/service/login.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-registeremploye',
@@ -14,11 +16,10 @@ import { LoginService } from 'src/app/service/login.service';
 export class RegisteremployeComponent implements OnInit {
   public user: UserModel = new UserModel();
   private util: Util = new Util();
-
+  public nombre: string = null;
   cliente = false;
   admin = false;
   empleado = false;
-
 
   constructor(public nav: NavbarService,
               private activatedRoute: ActivatedRoute,
@@ -35,8 +36,14 @@ export class RegisteremployeComponent implements OnInit {
     } else if (sessionStorage.getItem('idrole') === '3') {
       this.empleado = true;
     }
+
+    if ((sessionStorage.getItem('idrole') !== '1')) {
+      Swal.fire('Restringido', `${sessionStorage.getItem('name')} no tienes acceso a esta página`, 'warning')
+      this.router.navigate(['/login']);
+    }
     this.nav.hide();
     this.nav.doSomethingElseUseful();
+
   }
 
 
@@ -51,13 +58,13 @@ export class RegisteremployeComponent implements OnInit {
        swal.fire({
          allowOutsideClick: false,
          icon: 'info',
-         text:'Creando tu cuenta...'
+         text: 'Creando usuario empleado'
        })
        swal.showLoading();
        this.loginService.signupwork(this.user).subscribe(
-         res  =>{swal.close();
-                 swal.fire(  'Creado correctamente',  'Te enviamos un correo con tus datos' ,  'success');
-                 this.router.navigate(['/login', res]);
+         res  => {swal.close();
+                  swal.fire(  'Creado correctamente',  `Se ha enviado un mensaje al correo ${this.user.email}` ,  'success');
+                  this.nombre = '';
 
          },
          error => {

@@ -3,6 +3,8 @@ import { UserModel } from '../models/UserModel';
 import Swal from 'sweetalert2';
 import { UserInfoModel } from '../models/UserInfoModel';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+import { Empleado } from '../models/empleado';
 
 export class Util {
 
@@ -84,11 +86,6 @@ export class Util {
     user.fechaN = this.formatDate(date);
     return true;
 
-
-
-
-
-
   }
 
 
@@ -103,5 +100,56 @@ export class Util {
 
     return [year, month, day].join('-');
   }
+
+
+
+  // Comprobar usuario iniciado
+  current(router: Router) {
+    if (sessionStorage.getItem('current') === 'true' && sessionStorage.getItem('Avtivo') === 'false') {
+      router.navigate(['/activar']);
+    }else if (sessionStorage.getItem('current') === 'true'){
+      router.navigate(['/home/inicio']);
+    }
+  }
+
+  // load
+  load(router: Router) {
+    if (sessionStorage.getItem('Avtivo') === 'false') {
+      router.navigate(['/activar']);
+    } else {
+      router.navigate(['/home/inicio']);
+    }
+  }
+
+
+
+  obtenerPerfil(res :any){
+    if (sessionStorage.getItem('idrole')=='1' || sessionStorage.getItem('idrole')=='3') {
+      sessionStorage.setItem("idempleado",res["idempleado"]);
+      sessionStorage.setItem("Avtivo", res["Avtivo"]);
+      sessionStorage.setItem("rolename", res["rolename"]);
+      sessionStorage.setItem("tokenType", res["tokenType"]);
+      sessionStorage.setItem("username", res["username"]);
+      sessionStorage.setItem("name", res["name"]);
+      sessionStorage.setItem("current", 'true');
+
+
+    }else if (sessionStorage.getItem('idrole')=='2'||sessionStorage.getItem('idrole')=='4') {
+      sessionStorage.setItem("idcliente", res["idcliente"]);
+      sessionStorage.setItem("Avtivo", res["Avtivo"]);
+      sessionStorage.setItem("rolename", res["rolename"]);
+      sessionStorage.setItem("tokenType", res["tokenType"]);
+      sessionStorage.setItem("username", res["username"]);
+      sessionStorage.setItem("name", res["name"]);
+      sessionStorage.setItem("apellido", res["apellido"]);
+      sessionStorage.setItem("rut", res["rut"]);
+      sessionStorage.setItem("telefono", res["telefono"]);
+      sessionStorage.setItem("fechaNacimiento", res["fechaNacimiento"]);
+      sessionStorage.setItem("current", 'true');
+    }
+  }
+
+
+
 }
 

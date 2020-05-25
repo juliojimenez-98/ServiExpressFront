@@ -15,4 +15,8 @@ export class HomeComponent implements OnInit {
     this.nav.doSomethingElseUseful();
   }
 
+  getHomeImg() {
+    return "url('./assets/img/background-img.jpg')";
+  }
+
 }
