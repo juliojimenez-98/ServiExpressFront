@@ -30,8 +30,6 @@ export class TopbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userModelInfo.idCliente = JSON.parse(sessionStorage.getItem('idcliente'))
-    console.log(this.userModelInfo.idCliente)
   }
 
 

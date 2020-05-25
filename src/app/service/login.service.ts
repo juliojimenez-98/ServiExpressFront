@@ -85,7 +85,7 @@ export class LoginService {
    */
   updateOrCreate(selection: boolean, userInfo: UserInfoModel) {
     const raw = JSON.stringify(
-      {  idusuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
+      {  idcliente: userInfo.idCliente,idusuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
         telefono: userInfo.telefono, fechaNacimiento: userInfo.fechaN });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
@@ -95,14 +95,14 @@ export class LoginService {
     } else {
         // userInfo.idCliente = JSON.parse(sessionStorage.getItem('idcliente'))
         // userInfo.idUsuario = JSON.parse(sessionStorage.getItem('iduser'))
-         this.body.append('idcliente', userInfo.idCliente);
+        //  this.body.append('idcliente', userInfo.idCliente);
       return this.http.post(`${this.udpCreate}`, raw, { headers: this.header });
     }
 
   }
   updateOrCreateEmp(selection: boolean, userInfo: UserInfoModel) {
     const raw = JSON.stringify(
-      { idusuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
+      { idempleado: userInfo.idEmpleado,idusuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
         telefono: userInfo.telefono, fechaNacimiento: userInfo.fechaN });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
@@ -110,7 +110,7 @@ export class LoginService {
     if (selection === true) {
       return this.http.put(`${this.updCreateEmp}`, raw, { headers: this.header });
     } else {
-      this.body.append('idempleado', userInfo.idEmpleado);
+      // this.body.append('idempleado', userInfo.idEmpleado);
       return this.http.post(`${this.updCreateEmp}`, raw, { headers: this.header });
     }
 
