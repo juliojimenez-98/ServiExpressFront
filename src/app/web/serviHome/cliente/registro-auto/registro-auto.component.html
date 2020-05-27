@@ -1,83 +1,82 @@
-
- <div class="text-center">
-  <div class="col-lg-12">
-      <div class="container">
-          <div class="col-12">
-              <h3>Registra tu auto</h3>
-              <hr class="white">
-          </div>
-          <form (ngSubmit)="regVehiculo()">
-              <div class="container">
-                <div class="form-row ">
-                    <div class="input-group col-md-4">
-                      <div class="container">
-                        <label>Marca de tu auto</label>
-                      </div>
-                      <div class="input-group-prepend ">
-                        <span class="input-group-text "><i class="fas fa-car "></i></span>
-                      </div>
-                      <input class="form-control" type="text" placeholder="Ej: Chevrolet" name="marca" [(ngModel)]="vehiculo.marca">
+<div class="text-center">
+    <div class="col-lg-12">
+        <div class="container">
+            <div class="col-12">
+                <h3>Registra tu auto</h3>
+                <hr class="white">
+            </div>
+            <form (ngSubmit)="regVehiculo()">
+                <div class="container">
+                    <div class="form-row ">
+                        <div class="input-group col-md-4">
+                            <div class="container">
+                                <label>Marca de tu auto</label>
+                            </div>
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                            </div>
+                            <input class="form-control" type="text" placeholder="Ej: Chevrolet" name="marca" [(ngModel)]="vehiculo.marca">
+                        </div>
+                        <div class="input-group col-md-4">
+                            <div class="container">
+                                <label>Modelo del vehículo</label>
+                            </div>
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                            </div>
+                            <input class="form-control" type="text" placeholder="Modelo" name="modelo" [(ngModel)]="vehiculo.modelo">
+                        </div>
+                        <div class="input-group col-md-4">
+                            <div class="container">
+                                <label>Tipo de carrocería</label>
+                            </div>
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                            </div>
+                            <input class="form-control" type="text" placeholder="Tipo auto" name="TipoAuto" [(ngModel)]="vehiculo.tipovehiculo">
+                        </div>
                     </div>
-                    <div class="input-group col-md-4">
-                      <div class="container">
-                        <label>Modelo del vehículo</label>
-                      </div>
-                      <div class="input-group-prepend ">
-                        <span class="input-group-text "><i class="fas fa-car "></i></span>
-                      </div>
-                        <input class="form-control" type="text" placeholder="Modelo" name="modelo" [(ngModel)]="vehiculo.modelo">
+                    <br>
+                    <br>
+                    <div class="form-row">
+                        <div class="input-group col-md-4 col-xs-6">
+                            <div class="container">
+                                <label>Año de tu auto</label>
+                            </div>
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                            </div>
+                            <input class="form-control " type="number" placeholder="Año" name="Anio" [(ngModel)]="vehiculo.anio">
+                        </div>
+                        <div class="input-group col-md-4">
+                            <div class="container">
+                                <label>Patente del vehículo</label>
+                            </div>
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                            </div>
+                            <input class="form-control " type="text" placeholder="Patente" name="patente" [(ngModel)]="vehiculo.patente">
+                        </div>
+                        <div class="input-group col-md-4">
+                            <div class="container">
+                                <label>Numero de chasís</label>
+                            </div>
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                            </div>
+                            <input class="form-control " type="text" placeholder="Numero Chasis" name="nrochasis" [(ngModel)]="vehiculo.nrochasis">
+                        </div>
                     </div>
-                    <div class="input-group col-md-4">
-                      <div class="container">
-                        <label>Tipo de carrocería</label>
-                      </div>
-                      <div class="input-group-prepend ">
-                        <span class="input-group-text "><i class="fas fa-car "></i></span>
-                      </div>
-                      <input class="form-control" type="text" placeholder="Tipo auto" name="TipoAuto" [(ngModel)]="vehiculo.tipovehiculo">
-                    </div>
-                </div>
-                <br>
-                <br>
-                <div class="form-row">
-                  <div class="input-group col-md-4 col-xs-6">
-                    <div class="container">
-                      <label>Año de tu auto</label>
-                    </div>
-                    <div class="input-group-prepend ">
-                      <span class="input-group-text "><i class="fas fa-car "></i></span>
-                    </div>
-                        <input class="form-control " type="number" placeholder="Año" name="Anio" [(ngModel)]="vehiculo.anio">
-                    </div>
-                    <div class="input-group col-md-4">
-                      <div class="container">
-                        <label>Patente del vehículo</label>
-                      </div>
-                      <div class="input-group-prepend ">
-                        <span class="input-group-text "><i class="fas fa-car "></i></span>
-                      </div>
-                        <input class="form-control " type="text" placeholder="Patente" name="patente" [(ngModel)]="vehiculo.patente">
-                    </div>
-                    <div class="input-group col-md-4">
-                      <div class="container">
-                        <label>Numero de chasís</label>
-                      </div>
-                      <div class="input-group-prepend ">
-                        <span class="input-group-text "><i class="fas fa-car "></i></span>
-                      </div>
-                        <input class="form-control " type="text" placeholder="Numero Chasis" name="nrochasis" [(ngModel)]="vehiculo.nrochasis">
-                    </div>
-                  </div>
-                  <br>
+                    <br>
                 </div>
                 <br>
                 <div class="col-sm-6 mx-auto">
-                  <button type="submit" style="margin-top: 10px;" class="btn btn-success btn-block">
+                    <button type="submit" style="margin-top: 10px;" class="btn btn-success btn-block">
                     Registrar auto
                   </button>
                 </div>
-          </form>
-          <!-- Button trigger modal -->
-      </div>
-  </div>
+            </form>
+            <!-- Button trigger modal -->
+        </div>
+    </div>
 </div>

@@ -19,16 +19,12 @@ export class ClientesService {
 
   registrarVehiculo(vehiculo: Vehiculo) {
 
-
-
-
     const raw = JSON.stringify(
     { idcliente: vehiculo.idcliente, idvehiculo: vehiculo.idvehiculo, patente: vehiculo.patente,
       marca: vehiculo.marca, modelo: vehiculo.modelo, tipovehiculo: vehiculo.tipovehiculo,
       anio: vehiculo.anio, nrochasis: vehiculo.nrochasis});
     this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8')
     return this.http.put(`${this.urlRegVehiculo}`, raw, { headers: this.header });
-
 
   }
 }

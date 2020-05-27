@@ -1,51 +1,41 @@
-<div class="col-sm-9 text-center mx-auto">
-    <div class="">
-            <h3 class="my-4 text-black">Actualiza tus datos</h3>
-        <form class="col-12" (ngSubmit)="updatePerson()">
-          <div>
-            <label class="text-black" for="">Nombre</label>
-          </div>
-            <div class="form-group col-md-6 mx-auto">
-                <input type="text" class="form-control" placeholder="Nombres"  [(ngModel)]="userModelInfo.nombre" name="name" required />
-            </div>
-            <div>
-              <label class="text-black" for="">Apellido</label>
-            </div>
-            <div class="form-group col-md-6 mx-auto">
-              <input type="text" class="form-control" placeholder="Apellidos" [(ngModel)]="userModelInfo.apellido" name="lastname" required />
-            </div>
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-
-
-            <div>
-              <label class="text-black" for="">Telefono</label>
-            </div>
-                <div class="form-group col-md-6 mx-auto">
-                    <input type="text " class="form-control " placeholder="Telefono " [(ngModel)]="userModelInfo.telefono" name="telefonp" />
-                </div>
-
-              <div>
-                <label class="text-black" for="">Rut</label>
-              </div>
-              <div class="form-group col-md-6 mx-auto" id="email-group">
-                  <input type="text" class="form-control" placeholder="Rut" [(ngModel)]="userModelInfo.rut" name="rut" name="Rut" required />
-              </div>
-
-
-              <div>
-                <label class="text-black" for="">Fecha de Nacimiento</label>
-              </div>
-                <div class="input-group col-sm-6 mb-3 mb-sm-0 mx-auto">
-                    <input class="form-control" placeholder="yyyy-mm-dd"
-                           name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" required>
-                    <div class="input-group-append ">
-                      <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
-
-                    </div>
-                  </div>
-
-            <button style="width: 20%;" type="submit" class="btn btn-success my-4 btn-block mx-auto">  Actualizar </button>
-
-        </form>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Reservar servicio</h1>
     </div>
+
+    <!-- Content Row -->
+    <div class="col-sm-5 text-center mx-auto">
+        <div class="bg-dark">
+            <h3 class="my-4 text-white">Actualiza tus datos</h3>
+            <form class="col-12">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" placeholder="Nombres" name="name" required />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" placeholder="Apellidos" name="lastname" required />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <input type="text" class="form-control" placeholder="Rut" />
+                    </div>
+                    <div class="form-group col-md-4 ">
+                        <input type="text " class="form-control " placeholder="Telefono " />
+                    </div>
+                    <div class="form-group col-md-4 " id="email-group">
+                        <input type="email" class="form-control" placeholder="Correo" name="lastname" required />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success my-2">  Actualizar </button>
+                <button type="submit" class="btn btn-danger my-2" style="margin-left: 10px;">  Cancelar </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Content Row -->
+
 </div>

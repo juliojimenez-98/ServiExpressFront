@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         this.util.load(this.router);
       },
       error => {
-        if (error.status == 401) {
+        if (error.status === 401) {
           swal.fire('Error login', 'Usuario o contraseña Incorrecta', 'error')
         }
         this.handleError(error);
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  handleError(error) {
+  handleError( error ) {
 
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
