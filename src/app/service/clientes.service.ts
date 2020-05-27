@@ -3,6 +3,8 @@ import { Vehiculo } from '../models/vehiculo';
 import { Cliente } from '../models/cliente';
 import { URL_TO_LOGIN } from '../util/global';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserInfoModel } from '../models/UserInfoModel';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ClientesService {
 
   private urlRegVehiculo = URL_TO_LOGIN.url + URL_TO_LOGIN.regVehiculo;
+  private urlClienteUpdate= URL_TO_LOGIN.updCre + URL_TO_LOGIN.updCre;
   private header: any;
 
   constructor(private http: HttpClient) { }

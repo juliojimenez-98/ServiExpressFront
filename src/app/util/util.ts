@@ -131,6 +131,10 @@ export class Util {
       sessionStorage.setItem("tokenType", res["tokenType"]);
       sessionStorage.setItem("username", res["username"]);
       sessionStorage.setItem("name", res["name"]);
+      sessionStorage.setItem("apellido", res["apellido"]);
+      sessionStorage.setItem("rut", res["rut"]);
+      sessionStorage.setItem("telefono", res["telefono"]);
+      sessionStorage.setItem("fechaNacimiento", res["fechaNacimiento"]);
       sessionStorage.setItem("current", 'true');
 
 
@@ -142,7 +146,9 @@ export class Util {
       sessionStorage.setItem("username", res["username"]);
       sessionStorage.setItem("name", res["name"]);
       sessionStorage.setItem("apellido", res["apellido"]);
-      sessionStorage.setItem("fecha de nacimiento", res["fechaNacimiento"]);
+      sessionStorage.setItem("rut", res["rut"]);
+      sessionStorage.setItem("telefono", res["telefono"]);
+      sessionStorage.setItem("fechaNacimiento", res["fechaNacimiento"]);
       sessionStorage.setItem("current", 'true');
     }
   }
