@@ -29,6 +29,7 @@ export class EditarClienteComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private loginService: LoginService,
     private router: Router) {
+
       if (sessionStorage.getItem('idrole') === '2') {
         this.cliente = true;
       } else if (sessionStorage.getItem('idrole') === '1') {
@@ -69,7 +70,14 @@ export class EditarClienteComponent implements OnInit {
     this.loginService.updateOrCreate(false, this.userModelInfo).subscribe(
       res => {
         Swal.fire('Actualizar datos', `Tus datos fueron actualizados ${this.userModelInfo.nombre} ${this.userModelInfo.apellido}`, 'success')
-        sessionStorage.setItem('Avtivo', 'true');
+        Swal.fire('Actualizar datos', `Tus datos fueron actualizados ${this.userModelInfo.nombre} ${this.userModelInfo.apellido}`, 'success')
+        localStorage.setItem("token_sesion", res["accessToken"]);
+        // modo temporal despues hacerlo de una forma mas dinamica
+        sessionStorage.setItem("iduser", res["iduser"]);
+        sessionStorage.setItem("idrole", res["idrole"]);
+        sessionStorage.setItem("name",res["name"])
+        this.util.obtenerPerfil(res);
+        this.util.obtenerPerfil(res)
         this.router.navigate(['home/inicio']);
       },
       error => {
@@ -85,6 +93,9 @@ export class EditarClienteComponent implements OnInit {
     console.log(this.userModelInfo.fechaN);
     this.loginService.updateOrCreateEmp(false, this.userModelInfo).subscribe(
       res => {
+        Swal.fire('Actualizar datos', `Tus datos fueron actualizados ${this.userModelInfo.nombre} ${this.userModelInfo.apellido}`, 'success')
+
+        this.util.getUserDatos(res);
         sessionStorage.setItem('Avtivo', 'true');
         this.router.navigate(['home/inicio']);
       },

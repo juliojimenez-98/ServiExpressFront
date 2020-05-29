@@ -33,6 +33,7 @@ import { EmpleadosAdminComponent } from './web/serviHome/empleado/empleados-admi
 import { registerLocaleData } from '@angular/common';
 import { BaseComponent } from './widget/base/base.component';
 import { RegistroAutoComponent } from './web/serviHome/cliente/registro-auto/registro-auto.component';
+import { NegocioGestionComponent } from './web/serviHome/admin/negocio-gestion/negocio-gestion.component';
 
 registerLocaleData(localeEsCl, 'es-CL');
 
@@ -64,6 +65,8 @@ registerLocaleData(localeEsCl, 'es-CL');
     EmpleadosAdminComponent,
     BaseComponent,
     RegistroAutoComponent,
+    NegocioGestionComponent,
+
   ],
   imports: [
     BrowserModule,
