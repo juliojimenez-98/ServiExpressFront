@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav sidebar bg-dark sidebar-dark accordion" [ngClass]="{'bgnice sidebar-light': cliente}" id="accordionSidebar">
 
     <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink='inicio'>
         <img class="img-fluid" src="../../../assets/img/logo-blanco.png" alt="">
@@ -75,21 +75,29 @@
             <span> Reservar</span></a>
     </li>
     <li *ngIf="cliente" class="nav-item">
-        <a class="nav-link" routerLink='inicio'>
+        <a class="nav-link" routerLink='progresoreserva'>
             <i class="fas fa-hourglass-half"></i>
             <span> Progreso de reserva</span></a>
     </li>
     <li *ngIf="cliente" class="nav-item">
-        <a class="nav-link" href="historialreserva">
+        <a class="nav-link" routerLink='historialreserva'>
             <i class="fas fa-history"></i>
             <span> Historial de reservas</span></a>
     </li>
-    <li *ngIf="cliente" class="nav-item">
-      <a class="nav-link" routerLink='autoscliente'>
-            <i class="fas fa-car-side"></i>
-            <span> Autos registrados</span></a>
-    </li>
 
+    <li *ngIf="cliente" class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-car-side"></i>
+          <span> Autos</span>
+      </a>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header"> Autos :</h6>
+              <a class="collapse-item" routerLink='autosclientes'><i class="fas fa-car-side"></i> Tus Autos</a>
+              <a class="collapse-item" routerLink='registroautos'><i class="fas fa-car-side"></i> Registra tu auto</a>
+          </div>
+      </div>
+  </li>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 

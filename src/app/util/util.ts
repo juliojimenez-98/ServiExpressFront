@@ -123,7 +123,35 @@ export class Util {
 
 
 
+  obtenerPerfil(res :any){
+    if (sessionStorage.getItem('idrole')=='1' || sessionStorage.getItem('idrole')=='3') {
+      sessionStorage.setItem("idempleado",res["idempleado"]);
+      sessionStorage.setItem("Avtivo", res["Avtivo"]);
+      sessionStorage.setItem("rolename", res["rolename"]);
+      sessionStorage.setItem("tokenType", res["tokenType"]);
+      sessionStorage.setItem("username", res["username"]);
+      sessionStorage.setItem("name", res["name"]);
+      sessionStorage.setItem("apellido", res["apellido"]);
+      sessionStorage.setItem("rut", res["rut"]);
+      sessionStorage.setItem("telefono", res["telefono"]);
+      sessionStorage.setItem("fechaNacimiento", res["fechaNacimiento"]);
+      sessionStorage.setItem("current", 'true');
 
+
+    }else if (sessionStorage.getItem('idrole')=='2'||sessionStorage.getItem('idrole')=='4') {
+      sessionStorage.setItem("idcliente", res["idcliente"]);
+      sessionStorage.setItem("Avtivo", res["Avtivo"]);
+      sessionStorage.setItem("rolename", res["rolename"]);
+      sessionStorage.setItem("tokenType", res["tokenType"]);
+      sessionStorage.setItem("username", res["username"]);
+      sessionStorage.setItem("name", res["name"]);
+      sessionStorage.setItem("apellido", res["apellido"]);
+      sessionStorage.setItem("rut", res["rut"]);
+      sessionStorage.setItem("telefono", res["telefono"]);
+      sessionStorage.setItem("fechaNacimiento", res["fechaNacimiento"]);
+      sessionStorage.setItem("current", 'true');
+    }
+  }
 
 
 

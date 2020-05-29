@@ -1,5 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { UserInfoModel } from 'src/app/models/UserInfoModel';
 
 @Component({
   selector: 'app-topbar',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./topbar.component.css']
 })
 export class TopbarComponent implements OnInit {
+  public userModelInfo:UserInfoModel = new UserInfoModel();
   cliente = false;
   admin = false;
   empleado = false;
@@ -29,6 +31,7 @@ export class TopbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 
   logout() {

@@ -21,6 +21,8 @@ import { BaseComponent } from './widget/base/base.component';
 import { InicioClienteComponent } from './web/serviHome/cliente/inicio-cliente/inicio-cliente.component';
 import { ProgresoReservaComponent } from './web/serviHome/cliente/progreso-reserva/progreso-reserva.component';
 import { HistorialReservasComponent } from './web/serviHome/cliente/historial-reservas/historial-reservas.component';
+import { AutosClienteComponent } from './web/serviHome/cliente/autos-cliente/autos-cliente.component';
+import { RegistroAutoComponent } from './web/serviHome/cliente/registro-auto/registro-auto.component';
 
 const APP_ROUTES: Routes = [
 
@@ -42,7 +44,11 @@ const APP_ROUTES: Routes = [
   { path: 'verempleados', component: EmpleadosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'iniciocliente', component: InicioClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'reservar', component: ReservarComponent , canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'}},
-  { path: 'editardatoscliente', component: EditarClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+  { path: 'editardatoscliente', component: EditarClienteComponent, canActivate: [ AuthGuard ] },
+  { path: 'progresoreserva', component: ProgresoReservaComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+  { path: 'historialreserva', component: HistorialReservasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+  { path: 'autosclientes', component: AutosClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+  { path: 'registroautos', component: RegistroAutoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   ]},
 
   { path: 'sidebar', component: SidebarComponent, canActivate: [ AuthGuard ] },
@@ -51,12 +57,10 @@ const APP_ROUTES: Routes = [
   { path: 'topbar', component: TopbarComponent },
 
 
-  { path: 'registeremploye', component: RegisteremployeComponent },
-  { path: 'reservar', component: ReservarComponent },
-  { path: 'editardatoscliente', component: EditarClienteComponent },
-  { path: 'verclientes', component: ClientesempComponent },
-  { path: 'progresoreserva', component: ProgresoReservaComponent},
-  { path: 'historialreserva', component: HistorialReservasComponent},
+
+
+
+
 ];
 
 @NgModule({
