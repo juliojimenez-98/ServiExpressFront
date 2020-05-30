@@ -34,6 +34,9 @@ import { registerLocaleData } from '@angular/common';
 import { BaseComponent } from './widget/base/base.component';
 import { RegistroAutoComponent } from './web/serviHome/cliente/registro-auto/registro-auto.component';
 import { NegocioGestionComponent } from './web/serviHome/admin/negocio-gestion/negocio-gestion.component';
+import { CategoriasComponent } from './web/serviHome/admin/negocio-gestion/categorias/categorias.component';
+import { ProductosComponent } from './web/serviHome/admin/negocio-gestion/productos/productos.component';
+import { ServiciosNComponent } from './web/serviHome/admin/negocio-gestion/servicios-n/servicios-n.component';
 
 registerLocaleData(localeEsCl, 'es-CL');
 
@@ -66,6 +69,9 @@ registerLocaleData(localeEsCl, 'es-CL');
     BaseComponent,
     RegistroAutoComponent,
     NegocioGestionComponent,
+    CategoriasComponent,
+    ProductosComponent,
+    ServiciosNComponent,
 
   ],
   imports: [
