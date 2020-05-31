@@ -60,6 +60,7 @@ export class ActivarComponent implements OnInit {
     this.loginService.updateOrCreate(true, this.user).subscribe(
       res => {
         sessionStorage.setItem('Avtivo', 'true');
+        this.util.getUserDatos(res)
         this.router.navigate(['home/inicio']);
       },
       error => {
