@@ -1,124 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
+  <div class="container" style="margin-top: 5%;">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Dashboard</title>
+    <form class="col-12" (ngSubmit)="signUpWork()" name="formRegister">
 
 
-    <!-- Custom styles for this template-->
-
-
-    <link href="/assets/css/sb-admin-2.css" rel="stylesheet">
-
-</head>
-
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        <app-sidebar> </app-sidebar>
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <app-topbar> </app-topbar>
-
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Registro Empleado</h1>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="container" style="margin-top: 5%;">
-
-                      <form class="col-12" (ngSubmit)="signUpWork()" name="formRegister">
-
-
-                        <div class="input-group mb-3 col-md-8 mx-auto">
-                          <div class="input-group-prepend ">
-                            <span class="input-group-text "><i class="fas fa-user"></i></span>
-                          </div>
-                          <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="user.name" name="nombre" required />
-                        </div>
-                        <div class="input-group mb-3 col-md-8 mx-auto">
-                          <div class="input-group-prepend ">
-                            <span class="input-group-text "><i class="fas fa-at "></i></span>
-                          </div>
-                          <input type="email" class="form-control" placeholder="Correo" [(ngModel)]="user.email" name="email" required />
-                        </div>
-
-                        <div class="input-group mb-3 col-md-8 mx-auto">
-                          <div class="input-group-prepend ">
-                            <span class="input-group-text "><i class="fas fa-lock "></i></span>
-                          </div>
-                          <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="user.password" id="password1" name="password1" required />
-                        </div>
-
-                        <div class="input-group mb-3 col-md-8 mx-auto ">
-                          <div class="input-group-prepend ">
-                            <span class="input-group-text "><i class="fas fa-lock "></i></span>
-                          </div>
-                          <input type="password" class="form-control" placeholder="Confirma tu contraseña" [(ngModel)]="user.password2" id="password2" name="password2" required />
-                        </div>
-                        <div class="form-check">
-                          <div class="text-center">
-                            <input type="checkbox" class="form-check-input primary" name="empresaCheck" id="chkEmpresa">
-                            <label class="text-black-50" for="chkEmpresa">¿Registrar nuevo Administrador?</label>
-                          </div>
-                        </div>
-                        <div class="text-center">
-                          <button type="submit" class="col-sm-6 btn btn-primary btn-block my-2 mx-auto"><i class="fas fa-sign-in-alt"></i>  Registrar </button>
-                        </div>
-                    </form>
-
-                    </div>
-
-                    <!-- Content Row -->
-
-                </div>
-
-
-            </div>
-            <!-- /.container-fluid -->
-
+      <div class="input-group mb-3 col-md-8 mx-auto">
+        <div class="input-group-prepend ">
+          <span class="input-group-text "><i class="fas fa-user"></i></span>
         </div>
-        <!-- End of Main Content -->
+        <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="user.name" name="nombre" required />
+      </div>
+      <div class="input-group mb-3 col-md-8 mx-auto">
+        <div class="input-group-prepend ">
+          <span class="input-group-text "><i class="fas fa-at "></i></span>
+        </div>
+        <input type="email" class="form-control" placeholder="Correo" [(ngModel)]="user.email" name="email" required />
+      </div>
 
-        <!-- Footer -->
+      <div class="input-group mb-3 col-md-8 mx-auto">
+        <div class="input-group-prepend ">
+          <span class="input-group-text "><i class="fas fa-lock "></i></span>
+        </div>
+        <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="user.password" id="password1" name="password1" required />
+      </div>
 
-        <!-- End of Footer -->
+      <div class="input-group mb-3 col-md-8 mx-auto ">
+        <div class="input-group-prepend ">
+          <span class="input-group-text "><i class="fas fa-lock "></i></span>
+        </div>
+        <input type="password" class="form-control" placeholder="Confirma tu contraseña" [(ngModel)]="user.password2" id="password2" name="password2" required />
+      </div>
+      <div class="form-check">
+        <div class="text-center">
+          <input type="checkbox" class="form-check-input primary" name="empresaCheck" id="chkEmpresa">
+          <label class="text-black-50" for="chkEmpresa">¿Registrar nuevo Administrador?</label>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="col-sm-6 btn btn-primary btn-block my-2 mx-auto"><i class="fas fa-sign-in-alt"></i>  Registrar </button>
+      </div>
+  </form>
 
-    </div>
-    <!-- End of Content Wrapper -->
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-
-
-
-</body>
-
-</html>
+  </div>

@@ -1,119 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Dashboard</title>
-
-
-    <!-- Custom styles for this template-->
-
-
-    <link href="/assets/css/sb-admin-2.css" rel="stylesheet">
-
-</head>
-
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        <app-sidebar> </app-sidebar>
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <app-topbar> </app-topbar>
-
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Empleados registrados</h1>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row col-md-12 main-section">
-                      <div class="col-md-12">
-                          <div class="main-card mb-3 bg-light card">
-                              <div class="card-header text-black">Lista de Empleados
-                              </div>
-                              <div class="card-header text-white text-xl-center text-capitalize">
-                                  <div class="row">
-                                      <div class="col-sm-4">
-                                          <input type="text" class="form-control bg-dark text-white" placeholder="Buscar...">
-                                      </div>
-                                      <button type="submit" class="btn btn-outline-primary bg-dark "><i class="fas fa-search"></i></button>
-                                  </div>
-                              </div>
-                              <div class="table-responsive">
-                                <table class="table table-table-bordered table-striped">
-                                    <thead>
-                                      <tr>
-                                        <th>ID</th>
-                                        <th>Rut</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Telefono</th>
-                                        <th>Fecha Nacimiento</th>
-                                      </tr>
-                                    </thead>
-                                    <tr *ngFor="let empleado of empleados" >
-                                      <td>{{empleado.idempleado}}</td>
-                                      <td>{{empleado.rut}}</td>
-                                      <td>{{empleado.nombre}}</td>
-                                      <td>{{empleado.apellido}}</td>
-                                      <td>{{empleado.telefono}}</td>
-                                      <td>{{empleado.fechaNacimiento}}</td>
-                                    </tr>
-                                  </table>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-
-                    <!-- Content Row -->
-
-                </div>
-
-
+  <div class="row col-md-12 main-section">
+    <div class="col-md-12">
+        <div class="main-card mb-3 bg-light card">
+            <div class="card-header text-black">Lista de Empleados
             </div>
-            <!-- /.container-fluid -->
-
+            <div class="card-header text-white text-xl-center text-capitalize">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control bg-dark text-white" placeholder="Buscar...">
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary bg-dark "><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Rut</th>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>Telefono</th>
+                      <th>Fecha Nacimiento</th>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let empleado of empleados" >
+                    <td>{{empleado.idempleado}}</td>
+                    <td>{{empleado.rut}}</td>
+                    <td>{{empleado.nombre}}</td>
+                    <td>{{empleado.apellido}}</td>
+                    <td>{{empleado.telefono}}</td>
+                    <td>{{ empleado.fechaNacimiento | date }}</td>
+                  </tr>
+                </table>
+            </div>
         </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-
-        <!-- End of Footer -->
-
     </div>
-    <!-- End of Content Wrapper -->
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-
-
-
-</body>
-
-</html>
+</div>
