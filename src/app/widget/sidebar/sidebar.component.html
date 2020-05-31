@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="navbar-nav sidebar bg-dark sidebar-dark accordion" [ngClass]="{'bgnice sidebar-light': cliente}" id="accordionSidebar">
+<ul class="navbar-nav sidebar bg-dark sidebar-dark accordion" [ngClass]="{'bgnice sidebar-light': cliente}" [ngClass]="{'bgadmin sidebar-dark': admin}" id="accordionSidebar">
 
     <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink='inicio'>
         <img class="img-fluid" src="../../../assets/img/logo-blanco.png" alt="">
@@ -44,6 +44,8 @@
             <i class="fas fa-people-carry"></i>
             <span> Empleados</span></a>
     </li>
+
+
 
     <li *ngIf="empleado" class="nav-item">
         <a class="nav-link" routerLink='inicio'>
@@ -103,18 +105,11 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li *ngIf="admin" class="nav-item">
-        <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-store-alt"></i>
-            <span> Productos y servicios</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header"> Productos y servicios :</h6>
-                <a class="collapse-item" href="buttons.html"><i class="fab fa-product-hunt"></i> Productos</a>
-                <a class="collapse-item" href="cards.html"><i class="fas fa-tools"></i> Servicios</a>
-            </div>
-        </div>
-    </li>
+      <a class="nav-link" routerLink='negociogestion'>
+          <i class="fas fa-store-alt"></i>
+          <span> Gestión del negocio</span></a>
+  </li>
+
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li *ngIf="admin" class="nav-item">

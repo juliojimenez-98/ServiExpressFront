@@ -23,6 +23,9 @@ import { ProgresoReservaComponent } from './web/serviHome/cliente/progreso-reser
 import { HistorialReservasComponent } from './web/serviHome/cliente/historial-reservas/historial-reservas.component';
 import { AutosClienteComponent } from './web/serviHome/cliente/autos-cliente/autos-cliente.component';
 import { RegistroAutoComponent } from './web/serviHome/cliente/registro-auto/registro-auto.component';
+import { NegocioGestionComponent } from './web/serviHome/admin/negocio-gestion/negocio-gestion.component';
+
+
 
 const APP_ROUTES: Routes = [
 
@@ -36,12 +39,16 @@ const APP_ROUTES: Routes = [
 
   // USUARIO LOGUEADO
   { path: 'home', component: BaseComponent, canActivate: [ AuthGuard ] ,
-
+  //Sidebar
   children:[
   { path: 'inicio', component: InicioComponent, canActivate: [ AuthGuard ] },
+  //Sidebar Administrador
   { path: 'verclientes', component: ClientesempComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'registeremploye', component: RegisteremployeComponent, canActivate: [ RoleGuard, AuthGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'verempleados', component: EmpleadosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+  { path: 'negociogestion', component: NegocioGestionComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+
+  //Sidebar Cliente
   { path: 'iniciocliente', component: InicioClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'reservar', component: ReservarComponent , canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'}},
   { path: 'editardatoscliente', component: EditarClienteComponent, canActivate: [ AuthGuard ] },
@@ -49,6 +56,7 @@ const APP_ROUTES: Routes = [
   { path: 'historialreserva', component: HistorialReservasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'autosclientes', component: AutosClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'registroautos', component: RegistroAutoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+  //Sidebar Empleado
   ]},
 
   { path: 'sidebar', component: SidebarComponent, canActivate: [ AuthGuard ] },
