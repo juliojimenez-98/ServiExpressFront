@@ -7,7 +7,11 @@ import {CARS} from './cars';
 import {DecimalPipe} from '@angular/common';
 import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
 import {SortColumn, SortDirection} from './sortable.directive';
-
+import { URL_TO_LOGIN } from '../util/global';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserModel } from '../models/UserModel';
+import { UserInfoModel } from '../models/UserInfoModel';
+import { Empleado } from '../models/empleado';
 
 interface SearchResult {
   cars: Cars[];
@@ -56,7 +60,14 @@ export class CarService {
     sortDirection: ''
   };
 
-  constructor(private pipe: DecimalPipe) {
+
+  private getVeId = URL_TO_LOGIN.url + URL_TO_LOGIN.getVeiculosPorId;
+  private body: any;
+  userToken: string;
+  private header: any;
+
+  constructor(private pipe: DecimalPipe, private http: HttpClient) {
+
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
       debounceTime(200),
@@ -69,8 +80,34 @@ export class CarService {
     });
 
     this._search$.next();
+
+    this.getCar()
+    .subscribe(res => {
+     console.log(res);
+    });
   }
 
+  // idvehiculo: number;
+  // idcliente: number;
+  // patente: string;
+  // marca: string;
+  // modelo: string;
+  // tipovehiculo: string;
+  // anio: string;
+  // nrochasis: string;
+  // active: boolean;
+
+
+  getCar() {
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
+    console.log(localStorage.getItem('token_sesion'))
+    return this.http.get(`${this.getVeId+'/'+sessionStorage.getItem('idcliente')+'/allvehiculo'}`, { headers: this.header });
+  }
+
+
+ 
   get cars$() { return this._cars$.asObservable(); }
   get total$() { return this._total$.asObservable(); }
   get loading$() { return this._loading$.asObservable(); }

@@ -51,6 +51,17 @@ export class RegistroAutoComponent {
 
   public regVehiculo(): void {
 
+    this.service.getCar().subscribe(
+      res => {
+
+        console.log(res)
+
+
+      },
+      error => {
+        this.util.handleError(error);
+      },
+    )
     this.vehiculo.idcliente = JSON.parse(sessionStorage.getItem('idcliente'));
 
     this.clienteService.registrarVehiculo(this.vehiculo).subscribe(

@@ -10,4 +10,5 @@ export var URL_TO_LOGIN={
     regVehiculo:'/api/vehiculo/vehiculo',
     regCategoria:'/api/categoria/categoria',
     getCategoría:'/api/categoria/categorias?',
+    getVeiculosPorId:'/api/vehiculo',
 }
