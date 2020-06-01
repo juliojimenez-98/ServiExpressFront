@@ -13,19 +13,19 @@ export class ClientesempComponent implements OnInit {
 
   clientes: Cliente[];
 
-  constructor(private adminClientes:AdminClientesService, private nav:NavbarService, private activatedRoute: ActivatedRoute) { 
+  constructor(private adminClientes:AdminClientesService, private nav:NavbarService, private activatedRoute: ActivatedRoute) {
 
     this.nav.hide();
     this.nav.doSomethingElseUseful();
   }
 
-  
+
   ngOnInit(): void {
     this.adminClientes.getCLientes().subscribe(
       clientes => this.clientes = clientes
     );
-    
+
   }
-  
+
 
 }

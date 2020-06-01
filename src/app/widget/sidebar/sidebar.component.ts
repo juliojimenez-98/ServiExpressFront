@@ -13,11 +13,11 @@ export class SidebarComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => {
-
     });
 
     if (sessionStorage.getItem('idrole') === '2') {
       this.cliente = true;
+      console.log(this.cliente)
     } else if (sessionStorage.getItem('idrole') === '1') {
       this.admin = true;
     } else if (sessionStorage.getItem('idrole') === '3') {
