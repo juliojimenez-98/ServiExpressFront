@@ -1,19 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RegistroAutoComponent } from './registro-auto.component';
 
-describe('RegistroAutoComponent', () => {
-  let component: RegistroAutoComponent;
-  let fixture: ComponentFixture<RegistroAutoComponent>;
+import { ServiciosNComponent } from './servicios-n.component';
+
+describe('ServiciosNComponent', () => {
+  let component: ServiciosNComponent;
+  let fixture: ComponentFixture<ServiciosNComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegistroAutoComponent ]
+      declarations: [ ServiciosNComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegistroAutoComponent);
+    fixture = TestBed.createComponent(ServiciosNComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -79,4 +79,51 @@
             <!-- Button trigger modal -->
         </div>
     </div>
+
+
+
+    <form>
+        <div class="form-group form-inline">
+            Buscar: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm" />
+            <span class="ml-3" *ngIf="service.loading$ | async">Cargando...</span>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col" sortable="patente" (sort)="onSort($event)">Patente</th>
+                    <th scope="col" sortable="marca" (sort)="onSort($event)">Marca</th>
+                    <th scope="col" sortable="modelo" (sort)="onSort($event)">Modelo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let car of cars$ | async">
+                    <!-- <th scope="row">{{ car.idvehiculo }}</th> -->
+                    <td>
+                        <ngb-highlight [result]="car.patente" [term]="service.searchTerm"></ngb-highlight>
+                    </td>
+                    <td>
+                        <ngb-highlight [result]="car.marca" [term]="service.searchTerm"></ngb-highlight>
+                    </td>
+                    <td>
+                        <ngb-highlight [result]="car.modelo" [term]="service.searchTerm"></ngb-highlight>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between p-2">
+            <ngb-pagination [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+            </ngb-pagination>
+
+            <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+      <option [ngValue]="2">2 auto por pagina</option>
+      <option [ngValue]="4">4 auto por pagina</option>
+      <option [ngValue]="6">6 auto por pagina</option>
+    </select>
+        </div>
+
+    </form>
+
 </div>

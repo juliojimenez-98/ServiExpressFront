@@ -1,0 +1,48 @@
+<h6 class="my-4 text-center">Listado de categorías</h6>
+<div class="row">
+  <div class="col-md-6" *ngFor="let categoria of categorias">
+    <div class="card my-2 border-left-info">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-10" >
+            {{categoria.nombre}} - {{categoria.descripcion}}
+          </div>
+          <div class="col-sm-2 text-right">
+            <button type="button" class="btn btn-warning btn-circle text-center"><i class="fas fa-edit"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="mx-auto">
+     <!-- <ngb-pagination [collectionSize]="500" [(page)]="page"  [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+
+     <button (click)="resPag(page)">Siguiete pagina</button> <button (click)="sumPag(page)">Siguiete pagina</button>
+     <pre>Current page: {{page}}</pre>
+  </div>
+</div>
+<hr>
+<h6 class="my-4 text-center">Agregar Categoría</h6>
+<div class="container">
+  <form (ngSubmit)="agregarCategoria()">
+    <div class="form-row">
+      <div class="input-group mb-3 col-md-4">
+        <div class="input-group-prepend ">
+          <span class="input-group-text "><i class="fab fa-product-hunt"></i></span>
+        </div>
+        <input type="text" class="form-control" placeholder="Nombre de la categoría" [(ngModel)]="categoria.nombre" name="nombre" required />
+      </div>
+      <div class="input-group mb-3 col-md-6">
+        <div class="input-group-prepend ">
+          <span class="input-group-text "><i class="fab fa-product-hunt"></i></span>
+        </div>
+        <input type="text" class="form-control" placeholder="Descripcion de la categoria" [(ngModel)]="categoria.descripcion" name="descripcion" required />
+      </div>
+      <div class="col-md-2">
+        <button type="submit"  class="btn btn-success">Agregar</button>
+      </div>
+    </div>
+  </form>
+</div>

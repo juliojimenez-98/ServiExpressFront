@@ -18,7 +18,6 @@ export class ClientesService {
   constructor(private http: HttpClient) { }
 
   registrarVehiculo(vehiculo: Vehiculo) {
-
     const raw = JSON.stringify(
     { idcliente: vehiculo.idcliente, idvehiculo: vehiculo.idvehiculo, patente: vehiculo.patente,
       marca: vehiculo.marca, modelo: vehiculo.modelo, tipovehiculo: vehiculo.tipovehiculo,
