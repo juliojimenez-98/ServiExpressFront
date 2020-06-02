@@ -10,20 +10,17 @@ import { Producto } from '../models/producto';
   providedIn: 'root'
 })
 export class NegocioService {
+  //URL's
   private urlRegCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.regCategoria;
   private urlRegProducto = URL_TO_LOGIN.url + URL_TO_LOGIN.regProducto;
   private urlGetCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.getCategoría;
+  private urlGetProductos = URL_TO_LOGIN.url + URL_TO_LOGIN.getProductos;
   private urlGetAllCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllCategorias;
+
+
   private header: any;
 
   constructor(private http: HttpClient) { }
-
-//   getCategorias(): Observable<Categoria[]>{
-//     this.header = new HttpHeaders()
-//     .set('Content-Type', 'application/json; charset=utf-8')
-//     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
-//     return this.http.get<Categoria[]>(`${this.getCategorias}`, { headers: this.header });
-//  }
 
   public categorias(page:number, size:number):Observable<any>{
     this.header = new HttpHeaders()
@@ -31,6 +28,13 @@ export class NegocioService {
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
     return this.http.get<any>(this.urlGetCategoria+ `page=${page}&size=${size}`, { headers: this.header });
   }
+
+   public productos(page:number, size:number):Observable<any>{
+     this.header = new HttpHeaders()
+     .set('Content-Type', 'application/json; charset=utf-8')
+     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+     return this.http.get<any>(this.urlGetProductos+ `page=${page}&size=${size}`, { headers: this.header });
+   }
 
   getAllCategorias(): Observable<Categoria[]>{
     this.header = new HttpHeaders()
@@ -60,7 +64,7 @@ export class NegocioService {
       {
         nombre: producto.nombre,
         descripcion: producto.descripcion,
-        valorbase: producto.valorBase,
+        valorbase: producto.valorbase,
         categoria: producto.categoria.idcategoria
       });
       this.header = new HttpHeaders()

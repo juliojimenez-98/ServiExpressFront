@@ -18,11 +18,13 @@ import { formatDate } from '@angular/common'
 })
 export class EditarClienteComponent implements OnInit {
   userModelInfo: UserInfoModel = new UserInfoModel();
+  user: UserModel = new UserModel();
   private util: Util = new Util();
   cliente = false;
   admin = false;
   empleado = false;
   model: NgbDateStruct;
+  show = true;
 
   constructor(public nav: NavbarService,
     private clienteService:ClientesService,
@@ -49,6 +51,10 @@ export class EditarClienteComponent implements OnInit {
     this.cargarCliente();
 
   }
+
+  hideDiv(){
+    this.show = !this.show
+  }
   cargarCliente():void{
 
     this.userModelInfo.nombre = sessionStorage.getItem('name');
@@ -62,7 +68,7 @@ export class EditarClienteComponent implements OnInit {
 
   public updatePerson(): void {
     if (sessionStorage.getItem('idrole')=='2') {
-      const buildFormPerson = this.util.buildFormPerson(this.userModelInfo, this.model);
+
       this.userModelInfo.idCliente = JSON.parse(sessionStorage.getItem('idcliente'))
       this.userModelInfo.idUsuario = JSON.parse(sessionStorage.getItem('iduser'))
     // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
@@ -86,7 +92,7 @@ export class EditarClienteComponent implements OnInit {
 
     );
     }else if (sessionStorage.getItem('idrole')=='3'|| sessionStorage.getItem('idrole')=='1') {
-      const buildFormPerson = this.util.buildFormPerson(this.userModelInfo, this.model);
+
       this.userModelInfo.idEmpleado = JSON.parse(sessionStorage.getItem('idempleado'));
       this.userModelInfo.idUsuario = JSON.parse(sessionStorage.getItem('iduser'));
     // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
@@ -107,4 +113,5 @@ export class EditarClienteComponent implements OnInit {
 
     }
   }
+
 }

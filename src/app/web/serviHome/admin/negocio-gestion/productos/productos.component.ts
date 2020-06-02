@@ -13,34 +13,49 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-  page=1;
+  page=0;
+  size = 4;
+  contPages= 0;
+  productos: Array<any>;
   categorias: Categoria[];
   public producto:Producto = new Producto();
   private util: Util = new Util();
   public idCategoria:any;
-  // categoriaform = FormGroup;
 
   constructor(private negocioService: NegocioService, private router:Router) {
-    // this.categoriaform = new FormGroup({
-    //   cate: new FormControl(null)
-    // });
 
   }
 
 
   ngOnInit(): void {
+    this.cargarProductos();
     this.negocioService.getAllCategorias().subscribe(categorias => this.categorias = categorias)
   }
 
-  // callType(value){
-  //   console.log(value)
-  //   sessionStorage.setItem("idcategoria", value);
-  //   console.log(sessionStorage.getItem('idcategoria'))
-  // }
+  cargarProductos(){
+    this.negocioService.productos(this.page,this.size).subscribe(
+      res=>{
+        this.productos = res;
+        console.log(this.page);
+      },
+      err=> {
+        console.log(err.error)
+      }
+    )
+  }
 
-  // compararCategoria(o1:Categoria, o2:Categoria){
-  //   return o1 ===null || o2=== null? false: o1.idcategoria===o2.idcategoria;
-  // }
+  sumPag(i:number){
+    this.page = i+1;
+    this.cargarProductos();
+    console.log(i)
+  }
+
+  resPag(i:number){
+    this.page = i-1;
+    this.cargarProductos();
+    console.log(i)
+  }
+
 
   public agregarPRoducto(): void{
 
@@ -54,6 +69,7 @@ export class ProductosComponent implements OnInit {
 
         Swal.fire(  'Producto agregado',  `El producto : ${this.producto.nombre} se agregó con exito` ,  'success');
         this.router.navigate(['home/negociogestion']);
+        this.cargarProductos();
 
       console.log(res)
 
