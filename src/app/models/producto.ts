@@ -2,7 +2,7 @@ import { Categoria } from "./categoria";
 
 export class Producto {
   idproducto: string;
-  categoria: number;
+  categoria: Categoria;
   nombre: string;
   descripcion:string;
   valorBase: number;

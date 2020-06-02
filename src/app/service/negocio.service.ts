@@ -52,13 +52,16 @@ export class NegocioService {
   }
 
   agregarProducto(producto:Producto){
-    console.log(producto.categoria)
+    console.log(producto.categoria.idcategoria)
+
+
+
     const raw = JSON.stringify(
       {
         nombre: producto.nombre,
         descripcion: producto.descripcion,
         valorbase: producto.valorBase,
-        categoria: producto.categoria
+        categoria: producto.categoria.idcategoria
       });
       this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
