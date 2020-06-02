@@ -5,7 +5,7 @@ import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {Cars} from 'src/app/models/cars';
 import {CARS} from './cars';
 import {DecimalPipe} from '@angular/common';
-import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
+import {debounceTime, delay, switchMap, tap, map} from 'rxjs/operators';
 import {SortColumn, SortDirection} from './sortable.directive';
 import { URL_TO_LOGIN } from '../util/global';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -81,9 +81,10 @@ export class CarService {
 
     this._search$.next();
 
+  
     this.getCar()
     .subscribe(res => {
-     console.log(res);
+      localStorage.setItem('datos', JSON.stringify(res));
     });
   }
 
@@ -127,13 +128,19 @@ export class CarService {
   }
 
   private _search(): Observable<SearchResult> {
+
+    for(var i=0, len=localStorage.getItem('datos').length; i<len; i++) {
+
+      var value = localStorage[i];
+      // console.log(i + " => " + value);
+  }
     const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
 
     // 1. sort
     let cars = sort(CARS, sortColumn, sortDirection);
 
     // 2. filter
-    cars = cars.filter(country => matches(country, searchTerm, this.pipe));
+    cars = cars.filter(car => matches(car, searchTerm, this.pipe));
     const total = cars.length;
 
     // 3. paginate
