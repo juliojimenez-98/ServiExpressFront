@@ -35,6 +35,8 @@ export class RegistroAutoComponent {
   }
 
     ngOnInit(): void {
+
+      
   }
 
   onSort({ column, direction }: SortEvent) {
@@ -51,6 +53,8 @@ export class RegistroAutoComponent {
 
   public regVehiculo(): void {
 
+
+    
     this.service.getCar().subscribe(
       res => {
 

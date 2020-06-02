@@ -57,9 +57,9 @@ export class LoginService {
     const raw = JSON.stringify({ usernameOrEmail: auth, password: passw });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
-    console.log(this.header);
-    console.log(this.body);
-    console.log(localStorage.getItem('token_sesion'))
+    // console.log(this.header);
+    // console.log(this.body);
+    // console.log(localStorage.getItem('token_sesion'))
     return this.http.post(`${this.urlSignIn}`, raw, { headers: this.header });
   }
 
