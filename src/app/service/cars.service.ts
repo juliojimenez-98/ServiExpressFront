@@ -54,7 +54,7 @@ export class CarService {
 
   private _state: State = {
     page: 1,
-    pageSize: 2,
+    pageSize: 4,
     searchTerm: '',
     sortColumn: '',
     sortDirection: ''
@@ -130,11 +130,7 @@ export class CarService {
 
   private _search(): Observable<SearchResult> {
 
-    for (var i = 0, len = localStorage.getItem('datos').length; i < len; i++) {
 
-      var value = localStorage[i];
-      // console.log(i + " => " + value);
-    }
     const { sortColumn, sortDirection, pageSize, page, searchTerm } = this._state;
 
 

@@ -27,8 +27,8 @@
         Personas
     </div>
 
-    <li *ngIf="admin" class="nav-item" >
-        <a class="nav-link"  routerLink='registeremploye'>
+    <li *ngIf="admin" class="nav-item">
+        <a class="nav-link" routerLink='registeremploye'>
             <i class="fas fa-people-carry"></i>
             <span> Registro Empleado</span></a>
     </li>
@@ -88,27 +88,27 @@
     </li>
 
     <li *ngIf="cliente" class="nav-item">
-      <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-car-side"></i>
-          <span> Autos</span>
-      </a>
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header"> Autos :</h6>
-              <a class="collapse-item" routerLink='autosclientes'><i class="fas fa-car-side"></i> Tus Autos</a>
-              <a class="collapse-item" routerLink='registroautos'><i class="fas fa-car-side"></i> Registra tu auto</a>
-          </div>
-      </div>
-  </li>
+        <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-car-side"></i>
+            <span> Autos</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header"> Autos :</h6>
+                <!-- <a class="collapse-item" routerLink='autosclientes'><i class="fas fa-car-side"></i> Tus Autos</a> -->
+                <a class="collapse-item" routerLink='registroautos'><i class="fas fa-car-side"></i> Tus Vehículos</a>
+            </div>
+        </div>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li *ngIf="admin" class="nav-item">
-      <a class="nav-link" routerLink='negociogestion'>
-          <i class="fas fa-store-alt"></i>
-          <span> Gestión del negocio</span></a>
-  </li>
+        <a class="nav-link" routerLink='negociogestion'>
+            <i class="fas fa-store-alt"></i>
+            <span> Gestión del negocio</span></a>
+    </li>
 
 
     <!-- Nav Item - Utilities Collapse Menu -->
