@@ -54,7 +54,7 @@ export class CarService {
 
   private _state: State = {
     page: 1,
-    pageSize: 2,
+    pageSize: 4,
     searchTerm: '',
     sortColumn: '',
     sortDirection: ''

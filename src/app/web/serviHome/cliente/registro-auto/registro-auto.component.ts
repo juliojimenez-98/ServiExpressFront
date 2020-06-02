@@ -58,9 +58,6 @@ export class RegistroAutoComponent {
     this.service.getCar().subscribe(
       res => {
 
-        console.log(res)
-
-
       },
       error => {
         this.util.handleError(error);
@@ -73,8 +70,11 @@ export class RegistroAutoComponent {
 
         console.log(this.vehiculo)
         swal.fire('Creado correctamente', `Tu vehiculo : ${this.vehiculo.marca}  ${this.vehiculo.modelo} se registró con exito`, 'success');
-        this.router.navigate(['home/autosclientes', res]);
-
+        this.service.getCar()
+        .subscribe(res => {
+          localStorage["datas"] = JSON.stringify(res);
+        });
+       
       },
       error => {
         this.util.handleError(error);
