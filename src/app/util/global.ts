@@ -11,6 +11,7 @@ export var URL_TO_LOGIN={
     regCategoria:'/api/categoria/categoria',
     regProducto:'/api/producto/producto',
     getCategoría:'/api/categoria/categorias?',
+    getProductos:'/api/producto/allproducto?',
     getVeiculosPorId:'/api/vehiculo',
     getAllCategorias:'/api/categoria/categorias',
 }

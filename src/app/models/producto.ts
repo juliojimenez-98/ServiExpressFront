@@ -5,5 +5,5 @@ export class Producto {
   categoria: Categoria;
   nombre: string;
   descripcion:string;
-  valorBase: number;
+  valorbase: number;
 }

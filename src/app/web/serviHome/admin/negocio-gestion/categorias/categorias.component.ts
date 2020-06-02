@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class CategoriasComponent implements OnInit {
   page = 0;
-  size = 6;
+  size = 4;
   contPages= 0;
   totalPages: Array<number>;
   public categoria:Categoria = new Categoria();
@@ -32,7 +32,6 @@ export class CategoriasComponent implements OnInit {
     this.negocioService.categorias(this.page,this.size).subscribe(
       res=>{
         this.categorias = res;
-        this.totalPages = new Array(res['totalPages']);
         console.log(this.page);
       },
       err=> {
@@ -62,6 +61,7 @@ export class CategoriasComponent implements OnInit {
 
         Swal.fire(  'Categoria Agregada',  `La categoría :  ${this.categoria.nombre} se agregó con exito` ,  'success');
         this.router.navigate(['home/negociogestion', res]);
+        this.cargarCategorias();
 
   },
   error => {

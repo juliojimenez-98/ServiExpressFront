@@ -1,51 +1,68 @@
-<div class="col-sm-9 text-center mx-auto">
-    <div class="">
-            <h3 class="my-4 text-black">Actualiza tus datos</h3>
-        <form class="col-12" (ngSubmit)="updatePerson()">
-          <div>
-            <label class="text-black" for="">Nombre</label>
-          </div>
-            <div class="form-group col-md-6 mx-auto">
-                <input type="text" class="form-control" placeholder="Nombres"  [(ngModel)]="userModelInfo.nombre" name="name" required />
-            </div>
-            <div>
-              <label class="text-black" for="">Apellido</label>
-            </div>
-            <div class="form-group col-md-6 mx-auto">
-              <input type="text" class="form-control" placeholder="Apellidos" [(ngModel)]="userModelInfo.apellido" name="lastname" required />
-            </div>
-
-
-
-            <div>
-              <label class="text-black" for="">Telefono</label>
-            </div>
-                <div class="form-group col-md-6 mx-auto">
-                    <input type="text " class="form-control " placeholder="Telefono " [(ngModel)]="userModelInfo.telefono" name="telefonp" />
-                </div>
-
-              <div>
-                <label class="text-black" for="">Rut</label>
-              </div>
-              <div class="form-group col-md-6 mx-auto" id="email-group">
-                  <input type="text" class="form-control" placeholder="Rut" [(ngModel)]="userModelInfo.rut" name="rut" name="Rut" required />
-              </div>
-
-
-              <div>
-                <label class="text-black" for="">Fecha de Nacimiento</label>
-              </div>
-                <div class="input-group col-sm-6 mb-3 mb-sm-0 mx-auto">
-                    <input class="form-control" placeholder="yyyy-mm-dd"
-                           name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" required>
-                    <div class="input-group-append ">
-                      <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
-
-                    </div>
-                  </div>
-
-            <button style="width: 20%;" type="submit" class="btn btn-success my-4 btn-block mx-auto">  Actualizar </button>
-
-        </form>
+<div class="col-xl-8 col-md-8 mb-4 mx-auto">
+  <div class="card border-left-primary shadow h-100 py-2">
+    <div style="background-color: white;" class="card-header text-black text-center"><h4>Tus Datos</h4>
     </div>
+      <div class="card-body text-center">
+       <h5  >Nombre</h5> {{userModelInfo.nombre}} {{userModelInfo.apellido}}
+      </div>
+      <div class="card-body text-center">
+        <h5 >Rut</h5>{{userModelInfo.rut}}
+      </div>
+      <div class="card-body text-center">
+        <h5>Telefono</h5>{{userModelInfo.telefono}}
+      </div>
+      <!-- <button style="width: 15%;" type="submit" (click)="hideDiv()" class="btn btn-outline-primary my-4 btn-sm mx-auto">  Actualizar </button> -->
+  </div>
 </div>
+
+
+<div class="col-xl-8 col-md-8 mb-4 mx-auto">
+  <div class="card border-left-success shadow h-100 py-2">
+    <div style="background-color: white;" class="card-header text-black text-center"><h4>Actualiza tus datos</h4>
+    </div>
+    <br>
+        <div class="col-sm-12 text-center mx-auto">
+           <div class="">
+
+               <form class="col-12" (ngSubmit)="updatePerson()">
+                 <div>
+                   <label class="text-black" for="">Nombre</label>
+                 </div>
+                   <div class="form-group col-md-6 mx-auto">
+                       <input type="text" class="form-control" placeholder="Nombres"  [(ngModel)]="userModelInfo.nombre" name="name" required />
+                   </div>
+                   <div>
+                     <label class="text-black" for="">Apellido</label>
+                   </div>
+                   <div class="form-group col-md-6 mx-auto">
+                     <input type="text" class="form-control" placeholder="Apellidos" [(ngModel)]="userModelInfo.apellido" name="lastname" required />
+                   </div>
+
+
+
+                   <div>
+                     <label class="text-black" for="">Telefono</label>
+                   </div>
+                       <div class="form-group col-md-6 mx-auto">
+                           <input type="text " class="form-control " placeholder="Telefono " [(ngModel)]="userModelInfo.telefono" name="telefonp" />
+                       </div>
+
+                     <div>
+                       <label class="text-black" for="">Rut</label>
+                     </div>
+                     <div class="form-group col-md-6 mx-auto" id="email-group">
+                         <input type="text" class="form-control" placeholder="Rut" [(ngModel)]="userModelInfo.rut" name="rut" name="Rut" required />
+                     </div>
+
+                   <button  type="submit" class="btn btn-success my-4 mx-auto">  Actualizar </button>
+
+               </form>
+           </div>
+         </div>
+
+        </div>
+
+    </div>
+
+
+
