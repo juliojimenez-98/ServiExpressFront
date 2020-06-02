@@ -60,7 +60,7 @@ export class CategoriasComponent implements OnInit {
       res  =>{
 
 
-        Swal.fire(  'Categoria Agregada',  `La categoría fue agregada : ${this.categoria.nombre} se agregó con exito` ,  'success');
+        Swal.fire(  'Categoria Agregada',  `La categoría :  ${this.categoria.nombre} se agregó con exito` ,  'success');
         this.router.navigate(['home/negociogestion', res]);
 
   },

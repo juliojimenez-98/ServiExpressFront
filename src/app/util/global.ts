@@ -9,6 +9,8 @@ export var URL_TO_LOGIN={
     chgPasw:'/api/auth/changepassword/',
     regVehiculo:'/api/vehiculo/vehiculo',
     regCategoria:'/api/categoria/categoria',
+    regProducto:'/api/producto/producto',
     getCategoría:'/api/categoria/categorias?',
     getVeiculosPorId:'/api/vehiculo',
+    getAllCategorias:'/api/categoria/categorias',
 }
