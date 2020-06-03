@@ -24,6 +24,8 @@ import { HistorialReservasComponent } from './web/serviHome/cliente/historial-re
 import { AutosClienteComponent } from './web/serviHome/cliente/autos-cliente/autos-cliente.component';
 import { RegistroAutoComponent } from './web/serviHome/cliente/registro-auto/registro-auto.component';
 import { NegocioGestionComponent } from './web/serviHome/admin/negocio-gestion/negocio-gestion.component';
+import { ReservasEmpleadoComponent } from './web/serviHome/empleado/reservas-empleado/reservas-empleado.component';
+import { PedidosEmpleadoComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos-empleado.component';
 
 
 
@@ -57,6 +59,8 @@ const APP_ROUTES: Routes = [
   { path: 'autosclientes', component: AutosClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'registroautos', component: RegistroAutoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   //Sidebar Empleado
+  { path: 'reservasemp', component: ReservasEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
+  { path: 'pedidosemp', component: PedidosEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
   ]},
 
   { path: 'sidebar', component: SidebarComponent, canActivate: [ AuthGuard ] },

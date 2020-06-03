@@ -37,6 +37,10 @@ import { NegocioGestionComponent } from './web/serviHome/admin/negocio-gestion/n
 import { CategoriasComponent } from './web/serviHome/admin/negocio-gestion/categorias/categorias.component';
 import { ProductosComponent } from './web/serviHome/admin/negocio-gestion/productos/productos.component';
 import { ServiciosNComponent } from './web/serviHome/admin/negocio-gestion/servicios-n/servicios-n.component';
+import { ReservasEmpleadoComponent } from './web/serviHome/empleado/reservas-empleado/reservas-empleado.component';
+import { PedidosEmpleadoComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos-empleado.component';
+import { PedidosComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos/pedidos.component';
+import { RecibosempComponent } from './web/serviHome/empleado/pedidos-empleado/recibosemp/recibosemp.component';
 
 registerLocaleData(localeEsCl, 'es-CL');
 
@@ -72,6 +76,10 @@ registerLocaleData(localeEsCl, 'es-CL');
     CategoriasComponent,
     ProductosComponent,
     ServiciosNComponent,
+    ReservasEmpleadoComponent,
+    PedidosEmpleadoComponent,
+    PedidosComponent,
+    RecibosempComponent,
 
   ],
   imports: [
