@@ -15,4 +15,5 @@ export var URL_TO_LOGIN={
     getVeiculosPorId:'/api/vehiculo',
     getAllCategorias:'/api/categoria/categorias',
     getAllServicios:'/api/servicio/servicios',
+    getAllProductoById:'/api/producto',
 }

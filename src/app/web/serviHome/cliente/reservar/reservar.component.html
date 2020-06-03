@@ -5,14 +5,23 @@
                 <h3>Agenda tu reserva</h3>
                 <hr class="white">
             </div>
-            <form>
+            <form (ngSubmit)="agregarReserva()" class="col-12">
                 <div class="form-row">
                     <div class="col-md-6 " id="dni-group">
-                        <label>Servicio</label>
-                        <select [(ngModel)]="servicios" name="servicio" class="custom-select">
+                        <label>Servicios</label>
+                        <select [(ngModel)]="servicio" name="servicio" class="custom-select" (change)="cargaBox()">
                           <option *ngFor="let servicio of servicios" [ngValue]="servicio">{{servicio.nombre}}</option>
+              
                         </select>
+
                     </div>
+                    <a>Precio = {{servicio.valorbase}}</a><br/>
+
+
+
+
+
+
                     <div class=" col-md-6">
                         <label>Día y Hora de tu reserva</label>
                         <input type="datetime-local" class="form-control text-center" id="datetime">
@@ -29,14 +38,14 @@
                             <input class="form-control" type="text" placeholder="Modelo">
                         </div>
                         <div class="col-md-4 ">
-                            <label>Tipo De auto</label>
-                            <select class="form-control form-group " id=" ">
-                              <option>Sedán</option>
-                              <option>Hatchback</option>
-                              <option>SUV</option>
-                              <option>PickUp</option>
-                              <option>MiniVan</option>
-                            </select>
+                            <label>Productos</label>
+                            <select [(ngModel)]="producto" name="producto" class="custom-select">
+                                      <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.nombre}}</option>
+                          
+                                    </select>
+
+
+                            <a>Precio = {{producto.valorbase}}</a><br/>
                         </div>
                     </div>
                     <div class="form-row">
@@ -78,6 +87,10 @@
                     <button type="button" style="margin-top: 10px;" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal">
                       Agendar reserva
                     </button>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="col-sm-4 btn btn-success btn-block my-4 mx-auto"><i class="fas fa-plus"></i>  Agendar reserva </button>
                 </div>
             </form>
             <!-- Button trigger modal -->

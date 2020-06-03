@@ -18,6 +18,7 @@ export class NegocioService {
   private urlGetProductos = URL_TO_LOGIN.url + URL_TO_LOGIN.getProductos;
   private urlGetAllCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllCategorias;
   private urlGetAllServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllServicios;
+  private urlGetAllProductoById = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProductoById;
 
 
   private header: any;
@@ -50,6 +51,13 @@ export class NegocioService {
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
     return this.http.get<Servicios[]>(`${this.urlGetAllServicio}`, { headers: this.header });
+  }
+
+  getAllProductoById(id:number): Observable<Producto[]>{
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<Producto[]>(`${this.urlGetAllProductoById + '/' + id}`,{ headers: this.header });
   }
 
   agregarCategoria(categoria: Categoria) {
