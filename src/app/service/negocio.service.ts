@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { runInThisContext } from 'vm';
 import { Producto } from '../models/producto';
 import { Servicios } from '../models/Servicios';
+import { Reserva } from '../models/reserva';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class NegocioService {
   private urlGetAllCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllCategorias;
   private urlGetAllServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllServicios;
   private urlGetAllProductoById = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProductoById;
+  private urlReserva = URL_TO_LOGIN.url + URL_TO_LOGIN.reservation;
 
 
   private header: any;
@@ -89,4 +91,26 @@ export class NegocioService {
       .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
       return this.http.put(`${this.urlRegProducto}`, raw, { headers: this.header });
   }
+  
+  
+  agregarReserva(reserva:Reserva){
+    console.log(reserva.idcliente)
+
+    const raw = JSON.stringify(
+      {
+        idcliente: sessionStorage.getItem('idcliente'),
+        servicios: reserva.servicios,
+        productos: reserva.productos,
+        fechareserva: reserva.fechareserva,
+        horareserva: reserva.horareserva,
+        estado: 0
+
+      });
+      this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
+      return this.http.put(`${this.urlReserva}`, raw, { headers: this.header });
+  }
 }
+
+

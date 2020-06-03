@@ -4,6 +4,9 @@ import { NegocioService } from 'src/app/service/negocio.service';
 import { Servicios } from 'src/app/models/Servicios';
 import { Categoria } from 'src/app/models/categoria';
 import { Producto } from 'src/app/models/producto';
+import { Reserva } from 'src/app/models/reserva';
+import Swal from 'sweetalert2';
+import { Util } from 'src/app/util/util';
 
 @Component({
   selector: 'app-reservar',
@@ -15,8 +18,10 @@ export class ReservarComponent implements OnInit {
   public servicio:Servicios = new Servicios();
   productos: Producto[];
   public producto:Producto = new Producto();
+  public reserva: Reserva = new Reserva();
+  public util:Util;
   constructor(private negocioService: NegocioService,) { }
-
+  public dateBefore: Date= new Date();
   ngOnInit(): void {
     this.cargarAppJs('../assets/js/app.js');
 
@@ -37,38 +42,40 @@ export class ReservarComponent implements OnInit {
 
      public agregarReserva(): void{
 
-      console.log("hola"+this.servicio.categoria)
-      console.log("hola"+this.servicio.valorbase)
+    let producto=this.producto.idproducto;
+     let servici=this.servicio.idservicio;
+     let dateHours = <HTMLInputElement>document.getElementById('datetime');
+     let newDate = new Date(dateHours.value);
+      this.reserva.productos= producto;
+      this.reserva.servicios= servici.toString();
+      this.reserva.fechareserva=dateHours.value;
+      this.reserva.horareserva=dateHours.value;
 
-      this.servicios.forEach(element => {
-        console.log(element.categoria)
-      });
+    
 
+      this.negocioService.agregarReserva(this.reserva).subscribe(
+  
+        res  =>{
+          // this.callType(res)
+          // var idcategoria = this.callType;
+          console.log(this.producto.categoria)
+  
+          Swal.fire(  'Reserva agregada',  `Se enviara un correo de confirmacion a : ${sessionStorage.getItem('email')}` ,  'success');
 
-  //     this.negocioService.agregarProducto(this.producto).subscribe(
   
-  //       res  =>{
-  //         // this.callType(res)
-  //         // var idcategoria = this.callType;
-  //         console.log(this.producto.categoria)
+        console.log(res)
   
-  //         Swal.fire(  'Producto agregado',  `El producto : ${this.producto.nombre} se agregó con exito` ,  'success');
-  //         this.router.navigate(['home/negociogestion']);
-  //         this.cargarProductos();
+    },
+    error => {
+      this.util.handleError(error);
+    },
   
-  //       console.log(res)
-  
-  //   },
-  //   error => {
-  //     this.util.handleError(error);
-  //   },
-  
-  // );
+  );
   
   }
 
   public cargaBox(): void{
 
-    this.negocioService.getAllProductoById(169).subscribe(productos => this.productos = productos)
+    this.negocioService.getAllProductoById(this.servicio.categoria).subscribe(productos => this.productos = productos)
   }
 }
