@@ -1,8 +1,9 @@
-import { Categoria } from "./categoria";
+import { Categoria } from './categoria';
+
 export class Servicios {
     idservicio: number;
     nombre: string;
     descripcion: string;
     valorbase: number;
-    categoria: number;
+    categoria: Categoria;
 }

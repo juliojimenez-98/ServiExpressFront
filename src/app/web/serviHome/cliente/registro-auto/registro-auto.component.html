@@ -95,6 +95,8 @@
                     <th scope="col" sortable="patente" (sort)="onSort($event)">Patente</th>
                     <th scope="col" sortable="marca" (sort)="onSort($event)">Marca</th>
                     <th scope="col" sortable="modelo" (sort)="onSort($event)">Modelo</th>
+                    <th scope="col" sortable="nrochasis" (sort)="onSort($event)">N° de Chasis</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
@@ -109,6 +111,12 @@
                     <td>
                         <ngb-highlight [result]="car.modelo" [term]="service.searchTerm"></ngb-highlight>
                     </td>
+                    <td>
+                      <ngb-highlight [result]="car.nrochasis" [term]="service.searchTerm"></ngb-highlight>
+                  </td>
+                  <td>
+                    <button class="btn btn-danger btn-sm" (click)="borrarVehiculo()">Eliminar</button>
+                  </td>
                 </tr>
             </tbody>
         </table>
