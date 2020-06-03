@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { runInThisContext } from 'vm';
 import { Producto } from '../models/producto';
 import { Servicios } from '../models/Servicios';
-import { Servicios } from '../models/Servicios';
 import { Reserva } from '../models/reserva';
 
 @Injectable({
@@ -22,7 +21,6 @@ export class NegocioService {
   private urlGetAllCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllCategorias;
   private urlGetAllServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllServicios;
   private urlGetServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.getSerivicios;
-  private urlGetAllServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllServicios;
   private urlGetAllProductoById = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProductoById;
   private urlReserva = URL_TO_LOGIN.url + URL_TO_LOGIN.reservation;
 
@@ -57,13 +55,6 @@ export class NegocioService {
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
     return this.http.get<Categoria[]>(`${this.urlGetAllCategoria}`, { headers: this.header });
-  }
-
-  getAllServicio(): Observable<Servicios[]>{
-    this.header = new HttpHeaders()
-    .set('Content-Type', 'application/json; charset=utf-8')
-    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
-    return this.http.get<Servicios[]>(`${this.urlGetAllServicio}`, { headers: this.header });
   }
 
   getAllServicio(): Observable<Servicios[]>{
