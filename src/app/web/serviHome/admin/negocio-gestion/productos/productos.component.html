@@ -17,12 +17,20 @@
 </div>
 
 <div class="row">
-  <div class="mx-auto">
+  <div class=" col-md-6 text-right">
      <!-- <ngb-pagination [collectionSize]="500" [(page)]="page"  [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+     <button class="btn btn-outline-primary" (click)="resPag(page)"><i class="fas fa-chevron-left"></i></button>
 
-     <button (click)="resPag(page)">Siguiete pagina</button> <button (click)="sumPag(page)">Siguiete pagina</button>
-     <pre>Current page: {{page}}</pre>
   </div>
+  <div class=" col-md-6">
+    <!-- <ngb-pagination [collectionSize]="500" [(page)]="page"  [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+     <button class="btn btn-outline-primary" (click)="sumPag(page)"><i class="fas fa-chevron-right"></i></button>
+
+ </div>
+ <div class="mx-auto">
+
+   <pre>Pagina Actual: {{page}}</pre>
+ </div>
 </div>
 
 

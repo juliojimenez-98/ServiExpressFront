@@ -6,5 +6,6 @@ export class Vehiculo {
 	modelo : string;
 	tipovehiculo : string;
 	anio : string;
-	nrochasis : string;
+  nrochasis : string;
+  active: boolean;
 }

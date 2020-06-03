@@ -43,6 +43,7 @@ function matches(cars: Cars, term: string, pipe: PipeTransform) {
   return cars.patente.toLowerCase().includes(term.toLowerCase())
     || cars.modelo.toLowerCase().includes(term.toLowerCase())
     || cars.marca.toLowerCase().includes(term.toLowerCase())
+    || cars.nrochasis.toLowerCase().includes(term.toLowerCase())
 }
 
 @Injectable({ providedIn: 'root' })
