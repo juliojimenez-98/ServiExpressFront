@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="container">
             <div class="col-12">
-                <h3>Registra tu auto</h3>
+                <h3>Registra tu Vehículo</h3>
                 <hr class="white">
             </div>
             <form (ngSubmit)="regVehiculo()">
@@ -10,7 +10,7 @@
                     <div class="form-row ">
                         <div class="input-group col-md-4">
                             <div class="container">
-                                <label>Marca de tu auto</label>
+                                <label>Marca</label>
                             </div>
                             <div class="input-group-prepend ">
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
@@ -19,7 +19,7 @@
                         </div>
                         <div class="input-group col-md-4">
                             <div class="container">
-                                <label>Modelo del vehículo</label>
+                                <label>Modelo</label>
                             </div>
                             <div class="input-group-prepend ">
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="input-group col-md-4">
                             <div class="container">
-                                <label>Tipo de carrocería</label>
+                                <label>Carrocería</label>
                             </div>
                             <div class="input-group-prepend ">
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
@@ -41,7 +41,7 @@
                     <div class="form-row">
                         <div class="input-group col-md-4 col-xs-6">
                             <div class="container">
-                                <label>Año de tu auto</label>
+                                <label>Año</label>
                             </div>
                             <div class="input-group-prepend ">
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="input-group col-md-4">
                             <div class="container">
-                                <label>Patente del vehículo</label>
+                                <label>Patente</label>
                             </div>
                             <div class="input-group-prepend ">
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
@@ -72,7 +72,7 @@
                 <br>
                 <div class="col-sm-6 mx-auto">
                     <button type="submit" style="margin-top: 10px;" class="btn btn-success btn-block">
-                    Registrar auto
+                    Registrar vehículo
                   </button>
                 </div>
             </form>
@@ -95,6 +95,8 @@
                     <th scope="col" sortable="patente" (sort)="onSort($event)">Patente</th>
                     <th scope="col" sortable="marca" (sort)="onSort($event)">Marca</th>
                     <th scope="col" sortable="modelo" (sort)="onSort($event)">Modelo</th>
+                    <th scope="col" sortable="nrochasis" (sort)="onSort($event)">N° de Chasis</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
@@ -109,6 +111,12 @@
                     <td>
                         <ngb-highlight [result]="car.modelo" [term]="service.searchTerm"></ngb-highlight>
                     </td>
+                    <td>
+                      <ngb-highlight [result]="car.nrochasis" [term]="service.searchTerm"></ngb-highlight>
+                  </td>
+                  <td>
+                    <button class="btn btn-danger btn-sm" (click)="borrarVehiculo()">Eliminar</button>
+                  </td>
                 </tr>
             </tbody>
         </table>

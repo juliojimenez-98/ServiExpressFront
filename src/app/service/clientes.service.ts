@@ -5,6 +5,7 @@ import { URL_TO_LOGIN } from '../util/global';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserInfoModel } from '../models/UserInfoModel';
 import { Observable } from 'rxjs';
+import { Cars } from '../models/cars';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,16 @@ export class ClientesService {
       anio: vehiculo.anio, nrochasis: vehiculo.nrochasis});
     this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8')
     return this.http.put(`${this.urlRegVehiculo}`, raw, { headers: this.header });
+
+  }
+  eliminarVehiculo(vehiculo: Vehiculo) {
+    const raw = JSON.stringify(
+    { idcliente: vehiculo.idcliente, idvehiculo: vehiculo.idvehiculo, patente: vehiculo.patente,
+      marca: vehiculo.marca, modelo: vehiculo.modelo, tipovehiculo: vehiculo.tipovehiculo,
+      anio: vehiculo.anio, nrochasis: vehiculo.nrochasis, activo:false});
+    this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8')
+    return this.http.post(`${this.urlRegVehiculo}`, raw, { headers: this.header });
+
 
   }
 }

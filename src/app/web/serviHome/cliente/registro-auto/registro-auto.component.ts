@@ -35,6 +35,8 @@ export class RegistroAutoComponent {
   }
 
     ngOnInit(): void {
+
+
   }
 
   onSort({ column, direction }: SortEvent) {
@@ -48,9 +50,31 @@ export class RegistroAutoComponent {
     this.service.sortColumn = column;
     this.service.sortDirection = direction;
   }
+  public borrarVehiculo():void{
+
+    this.clienteService.eliminarVehiculo(this.vehiculo).subscribe(
+      res=> {
+        console.log(this.vehiculo.patente)
+
+        console.log(localStorage.getItem('idvehiculo'))
+        swal.fire('Borrado Correctamente', `Tu vehiculo : ${this.vehiculo.marca}  ${this.vehiculo.modelo} se elimino con exito`, 'success');
+      }
+
+    )
+  }
 
   public regVehiculo(): void {
 
+
+
+    this.service.getCar().subscribe(
+      res => {
+
+      },
+      error => {
+        this.util.handleError(error);
+      },
+    )
     this.vehiculo.idcliente = JSON.parse(sessionStorage.getItem('idcliente'));
 
     this.clienteService.registrarVehiculo(this.vehiculo).subscribe(
@@ -58,7 +82,10 @@ export class RegistroAutoComponent {
 
         console.log(this.vehiculo)
         swal.fire('Creado correctamente', `Tu vehiculo : ${this.vehiculo.marca}  ${this.vehiculo.modelo} se registró con exito`, 'success');
-        this.router.navigate(['home/autosclientes', res]);
+        this.service.getCar()
+        .subscribe(res => {
+          localStorage["datas"] = JSON.stringify(res);
+        });
 
       },
       error => {
@@ -67,4 +94,5 @@ export class RegistroAutoComponent {
 
     );
   }
+
 }
