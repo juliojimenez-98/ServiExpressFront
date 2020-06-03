@@ -17,5 +17,7 @@ export var URL_TO_LOGIN={
     getClientesPag:'/api/entidad/allclientes',
     getAllCategorias:'/api/categoria/categorias',
     getAllServicios:'/api/servicio/servicios',
+    getAllProductoById:'/api/producto',
+    reservation:'/api/reserva/reserva',
     getSerivicios:'/api/servicio/servicios?',
 }

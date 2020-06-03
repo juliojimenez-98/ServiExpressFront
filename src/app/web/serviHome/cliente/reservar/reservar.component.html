@@ -5,61 +5,37 @@
                 <h3>Agenda tu reserva</h3>
                 <hr class="white">
             </div>
-            <form>
+            <form (ngSubmit)="agregarReserva()" class="col-12">
                 <div class="form-row">
-                    <div class="col-md-6 " id="dni-group">
-                        <label>Servicio</label>
-                        <select [(ngModel)]="servicios" name="servicio" class="custom-select">
+                    <div class="col-md-4 " id="dni-group">
+                        <label>Servicios</label>
+                        <select [(ngModel)]="servicio" name="servicio" class="custom-select" (change)="cargaBox()">
                           <option *ngFor="let servicio of servicios" [ngValue]="servicio">{{servicio.nombre}}</option>
+              
                         </select>
+
                     </div>
-                    <div class=" col-md-6">
+
+                    <div class=" col-md-4">
+                        <label>Productos</label>
+                        <select [(ngModel)]="producto" name="producto" class="custom-select">
+                                <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.nombre}}</option>
+                    
+                      </select>
+
+                    </div>
+                    <div class="col-md-4 ">
+
                         <label>Día y Hora de tu reserva</label>
                         <input type="datetime-local" class="form-control text-center" id="datetime">
+
+                        <!-- <input type="datetime-local" class="form-control" id="date1" [(ngModel)]="dateBefore" step="1" /> -->
                     </div>
                 </div>
-                <div id="mostrarOcultar">
-                    <div class="form-row ">
-                        <div class=" col-md-4">
-                            <label>Marca de tu auto</label>
-                            <input class="form-control" type="text" placeholder="Marca">
-                        </div>
-                        <div class=" col-md-4">
-                            <label>Modelo de tu auto</label>
-                            <input class="form-control" type="text" placeholder="Modelo">
-                        </div>
-                        <div class="col-md-4 ">
-                            <label>Tipo De auto</label>
-                            <select class="form-control form-group " id=" ">
-                              <option>Sedán</option>
-                              <option>Hatchback</option>
-                              <option>SUV</option>
-                              <option>PickUp</option>
-                              <option>MiniVan</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-4 ">
-                            <label>Año del vehículo</label>
-                            <input class="form-control " type="number" placeholder="Año">
-                        </div>
-                        <div class=" col-md-4">
-                            <label>Patente</label>
-                            <input class="form-control " type="text" placeholder="Patente">
-                        </div>
-                        <div class=" col-md-4">
-                            <label>Numéro de chasís (Opcional)</label>
-                            <input class="form-control " type="text" placeholder="Numero Chasis">
-                        </div>
-                    </div>
-                    <br>
-                    <div class=" form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Guardar datos del auto</label>
-                    </div>
-                    <button type="button" style="margin-top: 10px;" class="mx-auto btn btn-outline-info btn-sm" value="Ocultar" onclick="ocultar()">Ya tienes tu auto registrado?</button>
-                </div>
+
+
+
+
                 <div id="mostrarAuto" style="display: none;">
                     <div class="form-row">
                         <div class="col-md-6 mx-auto">
@@ -74,10 +50,10 @@
                     <button type="button" style="margin-top: 10px;" class="mx-auto btn btn-outline-info btn-sm" value="Ocultar" onclick="mostrar()">No está tu auto?</button>
                 </div>
                 <br>
-                <div class="col-sm-6 mx-auto">
-                    <button type="button" style="margin-top: 10px;" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal">
-                      Agendar reserva
-                    </button>
+
+
+                <div class="text-center">
+                    <button type="submit" class="col-sm-4 btn btn-success btn-block my-4 mx-auto"><i class="fas fa-plus"></i>  Agendar reserva </button>
                 </div>
             </form>
             <!-- Button trigger modal -->
