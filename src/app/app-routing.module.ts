@@ -56,6 +56,7 @@ const APP_ROUTES: Routes = [
     { path: 'categorias', component: CategoriasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
     { path: 'categorias/:idcategoria', component: CategoriasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
     { path: 'productos', component: ProductosComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+    { path: 'productos/:idproducto', component: ProductosComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
     { path: 'servicios', component: ServiciosNComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
 
   ]},

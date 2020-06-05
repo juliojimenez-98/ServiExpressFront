@@ -10,6 +10,7 @@ export var URL_TO_LOGIN={
     regVehiculo:'/api/vehiculo/vehiculo',
     regCategoria:'/api/categoria/categoria',
     regProducto:'/api/producto/producto',
+    updateProducto:'/api/producto/producto',
     regServicio:'/api/servicio/servicio',
     getCategoria:'/api/categoria/categorias?',
     getCategoriaId:'/api/categoria/categorias',

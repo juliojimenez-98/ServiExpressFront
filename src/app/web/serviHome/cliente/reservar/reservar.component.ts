@@ -44,7 +44,6 @@ export class ReservarComponent implements OnInit {
 
 
 
-     public agregarReserva(): void{
 
   public agregarReserva(): void {
 
@@ -99,11 +98,10 @@ export class ReservarComponent implements OnInit {
 
   }
 
-  public cargaBox(): void {
 
 
   public cargaBox(): void{
 
-    this.negocioService.getAllProductoById(this.servicio.categoria.idcategoria).subscribe(productos => this.productos = productos)
+    this.negocioService.getAllProductoById(this.servicio.categoria).subscribe(productos => this.productos = productos)
   }
 }
