@@ -5,8 +5,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { runInThisContext } from 'vm';
 import { Producto } from '../models/producto';
-import { Servicios } from '../models/Servicios';
+import { Servicios, Servicios2 } from '../models/Servicios';
 import { Reserva } from '../models/reserva';
+import { Vehiculo } from '../models/vehiculo';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class NegocioService {
   private urlGetAllProductoById = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProductoById;
   private urlReserva = URL_TO_LOGIN.url + URL_TO_LOGIN.reservation;
   private urlUpdtCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.regCategoria;
-
+  private getVeId = URL_TO_LOGIN.url + URL_TO_LOGIN.getVeiculosPorId;
 
   private header: any;
 
@@ -79,6 +80,23 @@ export class NegocioService {
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
     return this.http.get<Servicios[]>(`${this.urlGetAllServicio}`, { headers: this.header });
   }
+
+  getAllServicio2(): Observable<Servicios2[]>{
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<Servicios2[]>(`${this.urlGetAllServicio}`, { headers: this.header });
+  }
+
+
+  getCar(): Observable<Vehiculo[]>{
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<Vehiculo[]>(`${this.getVeId + '/' + sessionStorage.getItem('idcliente') + '/allvehiculo'}`, { headers: this.header });
+  }
+
+
 
   getAllProductoById(id:number): Observable<Producto[]>{
     this.header = new HttpHeaders()
@@ -138,6 +156,7 @@ export class NegocioService {
     const raw = JSON.stringify(
       {
         idcliente: sessionStorage.getItem('idcliente'),
+        idvehiculo: reserva.idvehiculo,
         servicios: reserva.servicios,
         productos: reserva.productos,
         fechareserva: reserva.fechareserva,

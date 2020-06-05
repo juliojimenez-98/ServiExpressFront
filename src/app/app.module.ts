@@ -37,7 +37,12 @@ import { NegocioGestionComponent } from './web/serviHome/admin/negocio-gestion/n
 import { CategoriasComponent } from './web/serviHome/admin/negocio-gestion/categorias/categorias.component';
 import { ProductosComponent } from './web/serviHome/admin/negocio-gestion/productos/productos.component';
 import { ServiciosNComponent } from './web/serviHome/admin/negocio-gestion/servicios-n/servicios-n.component';
-
+import { ReservasEmpleadoComponent } from './web/serviHome/empleado/reservas-empleado/reservas-empleado.component';
+import { PedidosEmpleadoComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos-empleado.component';
+import { PedidosComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos/pedidos.component';
+import { RecibosempComponent } from './web/serviHome/empleado/pedidos-empleado/recibosemp/recibosemp.component';
+import { ChartModule } from 'primeng/chart';
+import {TableModule} from 'primeng/table';
 registerLocaleData(localeEsCl, 'es-CL');
 
 @NgModule({
@@ -72,6 +77,11 @@ registerLocaleData(localeEsCl, 'es-CL');
     CategoriasComponent,
     ProductosComponent,
     ServiciosNComponent,
+    ReservasEmpleadoComponent,
+    PedidosEmpleadoComponent,
+    PedidosComponent,
+    RecibosempComponent,
+  
 
   ],
   imports: [
@@ -79,7 +89,9 @@ registerLocaleData(localeEsCl, 'es-CL');
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ChartModule,
+    TableModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-Cl' }],
   bootstrap: [AppComponent]

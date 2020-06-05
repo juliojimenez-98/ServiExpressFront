@@ -24,6 +24,14 @@
                       </select>
 
                     </div>
+                    <div class=" col-md-4">
+                        <label>Productos</label>
+                        <select [(ngModel)]="vehiculo" name="vehiculo" class="custom-select">
+                                <option *ngFor="let vehiculo of vehiculos" [ngValue]="vehiculo">{{vehiculo.marca}} {{vehiculo.modelo}} {{vehiculo.idvehiculo}}</option>
+                    
+                      </select>
+
+                    </div>
                     <div class="col-md-4 ">
 
                         <label>Día y Hora de tu reserva</label>
