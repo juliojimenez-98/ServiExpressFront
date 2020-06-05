@@ -38,7 +38,7 @@ export class ReservarComponent implements OnInit {
        body.appendChild(script);
      }
 
-    
+
 
      public agregarReserva(): void{
 
@@ -51,31 +51,33 @@ export class ReservarComponent implements OnInit {
       this.reserva.fechareserva=dateHours.value;
       this.reserva.horareserva=dateHours.value;
 
-    
+
 
       this.negocioService.agregarReserva(this.reserva).subscribe(
-  
+
         res  =>{
           // this.callType(res)
           // var idcategoria = this.callType;
           console.log(this.producto.categoria)
-  
+
           Swal.fire(  'Reserva agregada',  `Se enviara un correo de confirmacion a : ${sessionStorage.getItem('email')}` ,  'success');
 
-  
+
         console.log(res)
-  
+
     },
     error => {
       this.util.handleError(error);
     },
-  
+
   );
-  
+
   }
+
+
 
   public cargaBox(): void{
 
-    this.negocioService.getAllProductoById(this.servicio.categoria).subscribe(productos => this.productos = productos)
+    this.negocioService.getAllProductoById(this.servicio.categoria.idcategoria).subscribe(productos => this.productos = productos)
   }
 }

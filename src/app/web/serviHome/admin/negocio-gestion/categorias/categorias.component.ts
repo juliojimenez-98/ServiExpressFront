@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Categoria } from 'src/app/models/categoria';
 import { Util } from 'src/app/util/util';
 import { NegocioService } from 'src/app/service/negocio.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,14 +18,29 @@ export class CategoriasComponent implements OnInit {
   public categoria:Categoria = new Categoria();
   categorias: Array<any>;
   private util: Util = new Util();
-  constructor(private negocioService: NegocioService, private router:Router) { }
+  constructor(private negocioService: NegocioService, private router:Router, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     // this.negocioService.getCategorias().subscribe(
     //   category => this.category = category
     // );
     this.cargarCategorias();
+    this.cargarDatosCategoria();
 
+  }
+
+  cargarDatosCategoria(){
+    this.activatedRoute.params.subscribe(params=>{
+      let idcategoria = params["idcategoria"]
+      if(idcategoria){
+        this.negocioService.getCategoria(idcategoria).subscribe( (categoria) =>
+        this.categoria = categoria
+        )
+      }
+
+
+    }
+      )
   }
 
   cargarCategorias(){
@@ -60,13 +75,30 @@ export class CategoriasComponent implements OnInit {
 
 
         Swal.fire(  'Categoria Agregada',  `La categoría :  ${this.categoria.nombre} se agregó con exito` ,  'success');
-        this.router.navigate(['home/negociogestion', res]);
+        this.router.navigate(['home/negociogestion/categorias']);
         this.cargarCategorias();
 
   },
   error => {
     this.util.handleError(error);
   },
+
+);
+
+}
+
+public actCategoria(): void{
+
+  this.negocioService.actualizarCategoria(this.categoria).subscribe(
+    res  =>{
+      Swal.fire(  'Categoria actualizada',  `La categoría :  ${this.categoria.nombre} se actualizó con exito` ,  'success');
+      this.router.navigate(['/home/negociogestion/categorias']);
+      this.cargarCategorias();
+
+},
+error => {
+  this.util.handleError(error);
+},
 
 );
 

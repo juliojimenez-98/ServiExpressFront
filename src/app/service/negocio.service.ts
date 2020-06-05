@@ -24,7 +24,7 @@ export class NegocioService {
   private urlGetServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.getSerivicios;
   private urlGetAllProductoById = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProductoById;
   private urlReserva = URL_TO_LOGIN.url + URL_TO_LOGIN.reservation;
-  private urlUpdtCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.updCategoria;
+  private urlUpdtCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.regCategoria;
 
 
   private header: any;
@@ -162,7 +162,7 @@ export class NegocioService {
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
-    return this.http.post(`${this.urlRegCategoria}`, raw, { headers: this.header });
+    return this.http.post(`${this.urlUpdtCategoria}`, raw, { headers: this.header });
   }
 
   actualizarProducto(producto: Producto) {
