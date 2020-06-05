@@ -108,7 +108,7 @@ public actProducto(): void{
       console.log(this.producto.idproducto)
       console.log(this.producto)
       console.log(res)
-      Swal.fire(  'Categoria actualizada',  `La categoría :  ${this.producto.nombre} se actualizó con exito` ,  'success');
+      Swal.fire(  'Servicio actualizado',  `El servicio :  ${this.producto.nombre} se actualizó con exito` ,  'success');
       this.router.navigate(['/home/negociogestion/productos']);
       this.cargarProductos();
 

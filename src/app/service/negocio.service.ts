@@ -28,6 +28,8 @@ export class NegocioService {
   private urlReserva = URL_TO_LOGIN.url + URL_TO_LOGIN.reservation;
   private urlUpdtCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.regCategoria;
   private getVeId = URL_TO_LOGIN.url + URL_TO_LOGIN.getVeiculosPorId;
+  private getServicioId = URL_TO_LOGIN.url + URL_TO_LOGIN.getServicioId;
+  private urlUpdtServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.updateServicio;
 
   private header: any;
 
@@ -52,6 +54,13 @@ export class NegocioService {
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
     return this.http.get<Producto>(`${this.urlRegProducto}/${idProducto}`, { headers: this.header })
+  }
+
+  getServicio(idservicio):Observable<Servicios>{
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<Servicios>(`${this.getServicioId}/${idservicio}`, { headers: this.header })
   }
 
    public productos(page:number, size:number):Observable<any>{
@@ -201,10 +210,10 @@ export class NegocioService {
     return this.http.post(`${this.urlUpdtProducto}`, raw, { headers: this.header });
   }
 
-  actualizar(servicio: Servicios) {
+  actualizarServicio(servicio: Servicios) {
     const raw = JSON.stringify(
     {
-      idproducto:servicio.idservicio,
+      idservicio:servicio.idservicio,
       nombre: servicio.nombre,
       descripcion: servicio.descripcion,
       valorbase: servicio.valorbase,
@@ -214,7 +223,7 @@ export class NegocioService {
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
-    return this.http.post(`${this.urlRegServicio}`, raw, { headers: this.header });
+    return this.http.post(`${this.urlUpdtServicio}`, raw, { headers: this.header });
   }
 }
 

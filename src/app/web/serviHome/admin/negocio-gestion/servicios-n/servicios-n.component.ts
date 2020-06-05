@@ -3,7 +3,7 @@ import { NegocioService } from 'src/app/service/negocio.service';
 import { Servicios } from 'src/app/models/Servicios';
 import { Util } from 'src/app/util/util';
 import { Categoria } from 'src/app/models/categoria';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,10 +18,11 @@ export class ServiciosNComponent implements OnInit {
   categorias: Categoria[];
   public servicio:Servicios = new Servicios();
   private util: Util = new Util();
-  constructor(private negocioService:NegocioService, private router:Router) { }
+  constructor(private negocioService:NegocioService, private router:Router, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.cargarServicios()
+    this.cargarDatosServicios()
     this.negocioService.getAllCategorias().subscribe(categorias => this.categorias = categorias)
   }
 
@@ -35,6 +36,20 @@ export class ServiciosNComponent implements OnInit {
         console.log(err.error)
       }
     )
+  }
+
+  cargarDatosServicios(){
+    this.activatedRoute.params.subscribe(params=>{
+      let idservicio = params["idservicio"]
+      if(idservicio){
+        this.negocioService.getServicio(idservicio).subscribe( (servicio) =>
+        this.servicio = servicio
+        )
+      }
+
+
+    }
+      )
   }
 
   sumPag(i:number){
@@ -68,6 +83,22 @@ export class ServiciosNComponent implements OnInit {
   error => {
     this.util.handleError(error);
   },
+
+);
+
+}
+public actServicio(): void{
+
+  this.negocioService.actualizarServicio(this.servicio).subscribe(
+    res  =>{
+      Swal.fire(  'Servicio actualizado',  `El Servicio :  ${this.servicio.nombre} se actualizó con exito` ,  'success');
+      this.router.navigate(['/home/negociogestion/servicios']);
+      this.cargarServicios();
+
+},
+error => {
+  this.util.handleError(error);
+},
 
 );
 
