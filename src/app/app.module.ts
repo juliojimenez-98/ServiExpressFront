@@ -42,7 +42,7 @@ import { PedidosEmpleadoComponent } from './web/serviHome/empleado/pedidos-emple
 import { PedidosComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos/pedidos.component';
 import { RecibosempComponent } from './web/serviHome/empleado/pedidos-empleado/recibosemp/recibosemp.component';
 import { ChartModule } from 'primeng/chart';
-
+import {TableModule} from 'primeng/table';
 registerLocaleData(localeEsCl, 'es-CL');
 
 @NgModule({
@@ -90,7 +90,8 @@ registerLocaleData(localeEsCl, 'es-CL');
     HttpClientModule,
     FormsModule,
     NgbModule,
-    ChartModule
+    ChartModule,
+    TableModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-Cl' }],
   bootstrap: [AppComponent]
