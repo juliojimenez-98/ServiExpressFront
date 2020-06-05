@@ -3,6 +3,7 @@ import { NavbarService } from 'src/app/service/navbar.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
+
 // declare var drawGauge: any;
 // import '../../../../assets/js/sb-admin-2.min.js';
 @Component({
@@ -17,14 +18,16 @@ export class InicioComponent implements OnInit {
   empleado = false;
   public role = '';
   data: any;
+  data2: any;
+  data3: any;
 
 
   constructor(public nav: NavbarService,private activatedRoute: ActivatedRoute,private router:Router) {
     this.data = {
-      labels: ['A','B','C'],
+      labels: ['Exelente','Bueno','Regular','Malo','Muy malo'],
       datasets: [
           {
-              data: [300, 50, 100],
+              data: [7, 3, 4, 5, 5],
               backgroundColor: [
                   "#FF6384",
                   "#36A2EB",
@@ -37,6 +40,40 @@ export class InicioComponent implements OnInit {
               ]
           }]    
       };
+      this.data2 = {
+        labels: ['Lento','Normal','Rápido'],
+        datasets: [
+            {
+                data: [20, 30, 50],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]    
+        };
+        this.data3 = {
+          labels: ['No Recomendaría','Tal Vez','Recomendaría'],
+          datasets: [
+              {
+                  data: [3, 50, 100],
+                  backgroundColor: [
+                      "#FF6384",
+                      "#36A2EB",
+                      "#FFCE56"
+                  ],
+                  hoverBackgroundColor: [
+                      "#FF6384",
+                      "#36A2EB",
+                      "#FFCE56"
+                  ]
+              }]    
+          };
     this.activatedRoute.params.subscribe(params => {
       this.role = params.idrole;
 
@@ -81,6 +118,15 @@ export class InicioComponent implements OnInit {
   //   script.defer = true;
   //   body.appendChild(script);
   // }
+
+  public exportChart(): void {
+    const visual = this.chart.exportVisual();
+    exportPDF(visual, {
+      paperSize: "A4",
+      landscape: true
+    }).then((dataURI) => {
+      saveAs(dataURI, 'chart.pdf');
+    });
 
 
 }
