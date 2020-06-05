@@ -41,6 +41,7 @@ import { ReservasEmpleadoComponent } from './web/serviHome/empleado/reservas-emp
 import { PedidosEmpleadoComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos-empleado.component';
 import { PedidosComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos/pedidos.component';
 import { RecibosempComponent } from './web/serviHome/empleado/pedidos-empleado/recibosemp/recibosemp.component';
+import { ChartModule } from 'primeng/chart';
 
 registerLocaleData(localeEsCl, 'es-CL');
 
@@ -80,6 +81,7 @@ registerLocaleData(localeEsCl, 'es-CL');
     PedidosEmpleadoComponent,
     PedidosComponent,
     RecibosempComponent,
+  
 
   ],
   imports: [
@@ -87,7 +89,8 @@ registerLocaleData(localeEsCl, 'es-CL');
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ChartModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-Cl' }],
   bootstrap: [AppComponent]

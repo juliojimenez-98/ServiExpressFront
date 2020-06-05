@@ -16,15 +16,32 @@ export class InicioComponent implements OnInit {
   admin = false;
   empleado = false;
   public role = '';
-
+  data: any;
 
 
   constructor(public nav: NavbarService,private activatedRoute: ActivatedRoute,private router:Router) {
+    this.data = {
+      labels: ['A','B','C'],
+      datasets: [
+          {
+              data: [300, 50, 100],
+              backgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56"
+              ],
+              hoverBackgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56"
+              ]
+          }]    
+      };
     this.activatedRoute.params.subscribe(params => {
       this.role = params.idrole;
 
     });
-
+  
     if (sessionStorage.getItem('idrole')=='2') {
       this.cliente = true;
     } else if (sessionStorage.getItem('idrole')=='1') {
@@ -42,6 +59,7 @@ export class InicioComponent implements OnInit {
 
   }
 
+  
   ngOnInit(): void {
 
     //  this.loadScript('../assets/js/sb-admin-2.min.js');
