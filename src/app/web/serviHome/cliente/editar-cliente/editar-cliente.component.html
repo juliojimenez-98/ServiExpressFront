@@ -24,19 +24,36 @@
         <div class="col-sm-12 text-center mx-auto">
            <div class="">
 
-               <form class="col-12" (ngSubmit)="updatePerson()">
+               <form class="col-12" #formUpdate="ngForm" (ngSubmit)="updatePerson()">
                  <div>
                    <label class="text-black" for="">Nombre</label>
                  </div>
                    <div class="form-group col-md-6 mx-auto">
-                       <input type="text" class="form-control" placeholder="Nombres"  [(ngModel)]="userModelInfo.nombre" name="name" required />
+                       <input type="text" class="form-control" placeholder="Nombres"  [(ngModel)]="userModelInfo.nombre" name="name" required minlength="2" #nombre="ngModel" />
                    </div>
+                   <div class="container col-md-5 alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                    <div *ngIf="nombre.errors.required">
+                      Tienes que ingresar el nombre
+                    </div>
+                    <div *ngIf="nombre.errors.minlength">
+                      El nombre debe tener al menos 2 caracteres
+                    </div>
+                  </div>
+
                    <div>
                      <label class="text-black" for="">Apellido</label>
                    </div>
                    <div class="form-group col-md-6 mx-auto">
-                     <input type="text" class="form-control" placeholder="Apellidos" [(ngModel)]="userModelInfo.apellido" name="lastname" required />
+                     <input type="text" class="form-control" placeholder="Apellidos" [(ngModel)]="userModelInfo.apellido" name="lastname" required  required minlength="2" #apellido="ngModel" />
                    </div>
+                   <div class="container col-md-5 alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                    <div *ngIf="apellido.errors.required">
+                      El apellido es requerido
+                    </div>
+                    <div *ngIf="apellido.errors.minlength">
+                      El apellido debe tener al menos 2 caracteres
+                    </div>
+                  </div>
 
 
 
@@ -44,17 +61,40 @@
                      <label class="text-black" for="">Telefono</label>
                    </div>
                        <div class="form-group col-md-6 mx-auto">
-                           <input type="text " class="form-control " placeholder="Telefono " [(ngModel)]="userModelInfo.telefono" name="telefonp" />
+                           <input type="text " class="form-control " placeholder="Telefono " required minlength="8" maxlength="9" pattern="[2||9]+[0-9]+" [(ngModel)]="userModelInfo.telefono" name="telefonp"  #telefono="ngModel" />
                        </div>
+                       <div class="container col-md-5 alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+                        <div *ngIf="telefono.errors.required">
+                          - El telefono es requerido
+                        </div>
+                        <div *ngIf="telefono.errors.pattern">
+                         - El telefono debe empezar con "2" de telefono o "9" de celular
+                        </div>
+                        <div *ngIf="telefono.errors.minlength">
+                          - El telefono debe tener al menos 7 números
+                        </div>
+                      </div>
 
                      <div>
                        <label class="text-black" for="">Rut</label>
                      </div>
                      <div class="form-group col-md-6 mx-auto" id="email-group">
-                         <input type="text" class="form-control" placeholder="Rut" [(ngModel)]="userModelInfo.rut" name="rut" name="Rut" required />
+                         <input type="text" class="form-control" placeholder="Rut" [(ngModel)]="userModelInfo.rut" name="rut"  required minlength="9" maxlength="10" pattern="\d{3,8}-[\d|kK]{1}" #rut="ngModel" />
                      </div>
 
-                   <button  type="submit" class="btn btn-success my-4 mx-auto">  Actualizar </button>
+                     <div class="container col-md-5 alert alert-danger" *ngIf="rut.invalid && (rut.dirty || rut.touched|| rut.valid)">
+                      <div *ngIf="rut.errors.required">
+                        El rut es requerido y debe tener el siguiente formato Ej: 11111111-1
+                      </div>
+                      <div *ngIf="rut.errors.pattern">
+                        El rut debe incluir el "-", debe tener el siguiente formato Ej: 11111111-k
+                      </div>
+                      <div *ngIf="rut.errors.minlength">
+                        - Verifique su rut
+                      </div>
+                    </div>
+
+                   <button  type="submit" class="btn btn-success my-4 mx-auto" [disabled]="!formUpdate.form.valid">  Actualizar </button>
 
                </form>
            </div>

@@ -44,6 +44,7 @@ export class ReservarComponent implements OnInit {
 
 
 
+
   public agregarReserva(): void {
 
     let producto = this.producto.idproducto;
@@ -57,6 +58,15 @@ export class ReservarComponent implements OnInit {
     this.reserva.idvehiculo = parseInt(this.vehiculo.idvehiculo);
 
 
+      this.negocioService.agregarReserva(this.reserva).subscribe(
+
+        res  =>{
+          // this.callType(res)
+          // var idcategoria = this.callType;
+          console.log(this.producto.categoria)
+
+          Swal.fire(  'Reserva agregada',  `Se enviara un correo de confirmacion a : ${sessionStorage.getItem('email')}` ,  'success');
+
 
     this.negocioService.agregarReserva(this.reserva).subscribe(
 
@@ -68,6 +78,7 @@ export class ReservarComponent implements OnInit {
         Swal.fire('Reserva agregada', `Se enviara un correo de confirmacion a : ${sessionStorage.getItem('email')}`, 'success');
 
 
+
         console.log(res)
 
       },
@@ -77,9 +88,19 @@ export class ReservarComponent implements OnInit {
 
     );
 
+
+    },
+    error => {
+      this.util.handleError(error);
+    },
+
+  );
+
   }
 
-  public cargaBox(): void {
+
+
+  public cargaBox(): void{
 
     this.negocioService.getAllProductoById(this.servicio.categoria).subscribe(productos => this.productos = productos)
   }

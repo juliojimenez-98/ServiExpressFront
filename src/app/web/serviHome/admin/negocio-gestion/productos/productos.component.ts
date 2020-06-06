@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NegocioService } from 'src/app/service/negocio.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Producto } from 'src/app/models/producto';
 import { Util } from 'src/app/util/util';
@@ -22,14 +22,33 @@ export class ProductosComponent implements OnInit {
   private util: Util = new Util();
   public idCategoria:any;
 
-  constructor(private negocioService: NegocioService, private router:Router) {
+  constructor(private negocioService: NegocioService, private router:Router, private activateRoute:ActivatedRoute) {
 
   }
 
 
   ngOnInit(): void {
     this.cargarProductos();
+    this.cargarDatosProducto();
+    console.log(this.producto)
+
     this.negocioService.getAllCategorias().subscribe(categorias => this.categorias = categorias)
+  }
+
+  cargarDatosProducto(){
+    this.activateRoute.params.subscribe(params=>{
+      let idproducto = params["idproducto"]
+      if(idproducto){
+        this.negocioService.getProducto(idproducto).subscribe( (producto) =>
+        this.producto = producto
+        )
+        console.log(this.producto)
+        console.log(this.producto.categoria)
+      }
+
+
+    }
+      )
   }
 
   cargarProductos(){
@@ -81,5 +100,31 @@ export class ProductosComponent implements OnInit {
 );
 
 }
+
+public actProducto(): void{
+
+  this.negocioService.actualizarProducto(this.producto).subscribe(
+    res  =>{
+      console.log(this.producto.idproducto)
+      console.log(this.producto)
+      console.log(res)
+      Swal.fire(  'Servicio actualizado',  `El servicio :  ${this.producto.nombre} se actualizó con exito` ,  'success');
+      this.router.navigate(['/home/negociogestion/productos']);
+      this.cargarProductos();
+
+},
+error => {
+  this.util.handleError(error);
+},
+
+);
+
+}
+
+// compararCategoria(o1:Categoria, o2:Categoria){
+
+//   return o1 === null || o2 === null? false: o1.idcategoria === o2.idcategoria;
+
+// }
 
 }
