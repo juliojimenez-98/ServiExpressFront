@@ -243,7 +243,7 @@ export class NegocioService {
     return this.http.get(`${this.urlReservaPorId + '/' + sessionStorage.getItem('idcliente') + '/true/cliente'}`, { headers: this.header });
   }
 
-  updateEstadoReserva(idReserva:string, idEstado:string) {
+  updateEstadoReserva(idReserva:string,idEstado:string) {
     this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
       .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
