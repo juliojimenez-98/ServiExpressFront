@@ -30,6 +30,8 @@ export class ReservasEmpleadoComponent implements OnInit {
 
 
   async estadoReserva(reserva):Promise<void>{
+    // var idreserva:string;
+    // idreserva = reserva;
     console.log(reserva)
   //   reserva.forEach(resource => {
   //     console.log(resource.idreserva);
@@ -41,11 +43,11 @@ export class ReservasEmpleadoComponent implements OnInit {
       position:"center",
       inputOptions: {
 
-        1: 'Revision',
-        2: 'Trabajando',
-        3: 'Limpieza',
-        4: 'Terminando',
-        5: 'Servicio Completo'
+        '1': 'Revision',
+        '2': 'Trabajando',
+        '3': 'Limpieza',
+        '4': 'Terminando',
+        '5': 'Servicio Completo'
       },
       inputPlaceholder: 'Selecciona el estado de la reserva',
       showCancelButton: true,
@@ -58,7 +60,11 @@ export class ReservasEmpleadoComponent implements OnInit {
 
       Swal.fire('Estado de reserva',`El estado cambió a: ${estado}`,'success')
       console.log(reserva)
+      console.log(reserva)
       console.log(estado)
+      this.service.updateEstadoReserva(reserva,estado).subscribe(res=>{
+        console.log(res);
+      });
     }
 
   }
