@@ -32,6 +32,8 @@ export class RegistroAutoComponent {
   constructor(public service: CarService, private clienteService: ClientesService, private router: Router) {
     this.cars$ = service.cars$;
     this.total$ = service.total$;
+
+    
   }
 
     ngOnInit(): void {
