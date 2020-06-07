@@ -12,6 +12,7 @@ import { URL_TO_LOGIN } from '../util/global';
 export class AdminClientesService {
 
   private urlGetEmpleadosPag = URL_TO_LOGIN.url + URL_TO_LOGIN.getEmpleadosPag;
+  private getClientesPag = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllClientesPag;
   private header: any;
 
   constructor(private http: HttpClient) {}
@@ -21,7 +22,13 @@ export class AdminClientesService {
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
-    return this.http.get<any>(this.urlGetEmpleadosPag+ `/page=${page}&size=${size}`, { headers: this.header });
+    return this.http.get<any>(this.urlGetEmpleadosPag+ `page=${page}&size=${size}`, { headers: this.header });
+  }
+  public getClientes(page:number, size:number):Observable<any>{
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<any>(this.getClientesPag+ `page=${page}&size=${size}`, { headers: this.header });
   }
 
 

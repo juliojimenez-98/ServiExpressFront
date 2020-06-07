@@ -22,7 +22,7 @@
                       <th>Telefono</th>
                     </tr>
                   </thead>
-                  <tr *ngFor="let empleado of empleadosPag" >
+                  <tr *ngFor="let empleado of empleados" >
                     <td>{{empleado.idempleado}}</td>
                     <td>{{empleado.rut}}</td>
                     <td>{{empleado.nombre}}</td>
@@ -31,12 +31,12 @@
                   </tr>
                 </table>
             </div>
-            <div class="row">
+
 
         </div>
     </div>
 </div>
-
+<div class="row">
 <div class=" col-md-6 text-right">
   <button class="btn btn-outline-primary" (click)="resPag(page)"><i class="fas fa-chevron-left"></i></button>
 
