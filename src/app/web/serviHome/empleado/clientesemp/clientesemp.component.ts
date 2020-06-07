@@ -21,9 +21,7 @@ export class ClientesempComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.adminClientes.getCLientes().subscribe(
-      clientes => this.clientes = clientes
-    );
+
 
   }
 

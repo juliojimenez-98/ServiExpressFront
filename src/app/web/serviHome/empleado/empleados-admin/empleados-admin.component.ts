@@ -9,7 +9,9 @@ import { NavbarService } from 'src/app/service/navbar.service';
   styleUrls: ['./empleados-admin.component.css']
 })
 export class EmpleadosAdminComponent implements OnInit {
-  empleados: Empleado[];
+  page = 0;
+  size = 1;
+  empleadosPag: Array<any>;
 
   constructor(private adminClientes:AdminClientesService, private nav:NavbarService,) {
     this.nav.hide();
@@ -17,9 +19,31 @@ export class EmpleadosAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.adminClientes.getEmpleados().subscribe(
-      empleados => this.empleados = empleados
-    );
+    this.cargarEmpleados();
   }
 
+
+  cargarEmpleados(){
+    this.adminClientes.empleadosPag(this.page,this.size).subscribe(
+      res=>{
+        this.empleadosPag = res;
+        console.log(this.page);
+      },
+      err=> {
+        console.log(err.error)
+      }
+    )
+  }
+
+  sumPag(i:number){
+    this.page = i+1;
+    this.cargarEmpleados();
+    console.log(i)
+  }
+
+  resPag(i:number){
+    this.page = i-1;
+    this.cargarEmpleados();
+    console.log(i)
+  }
 }

@@ -22,6 +22,8 @@ export var URL_TO_LOGIN={
     getAllCategorias:'/api/categoria/categorias',
     getAllServicios:'/api/servicio/servicios',
     getAllProductoById:'/api/producto',
+    getAllClientesPag:'/api/entidad/clientes?',
+    getEmpleadosPag:'/api/entidad/empleados?',
     reservation:'/api/reserva/reserva',
     getSerivicios:'/api/servicio/servicios?',
 }
