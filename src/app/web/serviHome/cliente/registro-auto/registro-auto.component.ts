@@ -26,12 +26,14 @@ export class RegistroAutoComponent {
   private util: Util = new Util();
   cars$: Observable<Cars[]>;
   total$: Observable<number>;
+  tiposAutos;
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
   constructor(public service: CarService, private clienteService: ClientesService, private router: Router) {
     this.cars$ = service.cars$;
     this.total$ = service.total$;
+    this.tiposAutos = ['Sedán', 'Hatchback', 'Suv', 'MiniVan', 'PickUp', 'Camion'];
   }
 
     ngOnInit(): void {
@@ -66,15 +68,6 @@ export class RegistroAutoComponent {
   public regVehiculo(): void {
 
 
-
-    this.service.getCar().subscribe(
-      res => {
-
-      },
-      error => {
-        this.util.handleError(error);
-      },
-    )
     this.vehiculo.idcliente = JSON.parse(sessionStorage.getItem('idcliente'));
 
     this.clienteService.registrarVehiculo(this.vehiculo).subscribe(

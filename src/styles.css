@@ -489,8 +489,15 @@ h6 {
 .bgnice2{
   background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
 }
+.bgnice3{
+  background: rgb(15,101,136);
+background: linear-gradient(83deg, rgba(15,101,136,1) 0%, rgba(27,13,91,1) 100%);
+}
 
 .bgnice{
   background-image: linear-gradient( 171.8deg,  rgba(5,111,146,1) 13.5%, rgba(6,57,84,1) 78.6% )
   }
-
+  html,
+  body {
+      height: 100%;
+  }

@@ -21,7 +21,7 @@
                 </div>
                 <br>
               </div>
-              <form class="col-12" (ngSubmit)="registerPerson()" name="formRegister">
+              <form class="col-12" #activarForm="ngForm" (ngSubmit)="registerPerson()" name="formRegister">
                 <div class="form-group row">
 
                 <div class="input-group col-sm-4 mb-3 mb-sm-0">
@@ -99,7 +99,7 @@
                   </div>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary my-2 col-sm-12 "><i class="fas fa-sign-in-alt"></i> Guardar</button>
+                <button type="submit" class="btn btn-primary my-2 col-sm-12 " [disabled]="!activarForm.form.valid"><i class="fas fa-sign-in-alt"></i> Guardar</button>
               </form>
               <hr>
               <!-- <div class="text-center">

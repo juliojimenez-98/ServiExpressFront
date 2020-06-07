@@ -8,7 +8,7 @@
             {{producto.nombre}} - {{producto.descripcion}} - {{producto.valorbase}} - {{producto.categoria.nombre}}
           </div>
           <div class="col-sm-2 text-right">
-            <button type="button" class="btn btn-warning btn-circle text-center"><i class="fas fa-edit"></i></button>
+            <button type="button" class="btn btn-warning btn-circle text-center" [routerLink]="[producto.idproducto]" ><i class="fas fa-edit"></i></button>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
  <hr>
  <h6 class="my-4 text-center">Agregar Producto</h6>
  <div class="container">
-   <form (ngSubmit)="agregarPRoducto()" class="col-12">
+   <form class="col-12">
      <div class="input-group mb-3 col-md-8 mx-auto">
        <div class="input-group-prepend ">
          <span class="input-group-text "><i class="fab fa-product-hunt"></i></span>
@@ -66,7 +66,10 @@
 
      </div>
      <div class="text-center">
-       <button type="submit"  class="col-sm-4 btn btn-success btn-block my-4 mx-auto"><i class="fas fa-plus"></i>  Agregar producto </button>
+      <button type="submit"  class="btn btn-success" (click)="agregarPRoducto()" *ngIf="!producto.idproducto else elseBLock" >Agregar</button>
      </div>
+     <ng-template #elseBLock>
+      <button type="submit"  class="btn btn-success" (click)="actProducto()">Actualizar</button>
+    </ng-template>
  </form>
  </div>

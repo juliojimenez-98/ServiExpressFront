@@ -8,7 +8,7 @@
             {{categoria.nombre}} - {{categoria.descripcion}}
           </div>
           <div class="col-sm-2 text-right">
-            <button type="button" class="btn btn-warning btn-circle text-center"><i class="fas fa-edit"></i></button>
+            <button type="button" class="btn btn-warning btn-circle text-center" [routerLink]="[categoria.idcategoria]" ><i class="fas fa-edit"></i></button>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
 <hr>
 <h6 class="my-4 text-center">Agregar Categoría</h6>
 <div class="container">
-  <form (ngSubmit)="agregarCategoria()">
+  <form>
     <div class="form-row">
       <div class="input-group mb-3 col-md-4">
         <div class="input-group-prepend ">
@@ -49,8 +49,12 @@
         <input type="text" class="form-control" placeholder="Descripcion de la categoria" [(ngModel)]="categoria.descripcion" name="descripcion" required />
       </div>
       <div class="col-md-2">
-        <button type="submit"  class="btn btn-success">Agregar</button>
+        <button type="submit"  class="btn btn-success" (click)="agregarCategoria()"*ngIf="!categoria.idcategoria else elseBLock" >Agregar</button>
       </div>
+      <ng-template #elseBLock>
+        <button type="submit"  class="btn btn-success" (click)="actCategoria()">Actualizar</button>
+      </ng-template>
+
     </div>
   </form>
 </div>

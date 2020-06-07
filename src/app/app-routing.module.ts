@@ -24,6 +24,12 @@ import { HistorialReservasComponent } from './web/serviHome/cliente/historial-re
 import { AutosClienteComponent } from './web/serviHome/cliente/autos-cliente/autos-cliente.component';
 import { RegistroAutoComponent } from './web/serviHome/cliente/registro-auto/registro-auto.component';
 import { NegocioGestionComponent } from './web/serviHome/admin/negocio-gestion/negocio-gestion.component';
+import { CategoriasComponent } from './web/serviHome/admin/negocio-gestion/categorias/categorias.component';
+import { ProductosComponent } from './web/serviHome/admin/negocio-gestion/productos/productos.component';
+import { ServiciosNComponent } from './web/serviHome/admin/negocio-gestion/servicios-n/servicios-n.component';
+import { ReservasEmpleadoComponent } from './web/serviHome/empleado/reservas-empleado/reservas-empleado.component';
+import { PedidosEmpleadoComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos-empleado.component';
+import { EncuestaComponent } from './web/serviHome/cliente/encuesta/encuesta.component';
 
 
 
@@ -46,7 +52,16 @@ const APP_ROUTES: Routes = [
   { path: 'verclientes', component: ClientesempComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'registeremploye', component: RegisteremployeComponent, canActivate: [ RoleGuard, AuthGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'verempleados', component: EmpleadosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
-  { path: 'negociogestion', component: NegocioGestionComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+  { path: 'negociogestion', component: NegocioGestionComponent,
+  children:[
+    { path: 'categorias', component: CategoriasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+    { path: 'categorias/:idcategoria', component: CategoriasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+    { path: 'productos', component: ProductosComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+    { path: 'productos/:idproducto', component: ProductosComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+    { path: 'servicios', component: ServiciosNComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+    { path: 'servicios/:idservicio', component: ServiciosNComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+
+  ]},
 
   //Sidebar Cliente
   { path: 'iniciocliente', component: InicioClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
@@ -56,7 +71,10 @@ const APP_ROUTES: Routes = [
   { path: 'historialreserva', component: HistorialReservasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'autosclientes', component: AutosClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'registroautos', component: RegistroAutoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+  { path: 'encuesta', component: EncuestaComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   //Sidebar Empleado
+  { path: 'reservasemp', component: ReservasEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
+  { path: 'pedidosemp', component: PedidosEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
   ]},
 
   { path: 'sidebar', component: SidebarComponent, canActivate: [ AuthGuard ] },
