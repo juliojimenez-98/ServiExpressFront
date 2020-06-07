@@ -32,6 +32,7 @@ export class NegocioService {
   private getServicioId = URL_TO_LOGIN.url + URL_TO_LOGIN.getServicioId;
   private urlUpdtServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.updateServicio;
   private getReservas = URL_TO_LOGIN.url + URL_TO_LOGIN.getReservas;
+  private urlReservaPorId = URL_TO_LOGIN.url + URL_TO_LOGIN.getReservaPorId;
 
   private header: any;
 
@@ -233,6 +234,15 @@ export class NegocioService {
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
     return this.http.post(`${this.urlUpdtServicio}`, raw, { headers: this.header });
   }
+
+
+  getReservaActiva() {
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get(`${this.urlReservaPorId + '/' + sessionStorage.getItem('idcliente') + '/true/cliente'}`, { headers: this.header });
+  }
+
 }
 
 
