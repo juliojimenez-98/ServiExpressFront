@@ -27,4 +27,5 @@ export var URL_TO_LOGIN={
     reservation:'/api/reserva/reserva',
     getSerivicios:'/api/servicio/servicios?',
     getReservaPorId:'/api/reserva',
+    getReservas:'/api/reserva/reservas',
 }

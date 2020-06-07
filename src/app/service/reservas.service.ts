@@ -69,7 +69,7 @@ export class ReservasService {
   private header: any;
 
   constructor(private pipe: DecimalPipe, private http: HttpClient) {
-    
+
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
       debounceTime(200),
@@ -92,7 +92,7 @@ export class ReservasService {
 
    }
 
-   
+
    getReserva() {
     this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')

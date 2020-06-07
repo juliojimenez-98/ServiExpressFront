@@ -8,6 +8,7 @@ import { Producto } from '../models/producto';
 import { Servicios, Servicios2 } from '../models/Servicios';
 import { Reserva } from '../models/reserva';
 import { Vehiculo } from '../models/vehiculo';
+import { ReservaResponse } from '../models/ReservaResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,7 @@ export class NegocioService {
   private getVeId = URL_TO_LOGIN.url + URL_TO_LOGIN.getVeiculosPorId;
   private getServicioId = URL_TO_LOGIN.url + URL_TO_LOGIN.getServicioId;
   private urlUpdtServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.updateServicio;
+  private getReservas = URL_TO_LOGIN.url + URL_TO_LOGIN.getReservas;
 
   private header: any;
 
@@ -106,6 +108,12 @@ export class NegocioService {
     return this.http.get<Vehiculo[]>(`${this.getVeId + '/' + sessionStorage.getItem('idcliente') + '/allvehiculo'}`, { headers: this.header });
   }
 
+  getAllReservas(): Observable<ReservaResponse[]>{
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<ReservaResponse[]>(`${this.getReservas}`, { headers: this.header });
+ }
 
 
   getAllProductoById(id:number): Observable<Producto[]>{
