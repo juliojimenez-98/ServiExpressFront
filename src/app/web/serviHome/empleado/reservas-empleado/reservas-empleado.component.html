@@ -17,7 +17,7 @@
                       </thead>
                       <tbody>
                           <tr *ngFor="let reserva of reservas">
-                              <td class="text-center text-muted">{{reserva.idreserva}}</td>
+                              <td class="text-center text-muted" >{{reserva.idreserva}}</td>
                               <td class="text-center text-muted">{{reserva.servicios}}</td>
                               <td class="text-center text-muted">{{reserva.productos}}</td>
                               <td class="text-center text-muted"> {{ reserva.fechareserva | date }}</td>
@@ -27,7 +27,7 @@
                               <td></td>
                               <td>
                                   <div class="row mx-auto">
-                                    <button type="button" class="btn btn-outline-info btn-sm" (click)="estadoReserva()">
+                                    <button type="button" class="btn btn-outline-info btn-sm" (click)="estadoReserva(reserva.idreserva)">
                                       Seleccionar
                                     </button>
                                   </div>
