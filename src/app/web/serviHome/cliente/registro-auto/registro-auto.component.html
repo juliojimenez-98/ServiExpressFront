@@ -33,7 +33,12 @@
                             <div class="input-group-prepend ">
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
                             </div>
-                            <input class="form-control" type="text" placeholder="Tipo auto" name="TipoAuto" [(ngModel)]="vehiculo.tipovehiculo">
+                            <!-- <input class="form-control" type="text" placeholder="Tipo auto" name="TipoAuto" [(ngModel)]="vehiculo.tipovehiculo"> -->
+                            <select [(ngModel)]="vehiculo.tipovehiculo" name="tipoauto" class="custom-select">
+                              <option selected *ngFor="let tipo of tiposAutos">
+                                {{tipo}}
+                              </option>
+                            </select>
                         </div>
                     </div>
                     <br>
