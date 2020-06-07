@@ -44,7 +44,7 @@
 
 
 
-                <div id="mostrarAuto" style="display: none;">
+                <!-- <div id="mostrarAuto" style="display: none;">
                     <div class="form-row">
                         <div class="col-md-6 mx-auto">
                             <label>Escoje tu Auto</label>
@@ -57,12 +57,64 @@
                     </div>
                     <button type="button" style="margin-top: 10px;" class="mx-auto btn btn-outline-info btn-sm" value="Ocultar" onclick="mostrar()">No está tu auto?</button>
                 </div>
-                <br>
+                <br> -->
 
 
                 <div class="text-center">
                     <button type="submit" class="col-sm-4 btn btn-success btn-block my-4 mx-auto"><i class="fas fa-plus"></i>  Agendar reserva </button>
                 </div>
+            </form>
+
+            <form>
+                <div class="form-group form-inline">
+                    Buscar: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm" />
+                    <span class="ml-3" *ngIf="service.loading$ | async">Cargando...</span>
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <!-- <th scope="col">#</th> -->
+                            <th scope="col" sortable="patente" (sort)="onSort($event)">Patente</th>
+                            <th scope="col" sortable="marca" (sort)="onSort($event)">Marca</th>
+                            <th scope="col" sortable="modelo" (sort)="onSort($event)">Modelo</th>
+                            <th scope="col" sortable="nrochasis" (sort)="onSort($event)">N° de Chasis</th>
+                            <!-- <th>Acción</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let res2 of reservaResponse$ | async">
+                            <!-- <th scope="row">{{ car.idvehiculo }}</th> -->
+                            <td>
+                                <ngb-highlight [result]="res2.patente" [term]="service.searchTerm"></ngb-highlight>
+                            </td>
+                            <td>
+                                <ngb-highlight [result]="res2.veichulo" [term]="service.searchTerm"></ngb-highlight>
+                            </td>
+                            <td>
+                                <ngb-highlight [result]="res2.marca" [term]="service.searchTerm"></ngb-highlight>
+                            </td>
+                            <td>
+                                <ngb-highlight [result]="res2.marca" [term]="service.searchTerm"></ngb-highlight>
+                            </td>
+                            <!-- <td>
+                                <button class="btn btn-danger btn-sm" (click)="borrarVehiculo()">Eliminar</button>
+                            </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-between p-2">
+                    <ngb-pagination [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+                    </ngb-pagination>
+
+                    <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+              <option [ngValue]="2">2 auto por pagina</option>
+              <option [ngValue]="4">4 auto por pagina</option>
+              <option [ngValue]="6">6 auto por pagina</option>
+            </select>
+                </div>
+
             </form>
             <!-- Button trigger modal -->
         </div>

@@ -24,4 +24,5 @@ export var URL_TO_LOGIN={
     getAllProductoById:'/api/producto',
     reservation:'/api/reserva/reserva',
     getSerivicios:'/api/servicio/servicios?',
+    getReservaPorId:'/api/reserva',
 }
