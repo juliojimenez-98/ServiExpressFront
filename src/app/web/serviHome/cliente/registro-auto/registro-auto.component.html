@@ -5,7 +5,7 @@
                 <h3>Registra tu Vehículo</h3>
                 <hr class="white">
             </div>
-            <form (ngSubmit)="regVehiculo()">
+            <form #formAuto="ngForm" (ngSubmit)="regVehiculo()">
                 <div class="container">
                     <div class="form-row ">
                         <div class="input-group col-md-4">
@@ -60,7 +60,7 @@
                             <div class="input-group-prepend ">
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
                             </div>
-                            <input class="form-control " type="text" placeholder="Patente" name="patente" [(ngModel)]="vehiculo.patente">
+                            <input style="text-transform: uppercase;" class="form-control " type="text" placeholder="Patente" name="patente" [(ngModel)]="vehiculo.patente">
                         </div>
                         <div class="input-group col-md-4">
                             <div class="container">
