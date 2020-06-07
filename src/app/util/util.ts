@@ -163,5 +163,8 @@ export class Util {
       sessionStorage.setItem("fechaNacimiento", res["fechaNacimiento"]);
       sessionStorage.setItem("current", 'true');
   }
+
+
+  
 }
 
