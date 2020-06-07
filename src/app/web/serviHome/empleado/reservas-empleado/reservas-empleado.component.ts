@@ -30,13 +30,8 @@ export class ReservasEmpleadoComponent implements OnInit {
 
 
   async estadoReserva(reserva):Promise<void>{
-    // var idreserva:string;
-    // idreserva = reserva;
     console.log(reserva)
-  //   reserva.forEach(resource => {
-  //     console.log(resource.idreserva);
 
-  // });
     const { value: estado } = await Swal.fire({
       title: 'Selecciona el estado',
       input: 'select',
