@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { ReservaResponse } from "src/app/models/ReservaResponse";
+import { NegocioService } from 'src/app/service/negocio.service';
+
 
 @Component({
   selector: 'app-reservas-empleado',
@@ -7,10 +10,20 @@ import Swal from 'sweetalert2';
 })
 export class ReservasEmpleadoComponent implements OnInit {
 
-  constructor() { }
+  reservas: ReservaResponse[];
+  constructor(private service:NegocioService) { }
 
   ngOnInit(): void {
+    this.getReservas();
   }
+
+  getReservas(){
+    this.service.getAllReservas().subscribe(
+      reservas => this.reservas = reservas
+    );
+  }
+
+
 
   async estadoReserva():Promise<void>{
     const { value: estado } = await Swal.fire({

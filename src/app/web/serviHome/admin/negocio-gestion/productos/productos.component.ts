@@ -87,7 +87,7 @@ export class ProductosComponent implements OnInit {
         console.log(this.producto.categoria)
 
         Swal.fire(  'Producto agregado',  `El producto : ${this.producto.nombre} se agregó con exito` ,  'success');
-        this.router.navigate(['home/negociogestion']);
+        this.router.navigate(['home/negociogestion/productos']);
         this.cargarProductos();
 
       console.log(res)

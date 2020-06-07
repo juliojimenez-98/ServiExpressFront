@@ -74,7 +74,7 @@ export class ServiciosNComponent implements OnInit {
         console.log(this.servicio.categoria)
 
         Swal.fire(  'Servicio agregado',  `El Servicio : ${this.servicio.nombre} se agregó con exito` ,  'success');
-        this.router.navigate(['home/negociogestion']);
+        this.router.navigate(['home/negociogestion/servicios']);
         this.cargarServicios();
 
       console.log(res)

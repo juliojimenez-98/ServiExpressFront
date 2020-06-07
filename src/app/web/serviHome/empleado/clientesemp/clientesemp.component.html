@@ -21,7 +21,6 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Telefono</th>
-                    <th>Fecha Nacimiento</th>
                   </tr>
                 </thead>
                 <tr *ngFor="let cliente of clientes" >
@@ -30,10 +29,24 @@
                   <td>{{cliente.nombre}}</td>
                   <td>{{cliente.apellido}}</td>
                   <td>{{cliente.telefono}}</td>
-                  <td>{{ cliente.fechaNacimiento | date }}</td>
                 </tr>
               </table>
           </div>
       </div>
   </div>
 </div>
+<div class="row">
+  <div class=" col-md-6 text-right">
+    <button class="btn btn-outline-primary" (click)="resPag(page)"><i class="fas fa-chevron-left"></i></button>
+
+  </div>
+  <div class=" col-md-6">
+    <button class="btn btn-outline-primary" (click)="sumPag(page)"><i class="fas fa-chevron-right"></i></button>
+
+  </div>
+  <div class="mx-auto">
+
+  <pre>Pagina Actual: {{page}}</pre>
+  </div>
+  </div>
+

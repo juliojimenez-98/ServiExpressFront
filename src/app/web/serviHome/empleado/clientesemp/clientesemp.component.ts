@@ -11,20 +11,44 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ClientesempComponent implements OnInit {
 
-  clientes: Cliente[];
+  page = 0;
+  size = 4;
+  clientes: Array<any>;
 
   constructor(private adminClientes:AdminClientesService, private nav:NavbarService, private activatedRoute: ActivatedRoute) {
-
+    this.cargarClientes();
     this.nav.hide();
     this.nav.doSomethingElseUseful();
   }
 
 
   ngOnInit(): void {
-    this.adminClientes.getCLientes().subscribe(
-      clientes => this.clientes = clientes
-    );
 
+
+  }
+
+  cargarClientes(){
+    this.adminClientes.empleadosPag(this.page,this.size).subscribe(
+      res=>{
+        this.clientes = res;
+        console.log(this.page);
+      },
+      err=> {
+        console.log(err.error)
+      }
+    )
+  }
+
+  sumPag(i:number){
+    this.page = i+1;
+    this.cargarClientes();
+    console.log(i)
+  }
+
+  resPag(i:number){
+    this.page = i-1;
+    this.cargarClientes();
+    console.log(i)
   }
 
 

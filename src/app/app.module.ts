@@ -43,6 +43,7 @@ import { PedidosComponent } from './web/serviHome/empleado/pedidos-empleado/pedi
 import { RecibosempComponent } from './web/serviHome/empleado/pedidos-empleado/recibosemp/recibosemp.component';
 import { ChartModule } from 'primeng/chart';
 import {TableModule} from 'primeng/table';
+import { EncuestaComponent } from './web/serviHome/cliente/encuesta/encuesta.component';
 registerLocaleData(localeEsCl, 'es-CL');
 
 @NgModule({
@@ -81,6 +82,7 @@ registerLocaleData(localeEsCl, 'es-CL');
     PedidosEmpleadoComponent,
     PedidosComponent,
     RecibosempComponent,
+    EncuestaComponent,
   
 
   ],
