@@ -26,4 +26,5 @@ export var URL_TO_LOGIN={
     getEmpleadosPag:'/api/entidad/empleados?',
     reservation:'/api/reserva/reserva',
     getSerivicios:'/api/servicio/servicios?',
+    getReservaPorId:'/api/reserva',
 }
