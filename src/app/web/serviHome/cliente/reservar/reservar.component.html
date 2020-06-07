@@ -76,9 +76,9 @@
                         <tr>
                             <!-- <th scope="col">#</th> -->
                             <th scope="col" sortable="patente" (sort)="onSort($event)">Patente</th>
-                            <th scope="col" sortable="marca" (sort)="onSort($event)">Marca</th>
-                            <th scope="col" sortable="modelo" (sort)="onSort($event)">Modelo</th>
-                            <th scope="col" sortable="nrochasis" (sort)="onSort($event)">N° de Chasis</th>
+                            <th scope="col" sortable="marca" (sort)="onSort($event)">vehículo</th>
+                            <th scope="col" sortable="modelo" (sort)="onSort($event)">Marca</th>
+                            <th scope="col" sortable="nrochasis" (sort)="onSort($event)">Fecha</th>
                             <!-- <th>Acción</th> -->
                         </tr>
                     </thead>
@@ -95,7 +95,7 @@
                                 <ngb-highlight [result]="res2.marca" [term]="service.searchTerm"></ngb-highlight>
                             </td>
                             <td>
-                                <ngb-highlight [result]="res2.marca" [term]="service.searchTerm"></ngb-highlight>
+                                <ngb-highlight [result]="res2.fechareserva" [term]="service.searchTerm"></ngb-highlight>
                             </td>
                             <!-- <td>
                                 <button class="btn btn-danger btn-sm" (click)="borrarVehiculo()">Eliminar</button>
@@ -109,9 +109,9 @@
                     </ngb-pagination>
 
                     <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
-              <option [ngValue]="2">2 auto por pagina</option>
-              <option [ngValue]="4">4 auto por pagina</option>
-              <option [ngValue]="6">6 auto por pagina</option>
+              <option [ngValue]="3">3 reserva por pagina</option>
+              <option [ngValue]="5">5 reserva por pagina</option>
+              <option [ngValue]="10">10 reserva por pagina</option>
             </select>
                 </div>
 

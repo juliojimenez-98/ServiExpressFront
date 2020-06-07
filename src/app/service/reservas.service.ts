@@ -56,7 +56,7 @@ export class ReservasService {
 
   private _state: State = {
     page: 1,
-    pageSize: 4,
+    pageSize: 3,
     searchTerm: '',
     sortColumn: '',
     sortDirection: ''
@@ -102,7 +102,7 @@ export class ReservasService {
 
 
 
-  get cars$() { return this._res$.asObservable(); }
+  get reservaResponses$() { return this._res$.asObservable(); }
   get total$() { return this._total$.asObservable(); }
   get loading$() { return this._loading$.asObservable(); }
   get page() { return this._state.page; }
@@ -132,7 +132,7 @@ export class ReservasService {
     let reservaResponse = sort(stored_datas, sortColumn, sortDirection);
 
     // 2. filter
-    reservaResponse = reservaResponse.filter(car => matches(car, searchTerm, this.pipe));
+    reservaResponse = reservaResponse.filter(reservaResponse => matches(reservaResponse, searchTerm, this.pipe));
     const total = reservaResponse.length;
 
     // 3. paginate

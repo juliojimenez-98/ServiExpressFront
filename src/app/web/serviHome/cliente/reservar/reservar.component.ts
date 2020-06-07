@@ -32,7 +32,10 @@ export class ReservarComponent implements OnInit {
   total$: Observable<number>;
   
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
-  constructor(private negocioService: NegocioService, public service: ReservasService) { }
+  constructor(private negocioService: NegocioService, public service: ReservasService) {
+    this.reservaResponse$ = service.reservaResponses$;
+    this.total$ = service.total$;
+   }
 
   
   public dateBefore: Date = new Date();
@@ -85,12 +88,13 @@ export class ReservarComponent implements OnInit {
       this.negocioService.agregarReserva(this.reserva).subscribe(
 
         res  =>{
-          // this.callType(res)
-          // var idcategoria = this.callType;
-          console.log(this.producto.categoria)
+
 
           Swal.fire(  'Reserva agregada',  `Se enviara un correo de confirmacion a : ${sessionStorage.getItem('email')}` ,  'success');
-
+          this.service.getReserva()
+          .subscribe(res => {
+            localStorage["datas2"] = JSON.stringify(res);
+          });
     },
     error => {
       this.util.handleError(error);
