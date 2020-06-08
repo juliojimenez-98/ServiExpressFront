@@ -20,14 +20,23 @@
                             <li *ngIf="!recibido" class="active" id="autoRecibido"><strong>Recibo Auto</strong></li>
                             <li *ngIf="recibido" id="autoRecibido"><strong>Recibo Auto</strong></li>
 
-                            <li *ngIf="taller" class="active" id="autoTaller"><strong>Auto en taller</strong></li>
-                            <li *ngIf="!taller" id="autoTaller "><strong>Auto en taller</strong></li>
+                            <li *ngIf="taller" class="active" id="autoTaller"><strong>Tu auto esta en taller</strong></li>
+                            <li *ngIf="!taller" id="autoTaller"><strong>Recibo Auto</strong></li>
 
-                            <li *ngIf="terminando " class="active " id="terminandoServicio "><strong>Terminando servicio</strong></li>
-                            <li *ngIf="!terminando " id="terminandoServicio "><strong>Terminando servicio</strong></li>
+                            <!-- <li *ngIf="taller" class="active" id="autoTaller"><strong>Auto en taller</strong></li>
+                            <li *ngIf="!taller" id="autoTaller "><strong>Auto en taller</strong></li> -->
 
-                            <li *ngIf="listo " class="active " id="finalizado "><strong>Servicio Listo</strong></li>
-                            <li *ngIf="!listo " id="finalizado "><strong>Servicio Listo</strong></li>
+                            <li *ngIf="terminando" class="active" id="terminandoServicio"><strong>Terminando el servicio</strong></li>
+                            <li *ngIf="!terminando" id="terminandoServicio"><strong>Recibo Auto</strong></li>
+
+                            <!-- <li *ngIf="terminando " class="active " id="terminandoServicio "><strong>Terminando servicio</strong></li>
+                            <li *ngIf="!terminando " id="terminandoServicio "><strong>Terminando servicio</strong></li> -->
+
+                            <li *ngIf="listo" class="active" id="finalizado"><strong>Tu vehiculo está listo</strong></li>
+                            <li *ngIf="!listo" id="finalizado"><strong>Recibo Auto</strong></li>
+
+                            <!-- <li *ngIf="listo " class="active " id="finalizado "><strong>Servicio Listo</strong></li>
+                            <li *ngIf="!listo " id="finalizado "><strong>Servicio Listo</strong></li> -->
                         </ul>
                         <div class="progress ">
                             <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar " aria-valuemin="0 " aria-valuemax="100 "></div>
@@ -38,7 +47,7 @@
                             <div class="form-card ">
                                 <div class="row ">
                                     <div class="col-5 mx-auto ">
-                                        <h5 class="fs-title text-center ">Tu reserva ha sido realizada</h5>
+                                        <!-- <h5 class="fs-title text-center ">Tu reserva ha sido realizada</h5> -->
                                     </div>
                                 </div>
                             </div>

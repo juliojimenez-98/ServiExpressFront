@@ -42,6 +42,7 @@ const APP_ROUTES: Routes = [
   { path: 'servicios', component: ServiciosComponent },
   { path: '', component: HomeComponent },
   { path: '', pathMatch: 'full', redirectTo: '' },
+  { path: 'encuesta', component: EncuestaComponent},
 
   // USUARIO LOGUEADO
   { path: 'home', component: BaseComponent, canActivate: [ AuthGuard ] ,
@@ -71,7 +72,7 @@ const APP_ROUTES: Routes = [
   { path: 'historialreserva', component: HistorialReservasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'autosclientes', component: AutosClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'registroautos', component: RegistroAutoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
-  { path: 'encuesta', component: EncuestaComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+
   //Sidebar Empleado
   { path: 'reservasemp', component: ReservasEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
   { path: 'pedidosemp', component: PedidosEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
