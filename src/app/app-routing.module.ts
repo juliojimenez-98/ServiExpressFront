@@ -30,6 +30,7 @@ import { ServiciosNComponent } from './web/serviHome/admin/negocio-gestion/servi
 import { ReservasEmpleadoComponent } from './web/serviHome/empleado/reservas-empleado/reservas-empleado.component';
 import { PedidosEmpleadoComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos-empleado.component';
 import { EncuestaComponent } from './web/serviHome/cliente/encuesta/encuesta.component';
+import { PedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/pedidos-admin.component';
 
 
 
@@ -53,7 +54,9 @@ const APP_ROUTES: Routes = [
   { path: 'verclientes', component: ClientesempComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'registeremploye', component: RegisteremployeComponent, canActivate: [ RoleGuard, AuthGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'verempleados', component: EmpleadosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+  { path: 'pedidosadmin', component: PedidosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'negociogestion', component: NegocioGestionComponent,
+
   children:[
     { path: 'categorias', component: CategoriasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
     { path: 'categorias/:idcategoria', component: CategoriasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },

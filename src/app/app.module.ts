@@ -44,6 +44,9 @@ import { RecibosempComponent } from './web/serviHome/empleado/pedidos-empleado/r
 import { ChartModule } from 'primeng/chart';
 import {TableModule} from 'primeng/table';
 import { EncuestaComponent } from './web/serviHome/cliente/encuesta/encuesta.component';
+import { PedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/pedidos-admin.component';
+import { RecibosAdminComponent } from './web/serviHome/admin/pedidos-admin/recibos-admin/recibos-admin.component';
+import { VistaPedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/vista-pedidos-admin/vista-pedidos-admin.component';
 registerLocaleData(localeEsCl, 'es-CL');
 
 @NgModule({
@@ -83,6 +86,9 @@ registerLocaleData(localeEsCl, 'es-CL');
     PedidosComponent,
     RecibosempComponent,
     EncuestaComponent,
+    PedidosAdminComponent,
+    RecibosAdminComponent,
+    VistaPedidosAdminComponent,
   
 
   ],
