@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarService } from 'src/app/service/navbar.service';
 
 @Component({
   selector: 'app-encuesta',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EncuestaComponent implements OnInit {
 
-  constructor() { }
+  constructor(public nav:NavbarService) {
+   }
 
   ngOnInit(): void {
+    this.nav.hide();
   }
 
 }

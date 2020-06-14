@@ -31,7 +31,7 @@ export class ClientesService {
     const raw = JSON.stringify(
     { idcliente: vehiculo.idcliente, idvehiculo: vehiculo.idvehiculo, patente: vehiculo.patente,
       marca: vehiculo.marca, modelo: vehiculo.modelo, tipovehiculo: vehiculo.tipovehiculo,
-      anio: vehiculo.anio, nrochasis: vehiculo.nrochasis, activo:false});
+      anio: vehiculo.anio, nrochasis: vehiculo.nrochasis, activo: vehiculo.active});
     this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8')
     return this.http.post(`${this.urlRegVehiculo}`, raw, { headers: this.header });
 
