@@ -497,6 +497,11 @@ background: linear-gradient(83deg, rgba(15,101,136,1) 0%, rgba(27,13,91,1) 100%)
 .bgnice{
   background-image: linear-gradient( 171.8deg,  rgba(5,111,146,1) 13.5%, rgba(6,57,84,1) 78.6% )
   }
+
+.bgnice4{
+  background: rgb(61,13,1);
+background: linear-gradient(315deg, rgba(61,13,1,1) 0%, rgba(112,5,5,1) 100%);
+}
   html,
   body {
       height: 100%;

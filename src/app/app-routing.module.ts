@@ -68,13 +68,20 @@ const APP_ROUTES: Routes = [
   ]},
 
   //Sidebar Cliente
-  { path: 'iniciocliente', component: InicioClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+  { path: 'iniciocliente', component: InicioClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'}},
   { path: 'reservar', component: ReservarComponent , canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'}},
   { path: 'editardatoscliente', component: EditarClienteComponent, canActivate: [ AuthGuard ] },
   { path: 'progresoreserva', component: ProgresoReservaComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'historialreserva', component: HistorialReservasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'autosclientes', component: AutosClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'registroautos', component: RegistroAutoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+
+  //Sidebar empresa
+  { path: 'reservarempresa', component: ReservarComponent , canActivate: [ RoleGuard ], data: {role: 'ROLE_COMPANY'}},
+  { path: 'progresoreservaempresa', component: ProgresoReservaComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_COMPANY'} },
+  { path: 'historialreservaempresa', component: HistorialReservasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_COMPANY'} },
+  { path: 'autosempresa', component: AutosClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_COMPANY'} },
+  { path: 'registroautosempresa', component: RegistroAutoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_COMPANY'} },
 
   //Sidebar Empleado
   { path: 'reservasemp', component: ReservasEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
