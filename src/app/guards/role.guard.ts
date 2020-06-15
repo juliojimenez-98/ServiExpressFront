@@ -17,9 +17,10 @@ export class RoleGuard implements CanActivate {
 
       let role = next.data['role'] as string;
       if (this.loginService.hasRole(role)) {
+
         return true
       }
-
+      console.log(sessionStorage.getItem('rolename'))
       Swal.fire('Acceso denegado', `hola ${sessionStorage.getItem('name')} No tienes acceso a esta ruta`, 'warning');
       this.router.navigate(['/home/inicio'])
       return false;
