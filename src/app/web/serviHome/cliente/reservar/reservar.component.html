@@ -11,7 +11,7 @@
                         <label>Servicios</label>
                         <select [(ngModel)]="servicio" name="servicio" class="custom-select" (change)="cargaBox()">
                           <option *ngFor="let servicio of servicios" [ngValue]="servicio">{{servicio.nombre}}</option>
-              
+
                         </select>
 
                     </div>
@@ -20,15 +20,15 @@
                         <label>Productos</label>
                         <select [(ngModel)]="producto" name="producto" class="custom-select">
                                 <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.nombre}}</option>
-                    
+
                       </select>
 
                     </div>
                     <div class=" col-md-4">
-                        <label>Productos</label>
+                        <label>Tus vehículos</label>
                         <select [(ngModel)]="vehiculo" name="vehiculo" class="custom-select">
                                 <option *ngFor="let vehiculo of vehiculos" [ngValue]="vehiculo">{{vehiculo.marca}} {{vehiculo.modelo}} {{vehiculo.idvehiculo}}</option>
-                    
+
                       </select>
 
                     </div>
