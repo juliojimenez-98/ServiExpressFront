@@ -47,6 +47,7 @@ import { EncuestaComponent } from './web/serviHome/cliente/encuesta/encuesta.com
 import { PedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/pedidos-admin.component';
 import { RecibosAdminComponent } from './web/serviHome/admin/pedidos-admin/recibos-admin/recibos-admin.component';
 import { VistaPedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/vista-pedidos-admin/vista-pedidos-admin.component';
+import { AjustesAdminComponent } from './web/serviHome/admin/ajustes-admin/ajustes-admin.component';
 registerLocaleData(localeEsCl, 'es-CL');
 
 @NgModule({
@@ -89,6 +90,7 @@ registerLocaleData(localeEsCl, 'es-CL');
     PedidosAdminComponent,
     RecibosAdminComponent,
     VistaPedidosAdminComponent,
+    AjustesAdminComponent,
   
 
   ],

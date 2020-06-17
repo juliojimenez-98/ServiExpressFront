@@ -31,6 +31,7 @@ import { ReservasEmpleadoComponent } from './web/serviHome/empleado/reservas-emp
 import { PedidosEmpleadoComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos-empleado.component';
 import { EncuestaComponent } from './web/serviHome/cliente/encuesta/encuesta.component';
 import { PedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/pedidos-admin.component';
+import { AjustesAdminComponent } from './web/serviHome/admin/ajustes-admin/ajustes-admin.component';
 
 
 
@@ -55,6 +56,7 @@ const APP_ROUTES: Routes = [
   { path: 'registeremploye', component: RegisteremployeComponent, canActivate: [ RoleGuard, AuthGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'verempleados', component: EmpleadosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'pedidosadmin', component: PedidosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+  { path: 'ajustes', component: AjustesAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'negociogestion', component: NegocioGestionComponent,
 
   children:[
@@ -64,7 +66,6 @@ const APP_ROUTES: Routes = [
     { path: 'productos/:idproducto', component: ProductosComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
     { path: 'servicios', component: ServiciosNComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
     { path: 'servicios/:idservicio', component: ServiciosNComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
-
   ]},
 
   //Sidebar Cliente
