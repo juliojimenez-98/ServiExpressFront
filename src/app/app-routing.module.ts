@@ -32,6 +32,8 @@ import { PedidosEmpleadoComponent } from './web/serviHome/empleado/pedidos-emple
 import { EncuestaComponent } from './web/serviHome/cliente/encuesta/encuesta.component';
 import { PedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/pedidos-admin.component';
 import { AjustesAdminComponent } from './web/serviHome/admin/ajustes-admin/ajustes-admin.component';
+import { VistaPedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/vista-pedidos-admin/vista-pedidos-admin.component';
+import { RecibosAdminComponent } from './web/serviHome/admin/pedidos-admin/recibos-admin/recibos-admin.component';
 
 
 
@@ -55,7 +57,11 @@ const APP_ROUTES: Routes = [
   { path: 'verclientes', component: ClientesempComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'registeremploye', component: RegisteremployeComponent, canActivate: [ RoleGuard, AuthGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'verempleados', component: EmpleadosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
-  { path: 'pedidosadmin', component: PedidosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+  { path: 'pedidosadmin', component: PedidosAdminComponent,
+  children:[
+    { path: 'pedidos', component: VistaPedidosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+    { path: 'recibos', component: RecibosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+  ]},
   { path: 'ajustes', component: AjustesAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'negociogestion', component: NegocioGestionComponent,
 
