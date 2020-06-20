@@ -6,6 +6,7 @@ import { Util } from 'src/app/util/util';
 import { LoginService } from 'src/app/service/login.service';
 import { NavbarService } from 'src/app/service/navbar.service';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Empleado } from 'src/app/models/empleado';
 
 @Component({
   selector: 'app-activar',
@@ -17,20 +18,26 @@ export class ActivarComponent implements OnInit {
   public name = '';
   public fecha = '';
   public parametros: any;
+  public userid: any;
 
 
   public user: UserInfoModel = new UserInfoModel();
+  public empleado: Empleado = new Empleado();
   private util: Util = new Util();
+
+
   constructor(private activatedRoute: ActivatedRoute,
-    private loginService: LoginService,
-    public nav: NavbarService,
-    private router: Router) {
+              private loginService: LoginService,
+              public nav: NavbarService,
+              private router: Router) {
     this.nav.hide();
     this.nav.doSomethingElseUseful();
     this.activatedRoute.params.subscribe(params => {
-      this.name = params.name;
-      this.user.idUsuario = params.iduser;
-      // console.log(this.heroe);
+      this.name = sessionStorage.getItem('name');
+      this.userid = sessionStorage.getItem('iduser');
+      this.user.idUsuario = this.userid;
+
+      // console.log(this.heroe);  iduser
       this.parametros = params;
 
     });
@@ -39,20 +46,36 @@ export class ActivarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('Avtivo')==='true') {
+      this.router.navigate(['home/inicio'])
+    }
   }
 
 
   public registerPerson(): void {
-
-
-
-    const buildFormPerson = this.util.buildFormPerson(this.user, this.model);
+    if (sessionStorage.getItem('idrole')=='2'||sessionStorage.getItem('idrole')=='4') {
+      const buildFormPerson = this.util.buildFormPerson(this.user, this.model);
     // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
     console.log(this.user.fechaN);
     this.loginService.updateOrCreate(true, this.user).subscribe(
       res => {
-        console.log(this.parametros);
-        this.router.navigate(['/inicio', this.parametros]);
+        sessionStorage.setItem('Avtivo', 'true');
+        this.util.getUserDatos(res)
+        this.router.navigate(['home/inicio']);
+      },
+      error => {
+        this.util.handleError(error);
+      },
+
+    );
+    }else if (sessionStorage.getItem('idrole')=='3'|| sessionStorage.getItem('idrole')=='1') {
+      const buildFormPerson = this.util.buildFormPerson(this.user, this.model);
+    // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
+    console.log(this.user.fechaN);
+    this.loginService.updateOrCreateEmp(true, this.user).subscribe(
+      res => {
+        sessionStorage.setItem('Avtivo', 'true');
+        this.router.navigate(['home/inicio']);
       },
       error => {
         this.util.handleError(error);
@@ -60,7 +83,6 @@ export class ActivarComponent implements OnInit {
 
     );
 
-
-
+    }
   }
 }

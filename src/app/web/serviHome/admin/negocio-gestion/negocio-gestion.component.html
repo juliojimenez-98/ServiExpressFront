@@ -1,0 +1,33 @@
+<div class="col-xl-10 col-md-10 mb-4 mx-auto">
+  <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+          <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+            <li [ngbNavItem]="1" routerLink='categorias'  class="border-bottom-warning">
+              <a ngbNavLink>Categorias</a>
+              <ng-template ngbNavContent>
+
+                <!-- VISTA DE CATEGORIAS -->
+
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="2" routerLink='productos' class="border-bottom-success">
+              <a ngbNavLink>Productos</a>
+              <ng-template ngbNavContent>
+
+                <!-- VISTA DE PRODUCTOS -->
+
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="3" routerLink='servicios' class="border-bottom-info">
+              <a ngbNavLink>Servicios</a>
+              <ng-template ngbNavContent>
+                <!-- VISTA DE SERVICIOS -->
+              </ng-template>
+            </li>
+          </ul>
+
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+           <router-outlet></router-outlet>
+           </div>
+        </div>
+    </div>

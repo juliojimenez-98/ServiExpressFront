@@ -1,0 +1,30 @@
+<div class="col-xl-10 col-md-10 mb-4 mx-auto">
+  <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+          <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+            <li [ngbNavItem]="1" class="border-bottom-warning">
+              <a ngbNavLink>Pedidos</a>
+              <ng-template ngbNavContent>
+
+
+                <app-pedidos></app-pedidos>
+
+
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="2" class="border-bottom-success">
+              <a ngbNavLink>Recibos</a>
+              <ng-template ngbNavContent>
+
+                <!-- VISTA DE PRODUCTOS -->
+                <app-recibosemp></app-recibosemp>
+
+              </ng-template>
+            </li>
+          </ul>
+
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+           </div>
+        </div>
+    </div>

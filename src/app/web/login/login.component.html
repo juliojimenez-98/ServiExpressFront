@@ -1,56 +1,56 @@
-<body class="col-12" style="background-image: url(/assets/img/background-img.jpg); background-size: auto; padding: 0; background-size: 100%; background-repeat: no-repeat; ">
+<body class="col-12" style="background-image: url(/assets/img/background-img.jpg);
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+background-repeat: false;">
+
+    <div class="overflow-auto">
+        <div class="modal-dialog modal-lg text-center ">
+            <div class="col-sm-8 main-section mx-auto">
+                <div class="modal-content">
+                    <div class="col-12 ">
+                        <br>
+                        <h5 class="text-black-50 ">Inicia Sesión</h5>
+                        <hr class="black ">
+                    </div>
+
+                    <form class="col-12 form ">
+
+                        <div class="input-group mb-3 col-md-10 mx-auto">
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-at "></i></span>
+                            </div>
+                            <input type="text " #username name="username " class="form-control " placeholder="Correo " name="username " />
+                        </div>
+
+                        <div class="input-group mb-3 col-md-10 mx-auto ">
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-lock "></i></span>
+                            </div>
+                            <input type="password" #password name="password " class="form-control " placeholder="Contraseña " name="password " />
+                        </div>
+                    </form>
+
+                    <div class="col-12 ">
+                        <button type="submit " (click)="signInWeb(username.value, password.value, $event) " id="login-button " class="btn btn-primary "><i class=" fas fa-sign-in-alt "></i> Ingresar </button>
+                    </div>
 
 
+                    <div>
+                        <a [routerLink]="['/register']">¿Aún no tienes cuenta?</a>
 
-
-<div class="overflow-auto">
-  <div class="modal-dialog modal-lg text-center ">
-    <div class="col-sm-8 main-section mx-auto">
-      <div class="modal-content">
-        <div class="col-12 ">
-          <br>
-          <h5 class="text-black-50 ">Inicia Sesión</h5>
-          <hr class="black ">
-        </div>
-
-        <form class="col-12 form ">
-
-          <div class="input-group mb-3 col-md-10 mx-auto">
-            <div class="input-group-prepend ">
-              <span class="input-group-text "><i class="fas fa-at "></i></span>
+                    </div>
+                    <br class="mb-3">
+                </div>
             </div>
-            <input type="text " #username name="username " class="form-control " placeholder="Correo "
-              name="username " />
-          </div>
 
-          <div class="input-group mb-3 col-md-10 mx-auto ">
-            <div class="input-group-prepend ">
-              <span class="input-group-text "><i class="fas fa-lock "></i></span>
-            </div>
-            <input type="password" #password name="password " class="form-control " placeholder="Contraseña "name="password " />
-          </div>
-        </form>
 
-        <div class="col-12 ">
-          <button type="submit " (click)="signInWeb(username.value, password.value, $event) " id="login-button "
-            class="btn btn-primary "><i class=" fas fa-sign-in-alt "></i> Ingresar </button>
         </div>
 
 
-        <div>
-          <a [routerLink]="['/register']">¿Aún no tienes cuenta?</a>
 
-        </div>
-        <br class="mb-3">
-      </div>
     </div>
 
 
-  </div>
-
-
-
-</div>
-
-
-<app-footer></app-footer>
+    <app-footer></app-footer>
