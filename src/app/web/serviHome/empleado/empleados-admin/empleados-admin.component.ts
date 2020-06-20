@@ -10,15 +10,12 @@ import { Util } from 'src/app/util/util';
   styleUrls: ['./empleados-admin.component.css']
 })
 export class EmpleadosAdminComponent implements OnInit {
-  page = 0;
-  size = 4;
-  contPages= 0;
-  empleados: Array<any>;
-  private util: Util = new Util();
+
+  p: number = 1;
+  empleados: Empleado[];
 
   constructor(private adminClientes:AdminClientesService, private nav:NavbarService,) {
-    this.nav.hide();
-    this.nav.doSomethingElseUseful();
+
   }
 
   ngOnInit(): void {
@@ -27,26 +24,7 @@ export class EmpleadosAdminComponent implements OnInit {
 
 
   cargarEmpleados(){
-    this.adminClientes.empleadosPag(this.page,this.size).subscribe(
-      res=>{
-        this.empleados = res;
-        console.log(this.page);
-      },
-      err=> {
-        console.log(err.error)
-      }
-    )
+    this.adminClientes.getAllEmpleados().subscribe(empleados => this.empleados = empleados)
   }
 
-  sumPag(i:number){
-    this.page = i+1;
-    this.cargarEmpleados();
-    console.log(i)
-  }
-
-  resPag(i:number){
-    this.page = i-1;
-    this.cargarEmpleados();
-    console.log(i)
-  }
 }

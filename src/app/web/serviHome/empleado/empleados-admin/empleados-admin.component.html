@@ -15,19 +15,19 @@
               <table class="table table-table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>ID</th>
                       <th>Rut</th>
                       <th>Nombre</th>
                       <th>Apellido</th>
                       <th>Telefono</th>
+                      <th>Accion</th>
                     </tr>
                   </thead>
-                  <tr *ngFor="let empleado of empleados" >
-                    <td>{{empleado.idempleado}}</td>
+                  <tr *ngFor="let empleado of empleados| paginate: { itemsPerPage: 6, currentPage: p }" >
                     <td>{{empleado.rut}}</td>
                     <td>{{empleado.nombre}}</td>
                     <td>{{empleado.apellido}}</td>
                     <td>{{empleado.telefono}}</td>
+                    <td><button class="btn btn-danger btn-sm">Bloquear</button></td>
                   </tr>
                 </table>
             </div>
@@ -37,16 +37,8 @@
     </div>
 </div>
 <div class="row">
-<div class=" col-md-6 text-right">
-  <button class="btn btn-outline-primary" (click)="resPag(page)"><i class="fas fa-chevron-left"></i></button>
+  <div class="mx-auto">
 
-</div>
-<div class=" col-md-6">
-  <button class="btn btn-outline-primary" (click)="sumPag(page)"><i class="fas fa-chevron-right"></i></button>
-
-</div>
-<div class="mx-auto">
-
-<pre>Pagina Actual: {{page}}</pre>
-</div>
+    <pagination-controls (pageChange)="p = $event"  maxSize="9" previousLabel="Anterior" nextLabel="Siguiente" ></pagination-controls>
+  </div>
 </div>

@@ -48,6 +48,8 @@ import { PedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/pedid
 import { RecibosAdminComponent } from './web/serviHome/admin/pedidos-admin/recibos-admin/recibos-admin.component';
 import { VistaPedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/vista-pedidos-admin/vista-pedidos-admin.component';
 import { AjustesAdminComponent } from './web/serviHome/admin/ajustes-admin/ajustes-admin.component';
+
+import { NgxPaginationModule } from 'ngx-pagination';
 registerLocaleData(localeEsCl, 'es-CL');
 
 @NgModule({
@@ -91,7 +93,7 @@ registerLocaleData(localeEsCl, 'es-CL');
     RecibosAdminComponent,
     VistaPedidosAdminComponent,
     AjustesAdminComponent,
-  
+
 
   ],
   imports: [
@@ -101,7 +103,8 @@ registerLocaleData(localeEsCl, 'es-CL');
     FormsModule,
     NgbModule,
     ChartModule,
-    TableModule
+    TableModule,
+    NgxPaginationModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-Cl' }],
   bootstrap: [AppComponent]

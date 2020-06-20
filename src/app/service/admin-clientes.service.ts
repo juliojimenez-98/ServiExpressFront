@@ -11,24 +11,25 @@ import { URL_TO_LOGIN } from '../util/global';
 })
 export class AdminClientesService {
 
-  private urlGetEmpleadosPag = URL_TO_LOGIN.url + URL_TO_LOGIN.getEmpleadosPag;
-  private getClientesPag = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllClientesPag;
+  private urlGetEmpleados = URL_TO_LOGIN.url + URL_TO_LOGIN.getEmpleados;
+  private urlGetClientes = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllClientes;
   private header: any;
 
   constructor(private http: HttpClient) {}
 
 
-   public empleadosPag(page:number, size:number):Observable<any>{
+  getAllClientes(): Observable<Cliente[]>{
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
-    return this.http.get<any>(this.urlGetEmpleadosPag+ `page=${page}&size=${size}`, { headers: this.header });
+    return this.http.get<Cliente[]>(`${this.urlGetClientes}`, { headers: this.header });
   }
-  public getClientes(page:number, size:number):Observable<any>{
+
+  getAllEmpleados(): Observable<Empleado[]>{
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
-    return this.http.get<any>(this.getClientesPag+ `page=${page}&size=${size}`, { headers: this.header });
+    return this.http.get<Empleado[]>(`${this.urlGetEmpleados}`, { headers: this.header });
   }
 
 

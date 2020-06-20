@@ -13,10 +13,8 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-  page=0;
-  size = 4;
-  contPages= 0;
-  productos: Array<any>;
+  p: number = 1;
+  productos: Producto[];
   categorias: Categoria[];
   public producto:Producto = new Producto();
   private util: Util = new Util();
@@ -28,10 +26,9 @@ export class ProductosComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.cargarProductos();
+    this.cargarAllProductos();
     this.cargarDatosProducto();
     console.log(this.producto)
-
     this.negocioService.getAllCategorias().subscribe(categorias => this.categorias = categorias)
   }
 
@@ -51,28 +48,9 @@ export class ProductosComponent implements OnInit {
       )
   }
 
-  cargarProductos(){
-    this.negocioService.productos(this.page,this.size).subscribe(
-      res=>{
-        this.productos = res;
-        console.log(this.page);
-      },
-      err=> {
-        console.log(err.error)
-      }
-    )
-  }
 
-  sumPag(i:number){
-    this.page = i+1;
-    this.cargarProductos();
-    console.log(i)
-  }
-
-  resPag(i:number){
-    this.page = i-1;
-    this.cargarProductos();
-    console.log(i)
+  cargarAllProductos(){
+    this.negocioService.getAllProductos().subscribe(productos => this.productos = productos)
   }
 
 
@@ -88,7 +66,7 @@ export class ProductosComponent implements OnInit {
 
         Swal.fire(  'Producto agregado',  `El producto : ${this.producto.nombre} se agregó con exito` ,  'success');
         this.router.navigate(['home/negociogestion/productos']);
-        this.cargarProductos();
+        this.cargarAllProductos();
 
       console.log(res)
 
@@ -110,8 +88,7 @@ public actProducto(): void{
       console.log(res)
       Swal.fire(  'Servicio actualizado',  `El servicio :  ${this.producto.nombre} se actualizó con exito` ,  'success');
       this.router.navigate(['/home/negociogestion/productos']);
-      this.cargarProductos();
-
+      this.cargarAllProductos();
 },
 error => {
   this.util.handleError(error);
