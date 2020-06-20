@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Categoria } from '../models/categoria';
-import { URL_TO_LOGIN } from '../util/global';
+import { URL_TO_LOGIN, URL_TO_CATEGORY } from '../util/global';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { runInThisContext } from 'vm';
@@ -15,20 +15,31 @@ import { ReservaResponse } from '../models/ReservaResponse';
 })
 export class NegocioService {
   //URL's
-  private urlRegCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.regCategoria;
+
   private urlRegProducto = URL_TO_LOGIN.url + URL_TO_LOGIN.regProducto;
   private urlRegServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.regServicio;
-  private urlGetCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.getCategoria;
-  private urlGetCategoriaId = URL_TO_LOGIN.url + URL_TO_LOGIN.getCategoriaId;
+
+  //CATEGORIAS
+  private urlRegCategoria = URL_TO_LOGIN.url + URL_TO_CATEGORY.CREATE;
+  private urlGetCategoria = URL_TO_LOGIN.url + URL_TO_CATEGORY.OBTAIN_CATEGORIES;
+  private urlUpdtCategoria = URL_TO_LOGIN.url + URL_TO_CATEGORY.UPDATE;
+  private urlGetAllCategoria = URL_TO_LOGIN.url + URL_TO_CATEGORY.OBTAIN_CATEGORIES;
+  //SUB-CATEGORIAS
+
+  private urlRegSubCategory = URL_TO_LOGIN.url + URL_TO_CATEGORY.CREATE;;
+  private urlUpdSubCategory = URL_TO_LOGIN.url + URL_TO_CATEGORY.CREATE;;
+  private urlObtainSubCategory = URL_TO_LOGIN.url + URL_TO_CATEGORY.CREATE;;
+  private urlObtainSubCategoryByCategory = URL_TO_LOGIN.url + URL_TO_CATEGORY.CREATE;;
+
   private urlGetProductos = URL_TO_LOGIN.url + URL_TO_LOGIN.getProductos;
   private urlUpdtProducto = URL_TO_LOGIN.url + URL_TO_LOGIN.updateProducto;
-  private urlGetAllCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllCategorias;
+
   private urlGetAllServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllServicios;
   private urlGetServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.getSerivicios;
   private urlGetAllProductoById = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProductoById;
   private urlGetAllProductos= URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProducto;
   private urlReserva = URL_TO_LOGIN.url + URL_TO_LOGIN.reservation;
-  private urlUpdtCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.regCategoria;
+
   private getVeId = URL_TO_LOGIN.url + URL_TO_LOGIN.getVeiculosPorId;
   private getServicioId = URL_TO_LOGIN.url + URL_TO_LOGIN.getServicioId;
   private urlUpdtServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.updateServicio;
@@ -40,12 +51,12 @@ export class NegocioService {
   constructor(private http: HttpClient) { }
 
 
-  getCategoria(idCategoria):Observable<Categoria>{
+/*   getCategoria(idCategoria):Observable<Categoria>{
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
     return this.http.get<Categoria>(`${this.urlGetCategoriaId}/${idCategoria}`, { headers: this.header })
-  }
+  } */
 
   getProducto(idProducto):Observable<Producto>{
     this.header = new HttpHeaders()
@@ -129,9 +140,10 @@ export class NegocioService {
   agregarCategoria(categoria: Categoria) {
     const raw = JSON.stringify(
     {
-      nombre: categoria.nombre,
-      descripcion:categoria.descripcion
+      name: categoria.nombre,
+      description:categoria.descripcion
     });
+    console.log(raw);
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
@@ -195,9 +207,9 @@ export class NegocioService {
   actualizarCategoria(categoria: Categoria) {
     const raw = JSON.stringify(
     {
-      idcategoria:categoria.idcategoria,
-      nombre: categoria.nombre,
-      descripcion:categoria.descripcion
+      id:categoria.idcategoria,
+      name: categoria.nombre,
+      description:categoria.descripcion
     });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')

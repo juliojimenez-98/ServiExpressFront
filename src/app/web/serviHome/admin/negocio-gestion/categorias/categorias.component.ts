@@ -12,10 +12,11 @@ import Swal from 'sweetalert2';
 })
 export class CategoriasComponent implements OnInit {
   p: number = 1;
-  categorias: Categoria[];
-  public categoria:Categoria = new Categoria();
+  public categorias: any;
+  public categoria: Categoria = new Categoria();
   private util: Util = new Util();
-  constructor(private negocioService: NegocioService, private router:Router, private activatedRoute:ActivatedRoute) { }
+  constructor(private negocioService: NegocioService, private router: Router, private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.cargarCategorias();
@@ -23,61 +24,59 @@ export class CategoriasComponent implements OnInit {
 
   }
 
-  cargarCategorias(){
-    this.negocioService.getAllCategorias().subscribe(categorias => this.categorias = categorias)
+  cargarCategorias() {
+    this.negocioService.getAllCategorias().subscribe(resp => {
+      this.categorias = resp;
+    })
   }
 
-  cargarDatosCategoria(){
-    this.activatedRoute.params.subscribe(params=>{
-      let idcategoria = params["idcategoria"]
-      if(idcategoria){
-        this.negocioService.getCategoria(idcategoria).subscribe( (categoria) =>
-        this.categoria = categoria
-        )
-      }
-
-
+  cargarDatosCategoria() {
+    this.activatedRoute.params.subscribe(params => {
+      this.categoria.descripcion = params['description'];
+      this.categoria.idcategoria = params['id'];
+      this.categoria.nombre = params['name'];
     }
-      )
+    )
   }
 
 
 
 
 
-  public agregarCategoria(): void{
+  public agregarCategoria(): void {
 
+    console.log(this.categoria);
     this.negocioService.agregarCategoria(this.categoria).subscribe(
-      res  =>{
+      res => {
 
 
-        Swal.fire(  'Categoria Agregada',  `La categoría :  ${this.categoria.nombre} se agregó con exito` ,  'success');
+        Swal.fire('Categoria Agregada', `La categoría :  ${this.categoria.nombre} se agregó con exito`, 'success');
         this.router.navigate(['home/negociogestion/categorias']);
         this.cargarCategorias();
-  },
-  error => {
-    this.util.handleError(error);
-  },
+      },
+      error => {
+        this.util.handleError(error);
+      },
 
-);
+    );
 
-}
+  }
 
-public actCategoria(): void{
+  public actCategoria() {
+    console.log(this.categoria);
+    this.negocioService.actualizarCategoria(this.categoria).subscribe(
+      res => {
+        Swal.fire('Categoria actualizada', `La categoría :  ${this.categoria.nombre} se actualizó con exito`, 'success');
+        this.router.navigate(['/home/negociogestion/categorias']);
+        this.cargarCategorias();
 
-  this.negocioService.actualizarCategoria(this.categoria).subscribe(
-    res  =>{
-      Swal.fire(  'Categoria actualizada',  `La categoría :  ${this.categoria.nombre} se actualizó con exito` ,  'success');
-      this.router.navigate(['/home/negociogestion/categorias']);
-      this.cargarCategorias();
+      },
+      error => {
+        this.util.handleError(error);
+      },
 
-},
-error => {
-  this.util.handleError(error);
-},
+    );
 
-);
-
-}
+  }
 
 }
