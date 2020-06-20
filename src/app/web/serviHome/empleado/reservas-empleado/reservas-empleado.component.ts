@@ -11,6 +11,7 @@ import { Reserva } from 'src/app/models/reserva';
 })
 export class ReservasEmpleadoComponent implements OnInit {
   estados;
+  p: number = 1;
   reservas: ReservaResponse[];
   private reserva:Reserva = new Reserva;
   constructor(private service:NegocioService) {

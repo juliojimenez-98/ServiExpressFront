@@ -26,6 +26,7 @@ export class NegocioService {
   private urlGetAllServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllServicios;
   private urlGetServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.getSerivicios;
   private urlGetAllProductoById = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProductoById;
+  private urlGetAllProductos= URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProducto;
   private urlReserva = URL_TO_LOGIN.url + URL_TO_LOGIN.reservation;
   private urlUpdtCategoria = URL_TO_LOGIN.url + URL_TO_LOGIN.regCategoria;
   private getVeId = URL_TO_LOGIN.url + URL_TO_LOGIN.getVeiculosPorId;
@@ -38,12 +39,6 @@ export class NegocioService {
 
   constructor(private http: HttpClient) { }
 
-  public categorias(page:number, size:number):Observable<any>{
-    this.header = new HttpHeaders()
-    .set('Content-Type', 'application/json; charset=utf-8')
-    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
-    return this.http.get<any>(this.urlGetCategoria+ `page=${page}&size=${size}`, { headers: this.header });
-  }
 
   getCategoria(idCategoria):Observable<Categoria>{
     this.header = new HttpHeaders()
@@ -85,6 +80,13 @@ export class NegocioService {
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
     return this.http.get<Categoria[]>(`${this.urlGetAllCategoria}`, { headers: this.header });
+  }
+
+  getAllProductos(): Observable<Producto[]>{
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<Producto[]>(`${this.urlGetAllProductos}`, { headers: this.header });
   }
 
   getAllServicio(): Observable<Servicios[]>{

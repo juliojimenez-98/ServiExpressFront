@@ -1,6 +1,6 @@
 <h6 class="my-4 text-center">Listado de Productos</h6>
 <div class="row">
-  <div class="col-md-6" *ngFor="let producto of productos">
+  <div class="col-md-6" *ngFor="let producto of productos| paginate: { itemsPerPage: 4, currentPage: p }">
     <div class="card my-2 border-left-info">
       <div class="card-body">
         <div class="row">
@@ -15,23 +15,11 @@
     </div>
   </div>
 </div>
-
 <div class="row">
-  <div class=" col-md-6 text-right">
-     <!-- <ngb-pagination [collectionSize]="500" [(page)]="page"  [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
-     <button class="btn btn-outline-primary" (click)="resPag(page)"><i class="fas fa-chevron-left"></i></button>
-
+  <div class="mx-auto">
+   <pagination-controls (pageChange)="p = $event"  maxSize="9" previousLabel="Anterior" nextLabel="Siguiente" ></pagination-controls>
   </div>
-  <div class=" col-md-6">
-    <!-- <ngb-pagination [collectionSize]="500" [(page)]="page"  [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
-     <button class="btn btn-outline-primary" (click)="sumPag(page)"><i class="fas fa-chevron-right"></i></button>
-
  </div>
- <div class="mx-auto">
-
-   <pre>Pagina Actual: {{page}}</pre>
- </div>
-</div>
 
 
  <hr>
