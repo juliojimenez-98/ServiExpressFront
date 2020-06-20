@@ -18,12 +18,13 @@ export class InicioComponent implements OnInit {
   cliente = false;
   admin = false;
   empleado = false;
+  empresa = false;
   public role = '';
   data: any;
   data2: any;
   data3: any;
   currentDate = new Date();
-  
+
 
 
   constructor(public nav: NavbarService,
@@ -31,8 +32,8 @@ export class InicioComponent implements OnInit {
     private router:Router,
     private datePipe: DatePipe) {
 
- 
-    
+
+
     this.data = {
       labels: ['Exelente','Bueno','Regular','Malo','Muy malo'],
       datasets: [
@@ -50,7 +51,7 @@ export class InicioComponent implements OnInit {
                   "#FFCE56",
                   '#1E88E5'
               ]
-          }]    
+          }]
       };
       this.data2 = {
         labels: ['Lento','Normal','Rápido'],
@@ -67,7 +68,7 @@ export class InicioComponent implements OnInit {
                     "#36A2EB",
                     "#FFCE56"
                 ]
-            }]    
+            }]
         };
         this.data3 = {
           labels: ['No Recomendaría','Tal Vez','Recomendaría'],
@@ -84,19 +85,21 @@ export class InicioComponent implements OnInit {
                       "#36A2EB",
                       "#FFCE56"
                   ]
-              }]    
+              }]
           };
     this.activatedRoute.params.subscribe(params => {
       this.role = params.idrole;
 
     });
-  
+
     if (sessionStorage.getItem('idrole')=='2') {
       this.cliente = true;
     } else if (sessionStorage.getItem('idrole')=='1') {
       this.admin = true;
     } else if (sessionStorage.getItem('idrole')=='3') {
       this.empleado = true;
+    } else if (sessionStorage.getItem('idrole')=='4') {
+      this.empresa = true;
     }
     this.nav.hide();
     this.nav.doSomethingElseUseful();
@@ -108,7 +111,7 @@ export class InicioComponent implements OnInit {
 
   }
 
-  
+
   ngOnInit(): void {
 
     //  this.loadScript('../assets/js/sb-admin-2.min.js');
@@ -135,7 +138,7 @@ export class InicioComponent implements OnInit {
   async genratePDF(){
     const cValue = formatDate(this.currentDate, 'yyyy-MM-dd', 'en-US');
     PdfMakeWrapper.setFonts(pdfFonts);
- 
+
 
     const pdf = new PdfMakeWrapper();
 
@@ -178,7 +181,7 @@ pdf.add(new Columns([ 'Lento', ' 3' ]).columnGap(10).end);
 pdf.add(new Columns([ 'Normal   ', ' 50' ]).columnGap(10).end);
 pdf.add(new Columns([ 'Rápido ', ' 100' ]).columnGap(10).end);
     pdf.footer('This is a footer');
-   
+
     pdf.create().download();
   }
 

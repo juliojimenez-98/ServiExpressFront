@@ -31,6 +31,7 @@ import { ReservasEmpleadoComponent } from './web/serviHome/empleado/reservas-emp
 import { PedidosEmpleadoComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos-empleado.component';
 import { EncuestaComponent } from './web/serviHome/cliente/encuesta/encuesta.component';
 import { PedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/pedidos-admin.component';
+import { AjustesAdminComponent } from './web/serviHome/admin/ajustes-admin/ajustes-admin.component';
 
 
 
@@ -55,6 +56,7 @@ const APP_ROUTES: Routes = [
   { path: 'registeremploye', component: RegisteremployeComponent, canActivate: [ RoleGuard, AuthGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'verempleados', component: EmpleadosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'pedidosadmin', component: PedidosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+  { path: 'ajustes', component: AjustesAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'negociogestion', component: NegocioGestionComponent,
 
   children:[
@@ -64,17 +66,23 @@ const APP_ROUTES: Routes = [
     { path: 'productos/:idproducto', component: ProductosComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
     { path: 'servicios', component: ServiciosNComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
     { path: 'servicios/:idservicio', component: ServiciosNComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
-
   ]},
 
   //Sidebar Cliente
-  { path: 'iniciocliente', component: InicioClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+  { path: 'iniciocliente', component: InicioClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'}},
   { path: 'reservar', component: ReservarComponent , canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'}},
   { path: 'editardatoscliente', component: EditarClienteComponent, canActivate: [ AuthGuard ] },
   { path: 'progresoreserva', component: ProgresoReservaComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'historialreserva', component: HistorialReservasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'autosclientes', component: AutosClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'registroautos', component: RegistroAutoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+
+  //Sidebar empresa
+  { path: 'reservarempresa', component: ReservarComponent , canActivate: [ RoleGuard ], data: {role: 'ROLE_COMPANY'}},
+  { path: 'progresoreservaempresa', component: ProgresoReservaComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_COMPANY'} },
+  { path: 'historialreservaempresa', component: HistorialReservasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_COMPANY'} },
+  { path: 'autosempresa', component: AutosClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_COMPANY'} },
+  { path: 'registroautosempresa', component: RegistroAutoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_COMPANY'} },
 
   //Sidebar Empleado
   { path: 'reservasemp', component: ReservasEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
