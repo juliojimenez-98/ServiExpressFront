@@ -10,7 +10,7 @@
  * https://jquery.org/license
  *
  * Date: 2017-03-20T19:00Z
- */
+ */jQuery("#item_0").fadeOut("slow");
 ( function( global, factory ) {
 
 	"use strict";

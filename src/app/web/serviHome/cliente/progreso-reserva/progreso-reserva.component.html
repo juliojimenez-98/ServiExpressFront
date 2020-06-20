@@ -1,0 +1,212 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Progreso Reserva</h1>
+    </div>
+
+    <!-- Content Row -->
+    <div class="container-fluid" style="opacity: .98;">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-8 col-xl-8 text-center p-0 mt-3 mb-2">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                    <h2 id="heading">Progreso de tu reserva</h2>
+                    <form id="msform">
+                        <!-- progressbar -->
+                        <ul id="progressbar">
+                            <li *ngIf="!reserva" class="active" id="reserva"><strong>Reserva</strong></li>
+                            <li *ngIf="reserva" id="reserva"><strong>Reserva</strong></li>
+
+                            <li *ngIf="!recibido" class="active" id="autoRecibido"><strong>Recibo Auto</strong></li>
+                            <li *ngIf="recibido" id="autoRecibido"><strong>Recibo Auto</strong></li>
+
+                            <li *ngIf="taller" class="active" id="autoTaller"><strong>Tu auto esta en taller</strong></li>
+                            <li *ngIf="!taller" id="autoTaller"><strong>Recibo Auto</strong></li>
+
+                            <!-- <li *ngIf="taller" class="active" id="autoTaller"><strong>Auto en taller</strong></li>
+                            <li *ngIf="!taller" id="autoTaller "><strong>Auto en taller</strong></li> -->
+
+                            <li *ngIf="terminando" class="active" id="terminandoServicio"><strong>Terminando el servicio</strong></li>
+                            <li *ngIf="!terminando" id="terminandoServicio"><strong>Recibo Auto</strong></li>
+
+                            <!-- <li *ngIf="terminando " class="active " id="terminandoServicio "><strong>Terminando servicio</strong></li>
+                            <li *ngIf="!terminando " id="terminandoServicio "><strong>Terminando servicio</strong></li> -->
+
+                            <li *ngIf="listo" class="active" id="finalizado"><strong>Tu vehiculo está listo</strong></li>
+                            <li *ngIf="!listo" id="finalizado"><strong>Recibo Auto</strong></li>
+
+                            <!-- <li *ngIf="listo " class="active " id="finalizado "><strong>Servicio Listo</strong></li>
+                            <li *ngIf="!listo " id="finalizado "><strong>Servicio Listo</strong></li> -->
+                        </ul>
+                        <div class="progress ">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar " aria-valuemin="0 " aria-valuemax="100 "></div>
+                        </div> <br>
+
+                        <!-- fieldsets -->
+                        <fieldset>
+                            <div class="form-card ">
+                                <div class="row ">
+                                    <div class="col-5 mx-auto ">
+                                        <!-- <h5 class="fs-title text-center ">Tu reserva ha sido realizada</h5> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card ">
+                                <div class="row ">
+                                    <div class="col-5 mx-auto ">
+                                        <h2 class="fs-title text-center ">Recibimos tu auto</h2>
+                                    </div>
+                                </div>
+                            </div> <input type="button " name="next " class="next action-button " value="Siguiente " /> <input type="button " name="previous " class="previous action-button-previous " value="Anterior " />
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card ">
+                                <div class="row ">
+                                    <div class="col-5 mx-auto ">
+                                        <h2 class="fs-title text-center ">Estamos trabajando en tu auto</h2>
+                                    </div>
+                                </div>
+                            </div> <input type="button " name="next " class="next action-button " value="Siguiente " /> <input type="button " name="previous " class="previous action-button-previous " value="Anterior " />
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card ">
+                                <div class="row ">
+                                    <div class="col-5 mx-auto ">
+                                        <h2 class="fs-title text-center ">Terminando ultimos detalles</h2>
+                                    </div>
+                                </div>
+                            </div> <input type="button " name="next " class="next action-button " value="Realizado " /> <input type="button " name="previous " class="previous action-button-previous " value="Anterior " />
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card ">
+                                <div class="row ">
+                                    <div class="col-5 mx-auto ">
+                                        <h2 class="fs-title ">El servicio a tu auto esta realizado</h2>
+                                    </div>
+                                </div> <br><br>
+                                <h3 class="purple-text text-center "><strong>Listo !</strong></h3> <br>
+                                <div class="row justify-content-center ">
+                                    <div class="col-3 "> <img src="https://i.imgur.com/KnPGD7u.png " class="fit-image "> </div>
+                                </div> <br><br>
+                                <div class="row justify-content-center ">
+                                    <div class="col-7 text-center ">
+                                        <h5 class="purple-text text-center ">Puedes retirar tu auto reparado!</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Row -->
+
+</div>
+
+<script>
+    $("#menu-toggle ").click(function(e) {
+        e.preventDefault();
+        $("#wrapper ").toggleClass("toggled ");
+    });
+    $('#myModal').on('shown.bs.modal', function() {
+        $('#myInput').trigger('focus')
+    })
+</script>
+<script>
+    $(document).ready(function() {
+
+        var current_fs, next_fs, previous_fs; //fieldsets
+        var opacity;
+        var current = 1;
+        var steps = $("fieldset ").length;
+
+        setProgressBar(current);
+
+        $(".next ").click(function() {
+
+            current_fs = $(this).parent();
+            next_fs = $(this).parent().next();
+
+            //Add Class Active
+            $("#progressbar li ").eq($("fieldset ").index(next_fs)).addClass("active ");
+
+            //show the next fieldset
+            next_fs.show();
+
+            //hide
+            //the current fieldset with style
+            current_fs.animate({
+                opacity: 0
+            }, {
+                step: function(now) {
+                    // for making fielset appear animation
+                    opacity = 1 - now;
+
+                    current_fs.css({
+
+
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    next_fs.css({
+                        'opacity': opacity
+                    });
+                },
+                duration: 500
+            });
+            setProgressBar(++current);
+        });
+
+        $(".previous ").click(function() {
+
+            current_fs = $(this).parent();
+            previous_fs = $(this).parent().prev();
+
+            //Remove class active
+            $("#progressbar li ").eq($("fieldset ").index(current_fs)).removeClass("active ");
+
+
+
+            //show the previous fieldset
+            previous_fs.show();
+
+            //hide the current fieldset with style
+            current_fs.animate({
+                opacity: 0
+            }, {
+                step: function(now) {
+
+                    //
+                    //for making fielset appear animation
+                    opacity = 1 - now;
+
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    previous_fs.css({
+                        'opacity': opacity
+                    });
+                },
+                duration: 500
+            });
+            setProgressBar(--current);
+        });
+
+        function setProgressBar(curStep) {
+            var percent = parseFloat(100 / steps) * curStep;
+            percent = percent.toFixed();
+            $(".progress-bar ")
+                .css("width ", percent + "% ")
+        }
+
+        $(".submit ").click(function() {
+            return false;
+        })
+
+    });
+</script>

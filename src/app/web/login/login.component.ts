@@ -4,6 +4,8 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
 import { error } from 'protractor';
+import { Util } from 'src/app/util/util';
+import { UserInfoModel } from 'src/app/models/UserInfoModel';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +13,16 @@ import { error } from 'protractor';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private estado: boolean = false;
-
+  private estado = false;
+  private util: Util = new Util();
+  private user:UserInfoModel = new UserInfoModel();
 
   constructor(private loginService: LoginService, private router: Router) {
-    //  this.signInWeb(this.user,this.passw);
+    this.util.current(router);
   }
 
   ngOnInit() {
+    console.log(localStorage.getItem('token_sesion'));
   }
 
   signInWeb(username: string, password: string, event: Event) {
@@ -35,30 +39,17 @@ export class LoginComponent implements OnInit {
         swal.close();
 
         localStorage.setItem("token_sesion", res["accessToken"]);
-        //modo temporal despues hacerlo de una forma mas dinamica
+        // modo temporal despues hacerlo de una forma mas dinamica
         sessionStorage.setItem("iduser", res["iduser"]);
         sessionStorage.setItem("idrole", res["idrole"]);
-        sessionStorage.setItem("Avtivo", res["Avtivo"]);
-        sessionStorage.setItem("rolename", res["rolename"]);
-        sessionStorage.setItem("tokenType", res["tokenType"]);
-        sessionStorage.setItem("username", res["username"]);
-        sessionStorage.setItem("name", res["name"]);
+        sessionStorage.setItem("name",res["name"])
+        sessionStorage.setItem("email",res["email"])
+        this.util.obtenerPerfil(res);
 
-        this.estado = res["Avtivo"];
-        if (this.estado) {
-          this.router.navigate(['/inicio', res]);
-        } else {
-          this.router.navigate(['/activar', res]);
-        }
-
-
-
-
-
-
+        this.util.load(this.router);
       },
       error => {
-        if (error.status == 401) {
+        if (error.status === 401) {
           swal.fire('Error login', 'Usuario o contraseña Incorrecta', 'error')
         }
         this.handleError(error);
@@ -69,7 +60,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  handleError(error) {
+  handleError( error ) {
 
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
