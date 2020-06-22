@@ -12,9 +12,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./servicios-n.component.css']
 })
 export class ServiciosNComponent implements OnInit {
-  page=0;
-  size = 4;
-  servicios: Array<any>;
+  p: number = 1;
+  servicios: Servicios[];
   categorias: Categoria[];
   public servicio:Servicios = new Servicios();
   private util: Util = new Util();
@@ -27,15 +26,7 @@ export class ServiciosNComponent implements OnInit {
   }
 
   cargarServicios(){
-    this.negocioService.servicios(this.page,this.size).subscribe(
-      res=>{
-        this.servicios = res;
-        console.log(this.page);
-      },
-      err=> {
-        console.log(err.error)
-      }
-    )
+    this.negocioService.getAllServicio().subscribe(servicios => this.servicios = servicios)
   }
 
   cargarDatosServicios(){
@@ -52,17 +43,6 @@ export class ServiciosNComponent implements OnInit {
       )
   }
 
-  sumPag(i:number){
-    this.page = i+1;
-    this.cargarServicios();
-    console.log(i)
-  }
-
-  resPag(i:number){
-    this.page = i-1;
-    this.cargarServicios();
-    console.log(i)
-  }
 
   public agregarServicio(): void{
 
