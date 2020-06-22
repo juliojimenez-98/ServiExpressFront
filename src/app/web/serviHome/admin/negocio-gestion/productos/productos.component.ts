@@ -19,9 +19,10 @@ export class ProductosComponent implements OnInit {
   public producto:Producto = new Producto();
   private util: Util = new Util();
   public idCategoria:any;
+  public moneda: any;
 
   constructor(private negocioService: NegocioService, private router:Router, private activateRoute:ActivatedRoute) {
-
+    this.moneda = sessionStorage.getItem('moneda');
   }
 
 
