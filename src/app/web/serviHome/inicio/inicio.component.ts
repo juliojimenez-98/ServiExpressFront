@@ -231,8 +231,10 @@ pdf.add(new Columns([ 'Rápido ', ' 100' ]).columnGap(10).end);
 
 
           doc.addImage(newImage, 'PNG',  10, 10, width, height);
-          filename = 'mypdf_' + '.pdf';
+          filename = 'ServiExpressReporte' + '.pdf';
           doc.save(filename);
+
+
 
         };
 
