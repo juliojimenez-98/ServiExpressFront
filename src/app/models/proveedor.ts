@@ -7,4 +7,5 @@ export class Proveedor {
   empresa: string;
   producto:string;
   telefono: string;
+  active:boolean;
 }

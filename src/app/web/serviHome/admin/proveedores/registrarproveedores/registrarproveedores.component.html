@@ -91,7 +91,7 @@
     <button style="margin-top: 2%;" type="submit" style="margin-top: 2%;" class="col-sm-4 btn btn-info btn-block my-2 mx-auto" (click)="agregarProveedor()" *ngIf="!proveedor.idproveedor else elseBLock"><i class="fas fa-sign-in-alt"></i>  Registrar </button>
   </div>
   <ng-template #elseBLock>
-    <button style="margin-top: 2%;" type="submit"  class="btn btn-success" >Actualizar</button>
+    <button style="margin-top: 2%;" type="submit"  class="btn btn-success" (click)="actProveedor()" >Actualizar</button>
   </ng-template>
 </form>
 

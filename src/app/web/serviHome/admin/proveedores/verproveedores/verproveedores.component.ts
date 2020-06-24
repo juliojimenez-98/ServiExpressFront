@@ -26,17 +26,7 @@ export class VerproveedoresComponent implements OnInit {
     );
   }
 
-  cargarDatosCategoria(){
-    this.activatedRoute.params.subscribe(params=>{
-      let idproveedor = params["idproveedor"]
-      if(idproveedor){
-        this.proveedorService.getProveedor(idproveedor).subscribe( (proveedor) =>
-        this.proveedor = proveedor
-        )
-      }
-    }
-      )
-  }
+
 
 
 

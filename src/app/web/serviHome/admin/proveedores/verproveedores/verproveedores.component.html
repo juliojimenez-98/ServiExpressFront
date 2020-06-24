@@ -22,7 +22,7 @@
             <td>{{proveedor.empresa}}</td>
             <td>{{proveedor.producto}}</td>
             <td>
-                <button type="button " id="PopoverCustomT-1 " class="btn btn-success btn-sm ">Editar</button>
+                <button type="button " id="PopoverCustomT-1 " class="btn btn-success btn-sm " [routerLink]="['/home/proveedores/registrarproveedores/',proveedor.idproveedor]">Editar</button>
                 <button style="margin-left: 1%;" type="button " id="PopoverCustomT-1 " class="btn btn-danger btn-sm ">Bloquear</button>
             </td>
         </tr>

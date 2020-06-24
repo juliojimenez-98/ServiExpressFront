@@ -38,11 +38,31 @@ export class AdminProveedoresService {
       correo:proveedor.correo,
       empresa:proveedor.empresa,
       producto:proveedor.producto,
-      telefono:proveedor.telefono
+      telefono:proveedor.telefono,
+      active:proveedor.active
     });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
     return this.http.put(`${this.urlGetProveedorId}`, raw, { headers: this.header });
+  }
+  actualizarProveedor(proveedor: Proveedor) {
+    const raw = JSON.stringify(
+    {
+      idproveedor:proveedor.idproveedor,
+      nombre: proveedor.nombre,
+      apellido:proveedor.apellido,
+      rut:proveedor.rut,
+      correo:proveedor.correo,
+      telefono:proveedor.telefono,
+      empresa:proveedor.empresa,
+      producto:proveedor.producto,
+      active:proveedor.active
+
+    });
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
+    return this.http.post(`${this.urlGetProveedorId}`, raw, { headers: this.header });
   }
 }
