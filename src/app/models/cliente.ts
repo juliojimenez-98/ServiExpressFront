@@ -1,8 +1,8 @@
 export class Cliente {
     idcliente: string;
-    rut:string;
+    rut: string;
     nombre: string;
     apellido: string;
     fechaNacimiento: string;
-    telefono:string;
+    telefono: string;
 }

@@ -55,12 +55,12 @@ export class ReservasEmpleadoComponent implements OnInit {
     if (estado) {
 
       Swal.fire('Estado de reserva',`El estado cambió a: ${estado}`,'success')
-      console.log(reserva)
-      console.log(reserva)
-      console.log(estado)
-      this.service.updateEstadoReserva(reserva,estado).subscribe(res=>{
-        console.log(res);
-      });
+
+
+      this.service.updateEstadoReserva(reserva,estado)
+      .subscribe();
+
+
     }
 
   }
