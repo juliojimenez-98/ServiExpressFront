@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("idrole", res["idrole"]);
         sessionStorage.setItem("name",res["name"])
         sessionStorage.setItem("email",res["email"])
+        sessionStorage.setItem("moneda",'$')
         this.util.obtenerPerfil(res);
 
         this.util.load(this.router);

@@ -137,6 +137,8 @@ export class InicioComponent implements OnInit {
   // }
 
 
+  
+
   async genratePDF(){
     const cValue = formatDate(this.currentDate, 'yyyy-MM-dd', 'en-US');
     PdfMakeWrapper.setFonts(pdfFonts);
