@@ -7,6 +7,9 @@ export var URL_TO_LOGIN={
     updCreEmp:'/api/entidad/empleado',
     reqPass:'/api/auth/requestpass',//luego debe ir el nombre de usuario
     chgPasw:'/api/auth/changepassword/',
+    regProveedor:'/api/proveedor/proveedor',
+    getProveedor:'/api/proveedor/allproveedores',
+    getProveedorId:'/api/proveedor/proveedor',
     regVehiculo:'/api/vehiculo/vehiculo',
     regCategoria:'/api/categoria/categoria',
     regProducto:'/api/producto/producto',
