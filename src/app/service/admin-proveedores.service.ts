@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Proveedor } from '../models/proveedores';
+import { Proveedor } from '../models/proveedor';
 import { URL_TO_LOGIN } from '../util/global';
 
 @Injectable({
@@ -36,6 +36,8 @@ export class AdminProveedoresService {
       nombre: proveedor.nombre,
       apellido:proveedor.apellido,
       correo:proveedor.correo,
+      empresa:proveedor.empresa,
+      producto:proveedor.producto,
       telefono:proveedor.telefono
     });
     this.header = new HttpHeaders()
