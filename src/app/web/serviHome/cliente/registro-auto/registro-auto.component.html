@@ -1,83 +1,142 @@
-
- <div class="text-center">
-  <div class="col-lg-12">
-      <div class="container">
-          <div class="col-12">
-              <h3>Registra tu auto</h3>
-              <hr class="white">
-          </div>
-          <form (ngSubmit)="regVehiculo()">
-              <div class="container">
-                <div class="form-row ">
-                    <div class="input-group col-md-4">
-                      <div class="container">
-                        <label>Marca de tu auto</label>
-                      </div>
-                      <div class="input-group-prepend ">
-                        <span class="input-group-text "><i class="fas fa-car "></i></span>
-                      </div>
-                      <input class="form-control" type="text" placeholder="Ej: Chevrolet" name="marca" [(ngModel)]="vehiculo.marca">
+<div class="text-center">
+    <div class="col-lg-12">
+        <div class="container">
+            <div class="col-12">
+                <h3>Registra tu Vehículo</h3>
+                <hr class="white">
+            </div>
+            <form #formAuto="ngForm" (ngSubmit)="regVehiculo()">
+                <div class="container">
+                    <div class="form-row ">
+                        <div class="input-group col-md-4">
+                            <div class="container">
+                                <label>Marca</label>
+                            </div>
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                            </div>
+                            <input class="form-control" type="text" placeholder="Ej: Chevrolet" name="marca" [(ngModel)]="vehiculo.marca">
+                        </div>
+                        <div class="input-group col-md-4">
+                            <div class="container">
+                                <label>Modelo</label>
+                            </div>
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                            </div>
+                            <input class="form-control" type="text" placeholder="Modelo" name="modelo" [(ngModel)]="vehiculo.modelo">
+                        </div>
+                        <div class="input-group col-md-4">
+                            <div class="container">
+                                <label>Carrocería</label>
+                            </div>
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                            </div>
+                            <!-- <input class="form-control" type="text" placeholder="Tipo auto" name="TipoAuto" [(ngModel)]="vehiculo.tipovehiculo"> -->
+                            <select [(ngModel)]="vehiculo.tipovehiculo" name="tipoauto" class="custom-select">
+                              <option selected *ngFor="let tipo of tiposAutos">
+                                {{tipo}}
+                              </option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="input-group col-md-4">
-                      <div class="container">
-                        <label>Modelo del vehículo</label>
-                      </div>
-                      <div class="input-group-prepend ">
-                        <span class="input-group-text "><i class="fas fa-car "></i></span>
-                      </div>
-                        <input class="form-control" type="text" placeholder="Modelo" name="modelo" [(ngModel)]="vehiculo.modelo">
+                    <br>
+                    <br>
+                    <div class="form-row">
+                        <div class="input-group col-md-4 col-xs-6">
+                            <div class="container">
+                                <label>Año</label>
+                            </div>
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                            </div>
+                            <input class="form-control " type="number" placeholder="Año" name="Anio" [(ngModel)]="vehiculo.anio">
+                        </div>
+                        <div class="input-group col-md-4">
+                            <div class="container">
+                                <label>Patente</label>
+                            </div>
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                            </div>
+                            <input style="text-transform: uppercase;" class="form-control " type="text" placeholder="Patente" name="patente" [(ngModel)]="vehiculo.patente">
+                        </div>
+                        <div class="input-group col-md-4">
+                            <div class="container">
+                                <label>Numero de chasís</label>
+                            </div>
+                            <div class="input-group-prepend ">
+                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                            </div>
+                            <input class="form-control " type="text" placeholder="Numero Chasis" name="nrochasis" [(ngModel)]="vehiculo.nrochasis">
+                        </div>
                     </div>
-                    <div class="input-group col-md-4">
-                      <div class="container">
-                        <label>Tipo de carrocería</label>
-                      </div>
-                      <div class="input-group-prepend ">
-                        <span class="input-group-text "><i class="fas fa-car "></i></span>
-                      </div>
-                      <input class="form-control" type="text" placeholder="Tipo auto" name="TipoAuto" [(ngModel)]="vehiculo.tipovehiculo">
-                    </div>
-                </div>
-                <br>
-                <br>
-                <div class="form-row">
-                  <div class="input-group col-md-4 col-xs-6">
-                    <div class="container">
-                      <label>Año de tu auto</label>
-                    </div>
-                    <div class="input-group-prepend ">
-                      <span class="input-group-text "><i class="fas fa-car "></i></span>
-                    </div>
-                        <input class="form-control " type="number" placeholder="Año" name="Anio" [(ngModel)]="vehiculo.anio">
-                    </div>
-                    <div class="input-group col-md-4">
-                      <div class="container">
-                        <label>Patente del vehículo</label>
-                      </div>
-                      <div class="input-group-prepend ">
-                        <span class="input-group-text "><i class="fas fa-car "></i></span>
-                      </div>
-                        <input class="form-control " type="text" placeholder="Patente" name="patente" [(ngModel)]="vehiculo.patente">
-                    </div>
-                    <div class="input-group col-md-4">
-                      <div class="container">
-                        <label>Numero de chasís</label>
-                      </div>
-                      <div class="input-group-prepend ">
-                        <span class="input-group-text "><i class="fas fa-car "></i></span>
-                      </div>
-                        <input class="form-control " type="text" placeholder="Numero Chasis" name="nrochasis" [(ngModel)]="vehiculo.nrochasis">
-                    </div>
-                  </div>
-                  <br>
+                    <br>
                 </div>
                 <br>
                 <div class="col-sm-6 mx-auto">
-                  <button type="submit" style="margin-top: 10px;" class="btn btn-success btn-block">
-                    Registrar auto
+                    <button type="submit" style="margin-top: 10px;" class="btn btn-success btn-block">
+                    Registrar vehículo
                   </button>
                 </div>
-          </form>
-          <!-- Button trigger modal -->
-      </div>
-  </div>
+            </form>
+            <!-- Button trigger modal -->
+        </div>
+    </div>
+
+
+
+    <form>
+        <div class="form-group form-inline">
+            Buscar: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm" />
+            <span class="ml-3" *ngIf="service.loading$ | async">Cargando...</span>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col" sortable="patente" (sort)="onSort($event)">Patente</th>
+                    <th scope="col" sortable="marca" (sort)="onSort($event)">Marca</th>
+                    <th scope="col" sortable="modelo" (sort)="onSort($event)">Modelo</th>
+                    <th scope="col" sortable="nrochasis" (sort)="onSort($event)">N° de Chasis</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let car of cars$ | async">
+                    <!-- <th scope="row">{{ car.idvehiculo }}</th> -->
+                    <td>
+                        <ngb-highlight [result]="car.patente" [term]="service.searchTerm"></ngb-highlight>
+                    </td>
+                    <td>
+                        <ngb-highlight [result]="car.marca" [term]="service.searchTerm"></ngb-highlight>
+                    </td>
+                    <td>
+                        <ngb-highlight [result]="car.modelo" [term]="service.searchTerm"></ngb-highlight>
+                    </td>
+                    <td>
+                      <ngb-highlight [result]="car.nrochasis" [term]="service.searchTerm"></ngb-highlight>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="borrarVehiculo(car)">Eliminar</button>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between p-2">
+            <ngb-pagination [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
+            </ngb-pagination>
+
+            <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
+      <option [ngValue]="2">2 auto por pagina</option>
+      <option [ngValue]="4">4 auto por pagina</option>
+      <option [ngValue]="6">6 auto por pagina</option>
+    </select>
+        </div>
+
+    </form>
+
 </div>

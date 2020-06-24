@@ -18,17 +18,20 @@ import { formatDate } from '@angular/common'
 })
 export class EditarClienteComponent implements OnInit {
   userModelInfo: UserInfoModel = new UserInfoModel();
+  user: UserModel = new UserModel();
   private util: Util = new Util();
   cliente = false;
   admin = false;
   empleado = false;
   model: NgbDateStruct;
+  show = true;
 
   constructor(public nav: NavbarService,
     private clienteService:ClientesService,
     private activatedRoute: ActivatedRoute,
     private loginService: LoginService,
     private router: Router) {
+
       if (sessionStorage.getItem('idrole') === '2') {
         this.cliente = true;
       } else if (sessionStorage.getItem('idrole') === '1') {
@@ -48,6 +51,10 @@ export class EditarClienteComponent implements OnInit {
     this.cargarCliente();
 
   }
+
+  hideDiv(){
+    this.show = !this.show
+  }
   cargarCliente():void{
 
     this.userModelInfo.nombre = sessionStorage.getItem('name');
@@ -61,16 +68,18 @@ export class EditarClienteComponent implements OnInit {
 
   public updatePerson(): void {
     if (sessionStorage.getItem('idrole')=='2') {
-      const buildFormPerson = this.util.buildFormPerson(this.userModelInfo, this.model);
+
       this.userModelInfo.idCliente = JSON.parse(sessionStorage.getItem('idcliente'))
       this.userModelInfo.idUsuario = JSON.parse(sessionStorage.getItem('iduser'))
     // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
     console.log(this.userModelInfo.fechaN);
     this.loginService.updateOrCreate(false, this.userModelInfo).subscribe(
       res => {
-        Swal.fire('Actualizar datos', `Tus datos fueron actualizados ${this.userModelInfo.nombre} ${this.userModelInfo.apellido}`, 'success')
-        sessionStorage.setItem('Avtivo', 'true');
-        this.router.navigate(['home/inicio']);
+        Swal.fire('Actualizar datos', `Tus datos fueron actualizados ${this.userModelInfo.nombre} ${this.userModelInfo.apellido}`, 'success');
+        this.router.navigate(['login']);
+        this.logout();
+        Swal.fire('Inicia sesion', `Inicia sesion para ver tus datos nuevos`, 'info');
+
       },
       error => {
         this.util.handleError(error);
@@ -78,15 +87,17 @@ export class EditarClienteComponent implements OnInit {
 
     );
     }else if (sessionStorage.getItem('idrole')=='3'|| sessionStorage.getItem('idrole')=='1') {
-      const buildFormPerson = this.util.buildFormPerson(this.userModelInfo, this.model);
+
       this.userModelInfo.idEmpleado = JSON.parse(sessionStorage.getItem('idempleado'));
       this.userModelInfo.idUsuario = JSON.parse(sessionStorage.getItem('iduser'));
     // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
     console.log(this.userModelInfo.fechaN);
     this.loginService.updateOrCreateEmp(false, this.userModelInfo).subscribe(
       res => {
-        sessionStorage.setItem('Avtivo', 'true');
-        this.router.navigate(['home/inicio']);
+        Swal.fire('Actualizar datos', `Tus datos fueron actualizados ${this.userModelInfo.nombre} ${this.userModelInfo.apellido}`, 'success');
+        this.router.navigate(['login']);
+        this.logout();
+        Swal.fire('Inicia sesion', `Inicia sesion para ver tus datos nuevos`, 'info');
       },
       error => {
         this.util.handleError(error);
@@ -96,4 +107,9 @@ export class EditarClienteComponent implements OnInit {
 
     }
   }
+  logout() {
+    localStorage.removeItem('token_sesion');
+    sessionStorage.clear();
+  }
+
 }

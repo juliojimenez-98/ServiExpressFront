@@ -53,13 +53,14 @@ export class ActivarComponent implements OnInit {
 
 
   public registerPerson(): void {
-    if (sessionStorage.getItem('idrole')=='2') {
+    if (sessionStorage.getItem('idrole')=='2'||sessionStorage.getItem('idrole')=='4') {
       const buildFormPerson = this.util.buildFormPerson(this.user, this.model);
     // this.user.fechaN = this.model.year.toString() + this.model.month.toString() + this.model.day.toString();
     console.log(this.user.fechaN);
     this.loginService.updateOrCreate(true, this.user).subscribe(
       res => {
         sessionStorage.setItem('Avtivo', 'true');
+        this.util.getUserDatos(res)
         this.router.navigate(['home/inicio']);
       },
       error => {

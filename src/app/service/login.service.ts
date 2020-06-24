@@ -57,9 +57,9 @@ export class LoginService {
     const raw = JSON.stringify({ usernameOrEmail: auth, password: passw });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
-    console.log(this.header);
-    console.log(this.body);
-    console.log(localStorage.getItem('token_sesion'))
+    // console.log(this.header);
+    // console.log(this.body);
+    // console.log(localStorage.getItem('token_sesion'))
     return this.http.post(`${this.urlSignIn}`, raw, { headers: this.header });
   }
 
@@ -103,7 +103,7 @@ export class LoginService {
   updateOrCreateEmp(selection: boolean, userInfo: UserInfoModel) {
     const raw = JSON.stringify(
       { idempleado: userInfo.idEmpleado,idusuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
-        telefono: userInfo.telefono, fechaNacimiento: userInfo.fechaN });
+        telefono: userInfo.telefono });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );

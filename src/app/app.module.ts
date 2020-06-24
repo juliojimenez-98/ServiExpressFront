@@ -33,7 +33,26 @@ import { EmpleadosAdminComponent } from './web/serviHome/empleado/empleados-admi
 import { registerLocaleData } from '@angular/common';
 import { BaseComponent } from './widget/base/base.component';
 import { RegistroAutoComponent } from './web/serviHome/cliente/registro-auto/registro-auto.component';
+import { NegocioGestionComponent } from './web/serviHome/admin/negocio-gestion/negocio-gestion.component';
+import { CategoriasComponent } from './web/serviHome/admin/negocio-gestion/categorias/categorias.component';
+import { ProductosComponent } from './web/serviHome/admin/negocio-gestion/productos/productos.component';
+import { ServiciosNComponent } from './web/serviHome/admin/negocio-gestion/servicios-n/servicios-n.component';
+import { ReservasEmpleadoComponent } from './web/serviHome/empleado/reservas-empleado/reservas-empleado.component';
+import { PedidosEmpleadoComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos-empleado.component';
+import { PedidosComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos/pedidos.component';
+import { RecibosempComponent } from './web/serviHome/empleado/pedidos-empleado/recibosemp/recibosemp.component';
+import { ChartModule } from 'primeng/chart';
+import {TableModule} from 'primeng/table';
+import { EncuestaComponent } from './web/serviHome/cliente/encuesta/encuesta.component';
+import { PedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/pedidos-admin.component';
+import { RecibosAdminComponent } from './web/serviHome/admin/pedidos-admin/recibos-admin/recibos-admin.component';
+import { VistaPedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/vista-pedidos-admin/vista-pedidos-admin.component';
+import { AjustesAdminComponent } from './web/serviHome/admin/ajustes-admin/ajustes-admin.component';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ProveedoresComponent } from './web/serviHome/admin/proveedores/proveedores.component';
+import { RegistrarproveedoresComponent } from './web/serviHome/admin/proveedores/registrarproveedores/registrarproveedores.component';
+import { VerproveedoresComponent } from './web/serviHome/admin/proveedores/verproveedores/verproveedores.component';
 registerLocaleData(localeEsCl, 'es-CL');
 
 @NgModule({
@@ -64,13 +83,34 @@ registerLocaleData(localeEsCl, 'es-CL');
     EmpleadosAdminComponent,
     BaseComponent,
     RegistroAutoComponent,
+    NegocioGestionComponent,
+    CategoriasComponent,
+    ProductosComponent,
+    ServiciosNComponent,
+    ReservasEmpleadoComponent,
+    PedidosEmpleadoComponent,
+    PedidosComponent,
+    RecibosempComponent,
+    EncuestaComponent,
+    PedidosAdminComponent,
+    RecibosAdminComponent,
+    VistaPedidosAdminComponent,
+    AjustesAdminComponent,
+    ProveedoresComponent,
+    RegistrarproveedoresComponent,
+    VerproveedoresComponent,
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ChartModule,
+    TableModule,
+    NgxPaginationModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-Cl' }],
   bootstrap: [AppComponent]

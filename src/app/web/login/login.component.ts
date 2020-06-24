@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import swal from 'sweetalert2';
 import { error } from 'protractor';
 import { Util } from 'src/app/util/util';
+import { UserInfoModel } from 'src/app/models/UserInfoModel';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ import { Util } from 'src/app/util/util';
 export class LoginComponent implements OnInit {
   private estado = false;
   private util: Util = new Util();
+  private user:UserInfoModel = new UserInfoModel();
 
   constructor(private loginService: LoginService, private router: Router) {
     this.util.current(router);
@@ -40,6 +42,8 @@ export class LoginComponent implements OnInit {
         // modo temporal despues hacerlo de una forma mas dinamica
         sessionStorage.setItem("iduser", res["iduser"]);
         sessionStorage.setItem("idrole", res["idrole"]);
+        sessionStorage.setItem("name",res["name"])
+        sessionStorage.setItem("email",res["email"])
         this.util.obtenerPerfil(res);
 
         this.util.load(this.router);
