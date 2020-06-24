@@ -45,6 +45,12 @@
             <span> Empleados</span></a>
     </li>
 
+    <li *ngIf="admin" class="nav-item">
+      <a class="nav-link" routerLink='proveedores/registrarproveedores'>
+          <i class="fas fa-users"></i>
+          <span> Proveedores</span></a>
+  </li>
+
 
 
     <li *ngIf="empleado" class="nav-item">
