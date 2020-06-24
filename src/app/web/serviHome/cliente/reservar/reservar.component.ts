@@ -58,9 +58,9 @@ export class ReservarComponent implements OnInit {
     this.service.sortColumn = column;
     this.service.sortDirection = direction;
   }
-  
+
   public cargarAppJs(url: string) {
-    const body = <HTMLDivElement>document.body;
+    const body = <HTMLDivElement> document.body;
     const script = document.createElement('script');
     script.innerHTML = '';
     script.src = url;
@@ -69,14 +69,11 @@ export class ReservarComponent implements OnInit {
     body.appendChild(script);
   }
 
-
-
-
   public agregarReserva(): void {
 
     let producto = this.producto.idproducto;
     let servici = this.servicio.idservicio;
-    let dateHours = <HTMLInputElement>document.getElementById('datetime');
+    let dateHours = <HTMLInputElement> document.getElementById('datetime');
     let newDate = new Date(dateHours.value);
     this.reserva.productos = producto;
     this.reserva.servicios = servici.toString();
@@ -86,14 +83,11 @@ export class ReservarComponent implements OnInit {
 
 
       this.negocioService.agregarReserva(this.reserva).subscribe(
-
-        res  =>{
-
-
+        res  => {
           Swal.fire(  'Reserva agregada',  `Se enviara un correo de confirmacion a : ${sessionStorage.getItem('email')}` ,  'success');
           this.service.getReserva()
           .subscribe(res => {
-            localStorage["datas2"] = JSON.stringify(res);
+            localStorage['datas2'] = JSON.stringify(res);
           });
     },
     error => {
@@ -103,8 +97,6 @@ export class ReservarComponent implements OnInit {
   );
 
   }
-
-
 
   public cargaBox(): void{
 

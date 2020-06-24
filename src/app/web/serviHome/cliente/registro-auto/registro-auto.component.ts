@@ -53,13 +53,13 @@ export class RegistroAutoComponent {
     this.service.sortColumn = column;
     this.service.sortDirection = direction;
   }
-  public borrarVehiculo(car):void{
+  public borrarVehiculo(car): void{
     console.log(car)
     car.active = false;
     this.vehiculo = car;
     Swal.fire({
       title: 'Estás seguro de borrar tu vehículo?',
-      text: "Tu vehículo se borrará de tus registros",
+      text: 'Tu vehículo se borrará de tus registros',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -70,7 +70,7 @@ export class RegistroAutoComponent {
     }).then((result) => {
       if (result.value) {
         this.clienteService.eliminarVehiculo(this.vehiculo).subscribe(
-          res=> {
+          res => {
             console.log(res)
 
             console.log(this.vehiculo.patente)
@@ -94,8 +94,8 @@ export class RegistroAutoComponent {
         console.log(this.vehiculo)
         swal.fire('Creado correctamente', `Tu vehiculo : ${this.vehiculo.marca}  ${this.vehiculo.modelo} se registró con exito`, 'success');
         this.service.getCar()
-        .subscribe(res => {
-          localStorage["datas"] = JSON.stringify(res);
+        .subscribe( res => {
+          localStorage[ 'datas' ] = JSON.stringify(res);
         });
 
       },

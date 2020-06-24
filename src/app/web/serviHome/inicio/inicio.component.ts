@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
 import { PdfMakeWrapper, Canvas, Line, PageReference, Txt, Img, Columns, TocItem } from 'pdfmake-wrapper';
 import { DatePipe, formatDate } from '@angular/common';
-import * as jsPDF from 'jspdf'
+import * as jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
 // declare var drawGauge: any;
 // import '../../../../assets/js/sb-admin-2.min.js';
