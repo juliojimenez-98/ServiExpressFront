@@ -50,6 +50,9 @@ import { VistaPedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/
 import { AjustesAdminComponent } from './web/serviHome/admin/ajustes-admin/ajustes-admin.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ProveedoresComponent } from './web/serviHome/admin/proveedores/proveedores.component';
+import { RegistrarproveedoresComponent } from './web/serviHome/admin/proveedores/registrarproveedores/registrarproveedores.component';
+import { VerproveedoresComponent } from './web/serviHome/admin/proveedores/verproveedores/verproveedores.component';
 registerLocaleData(localeEsCl, 'es-CL');
 
 @NgModule({
@@ -93,6 +96,9 @@ registerLocaleData(localeEsCl, 'es-CL');
     RecibosAdminComponent,
     VistaPedidosAdminComponent,
     AjustesAdminComponent,
+    ProveedoresComponent,
+    RegistrarproveedoresComponent,
+    VerproveedoresComponent,
 
 
   ],
