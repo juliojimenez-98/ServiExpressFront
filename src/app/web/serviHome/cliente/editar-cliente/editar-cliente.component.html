@@ -9,7 +9,7 @@
         <h5 >Rut</h5>{{userModelInfo.rut}}
       </div>
       <div class="card-body text-center">
-        <h5>Telefono</h5>{{userModelInfo.telefono}}
+        <h5>Teléfono</h5>{{userModelInfo.telefono}}
       </div>
       <!-- <button style="width: 15%;" type="submit" (click)="hideDiv()" class="btn btn-outline-primary my-4 btn-sm mx-auto">  Actualizar </button> -->
   </div>
@@ -58,20 +58,20 @@
 
 
                    <div>
-                     <label class="text-black" for="">Telefono</label>
+                     <label class="text-black" for="">Teléfono</label>
                    </div>
                        <div class="form-group col-md-6 mx-auto">
                            <input type="text " class="form-control " placeholder="Telefono " required minlength="8" maxlength="9" pattern="[2||9]+[0-9]+" [(ngModel)]="userModelInfo.telefono" name="telefonp"  #telefono="ngModel" />
                        </div>
                        <div class="container col-md-5 alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
                         <div *ngIf="telefono.errors.required">
-                          - El telefono es requerido
+                          - El teléfono es requerido
                         </div>
                         <div *ngIf="telefono.errors.pattern">
-                         - El telefono debe empezar con "2" de telefono o "9" de celular
+                         - El teléfono debe empezar con "2" de teléfono o "9" de celular
                         </div>
                         <div *ngIf="telefono.errors.minlength">
-                          - El telefono debe tener al menos 7 números
+                          - El teléfono debe tener al menos 7 números
                         </div>
                       </div>
 
