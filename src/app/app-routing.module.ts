@@ -64,6 +64,7 @@ const APP_ROUTES: Routes = [
   children:[
     { path: 'registrarproveedores', component: RegistrarproveedoresComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
     { path: 'verproveedores', component: VerproveedoresComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+    { path: 'registrarproveedores/:idproveedor', component: RegistrarproveedoresComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   ]},
   { path: 'pedidosadmin', component: PedidosAdminComponent,
   children:[
