@@ -15,6 +15,7 @@ import { Util } from 'src/app/util/util';
 export class PedidosComponent implements OnInit {
   proveedores: Proveedor[];
   private util: Util = new Util();
+  pedidos:Pedido[];
   productos: Producto[];
   public pedido:Pedido = new Pedido();
   constructor(private pedidosService:PedidoService, private router:Router) { }
@@ -22,6 +23,7 @@ export class PedidosComponent implements OnInit {
   ngOnInit(): void {
     this.getProveedores();
     this.getProductos();
+    this.getAllPedidos();
   }
 
   getProveedores(){
@@ -35,17 +37,30 @@ export class PedidosComponent implements OnInit {
       productos => this.productos = productos
     );
   }
+  getAllPedidos(){
+    this.pedidosService.getAllPedidos().subscribe(
+      pedidos => this.pedidos = pedidos
+    );
+  }
 
   public agregarPedido(): void{
-    this.pedido.idempleado = JSON.parse(sessionStorage.getItem('idempleado'));
+    this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempleado'));
     this.pedido.estado= 0;
     console.log(this.pedido)
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Iniciando sesión...'
+    })
+    Swal.showLoading();
     this.pedidosService.agregarPedido(this.pedido).subscribe(
       res  =>{
+        Swal.close();
         console.log(res)
 
         Swal.fire(  'Pedido Realizado',  `El pedido se realizó con exito` ,  'success');
         this.router.navigate(['home/pedidosempleado/pedidosemp']);
+        this.getAllPedidos();
   },
   error => {
     console.log(error)

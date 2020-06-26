@@ -14,6 +14,7 @@ export class PedidoService {
   private urlGetProveedor = URL_TO_LOGIN.url + URL_TO_LOGIN.getProveedor;
   private urlGetProducto = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProducto;
   private urlRegPedido = URL_TO_LOGIN.url + URL_TO_LOGIN.regPedido;
+  private urlGetAllPedidos = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllPedidos;
   private urlGetAllProductoById = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProductoById;
   private header: any;
 
@@ -33,19 +34,24 @@ export class PedidoService {
     return this.http.get<Producto[]>(`${this.urlGetProducto}`, { headers: this.header });
   }
 
+  getAllPedidos(): Observable<Pedido[]>{
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<Pedido[]>(`${this.urlGetAllPedidos}`, { headers: this.header });
+  }
+
   agregarPedido(pedido: Pedido) {
-    console.log('Entrando al servicio')
     const raw = JSON.stringify(
     {
-      idproveedor: pedido.idproveedor,
-      idempleado: pedido.idempleado,
-      idproducto: pedido.idproducto,
+      proveedor: pedido.proveedor.idproveedor,
+      empleado: pedido.empleado.idempleado,
+      producto: pedido.producto.idproducto,
       cantidad: pedido.cantidad,
       fechapedido: pedido.fechapedido,
       fecharecibo: pedido.fecharecibo,
       estado: pedido.estado
     });
-    console.log('paso 2')
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
