@@ -15,6 +15,7 @@ import { Util } from 'src/app/util/util';
 export class PedidosComponent implements OnInit {
   proveedores: Proveedor[];
   private util: Util = new Util();
+  pedidos:Pedido[];
   productos: Producto[];
   public pedido:Pedido = new Pedido();
   constructor(private pedidosService:PedidoService, private router:Router) { }
@@ -22,6 +23,7 @@ export class PedidosComponent implements OnInit {
   ngOnInit(): void {
     this.getProveedores();
     this.getProductos();
+    this.getAllPedidos();
   }
 
   getProveedores(){
@@ -33,6 +35,11 @@ export class PedidosComponent implements OnInit {
   getProductos(){
     this.pedidosService.getAllProductos().subscribe(
       productos => this.productos = productos
+    );
+  }
+  getAllPedidos(){
+    this.pedidosService.getAllPedidos().subscribe(
+      pedidos => this.pedidos = pedidos
     );
   }
 

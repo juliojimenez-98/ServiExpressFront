@@ -8,52 +8,26 @@
                   <thead>
                       <tr>
                           <th>ID</th>
-                          <th>Rut</th>
+                          <!-- <th>Rut</th> -->
                           <th>Nombre Proveedor</th>
-                          <th>Empresa</th>
+                          <!-- <th>Empresa</th> -->
                           <th>Producto</th>
                           <th>Cantidad</th>
                           <th>Estado Pedido</th>
+                          <th>Accion</th>
                       </tr>
                   </thead>
                   <tbody>
-                      <tr>
-                          <td class="text-center text-muted ">#345</td>
-                          <td>12123456-K</td>
-                          <td>Williams Ramos</td>
-                          <td> General Motors</td>
-                          <td>Motor WPR-500</td>
-                          <td>3</td>
+                      <tr *ngFor="let pedido of pedidos">
+                          <td>{{pedido.idpedido}}</td>
+                          <td>{{pedido.idproveedor}}</td>
+                          <td> {{pedido.idproducto}}</td>
+                          <td>{{pedido.cantidad}}</td>
+                          <td>{{pedido.estado}}</td>
                           <td>
                               <button type="button" class="btn btn-outline-info btn-sm" (click)="estadoPedido()">
                                   Seleccionar
                                 </button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td class="text-center text-muted ">#345</td>
-                          <td>11895456-K</td>
-                          <td>Maria Carvallo</td>
-                          <td> Bridgestone</td>
-                          <td>Ruedas ARO 30</td>
-                          <td>16</td>
-                          <td>
-                            <button type="button" class="btn btn-outline-info btn-sm" (click)="estadoPedido()">
-                              Seleccionar
-                            </button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td class="text-center text-muted ">#345</td>
-                          <td>15895453-K</td>
-                          <td>Roberto Acuña</td>
-                          <td> Ford</td>
-                          <td>Tubos de escape</td>
-                          <td>8</td>
-                          <td>
-                            <button type="button" class="btn btn-outline-info btn-sm" (click)="estadoPedido()">
-                              Seleccionar
-                            </button>
                           </td>
                       </tr>
                   </tbody>
