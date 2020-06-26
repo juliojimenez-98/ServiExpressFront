@@ -42,18 +42,16 @@ export class PedidoService {
   }
 
   agregarPedido(pedido: Pedido) {
-    console.log('Entrando al servicio')
     const raw = JSON.stringify(
     {
-      idproveedor: pedido.idproveedor,
-      idempleado: pedido.idempleado,
-      idproducto: pedido.idproducto,
+      proveedor: pedido.proveedor.idproveedor,
+      empleado: pedido.empleado.idempleado,
+      producto: pedido.producto.idproducto,
       cantidad: pedido.cantidad,
       fechapedido: pedido.fechapedido,
       fecharecibo: pedido.fecharecibo,
       estado: pedido.estado
     });
-    console.log('paso 2')
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );

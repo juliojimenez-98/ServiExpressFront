@@ -20,8 +20,8 @@
                   <tbody>
                       <tr *ngFor="let pedido of pedidos">
                           <td>{{pedido.idpedido}}</td>
-                          <td>{{pedido.idproveedor}}</td>
-                          <td> {{pedido.idproducto}}</td>
+                          <td>{{pedido.proveedor}}</td>
+                          <td> {{pedido.producto}}</td>
                           <td>{{pedido.cantidad}}</td>
                           <td>{{pedido.estado}}</td>
                           <td>
@@ -48,8 +48,8 @@
           <div class="row ">
               <div class="col-md-6 mx-auto" id="dni-group">
                   <label>Productos</label>
-                  <select [(ngModel)]="pedido.idproducto" name="proveedores" class="custom-select">
-                    <option *ngFor="let producto of productos" [ngValue]="producto.idproducto">{{producto.nombre}}</option>
+                  <select [(ngModel)]="pedido.producto" name="proveedores" class="custom-select">
+                    <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.nombre}}</option>
                   </select>
               </div>
 
@@ -58,8 +58,8 @@
           <div class="row">
               <div class="col-md-6 mx-auto" id="dni-group">
                   <label>Proveedor</label>
-                  <select [(ngModel)]="pedido.idproveedor" name="proveedores" class="custom-select">
-                    <option *ngFor="let proveedor of proveedores" [ngValue]="proveedor.idproveedor">{{proveedor.nombre}}{{proveedor.apellido}}  | {{proveedor.producto}}</option>
+                  <select [(ngModel)]="pedido.proveedor" name="proveedores" class="custom-select">
+                    <option *ngFor="let proveedor of proveedores" [ngValue]="proveedor">{{proveedor.nombre}}{{proveedor.apellido}}  | {{proveedor.producto}}</option>
                   </select>
                 </div>
           </div>

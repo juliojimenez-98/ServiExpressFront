@@ -44,15 +44,23 @@ export class PedidosComponent implements OnInit {
   }
 
   public agregarPedido(): void{
-    this.pedido.idempleado = JSON.parse(sessionStorage.getItem('idempleado'));
+    this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempleado'));
     this.pedido.estado= 0;
     console.log(this.pedido)
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Iniciando sesión...'
+    })
+    Swal.showLoading();
     this.pedidosService.agregarPedido(this.pedido).subscribe(
       res  =>{
+        Swal.close();
         console.log(res)
 
         Swal.fire(  'Pedido Realizado',  `El pedido se realizó con exito` ,  'success');
         this.router.navigate(['home/pedidosempleado/pedidosemp']);
+        this.getAllPedidos();
   },
   error => {
     console.log(error)
