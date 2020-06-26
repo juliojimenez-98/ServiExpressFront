@@ -37,6 +37,8 @@ import { RecibosAdminComponent } from './web/serviHome/admin/pedidos-admin/recib
 import { ProveedoresComponent } from './web/serviHome/admin/proveedores/proveedores.component';
 import { RegistrarproveedoresComponent } from './web/serviHome/admin/proveedores/registrarproveedores/registrarproveedores.component';
 import { VerproveedoresComponent } from './web/serviHome/admin/proveedores/verproveedores/verproveedores.component';
+import { PedidosComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos/pedidos.component';
+import { RecibosempComponent } from './web/serviHome/empleado/pedidos-empleado/recibosemp/recibosemp.component';
 
 
 
@@ -101,7 +103,11 @@ const APP_ROUTES: Routes = [
 
   //Sidebar Empleado
   { path: 'reservasemp', component: ReservasEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
-  { path: 'pedidosemp', component: PedidosEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
+  { path: 'pedidosempleado', component: PedidosEmpleadoComponent,
+  children:[
+    { path: 'pedidosemp', component: PedidosComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
+    { path: 'recibosemp', component: RecibosempComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
+  ]}
   ]},
 
   { path: 'sidebar', component: SidebarComponent, canActivate: [ AuthGuard ] },
