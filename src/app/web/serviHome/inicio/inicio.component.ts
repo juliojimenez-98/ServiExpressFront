@@ -31,6 +31,7 @@ export class InicioComponent implements OnInit {
   data2: any;
   data3: any;
   dataBar: any;
+  dataBar2: any;
   currentDate = new Date();
   options: any;
   options2: any;
@@ -124,7 +125,31 @@ export class InicioComponent implements OnInit {
 
 
     this.dataBar = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: ['Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosoto'],
+      datasets: [
+        {
+          label: 'Cambio de Aceite',
+          backgroundColor: '#42A5F5',
+          borderColor: '#1E88E5',
+          data: [65, 59, 80, 81, 56, 55, 40]
+        },
+        {
+          label: 'Cambio de Neumaticos',
+          backgroundColor: '#9CCC65',
+          borderColor: '#7CB342',
+          data: [28, 48, 40, 19, 86, 27, 80]
+        },
+        {
+          label: 'Lavado de Motor',
+          backgroundColor: '#FFCE56',
+          borderColor: '#FFCE56',
+          data: [50, 60, 20, 30, 45, 60, 100]
+        }
+      ]
+    }
+
+    this.dataBar2 = {
+      labels: ['Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosoto'],
       datasets: [
         {
           label: 'My First dataset',
