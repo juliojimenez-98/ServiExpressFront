@@ -10,6 +10,7 @@
                           <th>ID</th>
                           <!-- <th>Rut</th> -->
                           <th>Nombre Proveedor</th>
+                          <th>fecha pedido</th>
                           <!-- <th>Empresa</th> -->
                           <th>Producto</th>
                           <th>Cantidad</th>
@@ -21,6 +22,7 @@
                       <tr *ngFor="let pedido of pedidos">
                           <td>{{pedido.idpedido}}</td>
                           <td>{{pedido.proveedor}}</td>
+                          <td>{{pedido.fechapedido}}</td>
                           <td> {{pedido.producto}}</td>
                           <td>{{pedido.cantidad}}</td>
                           <td>{{pedido.estado}}</td>
