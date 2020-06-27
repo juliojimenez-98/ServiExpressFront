@@ -46,9 +46,15 @@ export class ServiciosNComponent implements OnInit {
 
   public agregarServicio(): void{
 
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Creando servicio...'
+    })
     this.negocioService.agregarServicio(this.servicio).subscribe(
 
       res  =>{
+        Swal.close();
         // this.callType(res)
         // var idcategoria = this.callType;
         console.log(this.servicio.categoria)
