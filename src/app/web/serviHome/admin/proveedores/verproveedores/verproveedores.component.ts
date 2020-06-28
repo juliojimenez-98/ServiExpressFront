@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminProveedoresService } from 'src/app/service/admin-proveedores.service';
-import { Proveedor } from 'src/app/models/proveedores';
+import { Proveedor } from 'src/app/models/proveedor';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -25,17 +25,8 @@ export class VerproveedoresComponent implements OnInit {
       proveedores => this.proveedores = proveedores
     );
   }
-  cargarDatosCategoria(){
-    this.activatedRoute.params.subscribe(params=>{
-      let idproveedor = params["idproveedor"]
-      if(idproveedor){
-        this.proveedorService.getProveedor(idproveedor).subscribe( (proveedor) =>
-        this.proveedor = proveedor
-        )
-      }
-    }
-      )
-  }
+
+
 
 
 

@@ -61,7 +61,7 @@
 
 
     <li *ngIf="empleado" class="nav-item">
-        <a class="nav-link" routerLink='pedidosemp'>
+        <a class="nav-link" routerLink='pedidosempleado/pedidosemp'>
             <i class="fas fa-truck-loading"></i>
             <span> Pedidos</span></a>
     </li>
@@ -140,12 +140,6 @@
       <a class="nav-link" routerLink='pedidosadmin/pedidos'>
           <i class="fas fa-truck"></i>
           <span> Pedidos</span></a>
-    </li>
-
-    <li *ngIf="admin" class="nav-item">
-        <a class="nav-link" routerLink='inicio'>
-            <i class="fas fa-calendar-day"></i>
-            <span> Reservas</span></a>
     </li>
 
     <li *ngIf="empleado" class="nav-item">

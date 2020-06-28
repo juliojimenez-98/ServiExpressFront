@@ -4,5 +4,8 @@ export class Proveedor {
   nombre: string;
   apellido: string;
   correo: string;
+  empresa: string;
+  producto:string;
   telefono: string;
+  active:boolean;
 }
