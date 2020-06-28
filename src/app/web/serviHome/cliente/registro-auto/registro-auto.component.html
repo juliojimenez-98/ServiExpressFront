@@ -75,10 +75,11 @@
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
                             </div>
                             <input class="form-control " type="number " placeholder="Año " name="Anio " [(ngModel)]="vehiculo.anio " required #anio="ngModel">
-                            <div class="mx-auto col-md-9 alert alert-danger" *ngIf="anio.invalid && (anio.dirty || anio.touched)">
-                                <div *ngIf="anio.errors.required">
-                                    Tienes que ingresar el modelo
-                                </div>
+                        </div>
+
+                        <div class="mx-auto col-md-9 alert alert-danger" *ngIf="anio.invalid && (anio.dirty || anio.touched)">
+                            <div *ngIf="anio.errors.required">
+                                Tienes que ingresar el año del vehículo
                             </div>
                         </div>
 
@@ -91,8 +92,9 @@
                             <div class="input-group-prepend ">
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
                             </div>
-                            <input style="text-transform: uppercase; " class="form-control " type="text " placeholder="Patente " name="patente " [(ngModel)]="vehiculo.patente " required minlength="6" maxlength="6" #patente="ngModel">
+                            <input style="text-transform: uppercase; " class="form-control " type="text " placeholder="Patente " name="patente " [(ngModel)]="vehiculo.patente " required minlength="6" maxlength="6" pattern="/^[a-zA-Z]{2}-/^[a-zA-Z0-9]{2}-/^[0-9]{2}" #patente="ngModel">
                         </div>
+
                         <div class="mx-auto col-md-9 alert alert-danger" *ngIf="patente.invalid && (patente.dirty || patente.touched)">
                             <div *ngIf="patente.errors.required">
                                 Tienes que ingresar una pantente
@@ -102,6 +104,9 @@
                             </div>
                             <div *ngIf="patente.errors.maxlength">
                                 La patente debe contener un máximo de 6 caracteres
+                            </div>
+                            <div *ngIf="patente.errors.pattern">
+                                Esta patente es inválida
                             </div>
                         </div>
 
@@ -114,7 +119,22 @@
                             <div class="input-group-prepend ">
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
                             </div>
-                            <input class="form-control " type="text " placeholder="Numero Chasis " name="nrochasis " [(ngModel)]="vehiculo.nrochasis " required>
+                            <input class="form-control " type="text " placeholder="Numero Chasis " name="nrochasis " [(ngModel)]="vehiculo.nrochasis " required minlength="17" maxlength="17" pattern="/^(?![IOQioq])[a-zA-Z0-9]{17}" #chasis="ngModel">
+                        </div>
+
+                        <div class=" mx-auto col-md-9 alert alert-danger " *ngIf="chasis.invalid && (chasis.dirty || chasis.touched) ">
+                            <div *ngIf="chasis.errors.required ">
+                                Tienes que ingresar un Nro de chasis
+                            </div>
+                            <div *ngIf="chasis.errors.minlength ">
+                                El Nro de chasis debe contener 17 caracteres
+                            </div>
+                            <div *ngIf="chasis.errors.maxlength ">
+                                El Nro de chasis debe contener 17 caracteres
+                            </div>
+                            <div *ngIf="chasis.errors.pattern">
+                                Este Nro de chasis es inválido
+                            </div>
                         </div>
 
                     </div>
