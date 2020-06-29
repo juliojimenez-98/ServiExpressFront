@@ -53,6 +53,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ProveedoresComponent } from './web/serviHome/admin/proveedores/proveedores.component';
 import { RegistrarproveedoresComponent } from './web/serviHome/admin/proveedores/registrarproveedores/registrarproveedores.component';
 import { VerproveedoresComponent } from './web/serviHome/admin/proveedores/verproveedores/verproveedores.component';
+import { BoletaComponent } from './web/serviHome/cliente/boleta/boleta.component';
 registerLocaleData(localeEsCl, 'es-CL');
 
 @NgModule({
@@ -99,6 +100,7 @@ registerLocaleData(localeEsCl, 'es-CL');
     ProveedoresComponent,
     RegistrarproveedoresComponent,
     VerproveedoresComponent,
+    BoletaComponent,
 
 
   ],
