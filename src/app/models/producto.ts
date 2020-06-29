@@ -6,4 +6,5 @@ export class Producto {
   nombre: string;
   descripcion:string;
   valorbase: number;
+  stock:number;
 }

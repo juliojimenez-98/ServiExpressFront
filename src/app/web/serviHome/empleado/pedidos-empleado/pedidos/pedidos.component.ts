@@ -50,7 +50,7 @@ export class PedidosComponent implements OnInit {
     Swal.fire({
       allowOutsideClick: false,
       icon: 'info',
-      text: 'Iniciando sesión...'
+      text: 'Realizando Pedido'
     })
     Swal.showLoading();
     this.pedidosService.agregarPedido(this.pedido).subscribe(

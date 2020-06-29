@@ -41,7 +41,7 @@ export class InicioComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private datePipe: DatePipe,
-    private calendar: NgbCalendar, 
+    private calendar: NgbCalendar,
     public formatter: NgbDateParserFormatter) {
 
       this.fromDate = calendar.getToday();
@@ -331,7 +331,7 @@ onDateSelection(date: NgbDate) {
           var height = doc.internal.pageSize.getHeight();
 
 
-          
+
           doc.text(20, 20, 'Hello world!');
           doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
           doc.addImage(newImage, 'PNG', 10, 50, 300, 40);

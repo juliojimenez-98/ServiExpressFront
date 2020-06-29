@@ -39,6 +39,7 @@ import { RegistrarproveedoresComponent } from './web/serviHome/admin/proveedores
 import { VerproveedoresComponent } from './web/serviHome/admin/proveedores/verproveedores/verproveedores.component';
 import { PedidosComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos/pedidos.component';
 import { RecibosempComponent } from './web/serviHome/empleado/pedidos-empleado/recibosemp/recibosemp.component';
+import { BoletaComponent } from './web/serviHome/cliente/boleta/boleta.component';
 
 
 
@@ -52,6 +53,7 @@ const APP_ROUTES: Routes = [
   { path: '', component: HomeComponent },
   { path: '', pathMatch: 'full', redirectTo: '' },
   { path: 'encuesta', component: EncuestaComponent},
+  { path: 'boleta', component: BoletaComponent},
 
   // USUARIO LOGUEADO
   { path: 'home', component: BaseComponent, canActivate: [ AuthGuard ] ,
