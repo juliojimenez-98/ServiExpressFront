@@ -26,7 +26,6 @@ export class ClientesService {
     this.header = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8')
     return this.http.put(`${this.urlRegVehiculo}`, raw, { headers: this.header });
 
-
   }
   eliminarVehiculo(vehiculo: Vehiculo) {
     const raw = JSON.stringify(

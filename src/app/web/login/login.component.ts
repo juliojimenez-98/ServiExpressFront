@@ -44,12 +44,13 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("idrole", res["idrole"]);
         sessionStorage.setItem("name",res["name"])
         sessionStorage.setItem("email",res["email"])
+        sessionStorage.setItem("moneda",'$')
         this.util.obtenerPerfil(res);
 
         this.util.load(this.router);
       },
       error => {
-        if (error.status == 401) {
+        if (error.status === 401) {
           swal.fire('Error login', 'Usuario o contraseña Incorrecta', 'error')
         }
         this.handleError(error);
@@ -60,7 +61,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  handleError(error) {
+  handleError( error ) {
 
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
