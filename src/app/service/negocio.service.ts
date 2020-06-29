@@ -148,6 +148,7 @@ export class NegocioService {
         nombre: producto.nombre,
         descripcion: producto.descripcion,
         valorbase: producto.valorbase,
+        stock: producto.stock,
         categoria: producto.categoria.idcategoria
       });
       this.header = new HttpHeaders()
@@ -212,6 +213,7 @@ export class NegocioService {
       nombre: producto.nombre,
       descripcion: producto.descripcion,
       valorbase: producto.valorbase,
+      stock: producto.stock,
       categoria: producto.categoria.idcategoria
 
     });
