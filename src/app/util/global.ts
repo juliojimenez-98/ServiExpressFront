@@ -36,3 +36,9 @@ export var URL_TO_LOGIN={
     cambiarEstadoPedido:'/api/pedido',
     getAllPedidos:'/api/pedido/pedidos',
 }
+
+
+export var URL_ENCUESTAS={
+    url:'http://127.0.0.1:8090',
+    getEncuesta1:'/api/satifaccion/encuesta',
+}
