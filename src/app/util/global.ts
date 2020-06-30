@@ -33,6 +33,7 @@ export var URL_TO_LOGIN={
     getReservaPorId:'/api/reserva',
     getReservas:'/api/reserva/reservas',
     regPedido:'/api/pedido/pedido',
+    cambiarEstadoPedido:'/api/pedido',
     getAllPedidos:'/api/pedido/pedidos',
 }
 
