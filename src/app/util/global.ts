@@ -35,6 +35,7 @@ export var URL_TO_LOGIN={
     regPedido:'/api/pedido/pedido',
     cambiarEstadoPedido:'/api/pedido',
     getAllPedidos:'/api/pedido/pedidos',
+    getPedidosRecibidos:'/api/pedido/1/estado'
 }
 
 

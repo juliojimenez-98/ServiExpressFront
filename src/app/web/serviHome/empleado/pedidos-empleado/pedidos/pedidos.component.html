@@ -25,9 +25,12 @@
                           <td>{{pedido.fechapedido}}</td>
                           <td> {{pedido.producto}}</td>
                           <td>{{pedido.cantidad}}</td>
-                          <td>{{pedido.estado}}</td>
+                          <td *ngIf="pedido.estado == 0" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-warning">Pendiente</td>
+                          <td *ngIf="pedido.estado == 1" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-info">Recibido</td>
+                          <td *ngIf="pedido.estado == 2" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-success">Listo</td>
+                          <td *ngIf="pedido.estado == 3" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-secondary">Con detalles</td>
                           <td>
-                              <button type="button" class="btn btn-outline-info btn-sm" (click)="estadoPedido()">
+                              <button type="button" class="btn btn-outline-info btn-sm" *ngIf="pedido.estado == 0" (click)="estadoPedido(pedido.idpedido)">
                                   Seleccionar
                                 </button>
                           </td>
