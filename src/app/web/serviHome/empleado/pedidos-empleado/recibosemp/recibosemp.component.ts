@@ -66,6 +66,7 @@ export class RecibosempComponent implements OnInit {
      }else if (estado == 3) {
       const { value: text } = await Swal.fire({
         input: 'textarea',
+        title:'Observacion del pedido',
         inputPlaceholder: 'Comenta que pasó con el pedido',
         inputAttributes: {
           'aria-label': 'Type your message here'
@@ -100,6 +101,9 @@ export class RecibosempComponent implements OnInit {
       }
 
      }
+  }
+  verObservacion(pedido$){
+    Swal.fire('Observacion del pedido', `${pedido$.comentariopedido}`)
   }
 
 
