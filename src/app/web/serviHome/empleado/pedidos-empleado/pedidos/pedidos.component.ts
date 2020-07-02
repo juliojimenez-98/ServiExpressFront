@@ -13,6 +13,7 @@ import { Util } from 'src/app/util/util';
   styleUrls: ['./pedidos.component.css']
 })
 export class PedidosComponent implements OnInit {
+  p: number = 1;
   proveedores: Proveedor[];
   private util: Util = new Util();
   pedidos:Pedido[];

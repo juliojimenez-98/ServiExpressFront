@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./recibosemp.component.css']
 })
 export class RecibosempComponent implements OnInit {
-
+  p: number = 1;
   pedidos:Pedido[];
   public pedido:Pedido = new Pedido();
   constructor(private pedidosService:PedidoService, private router:Router) {
