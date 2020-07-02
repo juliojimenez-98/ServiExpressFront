@@ -6,6 +6,7 @@ import { Producto } from 'src/app/models/producto';
 import { Pedido } from 'src/app/models/Pedido';
 import { Router } from '@angular/router';
 import { Util } from 'src/app/util/util';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-pedidos',
@@ -47,6 +48,7 @@ export class PedidosComponent implements OnInit {
   public agregarPedido(): void{
     this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempleado'));
     this.pedido.estado= 0;
+    this.pedido.comentariopedido = "El pedido está pendiente";
     console.log(this.pedido)
     Swal.fire({
       allowOutsideClick: false,

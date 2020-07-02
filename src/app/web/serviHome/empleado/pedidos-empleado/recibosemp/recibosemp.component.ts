@@ -38,7 +38,7 @@ export class RecibosempComponent implements OnInit {
   }
 
 
-  async estadoPedido(pedido):Promise<void>{
+  async estadoPedido(pedido$):Promise<void>{
     const { value: estado } = await Swal.fire({
       title: 'Selecciona el estado',
       input: 'select',
@@ -57,7 +57,7 @@ export class RecibosempComponent implements OnInit {
 
        this.pedido.fechapedido = this.pedido.fechapedido
        this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempledo'))
-       this.pedidosService.updateEstadoPedido(pedido,estado)
+       this.pedidosService.updateEstadoPedido(pedido$.idpedido,estado)
        .subscribe(res=>{
 
          this.getAllPedidos();
@@ -73,17 +73,32 @@ export class RecibosempComponent implements OnInit {
         showCancelButton: true
       })
 
-      if (text) {
-        Swal.fire(`Se informará tu comentario ${estado}`, (text))
-        this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempledo'))
-        this.pedidosService.updateEstadoPedido(pedido,estado)
-        .subscribe(res=>{
 
-          this.getAllPedidos();
-        }
-          );
+      if (text) {
+        // Swal.fire(`Se informará tu comentario ${estado}`, (text))
+        // this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempledo'))
+        // this.pedidosService.updateEstadoPedido(pedido$.idpedido,estado)
+        // .subscribe(res=>{
+
+        //   this.getAllPedidos();
+        // }
+        //   );
+
+        this.pedido = pedido$
+        this.pedido.comentariopedido = text
+      this.pedido.estado = 3;
+        this.pedidosService.actualizarPedido(this.pedido).subscribe(
+         res=>{
+           console.log(res)
+           Swal.fire('Comentario enviado' ,`Tu comentario " ${text} " fue enviado`, 'warning')
+           this.router.navigate(['home/pedidosempleado/pedidosemp'])
+
+
+         }
+       )
 
       }
+
      }
   }
 

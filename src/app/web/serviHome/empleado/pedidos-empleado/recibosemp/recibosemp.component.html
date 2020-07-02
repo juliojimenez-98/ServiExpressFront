@@ -25,7 +25,7 @@
             <td *ngIf="pedido.estado == 2" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-success">Llegó Bien</td>
             <td *ngIf="pedido.estado == 3" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-secondary">LLegó con detalles</td>
             <td>
-                <button type="button" class="btn btn-outline-info btn-sm" *ngIf="pedido.estado == 1" (click)="estadoPedido(pedido.idpedido)">
+                <button type="button" class="btn btn-outline-info btn-sm" *ngIf="pedido.estado == 1" (click)="estadoPedido(pedido)">
                     Seleccionar
                   </button>
             </td>

@@ -66,12 +66,32 @@ export class PedidoService {
       cantidad: pedido.cantidad,
       fechapedido: pedido.fechapedido,
       fecharecibo: pedido.fecharecibo,
+      comentariopedido : pedido.comentariopedido,
       estado: pedido.estado
     });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
     return this.http.put(`${this.urlRegPedido}`, raw, { headers: this.header });
+  }
+
+  actualizarPedido(pedido: Pedido) {
+    const raw = JSON.stringify(
+    {
+      idpedido: pedido.idpedido,
+      proveedor: pedido.proveedor,
+      empleado: pedido.empleado,
+      producto: pedido.producto,
+      cantidad: pedido.cantidad,
+      fechapedido: pedido.fechapedido,
+      fecharecibo: pedido.fecharecibo,
+      comentariopedido : pedido.comentariopedido,
+      estado: pedido.estado
+    });
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
+    return this.http.post(`${this.urlRegPedido}`, raw, { headers: this.header });
   }
 
   getAllProductoById(id:number): Observable<Producto[]>{
