@@ -9,12 +9,12 @@
             <!-- <th>Empresa</th> -->
             <th>Producto</th>
             <th>Cantidad</th>
-            <th>Estado Pedido</th>
+            <th>Estado Recibo</th>
             <th>Accion</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let pedido of pedidos">
+        <tr *ngFor="let pedido of pedidos| paginate: { itemsPerPage: 5, currentPage: p };let i = index">
             <td>{{pedido.idpedido}}</td>
             <td>{{pedido.proveedor}}</td>
             <td>{{pedido.fechapedido}}</td>
@@ -31,4 +31,10 @@
         </tr>
     </tbody>
 </table>
+<div style="margin-top: 3%;" class="row">
+  <div class="mx-auto">
+
+    <pagination-controls (pageChange)="p = $event"  maxSize="9" previousLabel="Anterior" nextLabel="Siguiente" ></pagination-controls>
+  </div>
+</div>
 </div>

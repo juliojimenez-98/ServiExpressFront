@@ -42,9 +42,11 @@
 
                       </table>
                     </div>
-                    <div class="row mx-auto">
-                      <pagination-controls class="mx-auto" (pageChange)="p = $event"></pagination-controls>
+                    <div style="margin-top: 3%;" class="row">
+                      <div class="mx-auto">
+
+                        <pagination-controls (pageChange)="p = $event"  maxSize="9" previousLabel="Anterior" nextLabel="Siguiente" ></pagination-controls>
+                      </div>
                     </div>
-                  </div>
                 </div>
 

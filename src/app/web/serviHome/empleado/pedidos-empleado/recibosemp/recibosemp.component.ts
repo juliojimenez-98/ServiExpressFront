@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./recibosemp.component.css']
 })
 export class RecibosempComponent implements OnInit {
-
+  p: number = 1;
   pedidos:Pedido[];
   public pedido:Pedido = new Pedido();
   constructor(private pedidosService:PedidoService, private router:Router) {
@@ -24,7 +24,7 @@ export class RecibosempComponent implements OnInit {
 
 
   getAllPedidos(){
-    this.pedidosService.getAllPedidos().subscribe(
+    this.pedidosService.getPedidosRecibidos().subscribe(
       pedidos => this.pedidos = pedidos
     );
   }
@@ -37,32 +37,48 @@ export class RecibosempComponent implements OnInit {
       input: 'select',
       position:"center",
       inputOptions: {
-        0: 'Pendiente',
-        1: 'Recibido',
-        2: 'Cancelado'
+       2: 'Buen Estado',
+       3: 'Recibido con detalles'
       },
       inputPlaceholder: 'Selecciona el estado de la reserva',
       showCancelButton: true,
 
     })
-    if (estado) {
+     if (estado == 2) {
 
-      Swal.fire('Estado de reserva',`El estado cambió a: ${estado}`,'success')
+       Swal.fire('Estado de reserva',`El estado cambió a: ${estado}`,'success')
 
-      this.pedido.fechapedido = this.pedido.fechapedido
-      this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempledo'))
-      this.pedidosService.updateEstadoPedido(pedido,estado)
-      .subscribe(res=>{
+       this.pedido.fechapedido = this.pedido.fechapedido
+       this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempledo'))
+       this.pedidosService.updateEstadoPedido(pedido,estado)
+       .subscribe(res=>{
 
-        this.getAllPedidos();
+         this.getAllPedidos();
+       }
+         );
+     }else if (estado == 3) {
+      const { value: text } = await Swal.fire({
+        input: 'textarea',
+        inputPlaceholder: 'Comenta que pasó con el pedido',
+        inputAttributes: {
+          'aria-label': 'Type your message here'
+        },
+        showCancelButton: true
+      })
+
+      if (text) {
+        Swal.fire(`Se informará tu comentario ${estado}`, (text))
+        this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempledo'))
+        this.pedidosService.updateEstadoPedido(pedido,estado)
+        .subscribe(res=>{
+
+          this.getAllPedidos();
+        }
+          );
+
       }
-        );
-
-
-
-
-    }
-
+     }
   }
+
 
 }

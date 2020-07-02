@@ -7,7 +7,9 @@ import { PdfMakeWrapper, Canvas, Line, PageReference, Txt, Img, Columns, TocItem
 import { DatePipe, formatDate } from '@angular/common';
 import * as jsPDF from 'jspdf'
 import domtoimage from 'dom-to-image';
-import {NgbDate, NgbCalendar, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDate, NgbCalendar, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { EncuestaService } from 'src/app/service/encuesta.service';
+import { Util } from 'src/app/util/util';
 
 // declare var drawGauge: any;
 // import '../../../../assets/js/sb-admin-2.min.js';
@@ -35,93 +37,29 @@ export class InicioComponent implements OnInit {
   currentDate = new Date();
   options: any;
   options2: any;
-
-
+  fini: any;
+  ffin: any;
+  response: any;
+  private util: Util = new Util();
   constructor(public nav: NavbarService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private datePipe: DatePipe,
     private calendar: NgbCalendar,
-    public formatter: NgbDateParserFormatter) {
+    public formatter: NgbDateParserFormatter,
+    private encuestaService: EncuestaService) {
 
-      this.fromDate = calendar.getToday();
-      this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+    this.fromDate = calendar.getNext(calendar.getToday(), 'd', -30);
+    this.toDate = calendar.getToday();
+    
 
-    this.options = {
-      title: {
-        display: true,
-        text: 'Servicio',
-        fontSize: 14
-      },
-      legend: {
-        position: 'bottom'
-      }
-    };
-    this.data = {
-      labels: ['Exelente', 'Bueno', 'Regular', 'Malo', 'Muy malo'],
-      datasets: [
-        {
-          data: [7, 3, 4, 5, 5],
-          backgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56",
-            '#1E88E5'
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56",
-            '#1E88E5'
-          ]
-        }]
-    };
 
-    this.options2 = {
-      title: {
-        display: true,
-        text: 'My Title',
-        fontSize: 16
-      },
-      legend: {
-        position: 'bottom'
-      }
-    };
 
-    this.data2 = {
-      labels: ['Lento', 'Normal', 'Rápido'],
-      datasets: [
-        {
-          data: [20, 30, 50],
-          backgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ]
-        }]
-    };
-    this.data3 = {
-      labels: ['No Recomendaría', 'Tal Vez', 'Recomendaría'],
-      datasets: [
-        {
-          data: [3, 50, 100],
-          backgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ]
-        }]
-    };
+
+    this.buscarencuesta1();
+
+
+
 
 
     this.dataBar = {
@@ -189,7 +127,7 @@ export class InicioComponent implements OnInit {
     }
 
   }
-onDateSelection(date: NgbDate) {
+  onDateSelection(date: NgbDate) {
     if (!this.fromDate && !this.toDate) {
       this.fromDate = date;
     } else if (this.fromDate && !this.toDate && date && date.after(this.fromDate)) {
@@ -217,7 +155,114 @@ onDateSelection(date: NgbDate) {
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
 
+  buscarencuesta1() {
+
+    const date1 = new Date(this.fromDate.year, this.fromDate.month, this.fromDate.day);
+    const date2 = new Date(this.toDate.year, this.toDate.month, this.toDate.day);
+    console.log(date1 + " " + date2)
+    this.fini = this.util.formatDate(date1);
+    this.ffin = this.util.formatDate(date2);
+    sessionStorage.setItem("fechaini",this.fini);
+    sessionStorage.setItem("fechafin",this.ffin);
+
+    console.log(this.fini + " " + this.ffin)
+    this.encuestaService.buscarEncuestas(this.fini, this.ffin).subscribe(
+      res => {
+        var body = res["body"];
+
+        var recomendacion = body["recomendacion"];
+        sessionStorage.setItem("recomendaria", recomendacion["recomendaria"]);
+        sessionStorage.setItem("talvez", recomendacion["talvez"]);
+        sessionStorage.setItem("norecomendaria", recomendacion["norecomendaria"]);
+
+        var servicio = body["servicio"];
+        sessionStorage.setItem("muymalo", servicio["muymalo"]);
+        sessionStorage.setItem("malo", servicio["malo"]);
+        sessionStorage.setItem("bueno", servicio["bueno"]);
+        sessionStorage.setItem("exelente", servicio["exelente"]);
+        sessionStorage.setItem("regular", servicio["regular"]);
+
+        var tiempo = body["tiempo"];
+        sessionStorage.setItem("rapido", tiempo["rapido"]);
+        sessionStorage.setItem("lento", tiempo["lento"]);
+        sessionStorage.setItem("normal", tiempo["normal"]);
+
+        //encuesta 1
+
+        this.data = {
+          labels: ['Exelente', 'Bueno', 'Regular', 'Malo', 'Muy malo'],
+          datasets: [
+            {
+              data: [sessionStorage.getItem("exelente"), sessionStorage.getItem("bueno"), 
+                    sessionStorage.getItem("regular"), sessionStorage.getItem("malo"), 
+                    sessionStorage.getItem("muymalo")],
+              backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56",
+                '#1E88E5'
+              ],
+              hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56",
+                '#1E88E5'
+              ]
+            }]
+        };
+
+        //encuesta 2
+        this.data2 = {
+          labels: ['Lento', 'Normal', 'Rápido'],
+          datasets: [
+            {
+              data: [sessionStorage.getItem("lento"), sessionStorage.getItem("normal"), sessionStorage.getItem("rapido")],
+              backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+              ],
+              hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+              ]
+            }]
+        };
+
+       //encuesta 3
+        this.data3 = {
+          labels: ['No Recomendaría', 'Tal Vez', 'Recomendaría'],
+          datasets: [
+            {
+              data: [sessionStorage.getItem("norecomendaria"), sessionStorage.getItem("talvez"), sessionStorage.getItem("recomendaria")],
+              backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+              ],
+              hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+              ]
+            }]
+        };
+
+      },
+      error => {
+
+        this.util.handleError(error);
+      },
+
+    );
+    //   console.log( this.fromDate.year +' '+this.fromDate.month+' '+this.fromDate.day
+    //   +'--'+
+    //  this.toDate.year+' '+this.toDate.month+' '+this.toDate.day); 
+  }
+
   ngOnInit(): void {
+
 
     //  this.loadScript('../assets/js/sb-admin-2.min.js');
     //  this.loadScript('../assets/vendor/jquery/jquery.slim.min.js');
@@ -240,55 +285,55 @@ onDateSelection(date: NgbDate) {
   // }
 
 
-  async genratePDF() {
-    const cValue = formatDate(this.currentDate, 'yyyy-MM-dd', 'en-US');
-    PdfMakeWrapper.setFonts(pdfFonts);
+  // async genratePDF() {
+  //   const cValue = formatDate(this.currentDate, 'yyyy-MM-dd', 'en-US');
+  //   PdfMakeWrapper.setFonts(pdfFonts);
 
 
-    const pdf = new PdfMakeWrapper();
+  //   const pdf = new PdfMakeWrapper();
 
-    pdf.pageMargins([40, 60]); // affects top-bottom and right-left
-    pdf.header('ServiExpress ' + cValue.toString());
-    pdf.add(new Txt('Dashboard').alignment('center').italics().end);
-    pdf.add(
-      pdf.ln(2)
-    );
-    pdf.add('Servicio');
-    pdf.add(
-      pdf.ln(2)
-    );
-    // labels: ['Exelente','Bueno','Regular','Malo','Muy malo'],
-    pdf.add(new Columns(['Exelente', ' 7']).columnGap(10).end);
-    pdf.add(new Columns(['Bueno   ', ' 3']).columnGap(10).end);
-    pdf.add(new Columns(['Regular ', ' 4']).columnGap(10).end);
-    pdf.add(new Columns(['Malo    ', ' 5']).columnGap(10).end);
-    pdf.add(new Columns(['Muy malo', ' 5']).columnGap(10).end);
-    pdf.add(
-      pdf.ln(2)
-    );
-    pdf.add('Tiempo');
-    pdf.add(
-      pdf.ln(2)
-    );
-    //      labels: ['Lento','Normal','Rápido'],
-    pdf.add(new Columns(['Lento', ' 20']).columnGap(10).end);
-    pdf.add(new Columns(['Normal   ', ' 30']).columnGap(10).end);
-    pdf.add(new Columns(['Rápido ', ' 50']).columnGap(10).end);
-    pdf.add(
-      pdf.ln(2)
-    );
-    pdf.add('Recomendación');
-    pdf.add(
-      pdf.ln(2)
-    );
-    //                labels: ['No Recomendaría','Tal Vez','Recomendaría'],
-    pdf.add(new Columns(['Lento', ' 3']).columnGap(10).end);
-    pdf.add(new Columns(['Normal   ', ' 50']).columnGap(10).end);
-    pdf.add(new Columns(['Rápido ', ' 100']).columnGap(10).end);
-    pdf.footer('This is a footer');
+  //   pdf.pageMargins([40, 60]); // affects top-bottom and right-left
+  //   pdf.header('ServiExpress ' + cValue.toString());
+  //   pdf.add(new Txt('Dashboard').alignment('center').italics().end);
+  //   pdf.add(
+  //     pdf.ln(2)
+  //   );
+  //   pdf.add('Servicio');
+  //   pdf.add(
+  //     pdf.ln(2)
+  //   );
+  //   // labels: ['Exelente','Bueno','Regular','Malo','Muy malo'],
+  //   pdf.add(new Columns(['Exelente', ' 7']).columnGap(10).end);
+  //   pdf.add(new Columns(['Bueno   ', ' 3']).columnGap(10).end);
+  //   pdf.add(new Columns(['Regular ', ' 4']).columnGap(10).end);
+  //   pdf.add(new Columns(['Malo    ', ' 5']).columnGap(10).end);
+  //   pdf.add(new Columns(['Muy malo', ' 5']).columnGap(10).end);
+  //   pdf.add(
+  //     pdf.ln(2)
+  //   );
+  //   pdf.add('Tiempo');
+  //   pdf.add(
+  //     pdf.ln(2)
+  //   );
+  //   //      labels: ['Lento','Normal','Rápido'],
+  //   pdf.add(new Columns(['Lento', ' 20']).columnGap(10).end);
+  //   pdf.add(new Columns(['Normal   ', ' 30']).columnGap(10).end);
+  //   pdf.add(new Columns(['Rápido ', ' 50']).columnGap(10).end);
+  //   pdf.add(
+  //     pdf.ln(2)
+  //   );
+  //   pdf.add('Recomendación');
+  //   pdf.add(
+  //     pdf.ln(2)
+  //   );
+  //   //                labels: ['No Recomendaría','Tal Vez','Recomendaría'],
+  //   pdf.add(new Columns(['Lento', ' 3']).columnGap(10).end);
+  //   pdf.add(new Columns(['Normal   ', ' 50']).columnGap(10).end);
+  //   pdf.add(new Columns(['Rápido ', ' 100']).columnGap(10).end);
+  //   pdf.footer('This is a footer');
 
-    pdf.create().download();
-  }
+  //   pdf.create().download();
+  // }
 
   generarReporte() {
 
@@ -297,7 +342,7 @@ onDateSelection(date: NgbDate) {
     var img;
     var filename;
     var newImage;
-
+    const cValue = formatDate(this.currentDate, 'yyyy-MM-dd', 'en-US');
 
     domtoimage.toPng(node, { bgcolor: '#fff' })
 
@@ -331,10 +376,40 @@ onDateSelection(date: NgbDate) {
           var height = doc.internal.pageSize.getHeight();
 
 
+          doc.setFontSize(7);               
+          doc.text(20, 10, 'Desde '+sessionStorage.getItem("fechaini")+' Hasta '+sessionStorage.getItem("fechafin")); 
+          doc.setFontSize(15);
+          doc.text(20, 20, 'Reporte de Satisfacción');  
+          doc.setFontSize(13);
+          doc.text(20, 30, 'Servicio.');
+          // data: [sessionStorage.getItem("exelente"), , 
+          // , , 
+          // ],
 
-          doc.text(20, 20, 'Hello world!');
-          doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
-          doc.addImage(newImage, 'PNG', 10, 50, 300, 40);
+          doc.setFontSize(10);
+          doc.text(20, 40, 'Exelente:'+sessionStorage.getItem("exelente")+
+                             ', Bueno:'+sessionStorage.getItem("bueno")+
+                             ', Regular:'+sessionStorage.getItem("regular")+
+                             ', Malo:'+sessionStorage.getItem("malo")+
+                             ', Muy malo: '+sessionStorage.getItem("muymalo")
+          );
+          doc.setFontSize(13);
+          doc.text(20, 60, 'Tiempo.');
+          doc.setFontSize(10);
+          doc.text(20, 70, 'Lento:'+sessionStorage.getItem("lento")+
+                             ', Normal:'+sessionStorage.getItem("normal")+
+                             ', Rápido:'+sessionStorage.getItem("rapido")
+          );
+          doc.setFontSize(13);
+          doc.text(20, 90, 'Recomendación.');
+          doc.setFontSize(10);
+          doc.text(20, 100, 'No Recomendaría:'+sessionStorage.getItem("norecomendaria")+
+                          ', Tal Vez:'+sessionStorage.getItem("talvez")+
+                            ', Recomendaría:'+sessionStorage.getItem("recomendaria"));
+          doc.addImage(newImage, 'PNG', 5, 110, 310, 50);
+          doc.setFontSize(10);               
+          doc.text(20, 200, 'Documento emitido por '+sessionStorage.getItem("name")+' '+sessionStorage.getItem("apellido")+' '+cValue.toString()); 
+    
           // Output as Data URI
           doc.output('datauri');
           filename = 'ServiExpressReporte' + '.pdf';

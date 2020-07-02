@@ -15,6 +15,7 @@ export class PedidoService {
   private urlGetProducto = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProducto;
   private urlRegPedido = URL_TO_LOGIN.url + URL_TO_LOGIN.regPedido;
   private urlGetAllPedidos = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllPedidos;
+  private urlGetPedidosRecibidos = URL_TO_LOGIN.url + URL_TO_LOGIN.getPedidosRecibidos;
   private urlGetAllProductoById = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProductoById;
   private urlEstadoPorId =URL_TO_LOGIN.url + URL_TO_LOGIN.cambiarEstadoPedido;
   private header: any;
@@ -33,6 +34,13 @@ export class PedidoService {
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
     return this.http.get<Producto[]>(`${this.urlGetProducto}`, { headers: this.header });
+  }
+
+  getPedidosRecibidos(){
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<Pedido[]>(`${this.urlGetPedidosRecibidos}`, { headers: this.header });
   }
 
   getAllPedidos(): Observable<Pedido[]>{

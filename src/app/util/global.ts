@@ -35,4 +35,11 @@ export var URL_TO_LOGIN={
     regPedido:'/api/pedido/pedido',
     cambiarEstadoPedido:'/api/pedido',
     getAllPedidos:'/api/pedido/pedidos',
+    getPedidosRecibidos:'/api/pedido/1/estado'
+}
+
+
+export var URL_ENCUESTAS={
+    url:'http://127.0.0.1:8090',
+    getEncuesta1:'/api/satifaccion/encuesta',
 }
