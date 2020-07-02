@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RecibosempComponent implements OnInit {
   p: number = 1;
+  est: string;
   pedidos:Pedido[];
   public pedido:Pedido = new Pedido();
   constructor(private pedidosService:PedidoService, private router:Router) {
@@ -24,11 +25,17 @@ export class RecibosempComponent implements OnInit {
 
 
   getAllPedidos(){
-    this.pedidosService.getPedidosRecibidos().subscribe(
+    this.pedidosService.getAllPedidos().subscribe(
       pedidos => this.pedidos = pedidos
     );
   }
 
+  cambiarEstado(valor){
+    this.est = valor
+    this.pedidosService.getAllPedidosEstado(this.est).subscribe(
+      pedidos => this.pedidos = pedidos
+    )
+  }
 
 
   async estadoPedido(pedido):Promise<void>{

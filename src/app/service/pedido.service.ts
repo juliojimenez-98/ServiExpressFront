@@ -50,6 +50,13 @@ export class PedidoService {
     return this.http.get<Pedido[]>(`${this.urlGetAllPedidos}`, { headers: this.header });
   }
 
+  getAllPedidosEstado(est:string): Observable<Pedido[]>{
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<Pedido[]>(`${this.urlEstadoPorId +'/'+  est + '/estado'}`, { headers: this.header });
+  }
+
   agregarPedido(pedido: Pedido) {
     const raw = JSON.stringify(
     {
