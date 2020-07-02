@@ -15,6 +15,8 @@ export class PedidoService {
   private urlGetProducto = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProducto;
   private urlRegPedido = URL_TO_LOGIN.url + URL_TO_LOGIN.regPedido;
   private urlGetAllPedidos = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllPedidos;
+  private urlGetPedidosRecibidos = URL_TO_LOGIN.url + URL_TO_LOGIN.getPedidosRecibidos;
+  private urlGetPedidosDetalle = URL_TO_LOGIN.url + URL_TO_LOGIN.getPedidosRecibidos;
   private urlGetAllProductoById = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProductoById;
   private urlEstadoPorId =URL_TO_LOGIN.url + URL_TO_LOGIN.cambiarEstadoPedido;
   private header: any;
@@ -35,11 +37,32 @@ export class PedidoService {
     return this.http.get<Producto[]>(`${this.urlGetProducto}`, { headers: this.header });
   }
 
+  getPedidosRecibidos(){
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<Pedido[]>(`${this.urlGetPedidosRecibidos}`, { headers: this.header });
+  }
+
+  getPedidosDetalles(){
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<Pedido[]>(`${this.urlGetPedidosDetalle}`, { headers: this.header });
+  }
+
   getAllPedidos(): Observable<Pedido[]>{
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
     return this.http.get<Pedido[]>(`${this.urlGetAllPedidos}`, { headers: this.header });
+  }
+
+  getAllPedidosEstado(est:string): Observable<Pedido[]>{
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<Pedido[]>(`${this.urlEstadoPorId +'/'+  est + '/estado'}`, { headers: this.header });
   }
 
   agregarPedido(pedido: Pedido) {
@@ -51,12 +74,32 @@ export class PedidoService {
       cantidad: pedido.cantidad,
       fechapedido: pedido.fechapedido,
       fecharecibo: pedido.fecharecibo,
+      comentariopedido : pedido.comentariopedido,
       estado: pedido.estado
     });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
     return this.http.put(`${this.urlRegPedido}`, raw, { headers: this.header });
+  }
+
+  actualizarPedido(pedido: Pedido) {
+    const raw = JSON.stringify(
+    {
+      idpedido: pedido.idpedido,
+      proveedor: pedido.proveedor,
+      empleado: pedido.empleado,
+      producto: pedido.producto,
+      cantidad: pedido.cantidad,
+      fechapedido: pedido.fechapedido,
+      fecharecibo: pedido.fecharecibo,
+      comentariopedido : pedido.comentariopedido,
+      estado: pedido.estado
+    });
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
+    return this.http.post(`${this.urlRegPedido}`, raw, { headers: this.header });
   }
 
   getAllProductoById(id:number): Observable<Producto[]>{

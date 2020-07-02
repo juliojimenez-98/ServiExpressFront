@@ -10,6 +10,7 @@ export class Pedido {
   cantidad: string;
   fechapedido:string;
   fecharecibo: string;
+  comentariopedido: string;
   estado:number;
 }
 

@@ -6,6 +6,7 @@ import { Producto } from 'src/app/models/producto';
 import { Pedido } from 'src/app/models/Pedido';
 import { Router } from '@angular/router';
 import { Util } from 'src/app/util/util';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-pedidos',
@@ -13,6 +14,7 @@ import { Util } from 'src/app/util/util';
   styleUrls: ['./pedidos.component.css']
 })
 export class PedidosComponent implements OnInit {
+  p: number = 1;
   proveedores: Proveedor[];
   private util: Util = new Util();
   pedidos:Pedido[];
@@ -46,6 +48,7 @@ export class PedidosComponent implements OnInit {
   public agregarPedido(): void{
     this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempleado'));
     this.pedido.estado= 0;
+    this.pedido.comentariopedido = "El pedido está pendiente";
     console.log(this.pedido)
     Swal.fire({
       allowOutsideClick: false,
@@ -72,24 +75,37 @@ export class PedidosComponent implements OnInit {
 }
 
 
-  async estadoPedido():Promise<void>{
-    const { value: estado } = await Swal.fire({
-      title: 'Selecciona el estado',
-      input: 'select',
-      position:"center",
-      inputOptions: {
-        Recibido: 'Recibido',
-        Pendiente: 'Pendiente',
-        Nollego: 'No llego'
-      },
-      inputPlaceholder: 'Selecciona el estado de la reserva',
-      showCancelButton: true,
+async estadoPedido(pedido):Promise<void>{
+  const { value: estado } = await Swal.fire({
+    title: 'Selecciona el estado',
+    input: 'select',
+    position:"center",
+    inputOptions: {
+      0: 'Pendiente',
+      1: 'Recibido'
+    },
+    inputPlaceholder: 'Selecciona el estado de la reserva',
+    showCancelButton: true,
 
-    })
-    if (estado) {
+  })
+  if (estado) {
 
-      Swal.fire('Estado de reserva',`El estado cambió a: ${estado}`,'success')
+    Swal.fire('Estado de reserva',`El estado cambió a: ${estado}`,'success')
+
+    this.pedido.fechapedido = this.pedido.fechapedido
+    this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempledo'))
+    this.pedidosService.updateEstadoPedido(pedido,estado)
+    .subscribe(res=>{
+
+      this.getAllPedidos();
     }
+      );
+
+
+
+
   }
+
+}
 
 }
