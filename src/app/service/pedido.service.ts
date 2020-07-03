@@ -16,7 +16,7 @@ export class PedidoService {
   private urlRegPedido = URL_TO_LOGIN.url + URL_TO_LOGIN.regPedido;
   private urlGetAllPedidos = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllPedidos;
   private urlGetPedidosRecibidos = URL_TO_LOGIN.url + URL_TO_LOGIN.getPedidosRecibidos;
-  private urlGetPedidosDetalle = URL_TO_LOGIN.url + URL_TO_LOGIN.getPedidosRecibidos;
+  private urlGetPedidosDetalle = URL_TO_LOGIN.url + URL_TO_LOGIN.getPedidosDetalle;
   private urlGetAllProductoById = URL_TO_LOGIN.url + URL_TO_LOGIN.getAllProductoById;
   private urlEstadoPorId =URL_TO_LOGIN.url + URL_TO_LOGIN.cambiarEstadoPedido;
   private header: any;
