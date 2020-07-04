@@ -188,7 +188,7 @@ export class NegocioService {
         idvehiculo: reserva.idvehiculo,
         servicios: reserva.servicios,
         productos: reserva.productos,
-        fechareserva: reserva.fechareserva,
+        fecha: reserva.fechareserva,
         horareserva: reserva.horareserva,
         estado: 0
 
