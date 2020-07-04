@@ -72,15 +72,6 @@ export class RecibosAdminComponent implements OnInit {
 
 
       if (text) {
-        // Swal.fire(`Se informará tu comentario ${estado}`, (text))
-        // this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempledo'))
-        // this.pedidosService.updateEstadoPedido(pedido$.idpedido,estado)
-        // .subscribe(res=>{
-
-        //   this.getAllPedidos();
-        // }
-        //   );
-
         this.pedido = pedido$
         this.pedido.comentariopedido = text
       this.pedido.estado = 3;

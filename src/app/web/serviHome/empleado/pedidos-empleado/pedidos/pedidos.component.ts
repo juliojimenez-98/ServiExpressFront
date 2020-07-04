@@ -26,6 +26,7 @@ export class PedidosComponent implements OnInit {
     this.getProveedores();
     this.getProductos();
     this.getAllPedidos();
+    console.log(sessionStorage.getItem('idempleado'))
   }
 
   getProveedores(){
@@ -46,8 +47,8 @@ export class PedidosComponent implements OnInit {
   }
 
   public agregarPedido(): void{
-    this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempleado'));
     this.pedido.estado= 0;
+    console.log(sessionStorage.getItem('name'))
     this.pedido.comentariopedido = "El pedido está pendiente";
     console.log(this.pedido)
     Swal.fire({
@@ -59,7 +60,8 @@ export class PedidosComponent implements OnInit {
     this.pedidosService.agregarPedido(this.pedido).subscribe(
       res  =>{
         Swal.close();
-        console.log(res)
+        console.log(this.pedido.empleado)
+
 
         Swal.fire(  'Pedido Realizado',  `El pedido se realizó con exito` ,  'success');
         this.router.navigate(['home/pedidosempleado/pedidosemp']);
