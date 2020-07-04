@@ -68,9 +68,9 @@ export class PedidoService {
   agregarPedido(pedido: Pedido) {
     const raw = JSON.stringify(
     {
-      proveedor: pedido.proveedor.idproveedor,
-      empleado: pedido.empleado.idempleado,
-      producto: pedido.producto.idproducto,
+      proveedor: pedido.proveedor,
+      empleado:  sessionStorage.getItem('name'),
+      producto: pedido.producto,
       cantidad: pedido.cantidad,
       fechapedido: pedido.fechapedido,
       fecharecibo: pedido.fecharecibo,
@@ -88,7 +88,7 @@ export class PedidoService {
     {
       idpedido: pedido.idpedido,
       proveedor: pedido.proveedor,
-      empleado: pedido.empleado,
+      empleado:  sessionStorage.getItem('name'),
       producto: pedido.producto,
       cantidad: pedido.cantidad,
       fechapedido: pedido.fechapedido,

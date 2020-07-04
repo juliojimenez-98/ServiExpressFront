@@ -8,11 +8,10 @@
                   <thead>
                       <tr>
                         <th >#</th>
-                          <th>ID</th>
                           <!-- <th>Rut</th> -->
                           <th>Nombre Proveedor</th>
+                          <th>Empresa</th>
                           <th>fecha pedido</th>
-                          <!-- <th>Empresa</th> -->
                           <th>Producto</th>
                           <th>Cantidad</th>
                           <th>Estado Pedido</th>
@@ -22,10 +21,10 @@
                   <tbody>
                       <tr *ngFor="let pedido of pedidos| paginate: { itemsPerPage: 5, currentPage: p };let i = index">
                           <td>{{i+1}}</td>
-                          <td>{{pedido.idpedido}}</td>
-                          <td>{{pedido.proveedor}}</td>
+                          <td>{{pedido.proveedor.nombre}} {{pedido.proveedor.apellido}}</td>
+                          <td>{{pedido.proveedor.empresa}}</td>
                           <td>{{pedido.fechapedido}}</td>
-                          <td> {{pedido.producto}}</td>
+                          <td> {{pedido.producto.nombre}}</td>
                           <td>{{pedido.cantidad}}</td>
                           <td *ngIf="pedido.estado == 0" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-warning">Pendiente</td>
                           <td *ngIf="pedido.estado == 1" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-info">Recibido</td>
