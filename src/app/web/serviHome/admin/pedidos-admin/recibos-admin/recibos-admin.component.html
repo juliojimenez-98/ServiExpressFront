@@ -37,24 +37,6 @@
 
 
 </table>
-
-<form style="margin-top: 1%;" class="col-md-12">
-  <div class="row float-right">
-    <div class="col-sm-6">
-      <select class="form-control" name="est" id="est" [(ngModel)]="est">
-        <option [ngValue]="0">Pendiente</option>
-        <option [ngValue]="1">Recibidos</option>
-        <option [ngValue]="2">Llegó Bien</option>
-        <option [ngValue]="3">Recibidos con detalles</option>
-      </select>
-    </div>
-    <div class="col-md-6">
-      <button type="submit" class="btn btn-outline-info btn-sm" (click)="cambiarEstado(est)">Ok</button>
-      <button style="margin-left: 10px;" type="submit" class="btn btn-outline-secondary btn-sm" (click)="getAllPedidos()">Mostrar todos</button>
-    </div>
-  </div>
-  <!-- <input type="number" [(ngModel)]="est" name="est" > -->
-</form>
 </div>
   <div style="margin-top: 2%;" class="row">
     <div class="mx-auto">
