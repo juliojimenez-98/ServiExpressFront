@@ -118,6 +118,13 @@ export class NegocioService {
     return this.http.get<ReservaResponse[]>(`${this.getReservas}`, { headers: this.header });
  }
 
+ getReservasPorEstadoYCliente(id:string,estado:string): Observable<ReservaResponse[]>{
+  this.header = new HttpHeaders()
+  .set('Content-Type', 'application/json; charset=utf-8')
+  .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+  return this.http.get<ReservaResponse[]>(`${this.urlReservaPorId}`+'/'+ id + '/' + '5' + '/estado', { headers: this.header });
+}
+
 
   getAllProductoById(id:number): Observable<Producto[]>{
     this.header = new HttpHeaders()

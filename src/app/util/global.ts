@@ -37,7 +37,7 @@ export var URL_TO_LOGIN={
     getAllPedidos:'/api/pedido/pedidos',
     getPedidosRecibidos:`/api/pedido/2/estado`,
     getPedidosDetalle:`/api/pedido/3/estado`,
-    getPedidosEstado:`/api/pedido`
+    getPedidosEstado:`/api/pedido`,
 }
 
 
