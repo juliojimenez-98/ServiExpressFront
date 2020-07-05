@@ -45,7 +45,7 @@ export class HistorialReservasComponent implements OnInit {
   }
 
   getReservas(){
-    this.service.getReservasPorEstadoYCliente(sessionStorage.getItem('idcliente'),'5').subscribe(
+    this.service.getReservasPorEstadoYCliente(sessionStorage.getItem('idcliente'),'6').subscribe(
       reservas => this.reservas = reservas
     );
   }

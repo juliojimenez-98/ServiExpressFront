@@ -130,7 +130,7 @@ export class NegocioService {
   this.header = new HttpHeaders()
   .set('Content-Type', 'application/json; charset=utf-8')
   .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
-  return this.http.get<ReservaResponse[]>(`${this.urlReservaPorId}`+'/'+ id + '/' + '5' + '/estado', { headers: this.header });
+  return this.http.get<ReservaResponse[]>(`${this.urlReservaPorId}`+'/'+ id + '/' + '6' + '/estado', { headers: this.header });
 }
 
 
