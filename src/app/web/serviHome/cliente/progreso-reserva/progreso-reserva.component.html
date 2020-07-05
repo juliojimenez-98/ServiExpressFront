@@ -27,6 +27,7 @@
                             <li *ngIf="!taller" id="autoTaller "><strong>Auto en taller</strong></li> -->
 
                             <li *ngIf="terminando" class="active" id="terminandoServicio"><strong>Pagar Servicio</strong></li>
+
                             <li *ngIf="!terminando" id="terminandoServicio"><strong>Pagar Servicio</strong></li>
 
                             <!-- <li *ngIf="terminando " class="active " id="terminandoServicio "><strong>Terminando servicio</strong></li>
@@ -75,6 +76,7 @@
                                 <div class="row ">
                                     <div class="col-5 mx-auto ">
                                         <h2 class="fs-title text-center ">Terminando ultimos detalles</h2>
+
                                     </div>
                                 </div>
                             </div> <input type="button " name="next " class="next action-button " value="Realizado " /> <input type="button " name="previous " class="previous action-button-previous " value="Anterior " />
@@ -84,6 +86,7 @@
                                 <div class="row ">
                                     <div class="col-5 mx-auto ">
                                         <h2 class="fs-title ">El servicio a tu vehículo esta realizado</h2>
+
                                     </div>
                                 </div> <br><br>
                                 <h3 class="purple-text text-center "><strong>Listo !</strong></h3> <br>
@@ -97,6 +100,7 @@
                                 </div>
                             </div>
                         </fieldset>
+                        <button *ngIf="terminando" class="btn btn-warning text-dark">Pagar</button>
                     </form>
                 </div>
             </div>
