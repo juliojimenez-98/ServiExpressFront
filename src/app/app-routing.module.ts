@@ -40,6 +40,7 @@ import { VerproveedoresComponent } from './web/serviHome/admin/proveedores/verpr
 import { PedidosComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos/pedidos.component';
 import { RecibosempComponent } from './web/serviHome/empleado/pedidos-empleado/recibosemp/recibosemp.component';
 import { BoletaComponent } from './web/serviHome/cliente/boleta/boleta.component';
+import { PagoEmpComponent } from './web/serviHome/empleado/pago-emp/pago-emp.component';
 
 
 
@@ -102,8 +103,10 @@ const APP_ROUTES: Routes = [
 
   //Sidebar Empleado
   { path: 'reservasemp', component: ReservasEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
+  { path: 'pagoemp', component: PagoEmpComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
   { path: 'pedidosempleado', component: PedidosEmpleadoComponent,
   children:[
+    { path: 'pedidosemp', component: PedidosComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
     { path: 'pedidosemp', component: PedidosComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
     { path: 'recibosemp', component: RecibosempComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
   ]}
