@@ -25,17 +25,21 @@ export var URL_TO_LOGIN={
     getAllCategorias:'/api/categoria/categorias',
     getAllServicios:'/api/servicio/servicios',
     getAllProductoById:'/api/producto',
-    getAllProducto:'/api/producto/allproducto',
+    getAllProducto:'/api/producto/productos',
     getAllClientes:'/api/entidad/allclientes',
     getEmpleados:'/api/entidad/allempleados',
     reservation:'/api/reserva/reserva',
     getSerivicios:'/api/servicio/servicios?',
     getReservaPorId:'/api/reserva',
-    getReservas:'/api/reserva/reservas',
+    getReservas:'/api/reserva/reservasday',
     regPedido:'/api/pedido/pedido',
     cambiarEstadoPedido:'/api/pedido',
     getAllPedidos:'/api/pedido/pedidos',
-    getPedidosRecibidos:'/api/pedido/1/estado'
+    getPedidosRecibidos:`/api/pedido/2/estado`,
+    getPedidosDetalle:`/api/pedido/3/estado`,
+    getPedidosEstado:`/api/pedido`,
+    getReservasMes:'/api/reserva/reservasmonth',
+    getReservasDia:'/api/reserva/reservasday'
 }
 
 

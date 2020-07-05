@@ -80,8 +80,8 @@ export class ReservarComponent implements OnInit {
     let newDate = new Date(dateHours.value);
     this.reserva.productos = producto;
     this.reserva.servicios = servici.toString();
-    this.reserva.fechareserva = dateHours.value;
-    this.reserva.horareserva = dateHours.value;
+    this.reserva.fechareserva = dateHours.value.substr(0, 10);
+    this.reserva.horareserva = dateHours.value.substr(11);
     this.reserva.idvehiculo = parseInt(this.vehiculo.idvehiculo);
 
 

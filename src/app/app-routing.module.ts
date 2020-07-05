@@ -70,11 +70,8 @@ const APP_ROUTES: Routes = [
     { path: 'verproveedores', component: VerproveedoresComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
     { path: 'registrarproveedores/:idproveedor', component: RegistrarproveedoresComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   ]},
-  { path: 'pedidosadmin', component: PedidosAdminComponent,
-  children:[
-    { path: 'pedidos', component: VistaPedidosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
-    { path: 'recibos', component: RecibosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
-  ]},
+  { path: 'recibos', component: RecibosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+  { path: 'pedidos', component: PedidosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'ajustes', component: AjustesAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'negociogestion', component: NegocioGestionComponent,
 

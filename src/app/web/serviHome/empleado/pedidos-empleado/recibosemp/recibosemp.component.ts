@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RecibosempComponent implements OnInit {
   p: number = 1;
+  est: string;
   pedidos:Pedido[];
   public pedido:Pedido = new Pedido();
   constructor(private pedidosService:PedidoService, private router:Router) {
@@ -24,14 +25,20 @@ export class RecibosempComponent implements OnInit {
 
 
   getAllPedidos(){
-    this.pedidosService.getPedidosRecibidos().subscribe(
+    this.pedidosService.getAllPedidos().subscribe(
       pedidos => this.pedidos = pedidos
     );
   }
 
+  cambiarEstado(valor){
+    this.est = valor
+    this.pedidosService.getAllPedidosEstado(this.est).subscribe(
+      pedidos => this.pedidos = pedidos
+    )
+  }
 
 
-  async estadoPedido(pedido):Promise<void>{
+  async estadoPedido(pedido$):Promise<void>{
     const { value: estado } = await Swal.fire({
       title: 'Selecciona el estado',
       input: 'select',
@@ -50,7 +57,7 @@ export class RecibosempComponent implements OnInit {
 
        this.pedido.fechapedido = this.pedido.fechapedido
        this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempledo'))
-       this.pedidosService.updateEstadoPedido(pedido,estado)
+       this.pedidosService.updateEstadoPedido(pedido$.idpedido,estado)
        .subscribe(res=>{
 
          this.getAllPedidos();
@@ -59,6 +66,7 @@ export class RecibosempComponent implements OnInit {
      }else if (estado == 3) {
       const { value: text } = await Swal.fire({
         input: 'textarea',
+        title:'Observacion del pedido',
         inputPlaceholder: 'Comenta que pasó con el pedido',
         inputAttributes: {
           'aria-label': 'Type your message here'
@@ -66,18 +74,36 @@ export class RecibosempComponent implements OnInit {
         showCancelButton: true
       })
 
-      if (text) {
-        Swal.fire(`Se informará tu comentario ${estado}`, (text))
-        this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempledo'))
-        this.pedidosService.updateEstadoPedido(pedido,estado)
-        .subscribe(res=>{
 
-          this.getAllPedidos();
-        }
-          );
+      if (text) {
+        // Swal.fire(`Se informará tu comentario ${estado}`, (text))
+        // this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempledo'))
+        // this.pedidosService.updateEstadoPedido(pedido$.idpedido,estado)
+        // .subscribe(res=>{
+
+        //   this.getAllPedidos();
+        // }
+        //   );
+
+        this.pedido = pedido$
+        this.pedido.comentariopedido = text
+      this.pedido.estado = 3;
+        this.pedidosService.actualizarPedido(this.pedido).subscribe(
+         res=>{
+           console.log(res)
+           Swal.fire('Comentario enviado' ,`Tu comentario " ${text} " fue enviado`, 'warning')
+           this.router.navigate(['home/pedidosempleado/pedidosemp'])
+
+
+         }
+       )
 
       }
+
      }
+  }
+  verObservacion(pedido$){
+    Swal.fire('Observacion del pedido', `${pedido$.comentariopedido}`)
   }
 
 
