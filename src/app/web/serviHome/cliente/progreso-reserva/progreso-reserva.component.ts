@@ -23,6 +23,13 @@ export class ProgresoReservaComponent implements OnInit {
   taller = false;
   terminando = false;
   listo = false;
+  btnterminando = false;
+
+  reservaRealizada= false;
+  recibidoCar=false;
+  Limpieza = false;
+  Pagar = false;
+  Completo = false;
 
   constructor(public nav: NavbarService,
     private activatedRoute: ActivatedRoute,
@@ -39,27 +46,56 @@ export class ProgresoReservaComponent implements OnInit {
     if (sessionStorage.getItem('estado') === '1') {
       console.log("entra");
       this.reserva = false;
+
+      //fieldset
+      this.reservaRealizada= true;
     } else if (sessionStorage.getItem('estado') === '2') {
       this.reserva = false;
       this.recibido = false;
+
+      //fieldset
+      this.reservaRealizada= false;
+      this.recibidoCar = true;
     } else if (sessionStorage.getItem('estado') === '3') {
       this.reserva = false;
       this.recibido = false;
       this.taller = true;
+
+      //fieldset
+      this.reservaRealizada= false;
+      this.recibidoCar = false;
+      this.Limpieza = true;
     } else if (sessionStorage.getItem('estado') === '4') {
       this.reserva = false;
       this.recibido = false;
       this.taller = true;
       this.terminando = true;
+      this.btnterminando = true;
+
+      //fieldset
+      this.reservaRealizada= false;
+      this.recibidoCar = false;
+      this.Limpieza = false;
+      this.Pagar = true;
     } else if (sessionStorage.getItem('estado') === '5') {
       this.reserva = false;
       this.recibido = false;
       this.taller = true;
       this.terminando = true;
       this.listo = true;
+      this.btnterminando= false;
+
+      //fieldset
+      this.reservaRealizada= false;
+      this.recibidoCar = false;
+      this.Limpieza = false;
+      this.Pagar = false;
+      this.Completo = true;
     }
-    // 
-    // 
+
+
+    //
+    //
     // this.terminando = false;
     // this.listo = false;
     this.activatedRoute.params.subscribe(params => {

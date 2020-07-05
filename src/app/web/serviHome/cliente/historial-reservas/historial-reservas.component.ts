@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarService } from '../../../../service/navbar.service';
 import { UserModel } from '../../../../models/UserModel';
 import { Util } from '../../../../util/util';
+import { NegocioService } from 'src/app/service/negocio.service';
+import { ReservaResponse } from 'src/app/models/ReservaResponse';
+import { Reserva } from 'src/app/models/reserva';
 
 @Component({
   selector: 'app-historial-reservas',
@@ -16,8 +19,11 @@ export class HistorialReservasComponent implements OnInit {
   cliente = false;
   admin = false;
   empleado = false;
+  reservas: ReservaResponse[];
+  private reserva:Reserva = new Reserva;
 
   constructor(public nav: NavbarService,
+    private service:NegocioService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
     this.activatedRoute.params.subscribe(params => {
@@ -35,6 +41,13 @@ export class HistorialReservasComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.getReservas();
+  }
+
+  getReservas(){
+    this.service.getReservasPorEstadoYCliente(sessionStorage.getItem('idcliente'),'6').subscribe(
+      reservas => this.reservas = reservas
+    );
   }
 
 }

@@ -64,12 +64,12 @@
                         </div>
                         <div class="input-group col-md-4">
                             <div class="container">
-                                <label>Numero de chasís</label>
+                                <label>Kilometraje</label>
                             </div>
                             <div class="input-group-prepend ">
-                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                                <span class="input-group-text "><i class="fas fa-tachometer-alt"></i></span>
                             </div>
-                            <input class="form-control " type="text" placeholder="Numero Chasis" name="nrochasis" [(ngModel)]="vehiculo.nrochasis">
+                            <input class="form-control " type="number" placeholder="Kilometraje" name="nrochasis" [(ngModel)]="vehiculo.nrochasis">
                         </div>
                     </div>
                     <br>
@@ -100,7 +100,7 @@
                     <th scope="col" sortable="patente" (sort)="onSort($event)">Patente</th>
                     <th scope="col" sortable="marca" (sort)="onSort($event)">Marca</th>
                     <th scope="col" sortable="modelo" (sort)="onSort($event)">Modelo</th>
-                    <th scope="col" sortable="nrochasis" (sort)="onSort($event)">N° de Chasis</th>
+                    <th scope="col" sortable="nrochasis" (sort)="onSort($event)">Kilometraje</th>
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -117,7 +117,7 @@
                         <ngb-highlight [result]="car.modelo" [term]="service.searchTerm"></ngb-highlight>
                     </td>
                     <td>
-                      <ngb-highlight [result]="car.nrochasis" [term]="service.searchTerm"></ngb-highlight>
+                      <ngb-highlight [result]="car.nrochasis|number" [term]="service.searchTerm"></ngb-highlight>km
                   </td>
                   <td>
                     <button type="button" class="btn btn-danger btn-sm" (click)="borrarVehiculo(car)">Eliminar</button>

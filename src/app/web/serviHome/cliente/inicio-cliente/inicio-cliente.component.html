@@ -1,58 +1,25 @@
-<div class="row">
-
-  <div class="col-xl-3 col-md-5 mb-4">
-    <div class="card border-left-primary shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Reserva de servicios</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">$8.000 Cambio de aceite 01/05/2020</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">Audi TT HPKM98</div>
+ <div class="row">
+  <div class="col-md-4" *ngFor="let car of vehiculos">
+      <div class="card my-2 border-left-primary">
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-sm-10">
+                   <h5><strong>Tu Vehículo:</strong></h5>
+                  </div>
+                  <div class="col-sm-2">
+                    <i class="fas fa-car-side fa-2x"></i>
+                  </div>
+                  <div class="col-sm-12">
+                    <p><strong>{{car.marca}} {{car.modelo}} {{car.patente}}</strong></p>
+                  </div>
+                  <div class="col-sm-10">
+                    <p>{{car.nrochasis|number}}Km Próxima mantencion a los <strong>{{car.nrochasis * 1 + 15000 * 1 |number}}</strong><strong>Km</strong></p>
+                  </div>
+                  <div class="col-sm-12 mx-auto">
+                      <button type="button" class="btn btn-info btn-sm" [routerLink]="['/home/reservar']">Hacer Reserva</button>
+                  </div>
+              </div>
           </div>
-          <div class="col-auto">
-            <i class="fas fa-calendar fa-2x"></i>
-          </div>
-        </div>
       </div>
-    </div>
   </div>
-
-  <div class="col-xl-3 col-md-5 mb-4">
-    <div class="card border-left-success shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Progresso actual del vehículo</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">En Taller</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">Audi TT HPKM98</div>
-          </div>
-          <div class="col-auto">
-            <i class="fas fa-car-side fa-2x"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card shadow mb-4 mx-auto col-sm-5">
-    <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-success">Realizar reserva</h6>
-    </div>
-    <div class="card-body">
-      <div class="text-center">
-        <h3>Realiza una nueva reserva.</h3>
-
-      </div>
-      <div class="row">
-        <a [routerLink]="['/reservar']" class="btn btn-success btn-icon-split mx-auto">
-          <span class="icon text-white-50">
-            <i class="fas fa-calendar"></i>
-          </span>
-          <span class="text">Ir a reservas</span>
-        </a>
-      </div>
-    </div>
-  </div>
-
 </div>
-

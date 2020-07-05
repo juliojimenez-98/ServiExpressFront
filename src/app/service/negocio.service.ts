@@ -33,6 +33,7 @@ export class NegocioService {
   private getServicioId = URL_TO_LOGIN.url + URL_TO_LOGIN.getServicioId;
   private urlUpdtServicio = URL_TO_LOGIN.url + URL_TO_LOGIN.updateServicio;
   private getReservas = URL_TO_LOGIN.url + URL_TO_LOGIN.getReservas;
+  private getReservasMonth =URL_TO_LOGIN.url + URL_TO_LOGIN.getReservasMes;
   private urlReservaPorId = URL_TO_LOGIN.url + URL_TO_LOGIN.getReservaPorId;
 
   private header: any;
@@ -111,12 +112,26 @@ export class NegocioService {
     return this.http.get<Vehiculo[]>(`${this.getVeId + '/' + sessionStorage.getItem('idcliente') + '/allvehiculo'}`, { headers: this.header });
   }
 
+  getAllReservasMonth(): Observable<ReservaResponse[]>{
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<ReservaResponse[]>(`${this.getReservasMonth}`, { headers: this.header });
+ }
+
   getAllReservas(): Observable<ReservaResponse[]>{
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
     return this.http.get<ReservaResponse[]>(`${this.getReservas}`, { headers: this.header });
  }
+
+ getReservasPorEstadoYCliente(id:string,estado:string): Observable<ReservaResponse[]>{
+  this.header = new HttpHeaders()
+  .set('Content-Type', 'application/json; charset=utf-8')
+  .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+  return this.http.get<ReservaResponse[]>(`${this.urlReservaPorId}`+'/'+ id + '/' + '6' + '/estado', { headers: this.header });
+}
 
 
   getAllProductoById(id:number): Observable<Producto[]>{
@@ -148,6 +163,7 @@ export class NegocioService {
         nombre: producto.nombre,
         descripcion: producto.descripcion,
         valorbase: producto.valorbase,
+        stock: producto.stock,
         categoria: producto.categoria.idcategoria
       });
       this.header = new HttpHeaders()
@@ -180,7 +196,7 @@ export class NegocioService {
         idvehiculo: reserva.idvehiculo,
         servicios: reserva.servicios,
         productos: reserva.productos,
-        fechareserva: reserva.fechareserva,
+        fecha: reserva.fechareserva,
         horareserva: reserva.horareserva,
         estado: 0
 
@@ -212,6 +228,7 @@ export class NegocioService {
       nombre: producto.nombre,
       descripcion: producto.descripcion,
       valorbase: producto.valorbase,
+      stock: producto.stock,
       categoria: producto.categoria.idcategoria
 
     });
@@ -250,6 +267,13 @@ export class NegocioService {
       .set('Content-Type', 'application/json; charset=utf-8')
       .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
     return this.http.get(`${this.urlReservaPorId +'/'+ idReserva + '/' + idEstado + '/reserva'}`, { headers: this.header });
+  }
+
+  getCars():Observable<Vehiculo[]> {
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<Vehiculo[]>(`${this.getVeId + '/' + sessionStorage.getItem('idcliente') + '/allvehiculo'}`, { headers: this.header });
   }
 
 }

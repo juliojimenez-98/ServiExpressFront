@@ -397,7 +397,7 @@ h6 {
 
 .espacio {
     margin-top: 0px;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 
@@ -486,23 +486,35 @@ h6 {
         transform: translate3d(0, 100%, 0)
     }
 }
-.bgnice2{
-  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
-}
-.bgnice3{
-  background: rgb(15,101,136);
-background: linear-gradient(83deg, rgba(15,101,136,1) 0%, rgba(27,13,91,1) 100%);
+
+.bgnice2 {
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
 }
 
-.bgnice{
-  background-image: linear-gradient( 171.8deg,  rgba(5,111,146,1) 13.5%, rgba(6,57,84,1) 78.6% )
-  }
-
-.bgnice4{
-  background: rgb(61,13,1);
-background: linear-gradient(315deg, rgba(61,13,1,1) 0%, rgba(112,5,5,1) 100%);
+.bgnice3 {
+    background: rgb(15, 101, 136);
+    background: linear-gradient(83deg, rgba(15, 101, 136, 1) 0%, rgba(27, 13, 91, 1) 100%);
 }
-  html,
-  body {
-      height: 100%;
-  }
+
+.bgnice {
+    background-image: linear-gradient( 171.8deg, rgba(5, 111, 146, 1) 13.5%, rgba(6, 57, 84, 1) 78.6%)
+}
+
+.bgnice4 {
+    background: rgb(61, 13, 1);
+    background: linear-gradient(315deg, rgba(61, 13, 1, 1) 0%, rgba(112, 5, 5, 1) 100%);
+}
+
+html,
+body {
+    height: 100%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
