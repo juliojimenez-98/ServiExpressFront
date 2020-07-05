@@ -3,44 +3,47 @@
     <div style="background-color: white;" class="card-header text-black"><h6>Reservas</h6>
     </div>
       <div class="card-body">
-                  <table class="align-middle mb-0 table table-borderless table-striped table-hover">
-                      <thead>
-                          <tr>
-                              <th class="text-center">Id reserva</th>
-                              <th class="text-center">Servicios</th>
-                              <th class="text-center">Productos</th>
-                              <th class="text-center">Fecha</th>
-                              <th class="text-center">Hora</th>
-                              <th class="text-center">Vehiculo</th>
-                              <th class="">Estado</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr *ngFor="let reserva of reservas| paginate: { itemsPerPage: 1, currentPage: p }">
-                              <td class="text-center text-muted" >{{reserva.idreserva}}</td>
-                              <td class="text-center text-muted">{{reserva.servicios}}</td>
-                              <td class="text-center text-muted">{{reserva.productos}}</td>
-                              <td class="text-center text-muted"> {{ reserva.fechareserva | date }}</td>
-                              <td class="text-center text-muted"> {{ reserva.horareserva }}</td>
-                              <td class="text-center text-muted"> {{ reserva.marca }} {{reserva.veichulo}} {{reserva.patente}}</td>
-                              <td class="text-center text-muted">{{reserva.estado}}</td>
-                              <td></td>
-                              <td>
-                                  <div class="row mx-auto">
-                                    <button type="button" class="btn btn-outline-info btn-sm" (click)="estadoReserva(reserva.idreserva)">
-                                      Seleccionar
-                                    </button>
-                                  </div>
-                              </td>
-                          </tr>
-
-                        </tbody>
-
-                      </table>
-                    </div>
-                    <div class="row mx-auto">
-                      <pagination-controls class="mx-auto" (pageChange)="p = $event"></pagination-controls>
-                    </div>
-                  </div>
-                </div>
+ <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+     <thead>
+         <tr>
+             <th class="text-center">Id reserva</th>
+             <th class="text-center">Servicios</th>
+             <th class="text-center">Productos</th>
+             <th class="text-center">Fecha</th>
+             <th class="text-center">Hora</th>
+             <th class="text-center">Vehiculo</th>
+             <th class="">Estado</th>
+         </tr>
+     </thead>
+     <tbody>
+         <tr *ngFor="let reserva of reservas| paginate: { itemsPerPage: 6, currentPage: p }">
+             <td class="text-center text-muted" >{{reserva.idreserva}}</td>
+             <td class="text-center text-muted">{{reserva.servicios}}</td>
+             <td class="text-center text-muted">{{reserva.productos}}</td>
+             <td class="text-center text-muted"> {{ reserva.fechareserva | date }}</td>
+             <td class="text-center text-muted"> {{ reserva.horareserva }}</td>
+             <td class="text-center text-muted"> {{ reserva.marca }} {{reserva.veichulo}} {{reserva.patente}}</td>
+             <td *ngIf="reserva.estado == '0'" style="margin-top: 5%;" class="text-center badge badge-secondary">Reservado</td>
+             <td *ngIf="reserva.estado == '1'" style="margin-top: 5%;" class="text-center badge badge-primary">Revisión</td>
+             <td *ngIf="reserva.estado == '2'" style="margin-top: 5%;" class="text-center badge badge-info">Trabajando</td>
+             <td *ngIf="reserva.estado == '3'" style="margin-top: 5%;" class="text-center text-dark badge badge-warning">Limpieza</td>
+             <td *ngIf="reserva.estado == '4'" style="margin-top: 5%;" class="text-center text-dark badge badge-warning">Terminando</td>
+             <td *ngIf="reserva.estado == '5'" style="margin-top: 5%;" class="text-center badge badge-success">Terminado</td>
+             <td>
+                 <div class="row mx-auto">
+                   <button type="button" class="btn btn-outline-info btn-sm" (click)="estadoReserva(reserva.idreserva)">
+                     Seleccionar
+                   </button>
+                 </div>
+             </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+   <div style="margin-top: 3%;" class="row">
+     <div class="mx-auto">
+       <pagination-controls (pageChange)="p = $event"  maxSize="9" previousLabel="Anterior" nextLabel="Siguiente" ></pagination-controls>
+     </div>
+   </div>
+</div>
 

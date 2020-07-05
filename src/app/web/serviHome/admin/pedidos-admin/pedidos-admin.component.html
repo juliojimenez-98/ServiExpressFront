@@ -1,27 +1,57 @@
-<div class="col-xl-10 col-md-10 mb-4 mx-auto">
+<div class="col-xl-8 col-md-8 mb-4 mx-auto">
   <div class="card border-left-primary shadow h-100 py-2">
-      <div class="card-body">
-          <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-            <li [ngbNavItem]="1" routerLink='pedidos'  class="border-bottom-warning">
-              <a ngbNavLink>Pedidos</a>
-              <ng-template ngbNavContent>
-
-
-
-              </ng-template>
-            </li>
-            <li [ngbNavItem]="2" routerLink='recibos' class="border-bottom-success">
-              <a ngbNavLink>Recibos</a>
-              <ng-template ngbNavContent>
-
-
-              </ng-template>
-            </li>
-          </ul>
-
-          <div [ngbNavOutlet]="nav" class="mt-2"></div>
-           <router-outlet></router-outlet>
-           </div>
-        </div>
+    <div style="background-color: white;" class="card-header text-black"><h6>Pedidos Recibidos</h6>
     </div>
+      <div class="card-body">
+
+        <div class="table-responsive">
+          <div class="alert alert-info" *ngIf="pedidos?.length==0">
+            No hay pedidos recibidos
+          </div>
+            <table class="align-middle mb-0 table  table-borderless table-striped table-hover" *ngIf="pedidos?.length>0">
+              <thead>
+                  <tr>
+                      <th>Nombre Proveedor</th>
+                      <th>Empresa</th>
+                      <th>fecha pedido</th>
+                      <th>Producto</th>
+                      <th>Cantidad</th>
+                      <th>Fecha Recibo</th>
+                      <th>Estado Recibo</th>
+                      <th>Accion</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let pedido of pedidos| paginate: { itemsPerPage: 5, currentPage: p };let i = index">
+                      <td>{{pedido.proveedor.nombre}} {{pedido.proveedor.apellido}}</td>
+                      <td>{{pedido.proveedor.empresa}}</td>
+                      <td>{{pedido.fechapedido}}</td>
+                      <td> {{pedido.producto.nombre}}</td>
+                      <td>{{pedido.cantidad}}</td>
+                      <td *ngIf="pedido.fecharecibo">{{pedido.fecharecibo}}</td>
+                      <td *ngIf="pedido.fecharecibo==null">No recibido aún</td>
+                      <td *ngIf="pedido.estado == 0" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-warning">Pendiente</td>
+                      <td *ngIf="pedido.estado == 1" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-info">Recibido</td>
+                      <td *ngIf="pedido.estado == 2" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-success">Llegó Bien</td>
+                      <td *ngIf="pedido.estado == 3" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-secondary">LLegó con detalles</td>
+                      <td>
+                          <button type="button" class="btn btn-outline-info btn-sm" *ngIf="pedido.estado == 1" (click)="estadoPedido(pedido)">
+                              Seleccionar
+                            </button>
+                            <button type="button" class="btn btn-outline-warning btn-sm" *ngIf="pedido.estado == 3" (click)="verObservacion(pedido)">
+                              Observacion
+                            </button>
+                      </td>
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+        <div *ngIf="pedidos?.length>0" style="margin-top: 2%;" class="row">
+          <div class="mx-auto">
+            <pagination-controls (pageChange)="p = $event"  maxSize="9" previousLabel="Anterior" nextLabel="Siguiente" ></pagination-controls>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
 

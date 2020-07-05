@@ -94,10 +94,9 @@
                             </div>
                             <input style="text-transform: uppercase; " class="form-control " type="text " placeholder="Patente " name="patente " [(ngModel)]="vehiculo.patente " required minlength="6" maxlength="6" pattern="/^[a-zA-Z]{2}-/^[a-zA-Z0-9]{2}-/^[0-9]{2}" #patente="ngModel">
                         </div>
-
-                        <div class="mx-auto col-md-9 alert alert-danger" *ngIf="patente.invalid && (patente.dirty || patente.touched)">
-                            <div *ngIf="patente.errors.required">
-                                Tienes que ingresar una pantente
+                        <div class="input-group col-md-4">
+                            <div class="container">
+                                <label>Kilometraje</label>
                             </div>
                             <div *ngIf="patente.errors.minlength">
                                 La patente debe contener al menos 6 caracteres
@@ -117,9 +116,9 @@
                                 <label>Numero de chasís</label>
                             </div>
                             <div class="input-group-prepend ">
-                                <span class="input-group-text "><i class="fas fa-car "></i></span>
+                                <span class="input-group-text "><i class="fas fa-tachometer-alt"></i></span>
                             </div>
-                            <input class="form-control " type="text " placeholder="Numero Chasis " name="nrochasis " [(ngModel)]="vehiculo.nrochasis " required minlength="17" maxlength="17" pattern="/^(?![IOQioq])[a-zA-Z0-9]{17}" #chasis="ngModel">
+                            <input class="form-control " type="number" placeholder="Kilometraje" name="nrochasis" [(ngModel)]="vehiculo.nrochasis">
                         </div>
 
                         <div class=" mx-auto col-md-9 alert alert-danger " *ngIf="chasis.invalid && (chasis.dirty || chasis.touched) ">
@@ -162,11 +161,11 @@
         <table class="table table-striped ">
             <thead>
                 <tr>
-                    <!-- <th scope="col ">#</th> -->
-                    <th scope="col " sortable="patente " (sort)="onSort($event) ">Patente</th>
-                    <th scope="col " sortable="marca " (sort)="onSort($event) ">Marca</th>
-                    <th scope="col " sortable="modelo " (sort)="onSort($event) ">Modelo</th>
-                    <th scope="col " sortable="nrochasis " (sort)="onSort($event) ">N° de Chasis</th>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col" sortable="patente" (sort)="onSort($event)">Patente</th>
+                    <th scope="col" sortable="marca" (sort)="onSort($event)">Marca</th>
+                    <th scope="col" sortable="modelo" (sort)="onSort($event)">Modelo</th>
+                    <th scope="col" sortable="nrochasis" (sort)="onSort($event)">Kilometraje</th>
                     <th>Acción</th>
                 </tr>
             </thead>
@@ -183,11 +182,11 @@
                         <ngb-highlight [result]="car.modelo " [term]="service.searchTerm "></ngb-highlight>
                     </td>
                     <td>
-                        <ngb-highlight [result]="car.nrochasis " [term]="service.searchTerm "></ngb-highlight>
-                    </td>
-                    <td>
-                        <button type="button " class="btn btn-danger btn-sm " (click)="borrarVehiculo(car) ">Eliminar</button>
-                    </td>
+                      <ngb-highlight [result]="car.nrochasis|number" [term]="service.searchTerm"></ngb-highlight>km
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="borrarVehiculo(car)">Eliminar</button>
+                  </td>
                 </tr>
             </tbody>
         </table>

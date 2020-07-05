@@ -22,6 +22,7 @@ export class ProductosComponent implements OnInit {
   public moneda: any;
 
   constructor(private negocioService: NegocioService, private router:Router, private activateRoute:ActivatedRoute) {
+    sessionStorage.setItem("moneda",'$');
     this.moneda = sessionStorage.getItem('moneda');
   }
 
