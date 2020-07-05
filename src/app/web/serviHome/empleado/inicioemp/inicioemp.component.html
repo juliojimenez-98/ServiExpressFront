@@ -1,163 +1,36 @@
-<!-- <div class="row col-md-12 main-section">
-  <div class="col-md-6">
-      <div class="main-card mb-3 bg-dark card">
-          <div class="card-header text-black">Reservas
-              <div class="btn-actions-pane-right">
-                  <div role="group" class="btn-group-sm btn-group">
-                      <button class="active btn btn-focus">Esta Semana</button>
-                      <button class="btn btn-focus">Todo el Mes</button>
-                  </div>
+<table class="align-middle mb-0 table table-borderless table-striped table-hover">
+  <thead>
+      <tr>
+          <th class="text-center">Id reserva</th>
+          <th class="text-center">Servicios</th>
+          <th class="text-center">Productos</th>
+          <th class="text-center">Fecha</th>
+          <th class="text-center">Hora</th>
+          <th class="text-center">Vehiculo</th>
+          <th class="">Estado</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let reserva of reservas| paginate: { itemsPerPage: 6, currentPage: p }">
+          <td class="text-center text-muted" >{{reserva.idreserva}}</td>
+          <td class="text-center text-muted">{{reserva.servicios}}</td>
+          <td class="text-center text-muted">{{reserva.productos}}</td>
+          <td class="text-center text-muted"> {{ reserva.fechareserva | date }}</td>
+          <td class="text-center text-muted"> {{ reserva.horareserva }}</td>
+          <td class="text-center text-muted"> {{ reserva.marca }} {{reserva.veichulo}} {{reserva.patente}}</td>
+          <td *ngIf="reserva.estado == '0'" style="margin-top: 5%;" class="text-center badge badge-secondary">Reservado</td>
+          <td *ngIf="reserva.estado == '1'" style="margin-top: 5%;" class="text-center badge badge-primary">Revisión</td>
+          <td *ngIf="reserva.estado == '2'" style="margin-top: 5%;" class="text-center badge badge-info">Trabajando</td>
+          <td *ngIf="reserva.estado == '3'" style="margin-top: 5%;" class="text-center text-dark badge badge-warning">Limpieza</td>
+          <td *ngIf="reserva.estado == '4'" style="margin-top: 5%;" class="text-center text-dark badge badge-warning">Terminando</td>
+          <td *ngIf="reserva.estado == '5'" style="margin-top: 5%;" class="text-center badge badge-success">Terminado</td>
+          <td>
+              <div class="row mx-auto">
+                <button type="button" class="btn btn-outline-info btn-sm" (click)="estadoReserva(reserva.idreserva)">
+                  Seleccionar
+                </button>
               </div>
-          </div>
-          <div class="table-responsive">
-              <table class="align-middle mb-0 table table-dark table-borderless table-striped table-hover">
-                  <thead>
-                      <tr>
-                          <th class="text-center">ID</th>
-                          <th>Name</th>
-                          <th class="text-center">Servicio</th>
-                          <th class="text-center">Estado</th>
-                          <th class="text-center">Acciones</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td class="text-center text-muted">#345</td>
-                          <td>
-                              <div class="widget-content p-0">
-                                  <div class="widget-content-wrapper">
-                                      <div class="widget-content-left mr-3">
-                                      </div>
-                                      <div class="widget-content-left flex2">
-                                          <div class="widget-heading">John Doe</div>
-                                          <div class="widget-subheading opacity-7">Nissan 350Z</div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </td>
-                          <td class="text-center">Cambio Aceite</td>
-                          <td class="text-center">
-                              <div class="badge badge-warning">Pendiente</div>
-                          </td>
-                          <td class="text-center">
-                              <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Details</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td class="text-center text-muted">#347</td>
-                          <td>
-                              <div class="widget-content p-0">
-                                  <div class="widget-content-wrapper">
-                                      <div class="widget-content-left mr-3">
-                                      </div>
-                                      <div class="widget-content-left flex2">
-                                          <div class="widget-heading">Ruben Tillman</div>
-                                          <div class="widget-subheading opacity-7">Audi TT</div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </td>
-                          <td class="text-center">Liquido Frenos</td>
-                          <td class="text-center">
-                              <div class="badge badge-success">Realizado</div>
-                          </td>
-                          <td class="text-center">
-                              <button type="button" id="PopoverCustomT-2" class="btn btn-primary btn-sm">Details</button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td class="text-center text-muted">#321</td>
-                          <td>
-                              <div class="widget-content p-0">
-                                  <div class="widget-content-wrapper">
-                                      <div class="widget-content-left mr-3">
-                                      </div>
-                                      <div class="widget-content-left flex2">
-                                          <div class="widget-heading">Elliot Huber</div>
-                                          <div class="widget-subheading opacity-7">Ford Explorer</div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </td>
-                          <td class="text-center">Neumaticos</td>
-                          <td class="text-center">
-                              <div class="badge badge-info">Esperando</div>
-                          </td>
-                          <td class="text-center">
-                              <button type="button" id="PopoverCustomT-4" class="btn btn-primary btn-sm">Details</button>
-                          </td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div>
-  </div>
-
-
-  <div class=" col-md-6">
-      <div class="main-card mb-3 bgdark card">
-          <div class="card-header text-black">Pedidos
-              <div class="btn-actions-pane-right">
-                  <div role="group" class="btn-group-sm btn-group">
-                      <button class="active btn btn-focus">Esta Semana</button>
-                      <button class="btn btn-focus">Todo el Mes</button>
-                  </div>
-              </div>
-          </div>
-      <div class="table-responsive">
-          <table class="align-middle mb-0 table table-dark table-borderless table-striped table-hover">
-              <thead>
-                  <tr>
-                      <th>ID</th>
-                      <th>Rut</th>
-                      <th>Nombre Proveedor</th>
-                      <th>Empleado pedido</th>
-                      <th>Empresa</th>
-                      <th>Producto</th>
-                      <th>Cantidad</th>
-                      <th>Estado Pedido</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td class="text-center text-muted ">#345</td>
-                      <td>12123456-K</td>
-                      <td>Williams Ramos</td>
-                      <td>Juan Perez Garces</td>
-                      <td> General Motors</td>
-                      <td>Motor WPR-500</td>
-                      <td>3</td>
-                      <td>
-                          <div class="badge badge-warning ">Pendiente</div>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td class="text-center text-muted ">#345</td>
-                      <td>11895456-K</td>
-                      <td>Maria Carvallo</td>
-                      <td>Juan Perez Garces</td>
-                      <td> Bridgestone</td>
-                      <td>Ruedas ARO 30</td>
-                      <td>16</td>
-                      <td>
-                          <div class="badge badge-success ">Recibido</div>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td class="text-center text-muted ">#345</td>
-                      <td>15895453-K</td>
-                      <td>Roberto Acuña</td>
-                      <td>Juan Perez Garces</td>
-                      <td> Ford</td>
-                      <td>Tubos de escape</td>
-                      <td>8</td>
-                      <td>
-                          <div class="badge badge-danger ">Cancelado</div>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-  </div>
-</div>
-</div> -->
+          </td>
+      </tr>
+    </tbody>
+  </table>
