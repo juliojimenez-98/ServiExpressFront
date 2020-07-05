@@ -19,6 +19,8 @@ export class InicioempComponent implements OnInit {
   ngOnInit(): void {
     this.getReservas();
   }
+
+
   getReservas(){
     this.service.getAllReservasMonth().subscribe(
       reservas => this.reservas = reservas
