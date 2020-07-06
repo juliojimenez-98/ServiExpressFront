@@ -40,6 +40,12 @@ export class InicioComponent implements OnInit {
   fini: any;
   ffin: any;
   response: any;
+  meses: any;
+  valorEgreso: any;
+  lista:[];
+  
+
+
   private util: Util = new Util();
   constructor(public nav: NavbarService,
     private activatedRoute: ActivatedRoute,
@@ -54,7 +60,65 @@ export class InicioComponent implements OnInit {
 
 
 
+    this.encuestaService.reporte3().subscribe(
+      res => {
+        var mes = [];
+        var valorEgreso = [];
+        var valorIngreso = [];
 
+        for (let index = 0; index < res["meses"].length; index++) {
+          const element = res["meses"][index];
+          mes.push(element)
+        }
+
+        for (let index = 0; index < res["valorEgreso"].length; index++) {
+          const element = res["valorEgreso"][index];
+          valorEgreso.push(element)
+        }
+
+        for (let index = 0; index < res["valorIngreso"].length; index++) {
+          const element = res["valorIngreso"][index];
+          valorIngreso.push(element)
+        }
+
+
+        this.dataBar2 = {
+          labels: mes,
+          datasets: [
+            {
+              label: 'Ingreso',
+              backgroundColor: '#42A5F5',
+              borderColor: '#1E88E5',
+              data: valorIngreso
+            },
+            {
+              label: 'Egreso',
+              backgroundColor: '#9CCC65',
+              borderColor: '#7CB342',
+              data: valorEgreso
+            }
+          ]
+        }
+
+        sessionStorage.setItem('meses', res["meses"])
+        this.meses=sessionStorage.getItem('meses')
+        
+
+        
+        // sessionStorage.setItem("valorEgreso", valorEgreso);
+ 
+        // sessionStorage.setItem("valorIngreso", valorIngreso.toString());
+
+        // var meses = body1["meses"];
+  
+
+      },
+      error => {
+
+        this.util.handleError(error);
+      },
+
+    );
 
     this.buscarencuesta1();
 
@@ -63,7 +127,7 @@ export class InicioComponent implements OnInit {
 
 
     this.dataBar = {
-      labels: ['Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosoto'],
+      labels: ["Febrero", 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosoto'],
       datasets: [
         {
           label: 'Cambio de Aceite',
@@ -86,23 +150,11 @@ export class InicioComponent implements OnInit {
       ]
     }
 
-    this.dataBar2 = {
-      labels: ['Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosoto'],
-      datasets: [
-        {
-          label: 'Ingreso',
-          backgroundColor: '#42A5F5',
-          borderColor: '#1E88E5',
-          data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-          label: 'Egreso',
-          backgroundColor: '#9CCC65',
-          borderColor: '#7CB342',
-          data: [28, 48, 40, 19, 86, 27, 90]
-        }
-      ]
-    }
+
+    // sessionStorage.setItem("valorEgreso", valorEgreso);
+    // sessionStorage.setItem("meses", meses);
+    // sessionStorage.setItem("valorIngreso", valorIngreso);
+
 
     this.activatedRoute.params.subscribe(params => {
       this.role = params.idrole;
