@@ -9,6 +9,7 @@ import { Servicios, Servicios2 } from '../models/Servicios';
 import { Reserva } from '../models/reserva';
 import { Vehiculo } from '../models/vehiculo';
 import { ReservaResponse } from '../models/ReservaResponse';
+import { ReservaPago } from '../models/ReservaPago';
 
 @Injectable({
   providedIn: 'root'
@@ -276,6 +277,12 @@ export class NegocioService {
     return this.http.get<Vehiculo[]>(`${this.getVeId + '/' + sessionStorage.getItem('idcliente') + '/allvehiculo'}`, { headers: this.header });
   }
 
+  getReservaPago(patente:string):Observable<ReservaPago[]>{
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<ReservaPago[]>(`${this.urlReservaPorId+ '/' + patente + '/patente'}`, { headers: this.header });
+  }
 }
 
 
