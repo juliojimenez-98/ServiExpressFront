@@ -151,6 +151,12 @@
             <span> Reservas</span></a>
     </li>
 
+    <li *ngIf="empleado" class="nav-item">
+      <a class="nav-link" routerLink='pagoemp'>
+          <i class="fas fa-cash-register"></i>
+          <span> Pago de servicio</span></a>
+  </li>
+
     <!-- Divider -->
     <hr  class="sidebar-divider d-none d-md-block">
 
