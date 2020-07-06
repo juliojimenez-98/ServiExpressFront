@@ -36,10 +36,27 @@ export class NegocioService {
   private getReservas = URL_TO_LOGIN.url + URL_TO_LOGIN.getReservas;
   private getReservasMonth =URL_TO_LOGIN.url + URL_TO_LOGIN.getReservasMes;
   private urlReservaPorId = URL_TO_LOGIN.url + URL_TO_LOGIN.getReservaPorId;
+  private urlPago = URL_TO_LOGIN.url + URL_TO_LOGIN.getPago2;
 
   private header: any;
 
   constructor(private http: HttpClient) { }
+
+
+  // getPago(){
+  //     this.header = new HttpHeaders()
+  //     .set('Content-Type', 'application/json; charset=utf-8')
+  //     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
+  //     return this.http.put(`${this.urlPago}`, { headers: this.header });
+  // }
+
+  getPago() {
+  console.log(this.urlReservaPorId)
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
+    return this.http.get(`${this.urlPago}`,  { headers: this.header });
+  }
 
 
   getCategoria(idCategoria):Observable<Categoria>{

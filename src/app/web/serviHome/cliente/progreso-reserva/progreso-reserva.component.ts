@@ -1,10 +1,10 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { NavbarService } from '../../../../service/navbar.service';
 import { UserModel } from '../../../../models/UserModel';
 import { Util } from '../../../../util/util';
 import { NegocioService } from 'src/app/service/negocio.service';
-
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-progreso-reserva',
   templateUrl: './progreso-reserva.component.html',
@@ -31,10 +31,11 @@ export class ProgresoReservaComponent implements OnInit {
   Pagar = false;
   Completo = false;
 
-  constructor(public nav: NavbarService,
+  constructor(@Inject(DOCUMENT) private document: Document, public nav: NavbarService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    public service: NegocioService) {
+    public service: NegocioService,
+    ) {
 
 
 
@@ -113,6 +114,22 @@ export class ProgresoReservaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+
+  pagar() {
+
+
+    this.service.getPago()
+    .subscribe(res => {
+      var url =res['payment_url']
+      // console.log("hola "+url+" hola")
+      this.document.location.href = url;
+      // this.router.navigate(url);
+      // console.log(res)
+    });
+
+
   }
 
 }
