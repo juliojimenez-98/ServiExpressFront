@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservaPago } from 'src/app/models/ReservaPago';
 import { NegocioService } from 'src/app/service/negocio.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pago-emp',
@@ -23,6 +24,14 @@ export class PagoEmpComponent implements OnInit {
     this.patente = valor
     this.service.getReservaPago(this.patente).subscribe(
       reservaPago => this.reservasPagos = reservaPago
+    )
+  }
+
+  actualizarEstadoReserva(reserva){
+    this.service.updateEstadoReservaPago(reserva).subscribe(res=>{
+
+      Swal.fire('Estado de reserva','El estado cambió a Pagado','success')
+    }
     )
   }
 
