@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                         </fieldset>
-                        <button *ngIf="btnterminando" class="btn btn-warning text-dark">Pagar</button>
+                        <button (click)="pagar()" *ngIf=" btnterminando " class="btn btn-warning text-dark ">Pagar</button>
                     </form>
                 </div>
             </div>

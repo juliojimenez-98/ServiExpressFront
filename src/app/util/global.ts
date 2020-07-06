@@ -39,7 +39,9 @@ export var URL_TO_LOGIN={
     getPedidosDetalle:`/api/pedido/3/estado`,
     getPedidosEstado:`/api/pedido`,
     getReservasMes:'/api/reserva/reservasmonth',
-    getReservasDia:'/api/reserva/reservasday'
+    getReservasDia:'/api/reserva/reservasday',
+    getPago2:'/api/pago/pago',
+    getPago:'/api/pago/pago'
 }
 
 
