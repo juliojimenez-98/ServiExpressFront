@@ -9,6 +9,9 @@ modelo: string;
 patente: string;
 estadoreserva: string;
 total:number;
+idreserva: string;
+nombreproducto:string;
+nombreservicio:string;
 }
 
 
