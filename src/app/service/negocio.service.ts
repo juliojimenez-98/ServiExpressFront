@@ -291,7 +291,7 @@ export class NegocioService {
     this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
       .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
-    return this.http.get(`${this.urlReservaPorId +'/'+ idReserva + '/5/reserva'}`, { headers: this.header });
+    return this.http.get(`${this.urlReservaPorId +'/'+ idReserva + '/6/reserva'}`, { headers: this.header });
   }
 
   getCars():Observable<Vehiculo[]> {
