@@ -30,6 +30,7 @@ export class ProgresoReservaComponent implements OnInit {
   Limpieza = false;
   Pagar = false;
   Completo = false;
+  estadoCero =false;
 
   constructor(@Inject(DOCUMENT) private document: Document, public nav: NavbarService,
     private activatedRoute: ActivatedRoute,
@@ -92,6 +93,8 @@ export class ProgresoReservaComponent implements OnInit {
       this.Limpieza = false;
       this.Pagar = false;
       this.Completo = true;
+    }else if(sessionStorage.getItem('estado')==='0'){
+      this.estadoCero = true;
     }
 
 

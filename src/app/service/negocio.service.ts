@@ -172,7 +172,7 @@ export class NegocioService {
   }
 
   agregarProducto(producto:Producto){
-    console.log(producto.categoria.idcategoria)
+    console.log(producto.categoria)
 
 
 
@@ -182,7 +182,7 @@ export class NegocioService {
         descripcion: producto.descripcion,
         valorbase: producto.valorbase,
         stock: producto.stock,
-        categoria: producto.categoria.idcategoria
+        categoria: producto.categoria
       });
       this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
@@ -247,7 +247,7 @@ export class NegocioService {
       descripcion: producto.descripcion,
       valorbase: producto.valorbase,
       stock: producto.stock,
-      categoria: producto.categoria.idcategoria
+      categoria: producto.categoria
 
     });
     this.header = new HttpHeaders()
