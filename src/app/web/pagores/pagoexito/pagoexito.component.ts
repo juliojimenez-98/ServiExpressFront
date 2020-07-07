@@ -13,7 +13,7 @@ export class PagoexitoComponent implements OnInit {
 
   constructor(public nav:NavbarService,private router: Router) {
 
-    this.irr()
+    
   }
 
  ngOnInit(): void {
@@ -23,11 +23,7 @@ export class PagoexitoComponent implements OnInit {
 
 
  irr(){
-
-  interval(10000).subscribe(x => {
-    this.router.navigate(['home/historialreserva']);
-});
-
+  this.router.navigate(['home/historialreserva']);
  }
 
 }

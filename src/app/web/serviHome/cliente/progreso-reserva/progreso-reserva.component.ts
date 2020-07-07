@@ -32,6 +32,9 @@ export class ProgresoReservaComponent implements OnInit {
   Completo = false;
   estadoCero = false;
 
+  public valor: number = 0;
+  public servicio: string = null;
+
   constructor(@Inject(DOCUMENT) private document: Document, public nav: NavbarService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -43,7 +46,11 @@ export class ProgresoReservaComponent implements OnInit {
     this.service.getReservaActiva()
       .subscribe(res => {
         sessionStorage.setItem("estado", res["estado"]);
+        this.valor=res["monto"];
+        this.servicio=res["servicio"];
       });
+
+      console.log(this.valor)
     console.log(sessionStorage.getItem('estado'));
     if (sessionStorage.getItem('estado') === '1') {
       console.log("entra");
@@ -136,7 +143,7 @@ export class ProgresoReservaComponent implements OnInit {
   pagar() {
 
 
-    this.service.getPago()
+    this.service.getPago(this.valor,this.servicio)
       .subscribe(res => {
         var url = res['payment_url']
         // console.log("hola "+url+" hola")
