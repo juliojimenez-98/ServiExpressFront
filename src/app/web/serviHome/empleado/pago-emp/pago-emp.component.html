@@ -51,14 +51,22 @@
           </div>
           <hr class="bg-primary">
 
+
+
         </div>
 
-
+        <div class="container" *ngIf="pagado">
+          <div class="card border-danger mb-3 mx-auto" style="max-width: 30rem;">
+            <div class="card-body text-danger text-center">
+              <h2 class="card-title">PAGADO</h2>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 
   <div style="margin-top: 3%;" class="text-center" *ngIf="reservasPagos?.length>0">
-    <button class="btn btn-primary" (click)="descargarBoletaManual()">Pagar reserva</button>
+    <button class="btn btn-primary" (click)="actualizarEstadoReserva(reserva.idreserva)">Pagar reserva</button>
   </div>
 </div>
 
