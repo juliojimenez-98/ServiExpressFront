@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -32,7 +33,7 @@
                         <div class="progress ">
                             <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar " aria-valuemin="0 " aria-valuemax="100 "></div>
                         </div> <br>
-                        <fieldset *ngIf="reservaRealizada">
+                        <!-- <fieldset *ngIf="reservaRealizada||estadoCero">
                             <div class="form-card ">
                                 <div class="row ">
                                     <div class="col-5 mx-auto ">
@@ -87,7 +88,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </fieldset>
+                        </fieldset> -->
                         <button (click)="pagar()" *ngIf=" btnterminando " class="btn btn-warning text-dark ">Pagar</button>
                     </form>
                 </div>
