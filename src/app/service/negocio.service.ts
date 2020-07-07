@@ -50,14 +50,33 @@ export class NegocioService {
   //     return this.http.put(`${this.urlPago}`, { headers: this.header });
   // }
 
-  getPago() {
-  console.log(this.urlReservaPorId)
+  getPago(valor:number,servicio:String) {
+
+    console.log(valor+" tstst")
+   const raw = JSON.stringify(
+    {
+      valor:valor,
+      servicio:servicio
+    });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
-    return this.http.get(`${this.urlPago}`,  { headers: this.header });
+    return this.http.post(`${this.urlPago}`, raw, { headers: this.header });
+    // return this.http.put(`${this.urlRegProducto}`, raw, { headers: this.header });
   }
 
+  // actualizarCategoria(categoria: Categoria) {
+  //   const raw = JSON.stringify(
+  //   {
+  //     idcategoria:categoria.idcategoria,
+  //     nombre: categoria.nombre,
+  //     descripcion:categoria.descripcion
+  //   });
+  //   this.header = new HttpHeaders()
+  //   .set('Content-Type', 'application/json; charset=utf-8')
+  //   .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
+  //   return this.http.post(`${this.urlUpdtCategoria}`, raw, { headers: this.header });
+  // }
 
   getCategoria(idCategoria):Observable<Categoria>{
     this.header = new HttpHeaders()

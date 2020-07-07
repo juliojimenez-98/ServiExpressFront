@@ -25,38 +25,45 @@ export class ProgresoReservaComponent implements OnInit {
   listo = false;
   btnterminando = false;
 
-  reservaRealizada= false;
-  recibidoCar=false;
+  reservaRealizada = false;
+  recibidoCar = false;
   Limpieza = false;
   Pagar = false;
   Completo = false;
-  estadoCero =false;
+  estadoCero = false;
+
+  public valor: number = 0;
+  public servicio: string = null;
 
   constructor(@Inject(DOCUMENT) private document: Document, public nav: NavbarService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     public service: NegocioService,
-    ) {
+  ) {
 
 
 
     this.service.getReservaActiva()
       .subscribe(res => {
         sessionStorage.setItem("estado", res["estado"]);
+        this.valor=res["monto"];
+        this.servicio=res["servicio"];
       });
-      console.log(sessionStorage.getItem('estado'));
+
+      console.log(this.valor)
+    console.log(sessionStorage.getItem('estado'));
     if (sessionStorage.getItem('estado') === '1') {
       console.log("entra");
       this.reserva = false;
 
       //fieldset
-      this.reservaRealizada= true;
+      this.reservaRealizada = true;
     } else if (sessionStorage.getItem('estado') === '2') {
       this.reserva = false;
       this.recibido = false;
 
       //fieldset
-      this.reservaRealizada= false;
+      this.reservaRealizada = false;
       this.recibidoCar = true;
     } else if (sessionStorage.getItem('estado') === '3') {
       this.reserva = false;
@@ -64,7 +71,7 @@ export class ProgresoReservaComponent implements OnInit {
       this.taller = true;
 
       //fieldset
-      this.reservaRealizada= false;
+      this.reservaRealizada = false;
       this.recibidoCar = false;
       this.Limpieza = true;
     } else if (sessionStorage.getItem('estado') === '4') {
@@ -75,7 +82,7 @@ export class ProgresoReservaComponent implements OnInit {
       this.btnterminando = true;
 
       //fieldset
-      this.reservaRealizada= false;
+      this.reservaRealizada = false;
       this.recibidoCar = false;
       this.Limpieza = false;
       this.Pagar = true;
@@ -85,16 +92,29 @@ export class ProgresoReservaComponent implements OnInit {
       this.taller = true;
       this.terminando = true;
       this.listo = true;
-      this.btnterminando= false;
+      this.btnterminando = false;
 
       //fieldset
-      this.reservaRealizada= false;
+      this.reservaRealizada = false;
       this.recibidoCar = false;
       this.Limpieza = false;
       this.Pagar = false;
       this.Completo = true;
-    }else if(sessionStorage.getItem('estado')==='0'){
-      this.estadoCero = true;
+    }
+    else if (sessionStorage.getItem('estado') === '0') {
+      this.reserva = true;
+      this.recibido = true;
+      this.taller = false;
+      this.terminando = false;
+      this.listo = false;
+      this.btnterminando = false;
+
+      this.reservaRealizada = false;
+      this.recibidoCar = false;
+      this.Limpieza = false;
+      this.Pagar = false;
+      this.Completo = false;
+      this.estadoCero = false;
     }
 
 
@@ -123,14 +143,14 @@ export class ProgresoReservaComponent implements OnInit {
   pagar() {
 
 
-    this.service.getPago()
-    .subscribe(res => {
-      var url =res['payment_url']
-      // console.log("hola "+url+" hola")
-      this.document.location.href = url;
-      // this.router.navigate(url);
-      // console.log(res)
-    });
+    this.service.getPago(this.valor,this.servicio)
+      .subscribe(res => {
+        var url = res['payment_url']
+        // console.log("hola "+url+" hola")
+        this.document.location.href = url;
+        // this.router.navigate(url);
+        // console.log(res)
+      });
 
 
   }

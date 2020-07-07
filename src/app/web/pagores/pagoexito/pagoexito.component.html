@@ -4,16 +4,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
 </head>
 
 <body>
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        </div>
+
+        <!-- Content Row -->
+        <div class="container-fluid" style="opacity: .98;">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-md-8 col-lg-8 col-xl-8 text-center p-0 mt-3 mb-2">
+                    <h2 id="heading">Pago confirmado</h2>
+                    <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                        <form id="msform">
+                            <ul id="progressbar">
+                                <li class="active" id="reserva"><strong>Reserva</strong></li>
+
+
+                                <li class="active" id="autoRecibido"><strong>Trabajando</strong></li>
+
+
+                                <li class="active" id="autoTaller"><strong>Limpieza</strong></li>
+
+
+                                <li class="active" id="terminandoServicio"><strong>Pagar Servicio</strong></li>
+
+
+
+                                <li class="active" id="finalizado"><strong>Servicio Completo</strong></li>
+
+                            </ul>
+                            <div class="progress ">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar " aria-valuemin="0 " aria-valuemax="100 "></div>
+                            </div> <br>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Row -->
+
+    </div>
+
+    <script>
+        $("#menu-toggle ").click(function(e) {
+            e.preventDefault();
+            $("#wrapper ").toggleClass("toggled ");
+        });
+        $('#myModal').on('shown.bs.modal', function() {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var opacity;
+            var current = 1;
+            var steps = $("fieldset ").length;
+
+            setProgressBar(current);
+
+            $(".next ").click(function() {
+
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                //Add Class Active
+                $("#progressbar li ").eq($("fieldset ").index(next_fs)).addClass("active ");
+
+                //show the next fieldset
+                next_fs.show();
+
+                //hide
+                //the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function(now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+
+
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 500
+                });
+                setProgressBar(++current);
+            });
+
+            $(".previous ").click(function() {
+
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
+
+                //Remove class active
+                $("#progressbar li ").eq($("fieldset ").index(current_fs)).removeClass("active ");
+
+
+
+                //show the previous fieldset
+                previous_fs.show();
+
+                //hide the current fieldset with style
+                current_fs.animate({
+                    opacity: 0
+                }, {
+                    step: function(now) {
+
+                        //
+                        //for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        previous_fs.css({
+                            'opacity': opacity
+                        });
+                    },
+                    duration: 500
+                });
+                setProgressBar(--current);
+            });
+
+            function setProgressBar(curStep) {
+                var percent = parseFloat(100 / steps) * curStep;
+                percent = percent.toFixed();
+                $(".progress-bar ")
+                    .css("width ", percent + "% ")
+            }
+
+            $(".submit ").click(function() {
+                return false;
+            })
+
+        });
+    </script>
+
     <br>
+
+
     <div class="text-center">
         <br>
-        <h3 class="first  ">
-            Redireccionando</h3>
-        <p-progressSpinner></p-progressSpinner>
+        <button (click)="irr()" class="btn btn-warning text-dark ">Ir a historial de reservas</button>
+        <!-- 
+        <button type="button" class="btn btn-primary">Ir a historial de reservas</button> -->
+        <!-- <h3 class="first  ">
+            Redireccionando a historial de reservas</h3>
+        <p-progressSpinner></p-progressSpinner> -->
 
 
     </div>
