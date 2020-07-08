@@ -15,6 +15,7 @@
                             <th class="text-center">Fecha</th>
                             <th class="text-center">Hora</th>
                             <th class="text-center">Vehiculo</th>
+                            <th class="text-center">Total Reserva</th>
                             <th class="">Estado</th>
                         </tr>
                     </thead>
@@ -26,6 +27,7 @@
                             <td class="text-center text-muted"> {{ reserva.fechareserva | date }}</td>
                             <td class="text-center text-muted"> {{ reserva.horareserva }}</td>
                             <td class="text-center text-muted"> {{ reserva.marca }} {{reserva.veichulo}} {{reserva.patente}}</td>
+                            <td class="text-center text-muted"> {{ reserva.totalreserva }}</td>
                             <td *ngIf="reserva.estado == '6'" style="margin-top: 5%;" class="text-center badge badge-success">Terminado</td>
                             <td>
                                 <div class="row mx-auto">

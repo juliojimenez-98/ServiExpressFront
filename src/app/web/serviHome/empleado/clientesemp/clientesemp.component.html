@@ -4,14 +4,6 @@
       <div class="main-card mb-3 bg-light card">
           <div class="card-header text-black">Lista de clientes
           </div>
-          <div class="card-header text-white text-xl-center text-capitalize">
-              <div class="row">
-                  <div class="col-sm-4">
-                      <input type="text" class="form-control bg-dark text-white" placeholder="Buscar...">
-                  </div>
-                  <button type="submit" class="btn btn-outline-primary bg-dark "><i class="fas fa-search"></i></button>
-              </div>
-          </div>
           <div class="table-responsive">
             <table class="table table-table-bordered table-striped">
                 <thead>
@@ -20,7 +12,7 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Telefono</th>
-                    <th>Acción</th>
+                    <!-- <th>Acción</th> -->
                   </tr>
                 </thead>
                 <tr *ngFor="let cliente of clientes| paginate: { itemsPerPage: 6, currentPage: p }" >
@@ -28,7 +20,7 @@
                   <td>{{cliente.nombre}}</td>
                   <td>{{cliente.apellido}}</td>
                   <td>{{cliente.telefono}}</td>
-                  <td><button class="btn btn-danger btn-sm">Bloquear</button></td>
+                  <!-- <td><button class="btn btn-danger btn-sm">Bloquear</button></td> -->
                 </tr>
               </table>
           </div>
