@@ -63,14 +63,12 @@ export class RecibosempComponent implements OnInit {
        this.pedido.empleado = JSON.parse(sessionStorage.getItem('idempledo'))
        this.pedidosService.updateEstadoPedido(pedido$.idpedido,estado).subscribe();
 
-      if (this.producto) {
+
         var stockAct = pedido$.producto.stock * 1 + pedido$.cantidad *1
-       console.log(stockAct)
-       this.producto.categoria = pedido$.producto.categoria
-       console.log(this.producto.categoria)
+
        this.producto = pedido$.producto;
        this.producto.stock = stockAct;
-       console.log(this.producto)
+       this.producto.categoria = this.producto.categoria
 
        this.service.actualizarProducto(this.producto).subscribe(
         res  =>{
@@ -80,7 +78,7 @@ export class RecibosempComponent implements OnInit {
 
        }
        );
-      }
+
 
 
      }else if (estado == 3) {
