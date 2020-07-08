@@ -30,14 +30,17 @@ export class ReservarComponent implements OnInit {
   public vehiculo: Vehiculo = new Vehiculo();
   reservaResponse$: Observable<ReservaResponse[]>;
   total$: Observable<number>;
-  
+  moneda:string;
+  totalreserva:number;
+
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
   constructor(private negocioService: NegocioService, public service: ReservasService) {
     this.reservaResponse$ = service.reservaResponses$;
     this.total$ = service.total$;
+    this.moneda = sessionStorage.getItem('moneda');
    }
 
-  
+
   public dateBefore: Date = new Date();
   ngOnInit(): void {
     this.cargarAppJs('../assets/js/app.js');
@@ -45,6 +48,8 @@ export class ReservarComponent implements OnInit {
     this.negocioService.getCar().subscribe(vehiculos => this.vehiculos = vehiculos);
     this.negocioService.getAllServicio2().subscribe(servicios => this.servicios = servicios);
     // this.negocioService.getAllProductoById(169).subscribe(productos => this.productos = productos);
+    console.log(this.servicio.valorbase)
+
   }
 
   onSort({ column, direction }: SortEvent) {
@@ -58,7 +63,7 @@ export class ReservarComponent implements OnInit {
     this.service.sortColumn = column;
     this.service.sortDirection = direction;
   }
-  
+
   public cargarAppJs(url: string) {
     const body = <HTMLDivElement>document.body;
     const script = document.createElement('script');
@@ -76,31 +81,48 @@ export class ReservarComponent implements OnInit {
 
     let producto = this.producto.idproducto;
     let servici = this.servicio.idservicio;
+
     let dateHours = <HTMLInputElement>document.getElementById('datetime');
     let newDate = new Date(dateHours.value);
     this.reserva.productos = producto;
+    var total  = this.servicio.valorbase *1 + this.producto.valorbase *1;
+    console.log(this.totalreserva)
     this.reserva.servicios = servici.toString();
     this.reserva.fechareserva = dateHours.value.substr(0, 10);
     this.reserva.horareserva = dateHours.value.substr(11);
+    this.reserva.totalreserva = total;
     this.reserva.idvehiculo = parseInt(this.vehiculo.idvehiculo);
 
+    Swal.fire({
+      title: 'Confirmar Reserva',
+      text: `Con fecha:  ${this.reserva.fechareserva} a las : ${this.reserva.horareserva} con un valor de: ${this.moneda}${total}`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, continuar',
+      cancelButtonText: 'Volver'
+    }).then((result) => {
+      if (result.value) {
+        this.negocioService.agregarReserva(this.reserva).subscribe(
 
-      this.negocioService.agregarReserva(this.reserva).subscribe(
-
-        res  =>{
+          res  =>{
 
 
-          Swal.fire(  'Reserva agregada',  `Se enviara un correo de confirmacion a : ${sessionStorage.getItem('email')}` ,  'success');
-          this.service.getReserva()
-          .subscribe(res => {
-            localStorage["datas2"] = JSON.stringify(res);
-          });
-    },
-    error => {
-      this.util.handleError(error);
-    },
+            //Swal.fire(  'Reserva agregada',  `Se enviara un correo de confirmacion a : ${sessionStorage.getItem('email')}` ,  'success');
+            Swal.fire(  'Reserva agregada',  `La reserva se hizo exitosamente` ,  'success');
+            this.service.getReserva()
+            .subscribe(res => {
+              localStorage["datas2"] = JSON.stringify(res);
+            });
+      },
+      error => {
+        this.util.handleError(error);
+      },
 
-  );
+    );
+      }
+    })
 
   }
 
@@ -109,5 +131,7 @@ export class ReservarComponent implements OnInit {
   public cargaBox(): void{
 
     this.negocioService.getAllProductoById(this.servicio.categoria).subscribe(productos => this.productos = productos)
+
+    this.totalreserva  = this.servicio.valorbase + this.producto.valorbase;
   }
 }

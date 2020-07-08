@@ -40,6 +40,12 @@ export class InicioComponent implements OnInit {
   fini: any;
   ffin: any;
   response: any;
+  meses: any;
+  valorEgreso: any;
+  lista:[];
+  
+
+
   private util: Util = new Util();
   constructor(public nav: NavbarService,
     private activatedRoute: ActivatedRoute,
@@ -51,10 +57,68 @@ export class InicioComponent implements OnInit {
 
     this.fromDate = calendar.getNext(calendar.getToday(), 'd', -30);
     this.toDate = calendar.getToday();
-    
 
 
 
+    this.encuestaService.reporte3().subscribe(
+      res => {
+        var mes = [];
+        var valorEgreso = [];
+        var valorIngreso = [];
+
+        for (let index = 0; index < res["meses"].length; index++) {
+          const element = res["meses"][index];
+          mes.push(element)
+        }
+
+        for (let index = 0; index < res["valorEgreso"].length; index++) {
+          const element = res["valorEgreso"][index];
+          valorEgreso.push(element)
+        }
+
+        for (let index = 0; index < res["valorIngreso"].length; index++) {
+          const element = res["valorIngreso"][index];
+          valorIngreso.push(element)
+        }
+
+
+        this.dataBar2 = {
+          labels: mes,
+          datasets: [
+            {
+              label: 'Ingreso',
+              backgroundColor: '#42A5F5',
+              borderColor: '#1E88E5',
+              data: valorIngreso
+            },
+            {
+              label: 'Egreso',
+              backgroundColor: '#9CCC65',
+              borderColor: '#7CB342',
+              data: valorEgreso
+            }
+          ]
+        }
+
+        sessionStorage.setItem('meses', res["meses"])
+        this.meses=sessionStorage.getItem('meses')
+        
+
+        
+        // sessionStorage.setItem("valorEgreso", valorEgreso);
+ 
+        // sessionStorage.setItem("valorIngreso", valorIngreso.toString());
+
+        // var meses = body1["meses"];
+  
+
+      },
+      error => {
+
+        this.util.handleError(error);
+      },
+
+    );
 
     this.buscarencuesta1();
 
@@ -63,7 +127,7 @@ export class InicioComponent implements OnInit {
 
 
     this.dataBar = {
-      labels: ['Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosoto'],
+      labels: ["Febrero", 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosoto'],
       datasets: [
         {
           label: 'Cambio de Aceite',
@@ -86,23 +150,11 @@ export class InicioComponent implements OnInit {
       ]
     }
 
-    this.dataBar2 = {
-      labels: ['Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosoto'],
-      datasets: [
-        {
-          label: 'My First dataset',
-          backgroundColor: '#42A5F5',
-          borderColor: '#1E88E5',
-          data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-          label: 'My Second dataset',
-          backgroundColor: '#9CCC65',
-          borderColor: '#7CB342',
-          data: [28, 48, 40, 19, 86, 27, 90]
-        }
-      ]
-    }
+
+    // sessionStorage.setItem("valorEgreso", valorEgreso);
+    // sessionStorage.setItem("meses", meses);
+    // sessionStorage.setItem("valorIngreso", valorIngreso);
+
 
     this.activatedRoute.params.subscribe(params => {
       this.role = params.idrole;
@@ -193,8 +245,8 @@ export class InicioComponent implements OnInit {
           labels: ['Exelente', 'Bueno', 'Regular', 'Malo', 'Muy malo'],
           datasets: [
             {
-              data: [sessionStorage.getItem("exelente"), sessionStorage.getItem("bueno"), 
-                    sessionStorage.getItem("regular"), sessionStorage.getItem("malo"), 
+              data: [sessionStorage.getItem("exelente"), sessionStorage.getItem("bueno"),
+                    sessionStorage.getItem("regular"), sessionStorage.getItem("malo"),
                     sessionStorage.getItem("muymalo")],
               backgroundColor: [
                 "#FF6384",
@@ -258,7 +310,7 @@ export class InicioComponent implements OnInit {
     );
     //   console.log( this.fromDate.year +' '+this.fromDate.month+' '+this.fromDate.day
     //   +'--'+
-    //  this.toDate.year+' '+this.toDate.month+' '+this.toDate.day); 
+    //  this.toDate.year+' '+this.toDate.month+' '+this.toDate.day);
   }
 
   ngOnInit(): void {
@@ -335,6 +387,8 @@ export class InicioComponent implements OnInit {
   //   pdf.create().download();
   // }
 
+
+
   generarReporte() {
 
     var node = document.getElementById('contenido');
@@ -376,14 +430,14 @@ export class InicioComponent implements OnInit {
           var height = doc.internal.pageSize.getHeight();
 
 
-          doc.setFontSize(7);               
-          doc.text(20, 10, 'Desde '+sessionStorage.getItem("fechaini")+' Hasta '+sessionStorage.getItem("fechafin")); 
+          doc.setFontSize(7);
+          doc.text(20, 10, 'Desde '+sessionStorage.getItem("fechaini")+' Hasta '+sessionStorage.getItem("fechafin"));
           doc.setFontSize(15);
-          doc.text(20, 20, 'Reporte de Satisfacción');  
+          doc.text(20, 20, 'Reporte de Satisfacción');
           doc.setFontSize(13);
           doc.text(20, 30, 'Servicio.');
-          // data: [sessionStorage.getItem("exelente"), , 
-          // , , 
+          // data: [sessionStorage.getItem("exelente"), ,
+          // , ,
           // ],
 
           doc.setFontSize(10);
@@ -407,9 +461,9 @@ export class InicioComponent implements OnInit {
                           ', Tal Vez:'+sessionStorage.getItem("talvez")+
                             ', Recomendaría:'+sessionStorage.getItem("recomendaria"));
           doc.addImage(newImage, 'PNG', 5, 110, 310, 50);
-          doc.setFontSize(10);               
-          doc.text(20, 200, 'Documento emitido por '+sessionStorage.getItem("name")+' '+sessionStorage.getItem("apellido")+' '+cValue.toString()); 
-    
+          doc.setFontSize(10);
+          doc.text(20, 200, 'Documento emitido por '+sessionStorage.getItem("name")+' '+sessionStorage.getItem("apellido")+' '+cValue.toString());
+
           // Output as Data URI
           doc.output('datauri');
           filename = 'ServiExpressReporte' + '.pdf';
@@ -424,6 +478,122 @@ export class InicioComponent implements OnInit {
       .catch(function (error) {
 
         // Error Handling
+
+      });
+
+
+
+  }
+
+  generarReporteServicios() {
+
+    var node = document.getElementById('reporteServicios');
+
+    var img;
+    var filename;
+    var newImage;
+
+
+    domtoimage.toPng(node, { bgcolor: '#fff' })
+
+      .then(function(dataUrl) {
+
+        img = new Image();
+        img.src = dataUrl;
+        newImage = img.src;
+
+        img.onload = function(){
+
+        var pdfWidth = img.width;
+        var pdfHeight = img.height;
+
+          // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
+
+          var doc;
+
+          if(pdfWidth > pdfHeight)
+          {
+            doc = new jsPDF('l', 'px', [pdfWidth , pdfHeight]);
+          }
+          else
+          {
+            doc = new jsPDF('p', 'px', [pdfWidth , pdfHeight]);
+          }
+
+
+          var width = doc.internal.pageSize.getWidth();
+          var height = doc.internal.pageSize.getHeight();
+
+
+          doc.addImage(newImage, 'PNG',  10, 10, width, height);
+          filename = 'Reporte_Servicios_Más_Vendidos' + '.pdf';
+          doc.save(filename);
+
+        };
+
+
+      })
+      .catch(function(error) {
+
+       // Error Handling
+
+      });
+
+
+
+  }
+
+  generarReporteIngresos() {
+
+    var node = document.getElementById('reporteIngresos');
+
+    var img;
+    var filename;
+    var newImage;
+
+
+    domtoimage.toPng(node, { bgcolor: '#fff' })
+
+      .then(function(dataUrl) {
+
+        img = new Image();
+        img.src = dataUrl;
+        newImage = img.src;
+
+        img.onload = function(){
+
+        var pdfWidth = img.width;
+        var pdfHeight = img.height;
+
+          // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
+
+          var doc;
+
+          if(pdfWidth > pdfHeight)
+          {
+            doc = new jsPDF('l', 'px', [pdfWidth , pdfHeight]);
+          }
+          else
+          {
+            doc = new jsPDF('p', 'px', [pdfWidth , pdfHeight]);
+          }
+
+
+          var width = doc.internal.pageSize.getWidth();
+          var height = doc.internal.pageSize.getHeight();
+
+
+          doc.addImage(newImage, 'PNG',  10, 10, width, height);
+          filename = 'Reporte_Ingresos_Egresos' + '.pdf';
+          doc.save(filename);
+
+        };
+
+
+      })
+      .catch(function(error) {
+
+       // Error Handling
 
       });
 

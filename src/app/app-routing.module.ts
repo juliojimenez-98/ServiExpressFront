@@ -40,7 +40,8 @@ import { VerproveedoresComponent } from './web/serviHome/admin/proveedores/verpr
 import { PedidosComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos/pedidos.component';
 import { RecibosempComponent } from './web/serviHome/empleado/pedidos-empleado/recibosemp/recibosemp.component';
 import { BoletaComponent } from './web/serviHome/cliente/boleta/boleta.component';
-
+import { PagoEmpComponent } from './web/serviHome/empleado/pago-emp/pago-emp.component';
+import { PagoexitoComponent } from './web/pagores/pagoexito/pagoexito.component';
 
 
 const APP_ROUTES: Routes = [
@@ -54,6 +55,7 @@ const APP_ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '' },
   { path: 'encuesta', component: EncuestaComponent},
   { path: 'boleta', component: BoletaComponent},
+  { path: 'pagoexito', component: PagoexitoComponent},
 
   // USUARIO LOGUEADO
   { path: 'home', component: BaseComponent, canActivate: [ AuthGuard ] ,
@@ -90,6 +92,7 @@ const APP_ROUTES: Routes = [
   { path: 'editardatoscliente', component: EditarClienteComponent, canActivate: [ AuthGuard ] },
   { path: 'progresoreserva', component: ProgresoReservaComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'historialreserva', component: HistorialReservasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+  { path: 'pagoexito', component: PagoexitoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'autosclientes', component: AutosClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'registroautos', component: RegistroAutoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
 
@@ -102,8 +105,10 @@ const APP_ROUTES: Routes = [
 
   //Sidebar Empleado
   { path: 'reservasemp', component: ReservasEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
+  { path: 'pagoemp', component: PagoEmpComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
   { path: 'pedidosempleado', component: PedidosEmpleadoComponent,
   children:[
+    { path: 'pedidosemp', component: PedidosComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
     { path: 'pedidosemp', component: PedidosComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
     { path: 'recibosemp', component: RecibosempComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
   ]}

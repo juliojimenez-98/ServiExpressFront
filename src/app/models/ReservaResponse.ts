@@ -9,7 +9,8 @@ export interface ReservaResponse {
   patente:string;
   veichulo:string;
   marca:string;
+  totalreserva:string;
   }
-  
 
- 
+
+
