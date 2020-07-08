@@ -77,7 +77,7 @@ export class PagoEmpComponent implements OnInit {
           }
           var width = doc.internal.pageSize.getWidth();
           var height = doc.internal.pageSize.getHeight();
-          doc.addImage(newImage, 'PNG',  10, 10,550, 400);
+          doc.addImage(newImage, 'PNG',  10, 10,750, 400);
           filename = 'boletaPagoManual' + '.pdf';
           doc.save(filename);
         };
