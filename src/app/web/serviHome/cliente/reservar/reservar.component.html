@@ -1,10 +1,13 @@
 <div class="col-xl-10 col-md-10 mb-4 mx-auto">
-  <div class="card border-left-primary shadow h-100 py-2">
-    <div style="background-color: white;" class="card-header text-black"><h6>Reservar</h6>
-    </div>
-      <div class="card-body">
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div style="background-color: white;" class="card-header text-black">
+            <h6>Reservar</h6>
+        </div>
+        <div class="card-body">
             <form (ngSubmit)="agregarReserva()" class="col-12">
                 <div class="form-row">
+
+                    <!-- SERVICIO -->
                     <div class="col-md-4 " id="dni-group">
                         <label>Servicios</label>
                         <select [(ngModel)]="servicio" name="servicio" class="custom-select" (change)="cargaBox()">
@@ -14,6 +17,7 @@
 
                     </div>
 
+                    <!-- PRODUCTOS -->
                     <div class=" col-md-4">
                         <label>Productos</label>
                         <select [(ngModel)]="producto" name="producto" class="custom-select">
@@ -58,18 +62,19 @@
                     <button type="submit" class="col-sm-4 btn btn-success btn-block my-4 mx-auto"><i class="fas fa-plus"></i>  Agendar reserva </button>
                 </div>
             </form>
-      </div>
-  </div>
+        </div>
+    </div>
 </div>
 
 <hr style="margin: 3%;">
 
 
 <div class="col-xl-10 col-md-10 mb-4 mx-auto">
-  <div class="card border-left-info shadow h-100 py-2">
-    <div style="background-color: white;" class="card-header text-black"><h6>Tus reservas</h6>
-    </div>
-      <div class="card-body">
+    <div class="card border-left-info shadow h-100 py-2">
+        <div style="background-color: white;" class="card-header text-black">
+            <h6>Tus reservas</h6>
+        </div>
+        <div class="card-body">
             <form>
                 <div class="form-group form-inline">
                     Buscar: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="service.searchTerm" />
@@ -122,6 +127,6 @@
 
             </form>
             <!-- Button trigger modal -->
-      </div>
-  </div>
+        </div>
+    </div>
 </div>

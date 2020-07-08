@@ -1,27 +1,33 @@
 <div class="row mx-auto">
-  <h3 class="mx-auto">Ajustes</h3>
+    <h3 class="mx-auto">Ajustes</h3>
 </div>
 <form style="margin-top: 3%;" class="container">
+
+    <!-- NOMBRE NEGOCIO -->
     <div class="form-group mx-auto col-md-6">
-      <label for="inputEmail4">Nombre del negocio</label>
-      <input type="email" class="form-control" placeholder="Nombre del negocio" id="inputEmail4">
+        <label for="inputEmail4">Nombre del negocio</label>
+        <input type="email" class="form-control" placeholder="Nombre del negocio" id="inputEmail4" required>
     </div>
-  <div class="form-group mx-auto col-md-6">
-    <label for="inputAddress">Dirección</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="Direccion del negocio">
-  </div>
-  <div class="form-group mx-auto col-md-6">
-    <label for="inputState">Tipo de moneda</label>
-    <select id="inputState" class="form-control">
+
+    <!-- DIRECCION -->
+    <div class="form-group mx-auto col-md-6">
+        <label for="inputAddress">Dirección</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Direccion del negocio">
+    </div>
+
+    <!-- TIPO MONEDA -->
+    <div class="form-group mx-auto col-md-6">
+        <label for="inputState">Tipo de moneda</label>
+        <select id="inputState" class="form-control">
       <option selected>Elegir...</option>
       <option>Euro</option>
       <option>Dolar</option>
       <option>Peso Chileno(CLP)</option>
       <option>Soles</option>
     </select>
-  </div>
+    </div>
 
-  <div class="row mx-auto">
-    <button type="submit" class="btn btn-primary mx-auto">Guardar</button>
-  </div>
+    <div class="row mx-auto">
+        <button type="submit" class="btn btn-primary mx-auto">Guardar</button>
+    </div>
 </form>

@@ -8,6 +8,8 @@
             <form #formAuto="ngForm" (ngSubmit)="regVehiculo()">
                 <div class="container">
                     <div class="form-row ">
+
+                        <!-- MARCA -->
                         <div class="input-group col-md-4">
                             <div class="container">
                                 <label>Marca</label>
@@ -15,8 +17,16 @@
                             <div class="input-group-prepend ">
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
                             </div>
-                            <input class="form-control" type="text" placeholder="Ej: Chevrolet" name="marca" [(ngModel)]="vehiculo.marca">
+                            <input class="form-control" type="text" placeholder="Ej: Chevrolet" name="marca" [(ngModel)]="vehiculo.marca" required #marca=ngModel>
                         </div>
+
+                        <div class="mx-auto col-md-9 alert alert-danger" *ngIf="marca.invalid && (marca.dirty || marca.touched)">
+                            <div *ngIf="marca.errors.required">
+                                Tienes que ingresar una marca
+                            </div>
+                        </div>
+
+                        <!-- MODELO -->
                         <div class="input-group col-md-4">
                             <div class="container">
                                 <label>Modelo</label>
@@ -24,8 +34,16 @@
                             <div class="input-group-prepend ">
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
                             </div>
-                            <input class="form-control" type="text" placeholder="Modelo" name="modelo" [(ngModel)]="vehiculo.modelo">
+                            <input class="form-control" type="text" placeholder="Modelo" name="modelo" [(ngModel)]="vehiculo.modelo" required #modelo=ngModel>
                         </div>
+
+                        <div class="mx-auto col-md-9 alert alert-danger" *ngIf="modelo.invalid && (modelo.dirty || modelo.touched)">
+                            <div *ngIf="modelo.errors.required">
+                                Tienes que ingresar el modelo
+                            </div>
+                        </div>
+
+                        <!-- CARROCERIA -->
                         <div class="input-group col-md-4">
                             <div class="container">
                                 <label>Carrocería</label>
@@ -44,6 +62,8 @@
                     <br>
                     <br>
                     <div class="form-row">
+
+                        <!-- AÑO -->
                         <div class="input-group col-md-4 col-xs-6">
                             <div class="container">
                                 <label>Año</label>
@@ -51,8 +71,16 @@
                             <div class="input-group-prepend ">
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
                             </div>
-                            <input class="form-control " type="number" placeholder="Año" name="Anio" [(ngModel)]="vehiculo.anio">
+                            <input class="form-control " type="number" placeholder="Año" name="Anio" [(ngModel)]="vehiculo.anio" required #anio=ngModel>
                         </div>
+
+                        <div class="mx-auto col-md-9 alert alert-danger" *ngIf="anio.invalid && (anio.dirty || anio.touched)">
+                            <div *ngIf="anio.errors.required">
+                                Tienes que ingresar año del vehículo
+                            </div>
+                        </div>
+
+                        <!-- PATENTE -->
                         <div class="input-group col-md-4">
                             <div class="container">
                                 <label>Patente</label>
@@ -60,8 +88,26 @@
                             <div class="input-group-prepend ">
                                 <span class="input-group-text "><i class="fas fa-car "></i></span>
                             </div>
-                            <input style="text-transform: uppercase;" class="form-control " type="text" placeholder="Patente" name="patente" [(ngModel)]="vehiculo.patente">
+                            <input style="text-transform: uppercase;" class="form-control " type="text" placeholder="Patente" name="patente" [(ngModel)]="vehiculo.patente" required minlength="6" maxlength="6" pattern="/^[a-zA-Z]{2}-/^[a-zA-Z0-9]{2}-/^[0-9]{2}" #patente="ngModel">
                         </div>
+
+                        <div class="mx-auto col-md-9 alert alert-danger" *ngIf="patente.invalid && (patente.dirty || patente.touched)">
+                            <div *ngIf="patente.errors.required">
+                                Tienes que ingresar una pantente
+                            </div>
+                            <div *ngIf="patente.errors.minlength">
+                                La patente debe contener al menos 6 caracteres
+                            </div>
+                            <div *ngIf="patente.errors.maxlength">
+                                La patente debe contener un máximo de 6 caracteres
+                            </div>
+                            <div *ngIf="patente.errors.pattern">
+                                Esta patente es inválida
+                            </div>
+                        </div>
+
+                        <!-- KILOMETRAJE -->
+                        <!-- PENDIENTE -->
                         <div class="input-group col-md-4">
                             <div class="container">
                                 <label>Kilometraje</label>
@@ -117,11 +163,11 @@
                         <ngb-highlight [result]="car.modelo" [term]="service.searchTerm"></ngb-highlight>
                     </td>
                     <td>
-                      <ngb-highlight [result]="car.nrochasis|number" [term]="service.searchTerm"></ngb-highlight>km
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-danger btn-sm" (click)="borrarVehiculo(car)">Eliminar</button>
-                  </td>
+                        <ngb-highlight [result]="car.nrochasis|number" [term]="service.searchTerm"></ngb-highlight>km
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="borrarVehiculo(car)">Eliminar</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
