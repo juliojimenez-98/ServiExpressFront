@@ -235,6 +235,7 @@ export class NegocioService {
         productos: reserva.productos,
         fecha: reserva.fechareserva,
         horareserva: reserva.horareserva,
+        totalreserva: reserva.totalreserva,
         estado: 0
 
       });
