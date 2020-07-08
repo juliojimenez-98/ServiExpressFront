@@ -60,7 +60,7 @@ export class BoletaComponent implements OnInit {
 
 
                     doc.addImage(newImage, 'PNG',  20, 20, width, height);
-                    filename = 'boletaserviexpress' + '.pdf';
+                    filename = 'boletaPagoManual' + '.pdf';
                     doc.save(filename);
 
                   };

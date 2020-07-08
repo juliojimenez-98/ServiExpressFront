@@ -7,6 +7,7 @@ export class Reserva {
     fechareserva:string;
     horareserva: string;
     estado:number;
+    totalreserva:number;
   }
-  
+
 

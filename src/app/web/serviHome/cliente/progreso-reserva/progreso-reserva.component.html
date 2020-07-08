@@ -32,63 +32,8 @@
                         <div class="progress ">
                             <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar " aria-valuemin="0 " aria-valuemax="100 "></div>
                         </div> <br>
-                        <fieldset *ngIf="reservaRealizada">
-                            <div class="form-card ">
-                                <div class="row ">
-                                    <div class="col-5 mx-auto ">
-                                        <h5 class="fs-title text-center ">Tu reserva ha sido realizada</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <fieldset *ngIf="recibidoCar">
-                            <div class="form-card ">
-                                <div class="row ">
-                                    <div class="col-5 mx-auto ">
-                                        <h2 class="fs-title text-center ">Recibimos tu auto, Ahora estamos trabajando en él</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <fieldset *ngIf="Limpieza">
-                            <div class="form-card ">
-                                <div class="row ">
-                                    <div class="col-5 mx-auto ">
-                                        <h2 class="fs-title text-center ">Limpieza de tu auto</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <fieldset *ngIf="Pagar">
-                            <div class="form-card ">
-                                <div class="row ">
-                                    <div class="col-5 mx-auto ">
-                                        <h2 class="fs-title text-center ">Terminando ultimos detalles, Tienes que pagar por el servicio</h2>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <div class="form-card ">
-                                <div class="row ">
-                                    <div class="col-5 mx-auto ">
-                                        <h2 class="fs-title ">El servicio a tu vehículo está realizado, Tienes que retirar tu vehículo</h2>
-
-                                    </div>
-                                </div> <br><br>
-                                <h3 class="purple-text text-center "><strong>Listo !</strong></h3> <br>
-                                <div class="row justify-content-center ">
-                                    <div class="col-3 "> <img src="https://i.imgur.com/KnPGD7u.png " class="fit-image "> </div>
-                                </div> <br><br>
-                                <div class="row justify-content-center ">
-                                    <div class="col-7 text-center ">
-                                        <h5 class="purple-text text-center ">Puedes retirar tu vehículo reparado!</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <button *ngIf="btnterminando" class="btn btn-warning text-dark">Pagar</button>
+                        <button (click)="pagar()" *ngIf=" btnterminando " class="btn btn-warning text-dark ">Pagar</button>
                     </form>
                 </div>
             </div>

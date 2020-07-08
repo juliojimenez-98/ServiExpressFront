@@ -11,7 +11,7 @@
                     <div class="col-md-4 " id="dni-group">
                         <label>Servicios</label>
                         <select [(ngModel)]="servicio" name="servicio" class="custom-select" (change)="cargaBox()">
-                          <option *ngFor="let servicio of servicios" [ngValue]="servicio">{{servicio.nombre}}</option>
+                          <option *ngFor="let servicio of servicios" [ngValue]="servicio">{{servicio.nombre}} {{moneda}}{{servicio.valorbase|number}}</option>
 
                         </select>
 
@@ -21,7 +21,7 @@
                     <div class=" col-md-4">
                         <label>Productos</label>
                         <select [(ngModel)]="producto" name="producto" class="custom-select">
-                                <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.nombre}}</option>
+                                <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.nombre}} {{moneda}}{{producto.valorbase|number}}</option>
 
                       </select>
 
@@ -89,6 +89,7 @@
                             <th scope="col" sortable="marca" (sort)="onSort($event)">vehículo</th>
                             <th scope="col" sortable="modelo" (sort)="onSort($event)">Marca</th>
                             <th scope="col" sortable="nrochasis" (sort)="onSort($event)">Fecha</th>
+                            <th scope="col" sortable="totalreserva" (sort)="onSort($event)">Total</th>
                             <!-- <th>Acción</th> -->
                         </tr>
                     </thead>
@@ -106,6 +107,9 @@
                             </td>
                             <td>
                                 <ngb-highlight [result]="res2.fechareserva" [term]="service.searchTerm"></ngb-highlight>
+                            </td>
+                            <td>
+                                <ngb-highlight [result]="res2.totalreserva" [term]="service.searchTerm"></ngb-highlight>
                             </td>
                             <!-- <td>
                                 <button class="btn btn-danger btn-sm" (click)="borrarVehiculo()">Eliminar</button>

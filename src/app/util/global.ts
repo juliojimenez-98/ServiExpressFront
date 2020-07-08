@@ -39,11 +39,14 @@ export var URL_TO_LOGIN={
     getPedidosDetalle:`/api/pedido/3/estado`,
     getPedidosEstado:`/api/pedido`,
     getReservasMes:'/api/reserva/reservasmonth',
-    getReservasDia:'/api/reserva/reservasday'
+    getReservasDia:'/api/reserva/reservasday',
+    getPago2:'/api/pago/pago',
+    getPago:'/api/pago/pago'
 }
 
 
 export var URL_ENCUESTAS={
     url:'http://127.0.0.1:8090',
     getEncuesta1:'/api/satifaccion/encuesta',
+    getEncuesta3:'/api/satifaccion/reportein',
 }

@@ -9,6 +9,7 @@ import { Servicios, Servicios2 } from '../models/Servicios';
 import { Reserva } from '../models/reserva';
 import { Vehiculo } from '../models/vehiculo';
 import { ReservaResponse } from '../models/ReservaResponse';
+import { ReservaPago } from '../models/ReservaPago';
 
 @Injectable({
   providedIn: 'root'
@@ -35,11 +36,47 @@ export class NegocioService {
   private getReservas = URL_TO_LOGIN.url + URL_TO_LOGIN.getReservas;
   private getReservasMonth =URL_TO_LOGIN.url + URL_TO_LOGIN.getReservasMes;
   private urlReservaPorId = URL_TO_LOGIN.url + URL_TO_LOGIN.getReservaPorId;
+  private urlPago = URL_TO_LOGIN.url + URL_TO_LOGIN.getPago2;
 
   private header: any;
 
   constructor(private http: HttpClient) { }
 
+
+  // getPago(){
+  //     this.header = new HttpHeaders()
+  //     .set('Content-Type', 'application/json; charset=utf-8')
+  //     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
+  //     return this.http.put(`${this.urlPago}`, { headers: this.header });
+  // }
+
+  getPago(valor:number,servicio:String, idReserva:number) {
+
+    console.log(valor+" tstst")
+   const raw = JSON.stringify(
+    {
+      valor:valor,
+      servicio:servicio
+    });
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
+    return this.http.post(`${this.urlPago}`, raw, { headers: this.header });
+    // return this.http.put(`${this.urlRegProducto}`, raw, { headers: this.header });
+  }
+
+  // actualizarCategoria(categoria: Categoria) {
+  //   const raw = JSON.stringify(
+  //   {
+  //     idcategoria:categoria.idcategoria,
+  //     nombre: categoria.nombre,
+  //     descripcion:categoria.descripcion
+  //   });
+  //   this.header = new HttpHeaders()
+  //   .set('Content-Type', 'application/json; charset=utf-8')
+  //   .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
+  //   return this.http.post(`${this.urlUpdtCategoria}`, raw, { headers: this.header });
+  // }
 
   getCategoria(idCategoria):Observable<Categoria>{
     this.header = new HttpHeaders()
@@ -154,17 +191,13 @@ export class NegocioService {
   }
 
   agregarProducto(producto:Producto){
-    console.log(producto.categoria.idcategoria)
-
-
-
     const raw = JSON.stringify(
       {
         nombre: producto.nombre,
         descripcion: producto.descripcion,
         valorbase: producto.valorbase,
-        stock: producto.stock,
-        categoria: producto.categoria.idcategoria
+        stock:producto.stock,
+        categoria: producto.categoria
       });
       this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
@@ -198,6 +231,7 @@ export class NegocioService {
         productos: reserva.productos,
         fecha: reserva.fechareserva,
         horareserva: reserva.horareserva,
+        totalreserva: reserva.totalreserva,
         estado: 0
 
       });
@@ -229,7 +263,7 @@ export class NegocioService {
       descripcion: producto.descripcion,
       valorbase: producto.valorbase,
       stock: producto.stock,
-      categoria: producto.categoria.idcategoria
+      categoria: producto.categoria
 
     });
     this.header = new HttpHeaders()
@@ -269,6 +303,13 @@ export class NegocioService {
     return this.http.get(`${this.urlReservaPorId +'/'+ idReserva + '/' + idEstado + '/reserva'}`, { headers: this.header });
   }
 
+  updateEstadoReservaPago(idReserva:string) {
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get(`${this.urlReservaPorId +'/'+ idReserva + '/6/reserva'}`, { headers: this.header });
+  }
+
   getCars():Observable<Vehiculo[]> {
     this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
@@ -276,6 +317,12 @@ export class NegocioService {
     return this.http.get<Vehiculo[]>(`${this.getVeId + '/' + sessionStorage.getItem('idcliente') + '/allvehiculo'}`, { headers: this.header });
   }
 
+  getReservaPago(patente:string):Observable<ReservaPago[]>{
+    this.header = new HttpHeaders()
+      .set('Content-Type', 'application/json; charset=utf-8')
+      .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion'));
+    return this.http.get<ReservaPago[]>(`${this.urlReservaPorId+ '/' + patente + '/patente'}`, { headers: this.header });
+  }
 }
 
 
