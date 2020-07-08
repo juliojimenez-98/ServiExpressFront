@@ -5,7 +5,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-10">
-                        {{producto.nombre}} - {{producto.descripcion}} -{{moneda}}{{producto.valorbase}} - Stock: {{producto.stock}} - {{producto.categoria.nombre}}
+                        {{producto.nombre}} - {{producto.descripcion}} -{{moneda}}{{producto.valorbase}} - Stock: {{producto.stock}} - {{producto.categoria}}
                     </div>
                     <div class="col-sm-2 text-right">
                         <button type="button" class="btn btn-warning btn-circle text-center" [routerLink]="[producto.idproducto]"><i class="fas fa-edit"></i></button>
@@ -55,7 +55,7 @@
                 <span class="input-group-text "><i class="fas fa-filter"></i></span>
             </div>
             <select [(ngModel)]="producto.categoria" name="categoria" class="custom-select">
-         <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.nombre}} ID: {{categoria.idcategoria}}</option>
+         <option *ngFor="let categoria of categorias" [ngValue]="categoria.idcategoria">{{categoria.nombre}} ID: {{categoria.idcategoria}}</option>
        </select>
 
         </div>
