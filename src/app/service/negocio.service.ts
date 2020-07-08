@@ -50,7 +50,7 @@ export class NegocioService {
   //     return this.http.put(`${this.urlPago}`, { headers: this.header });
   // }
 
-  getPago(valor:number,servicio:String) {
+  getPago(valor:number,servicio:String, idReserva:number) {
 
     console.log(valor+" tstst")
    const raw = JSON.stringify(
