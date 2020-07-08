@@ -58,13 +58,13 @@ export class ProductosComponent implements OnInit {
 
   public agregarPRoducto(): void{
 
-    console.log("hola"+this.producto.categoria)
     Swal.fire({
       allowOutsideClick: false,
       icon: 'info',
-      text: 'Creando producto...'
+      text: 'Creando servicio...'
     })
     this.negocioService.agregarProducto(this.producto).subscribe(
+
       res  =>{
         Swal.close();
         // this.callType(res)
@@ -72,8 +72,9 @@ export class ProductosComponent implements OnInit {
         console.log(this.producto.categoria)
 
         Swal.fire(  'Producto agregado',  `El producto : ${this.producto.nombre} se agregó con exito` ,  'success');
-        this.router.navigate(['home/negociogestion/productos']);
+        this.router.navigate(['home/negociogestion/servicios']);
         this.cargarAllProductos();
+
       console.log(res)
 
   },
@@ -81,8 +82,7 @@ export class ProductosComponent implements OnInit {
     this.util.handleError(error);
   },
 
-);
-
+  );
 }
 
 public actProducto(): void{
