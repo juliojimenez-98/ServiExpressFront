@@ -197,7 +197,7 @@ export class NegocioService {
         descripcion: producto.descripcion,
         valorbase: producto.valorbase,
         stock:producto.stock,
-        categoria: producto.categoria.idcategoria
+        categoria: producto.categoria
       });
       this.header = new HttpHeaders()
       .set('Content-Type', 'application/json; charset=utf-8')
@@ -263,7 +263,7 @@ export class NegocioService {
       descripcion: producto.descripcion,
       valorbase: producto.valorbase,
       stock: producto.stock,
-      categoria: producto.categoria.idcategoria
+      categoria: producto.categoria
 
     });
     this.header = new HttpHeaders()

@@ -6,5 +6,5 @@ export class Producto {
   descripcion: string;
   valorbase: number;
   stock:number
-  categoria: Categoria;
+  categoria: number;
 }
