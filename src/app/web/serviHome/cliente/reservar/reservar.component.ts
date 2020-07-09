@@ -85,17 +85,17 @@ export class ReservarComponent implements OnInit {
     let dateHours = <HTMLInputElement>document.getElementById('datetime');
     let newDate = new Date(dateHours.value);
     this.reserva.productos = producto;
-    var total  = this.servicio.valorbase *1 + this.producto.valorbase *1;
-    console.log(this.totalreserva)
+    this.totalreserva  = this.servicio.valorbase + this.producto.valorbase;
+    console.log( this.totalreserva )
     this.reserva.servicios = servici.toString();
     this.reserva.fechareserva = dateHours.value.substr(0, 10);
     this.reserva.horareserva = dateHours.value.substr(11);
-    this.reserva.totalreserva = total;
+    this.reserva.totalreserva = this.totalreserva;
     this.reserva.idvehiculo = parseInt(this.vehiculo.idvehiculo);
 
     Swal.fire({
       title: 'Confirmar Reserva',
-      text: `Con fecha:  ${this.reserva.fechareserva} a las : ${this.reserva.horareserva} con un valor de: ${this.moneda}${total}`,
+      text: `Con fecha:  ${this.reserva.fechareserva} a las : ${this.reserva.horareserva} con un valor de: ${this.moneda}${this.totalreserva}`,
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
