@@ -103,7 +103,7 @@ export class LoginService {
   updateOrCreateEmp(selection: boolean, userInfo: UserInfoModel) {
     const raw = JSON.stringify(
       { idempleado: userInfo.idEmpleado,idusuario: userInfo.idUsuario, rut: userInfo.rut, nombre: userInfo.nombre, apellido: userInfo.apellido,
-        telefono: userInfo.telefono });
+        telefono: userInfo.telefono, fechaNacimiento: userInfo.fechaN });
     this.header = new HttpHeaders()
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
