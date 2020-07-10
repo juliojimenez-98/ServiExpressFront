@@ -154,7 +154,7 @@
                 <tr *ngFor="let car of cars$ | async">
                     <!-- <th scope="row">{{ car.idvehiculo }}</th> -->
                     <td>
-                        <ngb-highlight [result]="car.patente" [term]="service.searchTerm"></ngb-highlight>
+                        <ngb-highlight [result]="car.patente|uppercase" [term]="service.searchTerm"></ngb-highlight>
                     </td>
                     <td>
                         <ngb-highlight [result]="car.marca" [term]="service.searchTerm"></ngb-highlight>
@@ -177,9 +177,9 @@
             </ngb-pagination>
 
             <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
-      <option [ngValue]="2">2 auto por pagina</option>
-      <option [ngValue]="4">4 auto por pagina</option>
-      <option [ngValue]="6">6 auto por pagina</option>
+      <option [ngValue]="2">2 auto por pagína</option>
+      <option [ngValue]="4">4 auto por pagína</option>
+      <option [ngValue]="6">6 auto por pagína</option>
     </select>
         </div>
 

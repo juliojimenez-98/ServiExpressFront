@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class EncuestaService {
   private urlencuesta1 = URL_ENCUESTAS.url + URL_ENCUESTAS.getEncuesta1;
+  private urlencuesta2 = URL_ENCUESTAS.url + URL_ENCUESTAS.getEncuesta2;
   private urlencuesta3 = URL_ENCUESTAS.url + URL_ENCUESTAS.getEncuesta3;
 
   constructor(private http: HttpClient) { }
@@ -28,6 +29,15 @@ export class EncuestaService {
     .set('Content-Type', 'application/json; charset=utf-8')
     .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
     return this.http.get(`${this.urlencuesta3}`,  { headers: this.header });
+
+
+  }
+
+  reporte2() {
+    this.header = new HttpHeaders()
+    .set('Content-Type', 'application/json; charset=utf-8')
+    .set('Authorization', 'Bearer ' + localStorage.getItem('token_sesion') );
+    return this.http.get(`${this.urlencuesta2}`,  { headers: this.header });
 
 
   }
