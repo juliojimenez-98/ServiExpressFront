@@ -59,6 +59,74 @@ export class InicioComponent implements OnInit {
     this.toDate = calendar.getToday();
 
 
+    this.encuestaService.reporte2().subscribe(
+
+      res => {
+
+
+        var valor = [];
+        var nombre = [];
+
+        for (let index = 0; index < res["totalServicio"].length; index++) {
+          const element = res["totalServicio"][index];
+          valor.push(element)
+        }
+
+        for (let index = 0; index < res["nombreServicio"].length; index++) {
+          const element = res["nombreServicio"][index];
+          nombre.push(element)
+        }
+
+        console.log(valor[0])
+
+                this.dataBar = {
+            datasets: [{
+                data: [
+                  [valor[0]],
+                  [valor[1]],
+                  [valor[2]]
+                ],
+                backgroundColor: [
+                    "#FF6384",
+                    "#4BC0C0",
+                    "#FFCE56",
+                    "#E7E9ED",
+                    "#36A2EB"
+                ],
+                label: 'Año 2020'
+            }],
+            labels: [
+              nombre[0]+" "+[valor[0]],
+              nombre[1]+" "+[valor[1]],
+              nombre[2]+" "+[valor[2]]
+            ]
+        }
+    }
+      // this.dataBar = {
+      //   labels: ['Año 2020'],
+      //   datasets: [
+      //     {
+      //       label: nombre[0],
+      //       backgroundColor: '#42A5F5',
+      //       borderColor: '#1E88E5',
+      //       data: [valor[0]]
+      //     },
+      //     {
+      //       label: nombre[1],
+      //       backgroundColor: '#9CCC65',
+      //       borderColor: '#7CB342',
+      //       data: [valor[1]]
+      //     },
+      //     {
+      //       label: nombre[2],
+      //       backgroundColor: '#FFCE56',
+      //       borderColor: '#FFCE56',
+      //       data: [valor[2]]
+      //     }
+      //   ]
+      // }
+      // }
+    )
 
     this.encuestaService.reporte3().subscribe(
       res => {
@@ -99,11 +167,14 @@ export class InicioComponent implements OnInit {
             }
           ]
         }
+        
 
         sessionStorage.setItem('meses', res["meses"])
         this.meses=sessionStorage.getItem('meses')
         
 
+
+        
         
         // sessionStorage.setItem("valorEgreso", valorEgreso);
  
@@ -126,30 +197,7 @@ export class InicioComponent implements OnInit {
 
 
 
-    this.dataBar = {
-      labels: ["Febrero", 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosoto'],
-      datasets: [
-        {
-          label: 'Cambio de Aceite',
-          backgroundColor: '#42A5F5',
-          borderColor: '#1E88E5',
-          data: [65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-          label: 'Cambio de Neumaticos',
-          backgroundColor: '#9CCC65',
-          borderColor: '#7CB342',
-          data: [28, 48, 40, 19, 86, 27, 80]
-        },
-        {
-          label: 'Lavado de Motor',
-          backgroundColor: '#FFCE56',
-          borderColor: '#FFCE56',
-          data: [50, 60, 20, 30, 45, 60, 100]
-        }
-      ]
-    }
-
+    
 
     // sessionStorage.setItem("valorEgreso", valorEgreso);
     // sessionStorage.setItem("meses", meses);
