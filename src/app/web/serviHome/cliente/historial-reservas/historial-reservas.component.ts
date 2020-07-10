@@ -14,6 +14,7 @@ import { Reserva } from 'src/app/models/reserva';
 })
 export class HistorialReservasComponent implements OnInit {
   public user: UserModel = new UserModel();
+  p :number = 1;
   private util: Util = new Util();
   public nombre: string = null;
   cliente = false;

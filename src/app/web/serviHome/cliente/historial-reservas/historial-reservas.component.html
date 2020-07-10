@@ -20,7 +20,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let reserva of reservas">
+                        <tr *ngFor="let reserva of reservas| paginate: { itemsPerPage: 4, currentPage: p }">
                             <td class="text-center text-muted">{{reserva.idreserva}}</td>
                             <td class="text-center text-muted">{{reserva.servicios}}</td>
                             <td class="text-center text-muted">{{reserva.productos}}</td>
@@ -38,5 +38,10 @@
                 </table>
             </div>
         </div>
+        <div class="row">
+          <div class="mx-auto">
+              <pagination-controls (pageChange)="p = $event" maxSize="9" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+          </div>
+      </div>
     </div>
 </div>
