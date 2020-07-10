@@ -13,4 +13,5 @@ export class Encuesta1 {
 export class Encuesta2 {
   nombre:string;
   tipo:string;
+  fecha:string;
 }
