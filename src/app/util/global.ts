@@ -41,7 +41,8 @@ export var URL_TO_LOGIN={
     getReservasMes:'/api/reserva/reservasmonth',
     getReservasDia:'/api/reserva/reservasday',
     getPago2:'/api/pago/pago',
-    getPago:'/api/pago/pago'
+    getPago:'/api/pago/pago',
+    enviarEncuesta:'/api/satifaccion/ingresarencuesta'
 }
 
 
