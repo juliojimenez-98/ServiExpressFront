@@ -27,7 +27,8 @@ export class SatisfaccionService {
       },
       {
         nombre:encuesta2.nombre,
-        tipo:encuesta2.tipo
+        tipo:encuesta2.tipo,
+        fecha:encuesta2.fecha
       }
 
       ]);
