@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import { Util } from 'src/app/util/util';
 import { ReservasService } from 'src/app/service/reservas.service';
 import { Vehiculo } from 'src/app/models/vehiculo';
-import { DecimalPipe } from '@angular/common';
+import { DecimalPipe, DatePipe } from '@angular/common';
 import { NgbdSortableHeader, SortEvent } from 'src/app/service/sortableReserva.directive';
 import { Observable } from 'rxjs';
 import { ReservaResponse } from 'src/app/models/ReservaResponse';
@@ -32,17 +32,23 @@ export class ReservarComponent implements OnInit {
   total$: Observable<number>;
   moneda:string;
   totalreserva:number;
+  currentDates = new Date().toISOString().substring(0, 11).concat('08:00')
+  currentDate = new Date().toISOString().substring(0, 16);
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
   constructor(private negocioService: NegocioService, public service: ReservasService) {
     this.reservaResponse$ = service.reservaResponses$;
     this.total$ = service.total$;
     this.moneda = sessionStorage.getItem('moneda');
+
+
    }
 
 
   public dateBefore: Date = new Date();
   ngOnInit(): void {
+
+    console.log(this.currentDates)
     this.cargarAppJs('../assets/js/app.js');
 
     this.negocioService.getCar().subscribe(vehiculos => this.vehiculos = vehiculos);
