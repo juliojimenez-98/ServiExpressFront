@@ -63,6 +63,7 @@ export class ActivarComponent implements OnInit {
         this.util.getUserDatos(res)
         this.logout();
         swal.fire('Cargando datos', 'Inicia sesión para que se carguen tus datos', 'info')
+        this.router.navigate(['/login'])
       },
       error => {
         this.util.handleError(error);
@@ -78,6 +79,7 @@ export class ActivarComponent implements OnInit {
         sessionStorage.setItem('Avtivo', 'true');
         this.logout();
         swal.fire('Cargando datos', 'Inicia sesión para que se carguen tus datos', 'info')
+        this.router.navigate(['/login'])
 
       },
       error => {
