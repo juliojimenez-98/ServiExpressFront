@@ -16,7 +16,7 @@
 
                     <div class=" col-md-4">
                         <label>Productos</label>
-                        <select [(ngModel)]="producto" name="producto" class="custom-select">
+                        <select [(ngModel)]="producto" name="producto" class="custom-select" required>
                                 <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.nombre}} {{moneda}}{{producto.valorbase|number}}</option>
 
                       </select>
@@ -33,7 +33,7 @@
                     <div class="col-md-6 mx-auto">
 
                         <label>Día y Hora de tu reserva</label>
-                        <input type="datetime-local" class="form-control text-center" id="datetime">
+                        <input type="datetime-local" [min]="currentDates" class="form-control text-center" id="datetime">
 
                         <!-- <input type="datetime-local" class="form-control" id="date1" [(ngModel)]="dateBefore" step="1" /> -->
                     </div>
