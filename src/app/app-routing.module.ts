@@ -34,7 +34,14 @@ import { PedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/pedid
 import { AjustesAdminComponent } from './web/serviHome/admin/ajustes-admin/ajustes-admin.component';
 import { VistaPedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/vista-pedidos-admin/vista-pedidos-admin.component';
 import { RecibosAdminComponent } from './web/serviHome/admin/pedidos-admin/recibos-admin/recibos-admin.component';
-
+import { ProveedoresComponent } from './web/serviHome/admin/proveedores/proveedores.component';
+import { RegistrarproveedoresComponent } from './web/serviHome/admin/proveedores/registrarproveedores/registrarproveedores.component';
+import { VerproveedoresComponent } from './web/serviHome/admin/proveedores/verproveedores/verproveedores.component';
+import { PedidosComponent } from './web/serviHome/empleado/pedidos-empleado/pedidos/pedidos.component';
+import { RecibosempComponent } from './web/serviHome/empleado/pedidos-empleado/recibosemp/recibosemp.component';
+import { BoletaComponent } from './web/serviHome/cliente/boleta/boleta.component';
+import { PagoEmpComponent } from './web/serviHome/empleado/pago-emp/pago-emp.component';
+import { PagoexitoComponent } from './web/pagores/pagoexito/pagoexito.component';
 
 
 const APP_ROUTES: Routes = [
@@ -47,6 +54,8 @@ const APP_ROUTES: Routes = [
   { path: '', component: HomeComponent },
   { path: '', pathMatch: 'full', redirectTo: '' },
   { path: 'encuesta', component: EncuestaComponent},
+  { path: 'boleta', component: BoletaComponent},
+  { path: 'pagoexito', component: PagoexitoComponent},
 
   // USUARIO LOGUEADO
   { path: 'home', component: BaseComponent, canActivate: [ AuthGuard ] ,
@@ -57,11 +66,14 @@ const APP_ROUTES: Routes = [
   { path: 'verclientes', component: ClientesempComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'registeremploye', component: RegisteremployeComponent, canActivate: [ RoleGuard, AuthGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'verempleados', component: EmpleadosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
-  { path: 'pedidosadmin', component: PedidosAdminComponent,
+  { path: 'proveedores', component: ProveedoresComponent,
   children:[
-    { path: 'pedidos', component: VistaPedidosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
-    { path: 'recibos', component: RecibosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+    { path: 'registrarproveedores', component: RegistrarproveedoresComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+    { path: 'verproveedores', component: VerproveedoresComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+    { path: 'registrarproveedores/:idproveedor', component: RegistrarproveedoresComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   ]},
+  { path: 'recibos', component: RecibosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
+  { path: 'pedidos', component: PedidosAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'ajustes', component: AjustesAdminComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_ADMIN'} },
   { path: 'negociogestion', component: NegocioGestionComponent,
 
@@ -80,6 +92,7 @@ const APP_ROUTES: Routes = [
   { path: 'editardatoscliente', component: EditarClienteComponent, canActivate: [ AuthGuard ] },
   { path: 'progresoreserva', component: ProgresoReservaComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'historialreserva', component: HistorialReservasComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
+  { path: 'pagoexito', component: PagoexitoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'autosclientes', component: AutosClienteComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
   { path: 'registroautos', component: RegistroAutoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_CLIENT'} },
 
@@ -92,7 +105,13 @@ const APP_ROUTES: Routes = [
 
   //Sidebar Empleado
   { path: 'reservasemp', component: ReservasEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
-  { path: 'pedidosemp', component: PedidosEmpleadoComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
+  { path: 'pagoemp', component: PagoEmpComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
+  { path: 'pedidosempleado', component: PedidosEmpleadoComponent,
+  children:[
+    { path: 'pedidosemp', component: PedidosComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
+    { path: 'pedidosemp', component: PedidosComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
+    { path: 'recibosemp', component: RecibosempComponent, canActivate: [ RoleGuard ], data: {role: 'ROLE_EMPLOYE'} },
+  ]}
   ]},
 
   { path: 'sidebar', component: SidebarComponent, canActivate: [ AuthGuard ] },

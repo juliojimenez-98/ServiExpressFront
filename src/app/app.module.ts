@@ -50,6 +50,15 @@ import { VistaPedidosAdminComponent } from './web/serviHome/admin/pedidos-admin/
 import { AjustesAdminComponent } from './web/serviHome/admin/ajustes-admin/ajustes-admin.component';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ProveedoresComponent } from './web/serviHome/admin/proveedores/proveedores.component';
+import { RegistrarproveedoresComponent } from './web/serviHome/admin/proveedores/registrarproveedores/registrarproveedores.component';
+import { VerproveedoresComponent } from './web/serviHome/admin/proveedores/verproveedores/verproveedores.component';
+import { BoletaComponent } from './web/serviHome/cliente/boleta/boleta.component';
+import { PagoEmpComponent } from './web/serviHome/empleado/pago-emp/pago-emp.component';
+import { PagoexitoComponent } from './web/pagores/pagoexito/pagoexito.component';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 registerLocaleData(localeEsCl, 'es-CL');
 
 @NgModule({
@@ -93,6 +102,12 @@ registerLocaleData(localeEsCl, 'es-CL');
     RecibosAdminComponent,
     VistaPedidosAdminComponent,
     AjustesAdminComponent,
+    ProveedoresComponent,
+    RegistrarproveedoresComponent,
+    VerproveedoresComponent,
+    BoletaComponent,
+    PagoEmpComponent,
+    PagoexitoComponent,
 
 
   ],
@@ -105,6 +120,8 @@ registerLocaleData(localeEsCl, 'es-CL');
     ChartModule,
     TableModule,
     NgxPaginationModule,
+    ProgressSpinnerModule,
+    BrowserAnimationsModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-Cl' }],
   bootstrap: [AppComponent]

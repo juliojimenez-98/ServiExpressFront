@@ -8,37 +8,37 @@
 
           <div style="margin-top: 1%;" class="container">
 
-            <h5>Qué te pareció el servicio</h5>
+            <h5>¿Qué te pareció el servicio?</h5>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="excelente" value="option1">
+              <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="encuesta.tipo" id="excelente" value="exelente">
               <label class="form-check-label" for="excelente">
                 Excelente
               </label>
             </div>
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="bueno" value="option1">
+              <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="encuesta.tipo" id="bueno" value="bueno">
               <label class="form-check-label" for="bueno">
                 Bueno
               </label>
             </div>
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="regular" value="option1">
+              <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="encuesta.tipo" id="regular" value="regular">
               <label class="form-check-label" for="regular">
                 Regular
               </label>
             </div>
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="malo" value="option1">
+              <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="encuesta.tipo" id="malo" value="malo">
               <label class="form-check-label" for="malo">
                 Malo
               </label>
             </div>
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="muymalo" value="option1">
+              <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="encuesta.tipo" id="muymalo" value="muymalo">
               <label class="form-check-label" for="muymalo">
                Muy Malo
               </label>
@@ -51,21 +51,21 @@
           <div style="margin-top: 3%;" class="container">
             <h5>Califica el tiempo de tu reserva</h5>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio" id="rapido" value="option2">
+              <input class="form-check-input" type="radio" name="radio" [(ngModel)]="encuesta1.tipo" id="rapido" value="rapido">
               <label class="form-check-label" for="rapido">
                 Rápido
               </label>
             </div>
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio" id="normal" value="option2">
+              <input class="form-check-input" type="radio" name="radio" [(ngModel)]="encuesta1.tipo" id="normal" value="normal">
               <label class="form-check-label" for="normal">
                 Normal
               </label>
             </div>
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio" id="lento" value="option2">
+              <input class="form-check-input" type="radio" name="radio" [(ngModel)]="encuesta1.tipo" id="lento" value="lento">
               <label class="form-check-label" for="lento">
                 Lento
               </label>
@@ -74,32 +74,32 @@
           </div>
 
           <div style="margin-top: 3%;" class="container">
-            <h5>Recomendarías ServiExpress?</h5>
+            <h5>¿Recomendarías ServiExpress?</h5>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio2" id="si" value="option2">
+              <input class="form-check-input" type="radio" name="radio2" [(ngModel)]="encuesta2.tipo" id="si" value="recomendaria">
               <label class="form-check-label" for="si">
                 Lo recomendaría
               </label>
             </div>
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio2" id="talvez" value="option2">
+              <input class="form-check-input" type="radio" name="radio2" [(ngModel)]="encuesta2.tipo" id="talvez" value="talvez">
               <label class="form-check-label" for="talvez">
                 Tal Vez
               </label>
             </div>
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio2" id="no" value="option2">
+              <input class="form-check-input" type="radio" name="radio2" [(ngModel)]="encuesta2.tipo" id="no" value="norecomendaria">
               <label class="form-check-label" for="no">
-                No lo recomendaria
+                No lo recomendaría
               </label>
             </div>
 
           </div>
           <div class="text-center">
 
-            <button style="margin-top: 3%;" class="btn btn-primary">Enviar encuesta</button>
+            <button style="margin-top: 3%;" class="btn btn-primary" (click)="enviarEncusta()">Enviar encuesta</button>
           </div>
         </form>
 

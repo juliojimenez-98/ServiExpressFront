@@ -1,0 +1,50 @@
+<div id="content" #content>
+  <div class="container">
+    <div style="margin-top: 3%;" class="card">
+      <div  class="card-body">
+        <div class="row">
+          <div class="float-left">
+            <img style="width: 20%;" class="imgfluid" src="../../../../../assets/img/logo-black.png" alt="">
+          </div>
+          <div class="col md-12">
+              <h2 class="text-center">Boleta ServiExpress</h2>
+          </div>
+
+        </div>
+            <div class="card border-info mb-3">
+              <div class="card-body text-center">
+                <h5 class="card-title">Informacion de compra</h5>
+                <div class="row">
+                  <p class="float-left"><strong>Número Boleta</strong>: 45615632</p>
+                </div>
+                <div class="row">
+                  <p class="float-left"><strong>Servicios</strong>: Servicios utilizados</p>
+                </div>
+                <div class="row">
+                  <p class="float-left"><strong>Productos</strong>: Productos utilizados</p>
+                </div>
+                <div class="row">
+                  <p class="float-left"><strong>Productos</strong>: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident modi assumenda, ut voluptates nihil cum, quam exercitationem nostrum enim sunt accusantium placeat itaque amet maiores cumque illum dolorum. Deleniti nihil quas sed corrupti eius, illum iure error aspernatur ex minima. Esse omnis magni facere quidem autem dignissimos nobis, nemo consectetur.</p>
+                </div>
+                <div class="row float-right">
+                  <h5 class=""><strong>Total: </strong><span class="badge badge-warning">{{moneda}}15000</span></h5>
+                </div>
+              </div>
+            </div>
+            <br>
+            <br>
+
+        </div>
+        <br>
+            <br>
+      </div>
+      <br>
+      <br>
+  </div>
+</div>
+
+<div style="margin-top: 5%;" class="row">
+  <div class="mx-auto">
+    <button class="btn btn-info" (click)="descargarBoleta()">Descargar boleta </button>
+  </div>
+</div>

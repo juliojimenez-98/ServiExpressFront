@@ -1,0 +1,37 @@
+<div class="container table-responsive">
+  <h4 class="text-center">Ver Proveedores</h4>
+
+  <table style="margin-top: 3%;" class="align-middle mb-0 table table-borderless table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Empresa</th>
+            <th>Productos</th>
+            <th>Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let proveedor of proveedores| paginate: { itemsPerPage: 6, currentPage: p }">
+            <td>{{proveedor.nombre}}</td>
+            <td>{{proveedor.apellido}}</td>
+            <td>{{proveedor.correo}}</td>
+            <td>+569 {{proveedor.telefono}}</td>
+            <td>{{proveedor.empresa}}</td>
+            <td>{{proveedor.producto}}</td>
+            <td>
+                <button type="button " id="PopoverCustomT-1 " class="btn btn-success btn-sm " [routerLink]="['/home/proveedores/registrarproveedores/',proveedor.idproveedor]">Editar</button>
+                <button style="margin-left: 1%;" type="button " id="PopoverCustomT-1 " class="btn btn-danger btn-sm ">Bloquear</button>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="margin-top: 3%;" class="row">
+  <div class="mx-auto">
+   <pagination-controls (pageChange)="p = $event"  maxSize="9" previousLabel="Anterior" nextLabel="Siguiente" ></pagination-controls>
+  </div>
+ </div>

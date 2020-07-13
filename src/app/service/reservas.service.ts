@@ -43,6 +43,7 @@ function matches(reservaResponse: ReservaResponse, term: string, pipe: PipeTrans
     || reservaResponse.veichulo.toLowerCase().includes(term.toLowerCase())
     || reservaResponse.marca.toLowerCase().includes(term.toLowerCase())
     || reservaResponse.fechareserva.toLowerCase().includes(term.toLowerCase())
+    || reservaResponse.totalreserva
 }
 
 @Injectable({

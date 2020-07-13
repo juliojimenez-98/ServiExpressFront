@@ -155,27 +155,30 @@ p {
 }
 
 #progressbar #reserva:before {
-  font-family: FontAwesome;
-  content: "\f274"
+  font-family: "Font Awesome 5 Free";
+  content: "\f274";
+  padding-right: 3px;
+  vertical-align: middle;
+  font-weight: 900;
 }
 
 #progressbar #autoRecibido:before {
-  font-family: FontAwesome;
+  font-family: "Font Awesome 5 Free";
   content: "\f1b9"
 }
 
 #progressbar #autoTaller:before {
-  font-family: FontAwesome;
+  font-family: "Font Awesome 5 Free";
   content: "\f1b9"
 }
 
 #progressbar #terminandoServicio:before {
-  font-family: FontAwesome;
+  font-family: "Font Awesome 5 Free";
   content: "\f0ad"
 }
 
 #progressbar #finalizado:before {
-  font-family: FontAwesome;
+  font-family: "Font Awesome 5 Free";
   content: "\f058"
 }
 

@@ -61,7 +61,9 @@ export class ActivarComponent implements OnInit {
       res => {
         sessionStorage.setItem('Avtivo', 'true');
         this.util.getUserDatos(res)
-        this.router.navigate(['home/inicio']);
+        this.logout();
+        swal.fire('Cargando datos', 'Inicia sesión para que se carguen tus datos', 'info')
+        this.router.navigate(['/login'])
       },
       error => {
         this.util.handleError(error);
@@ -75,7 +77,10 @@ export class ActivarComponent implements OnInit {
     this.loginService.updateOrCreateEmp(true, this.user).subscribe(
       res => {
         sessionStorage.setItem('Avtivo', 'true');
-        this.router.navigate(['home/inicio']);
+        this.logout();
+        swal.fire('Cargando datos', 'Inicia sesión para que se carguen tus datos', 'info')
+        this.router.navigate(['/login'])
+
       },
       error => {
         this.util.handleError(error);
@@ -84,5 +89,10 @@ export class ActivarComponent implements OnInit {
     );
 
     }
+  }
+
+  logout() {
+    localStorage.removeItem('token_sesion');
+    sessionStorage.clear();
   }
 }

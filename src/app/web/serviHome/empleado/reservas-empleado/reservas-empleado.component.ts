@@ -42,7 +42,7 @@ export class ReservasEmpleadoComponent implements OnInit {
         '1': 'Revision',
         '2': 'Trabajando',
         '3': 'Limpieza',
-        '4': 'Terminando',
+        '4': 'Pagar Servicio',
         '5': 'Servicio Completo'
       },
       inputPlaceholder: 'Selecciona el estado de la reserva',

@@ -1,0 +1,97 @@
+<h4 style="margin-bottom: 3%;" class="text-center">Registrar un proveedor</h4>
+<form class="col-12">
+  <div class="container">
+
+    <div class="form-row ">
+      <div class="input-group col-md-4">
+          <div class="container">
+              <label>Nombre Proveedor</label>
+          </div>
+          <div class="input-group-prepend ">
+              <span class="input-group-text "><i class="fas fa-user"></i></span>
+          </div>
+          <input type="text" class="form-control" placeholder="Nombre" name="nombre" [(ngModel)]="proveedor.nombre" required />
+      </div>
+      <div class="input-group col-md-4">
+          <div class="container">
+              <label>Apellido Proveedor</label>
+          </div>
+          <div class="input-group-prepend ">
+              <span class="input-group-text "><i class="fas fa-user"></i></span>
+          </div>
+          <input type="text" class="form-control" placeholder="Apellido" name="apellido" [(ngModel)]="proveedor.apellido" required />
+      </div>
+      <div class="input-group col-md-4">
+        <div class="container">
+            <label>Rut Proveedor</label>
+        </div>
+        <div class="input-group-prepend ">
+            <span class="input-group-text "><i class="fas fa-id-card"></i></span>
+        </div>
+        <input type="text" class="form-control" placeholder="Rut"  id="rut" name="rut" [(ngModel)]="proveedor.rut" required />
+    </div>
+    </div>
+
+    <div class="row">
+      <div class="mx-auto">
+        <div style="margin-top: 2%;" class="form-row ">
+          <div class="input-group col-md-6">
+              <div class="container">
+                  <label>Correo Proveedor</label>
+              </div>
+              <div class="input-group-prepend ">
+                  <span class="input-group-text "><i class="fas fa-at"></i></span>
+              </div>
+              <input type="email" class="form-control" placeholder="Correo" name="email" [(ngModel)]="proveedor.correo" required />
+          </div>
+          <div class="input-group col-md-6">
+              <div class="container">
+                  <label>Telefono Proveedor</label>
+              </div>
+              <div class="input-group-prepend ">
+                  <span class="input-group-text "><i class="fas fa-phone-alt"></i></span>
+              </div>
+              <input type="number" class="form-control" placeholder="Telefono" name="telefono" [(ngModel)]="proveedor.telefono" required />
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="mx-auto">
+          <div style="margin-top: 2%;" class="form-row ">
+            <div class="input-group col-md-6">
+                <div class="container">
+                    <label>Empresa Proveedor</label>
+                </div>
+                <div class="input-group-prepend ">
+                    <span class="input-group-text "><i class="fas fa-building"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="empresa" name="empresa" [(ngModel)]="proveedor.empresa" required />
+            </div>
+            <div class="input-group col-md-6">
+                <div class="container">
+                    <label>Producto que provee</label>
+                </div>
+                <div class="input-group-prepend ">
+                    <span class="input-group-text "><i class="fab fa-product-hunt"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Producto que provee" name="producto" [(ngModel)]="proveedor.producto" required />
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div style="margin-top: 2%;" class="text-center ">
+    <button style="margin-top: 2%;" type="submit" style="margin-top: 2%;" class="col-sm-4 btn btn-info btn-block my-2 mx-auto" (click)="agregarProveedor()" *ngIf="!proveedor.idproveedor else elseBLock"><i class="fas fa-sign-in-alt"></i>  Registrar </button>
+  </div>
+  <ng-template #elseBLock>
+    <button style="margin-top: 2%;" type="submit"  class="btn btn-success" (click)="actProveedor()" >Actualizar</button>
+  </ng-template>
+</form>
+

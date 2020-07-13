@@ -7,58 +7,45 @@
               <table class="align-middle mb-0 table  table-borderless table-striped table-hover">
                   <thead>
                       <tr>
-                          <th>ID</th>
-                          <th>Rut</th>
+                        <th >#</th>
+                          <!-- <th>Rut</th> -->
                           <th>Nombre Proveedor</th>
                           <th>Empresa</th>
+                          <th>fecha pedido</th>
                           <th>Producto</th>
                           <th>Cantidad</th>
                           <th>Estado Pedido</th>
+                          <th>Acción</th>
                       </tr>
                   </thead>
                   <tbody>
-                      <tr>
-                          <td class="text-center text-muted ">#345</td>
-                          <td>12123456-K</td>
-                          <td>Williams Ramos</td>
-                          <td> General Motors</td>
-                          <td>Motor WPR-500</td>
-                          <td>3</td>
+                      <tr *ngFor="let pedido of pedidos| paginate: { itemsPerPage: 5, currentPage: p };let i = index">
+                          <td>{{i+1}}</td>
+                          <td>{{pedido.proveedor.nombre}} {{pedido.proveedor.apellido}}</td>
+                          <td>{{pedido.proveedor.empresa}}</td>
+                          <td>{{pedido.fechapedido}}</td>
+                          <td> {{pedido.producto.nombre}}</td>
+                          <td>{{pedido.cantidad}}</td>
+                          <td *ngIf="pedido.estado == 0" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-warning">Pendiente</td>
+                          <td *ngIf="pedido.estado == 1" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-info">Recibido</td>
+                          <td *ngIf="pedido.estado == 2" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-success">Listo</td>
+                          <td *ngIf="pedido.estado == 3" style="margin-top: 5%;" class="mx-auto badge badge-pill badge-secondary">Con detalles</td>
                           <td>
-                              <button type="button" class="btn btn-outline-info btn-sm" (click)="estadoPedido()">
+                              <button type="button" class="btn btn-outline-info btn-sm" *ngIf="pedido.estado == 0" (click)="estadoPedido(pedido.idpedido)">
                                   Seleccionar
                                 </button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td class="text-center text-muted ">#345</td>
-                          <td>11895456-K</td>
-                          <td>Maria Carvallo</td>
-                          <td> Bridgestone</td>
-                          <td>Ruedas ARO 30</td>
-                          <td>16</td>
-                          <td>
-                            <button type="button" class="btn btn-outline-info btn-sm" (click)="estadoPedido()">
-                              Seleccionar
-                            </button>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td class="text-center text-muted ">#345</td>
-                          <td>15895453-K</td>
-                          <td>Roberto Acuña</td>
-                          <td> Ford</td>
-                          <td>Tubos de escape</td>
-                          <td>8</td>
-                          <td>
-                            <button type="button" class="btn btn-outline-info btn-sm" (click)="estadoPedido()">
-                              Seleccionar
-                            </button>
                           </td>
                       </tr>
                   </tbody>
               </table>
           </div>
+      </div>
+
+      <div style="margin-top: 3%;" class="row">
+        <div class="mx-auto">
+
+          <pagination-controls (pageChange)="p = $event"  maxSize="9" previousLabel="Anterior" nextLabel="Siguiente" ></pagination-controls>
+        </div>
       </div>
 <hr>
 
@@ -71,49 +58,33 @@
         </div>
 
         <form>
-          <div class="form-row container">
-              <div class="col-md-6 " id="dni-group">
-                  <label>Empresa</label>
-                  <select class="form-control form-group" id="">
-                      <option>General Motors</option>
-                      <option>Fiat</option>
-                      <option>Chevrolet</option>
-                      <option>bridgestone</option>
-                      <option>Lorem.</option>
-                    </select>
-              </div>
-              <div class="col-md-6 " id="dni-group">
+          <div class="row ">
+              <div class="col-md-6 mx-auto" id="dni-group">
                   <label>Productos</label>
-                  <select class="form-control form-group" id="">
-                      <option>Aceite</option>
-                      <option>Tubos de escape</option>
-                      <option>Bujias</option>
-                      <option>Lorem, ipsum.</option>
-                      <option>Lorem.</option>
-                    </select>
+                  <select [(ngModel)]="pedido.producto" name="proveedores" class="custom-select">
+                    <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.nombre}}</option>
+                  </select>
               </div>
 
           </div>
 
-          <div class="form-row container">
-              <div class="col-md-6 " id="dni-group">
+          <div class="row">
+              <div class="col-md-6 mx-auto" id="dni-group">
                   <label>Proveedor</label>
-                  <select class="form-control form-group" id="">
-                      <option>Williams Ramos</option>
-                      <option>Lorem, ipsum dolor.</option>
-                      <option>Lorem ipsum dolor sit.</option>
-                      <option>Lorem, ipsum.</option>
-                      <option>Lorem.</option>
-                    </select>
-              </div>
-              <div class=" col-md-6">
-                  <label>Cantidad</label>
-                  <input class="form-control" type="number" placeholder="Cantidad">
-              </div>
+                  <select [(ngModel)]="pedido.proveedor" name="proveedores" class="custom-select">
+                    <option *ngFor="let proveedor of proveedores" [ngValue]="proveedor">{{proveedor.nombre}}{{proveedor.apellido}}  | {{proveedor.producto}}</option>
+                  </select>
+                </div>
+          </div>
+          <div class="row">
+            <div class=" col-md-2 mx-auto">
+              <label>Cantidad de productos</label>
+              <input [(ngModel)]="pedido.cantidad" name="cantidad" class="form-control" type="number" placeholder="Cantidad">
+          </div>
           </div>
           <br>
           <div class="text-center">
-            <button type="button" class="btn btn-success">
+            <button type="submit" (click)="agregarPedido()" class="btn btn-success">
               Pedir
             </button>
           </div>

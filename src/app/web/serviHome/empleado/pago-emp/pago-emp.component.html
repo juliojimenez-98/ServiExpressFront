@@ -1,0 +1,79 @@
+<div class="text-right">
+
+  <h3 class="text-center">Pago de servicio</h3>
+  <br>
+  <div class="input-group col-md-2 mx-auto">
+    <input class="form-control py-2" type="search" placeholder="Ingresa una patente" name="patente" [(ngModel)]="patente" id="example-search-input">
+    <span class="input-group-append">
+      <button class="btn btn-outline-primary" type="button" (click)="getReservaPago(patente)">
+          <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</div>
+
+<div style="margin-top: 5%;" class="container" *ngIf="reservasPagos?.length==0">
+  <div class="alert alert-info">
+    <h5><strong>No existe reserva de este vehículo</strong></h5>
+    <p>Por favor verifica la patente del vehículo ingresado</p>
+  </div>
+</div>
+
+<div style="margin-top: 5%;" class="col-xl-8 col-md-8 mb-4 mx-auto" *ngFor="let reserva of reservasPagos">
+  <div style="width: 100%; height: 100%;" id="contenido">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div style="background-color: white;" class="card-header text-black"><div class="float-left">
+        <img style="width: 15%;" class="imgfluid" src="../../../../../assets/img/logo-black.png" alt="">
+      </div>
+      </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 text-right">
+              <h3 class="text-dark">Cliente</h3>
+               <hr class="bg-primary">
+              <p class="card-text text-dark"> <strong>Rut : </strong>{{reserva.rut}}</p>
+              <p class="card-text text-dark"> <strong>Nombre : </strong> {{reserva.nombre}} </p>
+              <p class="card-text text-dark"> <strong>Apellido : </strong> {{reserva.apellido}} </p>
+            </div>
+
+            <div class="col-md-6">
+              <h3 class="text-dark">Vehículo</h3>
+              <hr class="bg-primary">
+              <p class="card-text text-dark"> <strong>Marca : </strong>{{reserva.marca}} </p>
+              <p class="card-text text-dark"> <strong>Modelo : </strong> {{reserva.modelo}}</p>
+              <p class="card-text text-dark"> <strong>Patente : </strong> {{reserva.patente}} </p>
+            </div>
+
+            <div class="col-md-12 text-center">
+              <hr class="bg-primary">
+              <p class="card-text text-dark"> <strong>Sercicio : </strong>{{reserva.nombreservicio}} </p>
+              <p class="card-text text-dark"> <strong>Producto : </strong> {{reserva.nombreproducto}}</p>
+            </div>
+          </div>
+
+          <div style="margin: 3%;" class="text-center">
+
+            <h4>Total : <span class="badge badge-warning text-dark">{{moneda}} {{reserva.total}}</span></h4>
+          </div>
+          <hr class="bg-primary">
+
+
+
+        </div>
+
+        <div class="container" *ngIf="pagado">
+          <div class="card border-danger mb-3 mx-auto" style="max-width: 30rem;">
+            <div class="card-body text-danger text-center">
+              <h2 class="card-title">PAGADO</h2>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 3%;" class="text-center" *ngIf="reservasPagos?.length>0">
+    <button class="btn btn-primary" (click)="actualizarEstadoReserva(reserva.idreserva)">Pagar reserva</button>
+  </div>
+</div>
+
+

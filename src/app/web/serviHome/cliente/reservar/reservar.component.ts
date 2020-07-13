@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import { Util } from 'src/app/util/util';
 import { ReservasService } from 'src/app/service/reservas.service';
 import { Vehiculo } from 'src/app/models/vehiculo';
-import { DecimalPipe } from '@angular/common';
+import { DecimalPipe, DatePipe } from '@angular/common';
 import { NgbdSortableHeader, SortEvent } from 'src/app/service/sortableReserva.directive';
 import { Observable } from 'rxjs';
 import { ReservaResponse } from 'src/app/models/ReservaResponse';
@@ -30,21 +30,32 @@ export class ReservarComponent implements OnInit {
   public vehiculo: Vehiculo = new Vehiculo();
   reservaResponse$: Observable<ReservaResponse[]>;
   total$: Observable<number>;
-  
+  moneda:string;
+  totalreserva:number;
+  currentDates = new Date().toISOString().substring(0, 11).concat('08:00')
+  currentDate = new Date().toISOString().substring(0, 16);
+
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
   constructor(private negocioService: NegocioService, public service: ReservasService) {
     this.reservaResponse$ = service.reservaResponses$;
     this.total$ = service.total$;
+    this.moneda = sessionStorage.getItem('moneda');
+
+
    }
 
-  
+
   public dateBefore: Date = new Date();
   ngOnInit(): void {
+
+    console.log(this.currentDates)
     this.cargarAppJs('../assets/js/app.js');
 
     this.negocioService.getCar().subscribe(vehiculos => this.vehiculos = vehiculos);
     this.negocioService.getAllServicio2().subscribe(servicios => this.servicios = servicios);
     // this.negocioService.getAllProductoById(169).subscribe(productos => this.productos = productos);
+    console.log(this.servicio.valorbase)
+
   }
 
   onSort({ column, direction }: SortEvent) {
@@ -58,7 +69,7 @@ export class ReservarComponent implements OnInit {
     this.service.sortColumn = column;
     this.service.sortDirection = direction;
   }
-  
+
   public cargarAppJs(url: string) {
     const body = <HTMLDivElement>document.body;
     const script = document.createElement('script');
@@ -76,31 +87,48 @@ export class ReservarComponent implements OnInit {
 
     let producto = this.producto.idproducto;
     let servici = this.servicio.idservicio;
+
     let dateHours = <HTMLInputElement>document.getElementById('datetime');
     let newDate = new Date(dateHours.value);
     this.reserva.productos = producto;
+    this.totalreserva  = this.servicio.valorbase + this.producto.valorbase;
+    console.log( this.totalreserva )
     this.reserva.servicios = servici.toString();
-    this.reserva.fechareserva = dateHours.value;
-    this.reserva.horareserva = dateHours.value;
+    this.reserva.fechareserva = dateHours.value.substr(0, 10);
+    this.reserva.horareserva = dateHours.value.substr(11);
+    this.reserva.totalreserva = this.totalreserva;
     this.reserva.idvehiculo = parseInt(this.vehiculo.idvehiculo);
 
+    Swal.fire({
+      title: 'Confirmar Reserva',
+      text: `Con fecha:  ${this.reserva.fechareserva} a las : ${this.reserva.horareserva} con un valor de: ${this.moneda}${this.totalreserva}`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, continuar',
+      cancelButtonText: 'Volver'
+    }).then((result) => {
+      if (result.value) {
+        this.negocioService.agregarReserva(this.reserva).subscribe(
 
-      this.negocioService.agregarReserva(this.reserva).subscribe(
-
-        res  =>{
+          res  =>{
 
 
-          Swal.fire(  'Reserva agregada',  `Se enviara un correo de confirmacion a : ${sessionStorage.getItem('email')}` ,  'success');
-          this.service.getReserva()
-          .subscribe(res => {
-            localStorage["datas2"] = JSON.stringify(res);
-          });
-    },
-    error => {
-      this.util.handleError(error);
-    },
+            //Swal.fire(  'Reserva agregada',  `Se enviara un correo de confirmacion a : ${sessionStorage.getItem('email')}` ,  'success');
+            Swal.fire(  'Reserva agregada',  `La reserva se hizo exitosamente` ,  'success');
+            this.service.getReserva()
+            .subscribe(res => {
+              localStorage["datas2"] = JSON.stringify(res);
+            });
+      },
+      error => {
+        this.util.handleError(error);
+      },
 
-  );
+    );
+      }
+    })
 
   }
 
@@ -109,5 +137,7 @@ export class ReservarComponent implements OnInit {
   public cargaBox(): void{
 
     this.negocioService.getAllProductoById(this.servicio.categoria).subscribe(productos => this.productos = productos)
+
+    this.totalreserva  = this.servicio.valorbase + this.producto.valorbase;
   }
 }

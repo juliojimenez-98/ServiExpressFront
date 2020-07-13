@@ -1,63 +1,114 @@
 <div class="container-fluid" *ngIf="admin">
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        <a (click)="genratePDF()" class="d-none d-sm-inline-block btn btn-sm btn-dark shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generar Reportes</a>
-    </div>
 
-    <br>
-    <div class="row ">
-
-        <div class="col-xl-3 col-md-6 mb-4 center ">
-            <h5 class="h5 mb-0 text-gray-800 center">Servicio</h5>
-            <p-chart type="doughnut" [data]="data"></p-chart>
-        </div>
-        <div class="col-xl-3 col-md-6 mb-4 center">
-            <h1 class="h5 mb-0 text-gray-800 center">Tiempo</h1>
-            <p-chart type="doughnut" [data]="data2"></p-chart>
-        </div>
-        <div class="col-xl-3 col-md-6 mb-4 center">
-            <h1 class="h5 mb-0 text-gray-800 center">Recomendación</h1>
-            <p-chart type="doughnut" [data]="data3"></p-chart>
-        </div>
-    </div>
-
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    <hr/>
 
     <br>
 
-    <div class="row">
-
-        <div class="col-lg-12 mb-4 mx-auto">
-
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Servicios más realizados</h6>
+    <div class="card">
+        <br>
+        <div style="margin: 35px;">
+            <form class="form-inline">
+                <div class="form-group hidden">
+                    <div class="input-group">
+                        <input name="datepicker" class="form-control" ngbDatepicker #datepicker="ngbDatepicker" [autoClose]="'outside'" (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden" [startDate]="fromDate!">
+                        <ng-template #t let-date let-focused="focused">
+                            <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+                    {{ date.day }}
+                  </span>
+                        </ng-template>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h4 class="small font-weight-bold">Cambios de bujías <span class="float-right">20%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input #dpFromDate class="form-control" placeholder="yyyy-mm-dd" name="dpFromDate" [value]="formatter.format(fromDate)" (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"></button>
+                        </div>
                     </div>
-                    <h4 class="small font-weight-bold">Repuesto de neumáticos <span class="float-right">40%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="form-group ml-2">
+                    <div class="input-group">
+                        <input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate" [value]="formatter.format(toDate)" (input)="toDate = validateInput(toDate, dpToDate.value)">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"></button>
+                        </div>
                     </div>
-                    <h4 class="small font-weight-bold">Cambio tuvo de escape <span class="float-right">60%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <h4 class="small font-weight-bold">Limpieza de carburador <span class="float-right">80%</span></h4>
-                    <div class="progress mb-4">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <h4 class="small font-weight-bold">Cambio de aceite <span class="float-right">95%</span></h4>
-                    <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 95%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
+                </div>
+                <button (click)="buscarencuesta1()" type=" button " class="btn btn-light " style="margin-left: 10px; ">Buscar</button>
+            </form>
+        </div>
+        <!-- <hr/>
+            <pre>From date model: {{ fromDate | json }}</pre>
+            <pre>To date model: {{ toDate | json }}</pre></div> -->
+        <br>
+        <div class="d-sm-flex align-items-center justify-content-between mb-4" style="margin: 35px;">
+            <h1 class="h3 mb-0 text-gray-800">Reporte de Satisfacción</h1>
+            <!-- <h1 class="h3 mb-0 text-gray-800">Dashboard</h1> -->
+            <a (click)="generarReporte()" class=" btn btn-dark text-white"><i class="fas fa-download fa-sm text-white-50"></i> Descargar en PDF</a>
+        </div>
+
+        <br>
+        <div class="row" id="contenido">
+
+            <div class="col-xl-3 col-md-6 mb-4 center ">
+                <h5 class="h5 mb-0 text-gray-800 center">Servicio</h5>
+                <p-chart type="doughnut" [data]="data"></p-chart>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4 center">
+                <h1 class="h5 mb-0 text-gray-800 center">Tiempo</h1>
+                <p-chart type="doughnut" [data]="data2"></p-chart>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4 center">
+                <h1 class="h5 mb-0 text-gray-800 center">Recomendación</h1>
+                <p-chart type="doughnut" [data]="data3"></p-chart>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="card">
+        <br>
+        <div class="d-sm-flex align-items-center justify-content-between mb-4" style="margin: 35px;">
+            <h1 class="h3 mb-0 text-gray-800">Reporte de Servicios Más Vendidos</h1>
+            <!-- <h1 class="h3 mb-0 text-gray-800">Dashboard</h1> -->
+            <a (click)="generarReporteServicios()" class=" btn btn-dark text-white"><i class="fas fa-download fa-sm text-white-50"></i> Descargar en PDF</a>
+        </div>
+        <br>
+        <div id="reporteServicios">
+            <div class="row">
+
+                <div class="col-lg-12 mb-4 mx-auto" style="margin: 10px;">
+                    <p-chart type="polarArea" [data]="dataBar" width="600" height="400px" [responsive]="true"></p-chart>
+
                 </div>
             </div>
         </div>
     </div>
+    <br>
+    <div class="card">
+        <br>
+        <div class="d-sm-flex align-items-center justify-content-between mb-4" style="margin: 35px;">
+            <h1 class="h3 mb-0 text-gray-800">Reporte de Egreso e Ingreso</h1>
+            <!-- <h1 class="h3 mb-0 text-gray-800">Dashboard</h1> -->
+            <a (click)="generarReporteIngresos()" class=" btn btn-dark text-white"><i class="fas fa-download fa-sm text-white-50"></i> Descargar en PDF</a>
+        </div>
+        <br>
+        <div id="reporteIngresos">
+
+            <div class="row">
+
+                <div class="col-lg-12 mb-4 mx-auto" style="margin: 10px;">
+                    <p-chart type="bar" [data]="dataBar2" width="600" height="400px" [responsive]="true"></p-chart>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr/>
+    <br>
 </div>
 
 <div class="container-fluid" *ngIf="empleado">
@@ -74,3 +125,5 @@
     </div>
     <app-inicio-clientes></app-inicio-clientes>
 </div>
+
+<div class="espacio"> </div>

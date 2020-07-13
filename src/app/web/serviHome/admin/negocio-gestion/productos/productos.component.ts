@@ -19,9 +19,11 @@ export class ProductosComponent implements OnInit {
   public producto:Producto = new Producto();
   private util: Util = new Util();
   public idCategoria:any;
+  public moneda: any;
 
   constructor(private negocioService: NegocioService, private router:Router, private activateRoute:ActivatedRoute) {
-
+    sessionStorage.setItem("moneda",'$');
+    this.moneda = sessionStorage.getItem('moneda');
   }
 
 
@@ -56,10 +58,15 @@ export class ProductosComponent implements OnInit {
 
   public agregarPRoducto(): void{
 
-    console.log("hola"+this.producto.categoria)
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Creando servicio...'
+    })
     this.negocioService.agregarProducto(this.producto).subscribe(
 
       res  =>{
+        Swal.close();
         // this.callType(res)
         // var idcategoria = this.callType;
         console.log(this.producto.categoria)
@@ -75,8 +82,7 @@ export class ProductosComponent implements OnInit {
     this.util.handleError(error);
   },
 
-);
-
+  );
 }
 
 public actProducto(): void{

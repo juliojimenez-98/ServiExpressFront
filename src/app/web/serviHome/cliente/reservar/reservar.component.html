@@ -8,7 +8,7 @@
                     <div class="col-md-4 " id="dni-group">
                         <label>Servicios</label>
                         <select [(ngModel)]="servicio" name="servicio" class="custom-select" (change)="cargaBox()">
-                          <option *ngFor="let servicio of servicios" [ngValue]="servicio">{{servicio.nombre}}</option>
+                          <option *ngFor="let servicio of servicios" [ngValue]="servicio">{{servicio.nombre}} {{moneda}}{{servicio.valorbase|number}}</option>
 
                         </select>
 
@@ -16,8 +16,8 @@
 
                     <div class=" col-md-4">
                         <label>Productos</label>
-                        <select [(ngModel)]="producto" name="producto" class="custom-select">
-                                <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.nombre}}</option>
+                        <select [(ngModel)]="producto" name="producto" class="custom-select" required>
+                                <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.nombre}} {{moneda}}{{producto.valorbase|number}}</option>
 
                       </select>
 
@@ -25,7 +25,7 @@
                     <div class=" col-md-4">
                         <label>Tus vehículos</label>
                         <select [(ngModel)]="vehiculo" name="vehiculo" class="custom-select">
-                                <option *ngFor="let vehiculo of vehiculos" [ngValue]="vehiculo">{{vehiculo.marca}} {{vehiculo.modelo}} {{vehiculo.idvehiculo}}</option>
+                                <option *ngFor="let vehiculo of vehiculos" [ngValue]="vehiculo">{{vehiculo.marca}} {{vehiculo.modelo}}   Patente: {{vehiculo.patente|uppercase}}</option>
 
                       </select>
 
@@ -33,27 +33,11 @@
                     <div class="col-md-6 mx-auto">
 
                         <label>Día y Hora de tu reserva</label>
-                        <input type="datetime-local" class="form-control text-center" id="datetime">
+                        <input type="datetime-local" [min]="currentDates" class="form-control text-center" id="datetime">
 
                         <!-- <input type="datetime-local" class="form-control" id="date1" [(ngModel)]="dateBefore" step="1" /> -->
                     </div>
                 </div>
-                <!-- <div id="mostrarAuto" style="display: none;">
-                    <div class="form-row">
-                        <div class="col-md-6 mx-auto">
-                            <label>Escoje tu Auto</label>
-                            <select class="form-control form-group" id="">
-                              <option>Seleccionar</option>
-                              <option>Audi TT HPRF89</option>
-                              <option>Nissan 350Z CRDY96</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="button" style="margin-top: 10px;" class="mx-auto btn btn-outline-info btn-sm" value="Ocultar" onclick="mostrar()">No está tu auto?</button>
-                </div>
-                <br> -->
-
-
                 <div class="text-center">
                     <button type="submit" class="col-sm-4 btn btn-success btn-block my-4 mx-auto"><i class="fas fa-plus"></i>  Agendar reserva </button>
                 </div>
@@ -84,6 +68,7 @@
                             <th scope="col" sortable="marca" (sort)="onSort($event)">vehículo</th>
                             <th scope="col" sortable="modelo" (sort)="onSort($event)">Marca</th>
                             <th scope="col" sortable="nrochasis" (sort)="onSort($event)">Fecha</th>
+                            <th scope="col" sortable="totalreserva" (sort)="onSort($event)">Total</th>
                             <!-- <th>Acción</th> -->
                         </tr>
                     </thead>
@@ -91,7 +76,7 @@
                         <tr *ngFor="let res2 of reservaResponse$ | async">
                             <!-- <th scope="row">{{ car.idvehiculo }}</th> -->
                             <td>
-                                <ngb-highlight [result]="res2.patente" [term]="service.searchTerm"></ngb-highlight>
+                                <ngb-highlight [result]="res2.patente|uppercase" [term]="service.searchTerm"></ngb-highlight>
                             </td>
                             <td>
                                 <ngb-highlight [result]="res2.veichulo" [term]="service.searchTerm"></ngb-highlight>
@@ -101,6 +86,9 @@
                             </td>
                             <td>
                                 <ngb-highlight [result]="res2.fechareserva" [term]="service.searchTerm"></ngb-highlight>
+                            </td>
+                            <td>
+                                <ngb-highlight [result]="res2.totalreserva" [term]="service.searchTerm"></ngb-highlight>
                             </td>
                             <!-- <td>
                                 <button class="btn btn-danger btn-sm" (click)="borrarVehiculo()">Eliminar</button>
@@ -114,9 +102,9 @@
                     </ngb-pagination>
 
                     <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
-              <option [ngValue]="3">3 reserva por pagina</option>
-              <option [ngValue]="5">5 reserva por pagina</option>
-              <option [ngValue]="10">10 reserva por pagina</option>
+              <option [ngValue]="3">3 reserva por pagína</option>
+              <option [ngValue]="5">5 reserva por pagína</option>
+              <option [ngValue]="10">10 reserva por pagína</option>
             </select>
                 </div>
 
